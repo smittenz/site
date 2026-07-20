@@ -84,8 +84,14 @@ function ParticleOrganism({ zoomed, traveling }) {
     const handlePointer = event => {
       const rect = canvas.getBoundingClientRect();
       const wasActive = pointer.active;
-      pointer.targetX = (event.clientX - rect.left) / rect.width * width;
-      pointer.targetY = (event.clientY - rect.top) / rect.height * height;
+      const isPortraitMobile = window.matchMedia("(max-width: 700px) and (orientation: portrait)").matches;
+      if (isPortraitMobile) {
+        pointer.targetX = (event.clientY - rect.top) / rect.height * width;
+        pointer.targetY = (rect.right - event.clientX) / rect.width * height;
+      } else {
+        pointer.targetX = (event.clientX - rect.left) / rect.width * width;
+        pointer.targetY = (event.clientY - rect.top) / rect.height * height;
+      }
       pointer.active = event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
       if (pointer.active && !wasActive) {
         pointer.x = pointer.targetX;
@@ -420,11 +426,13 @@ function Home() {
   ], []);
   const searchResults = searchItems.filter(item => `${item.title} ${item.category}`.toLowerCase().includes(query.trim().toLowerCase())).slice(0, 7);
   const nodes = [
-    { href: "/digital-sociology-study", label: "Digital Sociology Study", code: "01", x: 18, y: 25, side: "right", image: data.study.images[0], meta: "Networked VR Installation · 2025" },
-    { href: "/digital", label: "Digital Work", code: "02", x: 31, y: 56, side: "right", image: data.collections.digital[0].image, meta: "Interactive Worlds + Digital Systems" },
-    { href: "/physical", label: "Physical Work", code: "03", x: 53, y: 38, side: "left", image: data.collections.physical[0].image, meta: "Sculpture + Physical Computing" },
-    { href: "/for-clients", label: "Client Work", code: "04", x: 74, y: 66, side: "left", image: data.collections.clients[0].image, meta: "Selected Collaborations" },
-    { href: "/contact", label: "About + Contact", code: "05", x: 88, y: 29, side: "left", image: data.about.images[0], meta: "Artist + Experience Designer" },
+    { href: "/digital-sociology-study", label: "Digital Sociology Study", code: "01", x: 13.1, y: 25.5, side: "right", image: data.study.images[0], meta: "Networked VR Installation · 2025" },
+    { href: "/digital", label: "Digital Work", code: "02", x: 35.1, y: 49.8, side: "right", image: data.collections.digital[0].image, meta: "Interactive Worlds + Digital Systems" },
+    { href: "/physical", label: "Physical Work", code: "03", x: 51.6, y: 49.8, side: "left", image: data.collections.physical[0].image, meta: "Sculpture + Physical Computing" },
+    { href: "/for-clients", label: "Client Work", code: "04", x: 68.1, y: 49.8, side: "left", image: data.collections.clients[0].image, meta: "Selected Collaborations" },
+    { href: "/contact", label: "About + Contact", code: "05", x: 75.9, y: 32.6, side: "left", image: data.about.images[0], meta: "Artist + Experience Designer" },
+    { href: "/archive", label: "Project Archive", code: "06", x: 49.4, y: 84.6, side: "left", image: data.collections.digital[1].image, meta: "Complete Project Database" },
+    { href: "/?search=1", label: "Search Archive", code: "07", x: 26, y: 90.9, side: "right", image: data.collections.physical[1].image, meta: "Search Projects + Studies", action: "search" },
   ];
   const moveNode = direction => {
     const current = Math.max(0, nodes.findIndex(node => node.href === activeNode?.href));
@@ -446,9 +454,12 @@ function Home() {
     const distanceX = event.clientX - dragStart.current.x;
     const distanceY = event.clientY - dragStart.current.y;
     dragStart.current = null;
-    if (Math.abs(distanceX) > 55 && Math.abs(distanceX) > Math.abs(distanceY)) {
+    const isPortraitMobile = window.matchMedia("(max-width: 700px) and (orientation: portrait)").matches;
+    const primaryDistance = isPortraitMobile ? distanceY : distanceX;
+    const crossDistance = isPortraitMobile ? distanceX : distanceY;
+    if (Math.abs(primaryDistance) > 55 && Math.abs(primaryDistance) > Math.abs(crossDistance)) {
       justDragged.current = true;
-      moveNode(distanceX < 0 ? 1 : -1);
+      moveNode(primaryDistance < 0 ? 1 : -1);
       window.setTimeout(() => { justDragged.current = false; }, 50);
     }
   };
@@ -459,8 +470,8 @@ function Home() {
   useEffect(() => {
     if (!activeNode) return undefined;
     const handleKey = event => {
-      if (event.key === "ArrowRight") moveNode(1);
-      if (event.key === "ArrowLeft") moveNode(-1);
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") moveNode(1);
+      if (event.key === "ArrowLeft" || event.key === "ArrowUp") moveNode(-1);
       if (event.key === "Escape") setActiveNode(null);
     };
     window.addEventListener("keydown", handleKey);
@@ -478,7 +489,7 @@ function Home() {
     window.setTimeout(() => searchRef.current?.focus(), 0);
   };
   return (
-    <main className="home">
+    <main className={activeNode ? "home is-previewing" : "home"}>
       <header className="home-header">
         <Link href="/" className="home-wordmark">SOPH KATSIVELOS</Link>
         <p>Artist + Experience Designer<br />New York, 2026</p>
@@ -512,27 +523,42 @@ function Home() {
           </div>
         </div>
       </header>
-      <section className={`diagram-stage ${activeNode ? "is-zoomed" : ""} ${panMotion}`} aria-labelledby="diagram-title">
-        <div className="stage-copy">
-          <span>INTERACTIVE INDEX / 001</span>
-          <h1 id="diagram-title">Explore the <em>organism.</em></h1>
-          <p>Select a node to inspect its system.</p>
-        </div>
+      <section className={`diagram-stage ${activeNode ? "is-zoomed" : ""} ${panMotion}`} aria-label="Interactive portfolio map">
         <div className="diagram-viewport" onClick={closePreviewFromMap} onPointerDown={startDrag} onPointerUp={endDrag} onPointerCancel={endDrag}>
-        <div className="diagram-wrap" style={activeNode ? { transformOrigin: `${activeNode.x}% ${activeNode.y}%`, transform: "scale(2.35)" } : undefined}>
-          <ParticleOrganism zoomed={Boolean(activeNode)} traveling={Boolean(panMotion)} />
-          <LineworkOverlay />
-          {nodes.map(node => (
-            <button key={node.href} type="button" onClick={() => setActiveNode(node)} className={`map-node node-${node.side} ${activeNode?.href === node.href ? "active" : ""}`} style={{ left: `${node.x}%`, top: `${node.y}%` }} aria-label={`Zoom into ${node.label}`} aria-pressed={activeNode?.href === node.href}>
-              <span className="node-core" /><span className="node-label"><img src={node.image} alt="" /><span><b>{node.code}</b>{node.label}</span></span>
-            </button>
-          ))}
-        </div>
+          <div className="diagram-orientation">
+            <div className="diagram-wrap" style={activeNode ? {
+              transformOrigin: `${activeNode.x}% ${activeNode.y}%`,
+              "--node-shift-x": `${44 - activeNode.x}%`,
+              "--node-shift-y": `${50 - activeNode.y}%`,
+              "--node-mobile-shift-x": `${34 - activeNode.x}%`,
+            } : undefined}>
+              <ParticleOrganism zoomed={Boolean(activeNode)} traveling={Boolean(panMotion)} />
+              <LineworkOverlay />
+              {nodes.map(node => (
+                <button key={node.href} type="button" onClick={() => setActiveNode(node)} className={`map-node node-${node.side} ${activeNode?.href === node.href ? "active" : ""}`} style={{ left: `${node.x}%`, top: `${node.y}%` }} aria-label={`Zoom into ${node.label}`} aria-pressed={activeNode?.href === node.href}>
+                  <span className="node-core" />
+                  <span className="node-label" aria-hidden="true">
+                    <span className="node-window-bar"><b>SYS://NODE.{node.code}</b><i>SIGNAL:LIVE</i></span>
+                    <span className="node-window-visual">
+                      <img className="node-window-project" src={node.image} alt="" />
+                      <span className="node-window-scan" />
+                    </span>
+                    <span className="node-window-copy"><b>{node.code}</b><span>{node.label}</span></span>
+                    <span className="node-window-data"><i>X:{node.x.toFixed(1)}</i><i>Y:{node.y.toFixed(1)}</i><i>OPEN SIGNAL</i></span>
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
         {activeNode && <aside key={activeNode.href} className="node-panel" aria-live="polite">
           <button type="button" className="zoom-back" onClick={() => setActiveNode(null)}>← RETURN TO MAP</button>
           <span>NODE {activeNode.code} / SELECTED</span>
-          <img className="panel-image" src={activeNode.image} alt={`Preview of ${activeNode.label}`} />
+          <div className="panel-image-frame">
+            <img className="panel-image" src={activeNode.image} alt={`Preview of ${activeNode.label}`} />
+            <span className="panel-image-transmission" aria-hidden="true"><b>IMAGE://DECODE</b><i>100%</i></span>
+            <span className="panel-image-scan" aria-hidden="true" />
+          </div>
           <h2>{activeNode.label}</h2>
           <p>{activeNode.meta}</p>
           <div className="node-pager" aria-label="Move between organism nodes">
@@ -540,10 +566,14 @@ function Home() {
             <span>{activeNode.code} / {String(nodes.length).padStart(2, "0")}</span>
             <button type="button" onClick={() => moveNode(1)} aria-label="Next node">NEXT →</button>
           </div>
-          <Link href={activeNode.href} className="enter-node">VIEW PROJECTS ↗</Link>
+          {activeNode.action === "search" ? (
+            <button type="button" className="enter-node" onClick={() => { setActiveNode(null); openSearch(); }}>SEARCH ARCHIVE ↗</button>
+          ) : (
+            <Link href={activeNode.href} className="enter-node">VIEW PROJECTS ↗</Link>
+          )}
         </aside>}
         {panMotion && <div className="scan-sweep" aria-hidden="true" />}
-        {activeNode && <div className="drag-hint">← DRAG TO PAN →</div>}
+        {activeNode && <div className="drag-hint"><span className="drag-hint-horizontal">← DRAG TO PAN →</span><span className="drag-hint-vertical">SWIPE ↑ / ↓</span></div>}
         <div className="axis axis-x">0——— signal / matter / memory ———100</div>
         <div className="axis axis-y">LIVE ARCHIVE</div>
       </section>
