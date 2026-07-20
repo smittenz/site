@@ -392,3 +392,54 @@ final result: passed
 - [x] Verify the production build.
 
 final result: passed
+
+---
+
+# Design QA: Minimal Command Header
+
+**Source visual truth**
+
+- Supplied header reference: `C:\Users\sophi\AppData\Local\Temp\codex-clipboard-dc144d17-876b-4467-8319-906e210453f0.png`.
+- User direction: keep the header extremely minimal and digital, make INDEX the dropdown control, and contain search inside it.
+
+**Implementation evidence**
+
+- Closed desktop state: `C:\Users\sophi\AppData\Local\Temp\soph-header-closed.png`.
+- Open desktop index: `C:\Users\sophi\AppData\Local\Temp\soph-header-open.png`.
+- Open mobile index at 390 x 844: `C:\Users\sophi\AppData\Local\Temp\soph-header-mobile-open.png`.
+- Desktop test viewport: 861 x 912.
+
+**Full-view comparison evidence**
+
+- The implementation matches the reference's floating composition: a mixed-case prompt wordmark at the upper left and a single compact yellow navigation control at the upper right, with no center information block or header rule.
+- The map remains the dominant visual and the open panel stays confined to the upper-right corner.
+
+**Focused region comparison evidence**
+
+- The wordmark uses the same `>Soph Katsivelos` command-line motif and quiet sans-serif scale as the reference.
+- The yellow panel preserves the reference's small terminal character while adding the requested inline search field, compact system status, and numbered HOME / ARCHIVE / ABOUT links.
+
+**Findings**
+
+- Fonts and typography: clean mixed-case Arial wordmark paired with compact monospaced terminal controls.
+- Spacing and layout rhythm: the transparent 94px desktop header and 74px mobile header float above the diagram without shifting or clipping the controls.
+- Colors and visual tokens: the INDEX terminal keeps a white fill and uses Section 1 yellow only for hover states, alongside the established black, blue, cyan, green, and fog accents.
+- Node interaction color: hover, keyboard focus, and selected nodes keep a white fill while the signal ring and core switch to Section 1 yellow.
+- Image quality and asset fidelity: the diagram artwork and node imagery are unchanged.
+- Copy and content: SEARCH and primary navigation are consolidated into the INDEX panel; no duplicate navigation surface remains.
+- Interaction and accessibility: semantic button, search form, navigation landmark, focus styles, live result count, first-result submit behavior, and reduced-motion handling are present.
+- Runtime evidence: `witches` returns the Witches' Flight 3D result on desktop and mobile; the dropdown stays fully within both viewports; document width remains 390px on mobile; no horizontal or vertical overflow appears on desktop.
+- No remaining P0, P1, or P2 issues.
+
+**Implementation checklist**
+
+- [x] Replace the heavy header bar with a floating command-style header.
+- [x] Use the supplied prompt wordmark treatment.
+- [x] Consolidate navigation and search into one INDEX dropdown.
+- [x] Keep the dropdown compact, digital, and palette-aligned.
+- [x] Verify search results and layout bounds on desktop and mobile.
+- [x] Verify the yellow node interaction state preserves a white fill and black border.
+- [x] Compare the source reference and final implementation together.
+- [x] Verify the production build.
+
+final result: passed

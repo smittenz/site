@@ -491,36 +491,38 @@ function Home() {
   return (
     <main className={activeNode ? "home is-previewing" : "home"}>
       <header className="home-header">
-        <Link href="/" className="home-wordmark">SOPH KATSIVELOS</Link>
-        <p>Artist + Experience Designer<br />New York, 2026</p>
-        <div className="home-controls">
-          <form className={`home-search ${searchOpen ? "is-open" : ""}`} role="search" onSubmit={event => {
-            if (!searchResults[0]) return;
-            go(event, searchResults[0].href);
+        <Link href="/" className="home-wordmark"><span aria-hidden="true">&gt;</span>Soph Katsivelos</Link>
+        <div className="index-menu">
+          <button className="index-toggle" type="button" aria-expanded={menuOpen} aria-controls="home-index-panel" onClick={() => {
+            setMenuOpen(value => !value);
+            if (menuOpen) setSearchOpen(false);
           }}>
-            <button className="search-open-button" type="button" onClick={openSearch} aria-label="Open search">⌕</button>
-            <input ref={searchRef} value={query} onFocus={() => setSearchOpen(true)} onChange={event => setQuery(event.target.value)} placeholder="SEARCH ARCHIVE" aria-label="Search the portfolio archive" />
-            {searchOpen && <button type="button" onClick={() => { setQuery(""); setSearchOpen(false); }} aria-label="Close search">×</button>}
-            {searchOpen && <div className="search-results" aria-live="polite">
-              <span>{String(searchResults.length).padStart(2, "0")} SIGNALS FOUND</span>
+            INDEX <span aria-hidden="true">{menuOpen ? "−" : "+"}</span>
+          </button>
+          {menuOpen && <div id="home-index-panel" className="index-dropdown">
+            <div className="index-status"><b>SYS://INDEX</b><span>ONLINE</span></div>
+            <form className="index-search" role="search" onSubmit={event => {
+              if (!searchResults[0]) return;
+              go(event, searchResults[0].href);
+            }}>
+              <input ref={searchRef} value={query} onFocus={() => setSearchOpen(true)} onChange={event => setQuery(event.target.value)} placeholder="SEARCH_" aria-label="Search the portfolio archive" />
+              <button type="submit">GO</button>
+            </form>
+            {searchOpen && query.trim() && <div className="index-search-results" aria-live="polite">
+              <span>{String(searchResults.length).padStart(2, "0")} SIGNALS</span>
               {searchResults.length ? searchResults.map((item, index) => (
-                <Link href={item.href} key={item.href} className="search-result">
-                  <b>{String(index + 1).padStart(2, "0")}</b><span>{item.title}</span><em>{item.category}</em>
+                <Link href={item.href} key={item.href} className="index-result">
+                  <b>{String(index + 1).padStart(2, "0")}</b><span>{item.title}</span>
                 </Link>
               )) : <p>NO MATCHING SIGNAL</p>}
             </div>}
-          </form>
-          <div className="index-menu">
-            <button className="index-toggle" type="button" aria-expanded={menuOpen} onClick={() => setMenuOpen(value => !value)}>
-              INDEX <span>{menuOpen ? "−" : "+"}</span>
-            </button>
-            {menuOpen && <nav className="index-dropdown" aria-label="Portfolio index">
-              <Link href="/"><b>01</b> Home</Link>
-              <button type="button" onClick={openSearch}><b>02</b> Search</button>
-              <Link href="/archive"><b>03</b> Archive</Link>
-              <Link href="/contact"><b>04</b> About</Link>
-            </nav>}
-          </div>
+            <nav className="index-links" aria-label="Portfolio index" onClick={() => setMenuOpen(false)}>
+              <Link href="/"><span>&gt; HOME</span><b>01</b></Link>
+              <Link href="/archive"><span>&gt; ARCHIVE</span><b>02</b></Link>
+              <Link href="/contact"><span>&gt; ABOUT</span><b>03</b></Link>
+            </nav>
+            <small>LOCAL ARCHIVE // 2026</small>
+          </div>}
         </div>
       </header>
       <section className={`diagram-stage ${activeNode ? "is-zoomed" : ""} ${panMotion}`} aria-label="Interactive portfolio map">
