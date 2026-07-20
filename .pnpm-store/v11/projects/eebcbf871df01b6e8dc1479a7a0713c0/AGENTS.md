@@ -25,6 +25,7 @@ When implementing from a selected generated mock, treat that image as the source
 - Explicitly suppress the hover/focus connector pseudo-element while zoomed, including when the selected node remains under the pointer.
 - Keep the home header minimal and floating like a command interface: mixed-case `>Soph Katsivelos` wordmark at left, one compact `INDEX +` control at right, and put both search and primary navigation inside its white terminal dropdown; reserve yellow for hover states.
 - Keep map-node fills white in hover, focus, and selected states; use the Section 1 yellow as the signal ring/core accent instead of filling the whole node.
+- For non–Digital Sociology project pages, preserve the original portfolio's complete media inventory: full-size gallery images, every local video and poster, external links, and all YouTube/Vimeo/interactive iframes. Leave Digital Sociology content out of bulk syncs unless the user explicitly includes it.
 
 ## Motion direction
 

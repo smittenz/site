@@ -269,10 +269,10 @@
         "contentType": "text/css"
       },
       {
-        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1807/site.css?nocustom=true",
-        "type": "stylesheet",
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/636bf0d9-54e1-4aeb-ae49-01aa5423d47d/Screenshot+2024-04-04+165838.png?format=1500w",
+        "type": "image",
         "status": 200,
-        "contentType": "text/css; charset=UTF-8"
+        "contentType": "image/webp"
       },
       {
         "url": "https://static1.squarespace.com/static/custom-css/6552b6f28f134761c42b3457/6584c4dd0ee347788d09163a/3/custom.css",
@@ -281,37 +281,31 @@
         "contentType": "text/css; charset=UTF-8"
       },
       {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/636bf0d9-54e1-4aeb-ae49-01aa5423d47d/Screenshot+2024-04-04+165838.png?format=1500w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
-      },
-      {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.button/2ffcc6f8-15e6-4ad5-b54d-53b47edf7a2c_938/website.components.button.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.button/89feaeb6-fde3-4a1c-953c-a74c92e3d5fd_942/website.components.button.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/82186a80-80ad-4d1e-922d-f919deb9b6e8_768/website.components.html.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.embed/ccd5a455-9769-4baa-8e8a-6f525da683d4_517/website.components.embed.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.embed/96a006a6-cf7f-4094-ab2b-d77b40c352e8_513/website.components.embed.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/edbc303e-8c76-4d36-97b3-cc21be48c523_772/website.components.html.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
+      },
+      {
+        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1808/site.css?nocustom=true",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css; charset=UTF-8"
       },
       {
         "url": "https://use.typekit.net/af/d4ce21/000000000000000077359e4d/31/l?subset_id=2&fvd=n7&v=3",
-        "type": "font",
-        "status": 200,
-        "contentType": "application/font-woff2"
-      },
-      {
-        "url": "https://use.typekit.net/af/033ac2/000000000000000077359e4b/31/l?subset_id=2&fvd=i7&v=3",
         "type": "font",
         "status": 200,
         "contentType": "application/font-woff2"
@@ -329,16 +323,22 @@
         "contentType": "text/css"
       },
       {
-        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784482410278",
-        "type": "image",
+        "url": "https://use.typekit.net/af/033ac2/000000000000000077359e4b/31/l?subset_id=2&fvd=i7&v=3",
+        "type": "font",
         "status": 200,
-        "contentType": "image/gif"
+        "contentType": "application/font-woff2"
       },
       {
         "url": "https://sophkatsivelos.neocities.org/style.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css"
+      },
+      {
+        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784579698193",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/gif"
       }
     ]
   },
@@ -2082,34 +2082,34 @@
         "contentType": "text/css"
       },
       {
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/13d923fc-aaba-4b2e-ab5f-25f1281d8d7f_774/website.components.html.styles.css",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css; charset=utf-8"
+      },
+      {
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.video/701bb582-ec41-455a-9256-c81beddb4edd_519/website.components.video.styles.css",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css; charset=utf-8"
+      },
+      {
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.form/800dbcfa-1222-455d-99c1-6ff31c960a2c_946/website.components.form.styles.css",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css; charset=utf-8"
+      },
+      {
         "url": "https://static1.squarespace.com/static/custom-css/6552b6f28f134761c42b3457/6584c4dd0ee347788d09163a/3/custom.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=UTF-8"
       },
       {
-        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1807/site.css?nocustom=true",
+        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1808/site.css?nocustom=true",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=UTF-8"
-      },
-      {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/82186a80-80ad-4d1e-922d-f919deb9b6e8_768/website.components.html.styles.css",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css; charset=utf-8"
-      },
-      {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.video/5c765a61-aa26-4fcc-931f-2ebd4090495f_513/website.components.video.styles.css",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css; charset=utf-8"
-      },
-      {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.form/5035c8d0-5052-41a5-90e3-44556a1260a7_940/website.components.form.styles.css",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css; charset=utf-8"
       },
       {
         "url": "https://use.typekit.net/af/d4ce21/000000000000000077359e4d/31/l?subset_id=2&fvd=n7&v=3",
@@ -2130,31 +2130,31 @@
         "contentType": "application/font-woff2"
       },
       {
-        "url": "https://assets.squarespace.com/universal/styles-compressed/8308d1793f387442-min.en-US.css",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css"
-      },
-      {
         "url": "https://assets.squarespace.com/universal/styles-compressed/35ebb88013744865-min.en-US.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css"
       },
       {
-        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784482413683",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/gif"
-      },
-      {
-        "url": "https://www.youtube.com/s/player/882a803a/www-player.css",
+        "url": "https://assets.squarespace.com/universal/styles-compressed/8308d1793f387442-min.en-US.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css"
       },
       {
-        "url": "https://www.youtube.com/s/_/ytembeds/_/ss/k=ytembeds.base.KYIZNdRMTVY.L.W.O/am=AAAAgA/d=1/br=1/rs=AGKMywGLH1ML3PrBIUR6KPNIOGlrviPLxw/m=root,base",
+        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784579701511",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/gif"
+      },
+      {
+        "url": "https://www.youtube.com/s/player/dfc3d2b2/www-player.css",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css"
+      },
+      {
+        "url": "https://www.youtube.com/s/_/ytembeds/_/ss/k=ytembeds.base.voLKPuLo35M.L.W.O/am=AAAAgA/d=0/br=1/rs=AGKMywFbOiAirpOGLQLAetGjYdyOjZXjoA",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=UTF-8"
@@ -2166,16 +2166,16 @@
         "contentType": "font/woff2"
       },
       {
+        "url": "https://www.youtube.com/generate_204?J6jfVA",
+        "type": "image",
+        "status": 204,
+        "contentType": ""
+      },
+      {
         "url": "https://i.ytimg.com/vi/KhGpayY6c3g/maxresdefault.jpg",
         "type": "image",
         "status": 200,
         "contentType": "image/jpeg"
-      },
-      {
-        "url": "https://www.youtube.com/generate_204?rBPAYA",
-        "type": "image",
-        "status": 204,
-        "contentType": ""
       },
       {
         "url": "https://yt3.ggpht.com/ytc/AIdro_nlBilyjMA1U52oKK26XZ_UcnniCFBmVBEaZcWRZocnDN18ZKMnESUSGCHsm8S0Thv9RQ=s68-c-k-c0x00ffffff-no-rj",
@@ -3757,34 +3757,28 @@
         "contentType": "text/css"
       },
       {
+        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1808/site.css?nocustom=true",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css; charset=UTF-8"
+      },
+      {
         "url": "https://static1.squarespace.com/static/custom-css/6552b6f28f134761c42b3457/6584c4dd0ee347788d09163a/3/custom.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=UTF-8"
       },
       {
-        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1807/site.css?nocustom=true",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css; charset=UTF-8"
-      },
-      {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.form/5035c8d0-5052-41a5-90e3-44556a1260a7_940/website.components.form.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/13d923fc-aaba-4b2e-ab5f-25f1281d8d7f_774/website.components.html.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/82186a80-80ad-4d1e-922d-f919deb9b6e8_768/website.components.html.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.form/800dbcfa-1222-455d-99c1-6ff31c960a2c_946/website.components.form.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
-      },
-      {
-        "url": "https://use.typekit.net/af/d4ce21/000000000000000077359e4d/31/l?subset_id=2&fvd=n7&v=3",
-        "type": "font",
-        "status": 200,
-        "contentType": "application/font-woff2"
       },
       {
         "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/c9a5dcd3-7b9a-45c9-b328-d9c38da52d31/Screenshot+2025-04-23+114526.png?format=750w",
@@ -3793,7 +3787,61 @@
         "contentType": "image/webp"
       },
       {
-        "url": "https://use.typekit.net/af/033ac2/000000000000000077359e4b/31/l?subset_id=2&fvd=i7&v=3",
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1712268232962-N9DPN5RGR05UVUZZIBHE/Screenshot+2024-04-04+180244.jpg?format=750w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1703266879481-4O72SPLDX2WHPAD7XJLF/Screenshot+2023-12-16+135327.png?format=750w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1703270596294-3WZK7Z86KWZ8TAB0P3SP/Screenshot+2023-12-16+143711.jpg?format=750w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1712269119811-0W7KBSDA0JD62AYDMH2W/Screenshot+2024-04-04+181758.jpg?format=750w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/232aa982-70cf-429b-803a-c66379b527e0/render+of+planetarium.png?format=750w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1715119038053-IZV5HG3JDXUNP4IQALQC/witches.png?format=750w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1712083564740-RK8BZCZ7M6IQU0G9JHFE/efsez.png?format=750w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1713202616792-NF6PC7QFFBCEMNMQAHIA/UG_23SP_dda500sec19_SophKatsivelos_midterm+shot+8.png?format=750w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1704807649617-WP2MWV3QSPE75Q3AKQ9U/HighresScreenshot00006.png?format=750w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://use.typekit.net/af/d4ce21/000000000000000077359e4d/31/l?subset_id=2&fvd=n7&v=3",
         "type": "font",
         "status": 200,
         "contentType": "application/font-woff2"
@@ -3811,64 +3859,16 @@
         "contentType": "text/css"
       },
       {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1712268232962-N9DPN5RGR05UVUZZIBHE/Screenshot+2024-04-04+180244.jpg?format=750w",
-        "type": "image",
+        "url": "https://use.typekit.net/af/033ac2/000000000000000077359e4b/31/l?subset_id=2&fvd=i7&v=3",
+        "type": "font",
         "status": 200,
-        "contentType": "image/webp"
+        "contentType": "application/font-woff2"
       },
       {
-        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784482418725",
+        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784579706319",
         "type": "image",
         "status": 200,
         "contentType": "image/gif"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1703270596294-3WZK7Z86KWZ8TAB0P3SP/Screenshot+2023-12-16+143711.jpg?format=750w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1712269119811-0W7KBSDA0JD62AYDMH2W/Screenshot+2024-04-04+181758.jpg?format=750w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1712083564740-RK8BZCZ7M6IQU0G9JHFE/efsez.png?format=750w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1704807649617-WP2MWV3QSPE75Q3AKQ9U/HighresScreenshot00006.png?format=750w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1703266879481-4O72SPLDX2WHPAD7XJLF/Screenshot+2023-12-16+135327.png?format=750w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/232aa982-70cf-429b-803a-c66379b527e0/render+of+planetarium.png?format=750w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1713202616792-NF6PC7QFFBCEMNMQAHIA/UG_23SP_dda500sec19_SophKatsivelos_midterm+shot+8.png?format=750w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1715119038053-IZV5HG3JDXUNP4IQALQC/witches.png?format=750w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
       }
     ]
   },
@@ -5142,34 +5142,34 @@
     },
     "resources": [
       {
-        "url": "https://static1.squarespace.com/static/vta/5c5a519771c10ba3470d8101/versioned-assets/1782485764522-Q9TRHIZ72521COUM0KFD/static.css",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css"
-      },
-      {
         "url": "https://static1.squarespace.com/static/custom-css/6552b6f28f134761c42b3457/6584c4dd0ee347788d09163a/3/custom.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=UTF-8"
       },
       {
-        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1807/site.css?nocustom=true",
+        "url": "https://static1.squarespace.com/static/vta/5c5a519771c10ba3470d8101/versioned-assets/1782485764522-Q9TRHIZ72521COUM0KFD/static.css",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css"
+      },
+      {
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/13d923fc-aaba-4b2e-ab5f-25f1281d8d7f_774/website.components.html.styles.css",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css; charset=utf-8"
+      },
+      {
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.form/800dbcfa-1222-455d-99c1-6ff31c960a2c_946/website.components.form.styles.css",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css; charset=utf-8"
+      },
+      {
+        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1808/site.css?nocustom=true",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=UTF-8"
-      },
-      {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/82186a80-80ad-4d1e-922d-f919deb9b6e8_768/website.components.html.styles.css",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css; charset=utf-8"
-      },
-      {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.form/5035c8d0-5052-41a5-90e3-44556a1260a7_940/website.components.form.styles.css",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css; charset=utf-8"
       },
       {
         "url": "https://use.typekit.net/af/d4ce21/000000000000000077359e4d/31/l?subset_id=2&fvd=n7&v=3",
@@ -5178,31 +5178,7 @@
         "contentType": "application/font-woff2"
       },
       {
-        "url": "https://use.typekit.net/af/033ac2/000000000000000077359e4b/31/l?subset_id=2&fvd=i7&v=3",
-        "type": "font",
-        "status": 200,
-        "contentType": "application/font-woff2"
-      },
-      {
-        "url": "https://assets.squarespace.com/universal/styles-compressed/8308d1793f387442-min.en-US.css",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css"
-      },
-      {
-        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784482422430",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/gif"
-      },
-      {
-        "url": "https://assets.squarespace.com/universal/styles-compressed/35ebb88013744865-min.en-US.css",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1740596620724-AKZ3YDJRH9Z9MMU2YVGR/P1590194-2.jpg?format=750w",
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1740595618095-08YWUX4NHOKCNV06BIYZ/stories+on+skin+edit.jpg?format=750w",
         "type": "image",
         "status": 200,
         "contentType": "image/webp"
@@ -5214,7 +5190,7 @@
         "contentType": "image/webp"
       },
       {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1740595618095-08YWUX4NHOKCNV06BIYZ/stories+on+skin+edit.jpg?format=750w",
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1740596620724-AKZ3YDJRH9Z9MMU2YVGR/P1590194-2.jpg?format=750w",
         "type": "image",
         "status": 200,
         "contentType": "image/webp"
@@ -5226,16 +5202,40 @@
         "contentType": "image/webp"
       },
       {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/e20f6e29-9e55-420a-b6a3-d219e989502b/DSC_7620.jpg?format=750w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
         "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/611064fb-e380-49d0-830d-da4cd0e09756/033c0585-98c4-424a-b2b5-5801d02b38ee_rw_1920.jpg?format=750w",
         "type": "image",
         "status": 200,
         "contentType": "image/webp"
       },
       {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/e20f6e29-9e55-420a-b6a3-d219e989502b/DSC_7620.jpg?format=750w",
+        "url": "https://assets.squarespace.com/universal/styles-compressed/8308d1793f387442-min.en-US.css",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css"
+      },
+      {
+        "url": "https://assets.squarespace.com/universal/styles-compressed/35ebb88013744865-min.en-US.css",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css"
+      },
+      {
+        "url": "https://use.typekit.net/af/033ac2/000000000000000077359e4b/31/l?subset_id=2&fvd=i7&v=3",
+        "type": "font",
+        "status": 200,
+        "contentType": "application/font-woff2"
+      },
+      {
+        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784579710898",
         "type": "image",
         "status": 200,
-        "contentType": "image/webp"
+        "contentType": "image/gif"
       }
     ]
   },
@@ -6287,7 +6287,7 @@
     },
     "resources": [
       {
-        "url": "https://static1.squarespace.com/static/custom-css/6552b6f28f134761c42b3457/6584c4dd0ee347788d09163a/3/custom.css",
+        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1808/site.css?nocustom=true",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=UTF-8"
@@ -6299,19 +6299,19 @@
         "contentType": "text/css"
       },
       {
-        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1807/site.css?nocustom=true",
+        "url": "https://static1.squarespace.com/static/custom-css/6552b6f28f134761c42b3457/6584c4dd0ee347788d09163a/3/custom.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=UTF-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.form/5035c8d0-5052-41a5-90e3-44556a1260a7_940/website.components.form.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/13d923fc-aaba-4b2e-ab5f-25f1281d8d7f_774/website.components.html.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/82186a80-80ad-4d1e-922d-f919deb9b6e8_768/website.components.html.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.form/800dbcfa-1222-455d-99c1-6ff31c960a2c_946/website.components.form.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
@@ -6321,6 +6321,24 @@
         "type": "font",
         "status": 200,
         "contentType": "application/font-woff2"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1740944915251-934W2OQ1MO81JSSMTAWC/unnamed%2B29.jpg?format=750w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/54c13f67-4104-4715-a605-35f4333d7f8d/Screenshot+2025-11-20+114205.png?format=750w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/31a689ee-76df-4ba7-ba7c-c47d3133fdbf/IMG_0118.JPG?format=750w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
       },
       {
         "url": "https://use.typekit.net/af/033ac2/000000000000000077359e4b/31/l?subset_id=2&fvd=i7&v=3",
@@ -6341,28 +6359,10 @@
         "contentType": "text/css"
       },
       {
-        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784482425826",
+        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784579714494",
         "type": "image",
         "status": 200,
         "contentType": "image/gif"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/31a689ee-76df-4ba7-ba7c-c47d3133fdbf/IMG_0118.JPG?format=750w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1740944915251-934W2OQ1MO81JSSMTAWC/unnamed%2B29.jpg?format=750w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/54c13f67-4104-4715-a605-35f4333d7f8d/Screenshot+2025-11-20+114205.png?format=750w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
       }
     ]
   },
@@ -7448,28 +7448,16 @@
     },
     "resources": [
       {
-        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1807/site.css?nocustom=true",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css; charset=UTF-8"
-      },
-      {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.horizontalrule/6ca4ed8b-871d-422a-8b32-a5b556b08e2d_135/website.components.horizontalrule.styles.css",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css; charset=utf-8"
-      },
-      {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.imageFluid/99e39bfd-f711-44dc-a698-a08344d407fe_755/website.components.imageFluid.styles.css",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css; charset=utf-8"
-      },
-      {
         "url": "https://static1.squarespace.com/static/vta/5c5a519771c10ba3470d8101/versioned-assets/1782485764522-Q9TRHIZ72521COUM0KFD/static.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css"
+      },
+      {
+        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1808/site.css?nocustom=true",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css; charset=UTF-8"
       },
       {
         "url": "https://static1.squarespace.com/static/custom-css/6552b6f28f134761c42b3457/6584c4dd0ee347788d09163a/3/custom.css",
@@ -7478,19 +7466,31 @@
         "contentType": "text/css; charset=UTF-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.button/2ffcc6f8-15e6-4ad5-b54d-53b47edf7a2c_938/website.components.button.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/13d923fc-aaba-4b2e-ab5f-25f1281d8d7f_774/website.components.html.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/82186a80-80ad-4d1e-922d-f919deb9b6e8_768/website.components.html.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.form/800dbcfa-1222-455d-99c1-6ff31c960a2c_946/website.components.form.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.form/5035c8d0-5052-41a5-90e3-44556a1260a7_940/website.components.form.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.horizontalrule/a5f0792a-3299-4d7c-a78a-f628697731b9_141/website.components.horizontalrule.styles.css",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css; charset=utf-8"
+      },
+      {
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.imageFluid/25dfd870-fb21-4e99-bec1-5bc78912fa34_761/website.components.imageFluid.styles.css",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css; charset=utf-8"
+      },
+      {
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.button/dada17ce-e132-4dd2-bdf9-0cee351e2fad_944/website.components.button.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
@@ -7502,16 +7502,10 @@
         "contentType": "application/font-woff2"
       },
       {
-        "url": "https://use.typekit.net/af/033ac2/000000000000000077359e4b/31/l?subset_id=2&fvd=i7&v=3",
-        "type": "font",
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/aa10e28a-3135-40da-a00a-d09a85a7de7c/IMG_89797_enhanced.jpg?format=750w",
+        "type": "image",
         "status": 200,
-        "contentType": "application/font-woff2"
-      },
-      {
-        "url": "https://assets.squarespace.com/universal/styles-compressed/35ebb88013744865-min.en-US.css",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css"
+        "contentType": "image/webp"
       },
       {
         "url": "https://assets.squarespace.com/universal/styles-compressed/8308d1793f387442-min.en-US.css",
@@ -7520,16 +7514,22 @@
         "contentType": "text/css"
       },
       {
-        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784482429096",
+        "url": "https://assets.squarespace.com/universal/styles-compressed/35ebb88013744865-min.en-US.css",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css"
+      },
+      {
+        "url": "https://use.typekit.net/af/033ac2/000000000000000077359e4b/31/l?subset_id=2&fvd=i7&v=3",
+        "type": "font",
+        "status": 200,
+        "contentType": "application/font-woff2"
+      },
+      {
+        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784579718137",
         "type": "image",
         "status": 200,
         "contentType": "image/gif"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/aa10e28a-3135-40da-a00a-d09a85a7de7c/IMG_89797_enhanced.jpg?format=750w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
       }
     ]
   },
@@ -7797,37 +7797,43 @@
     },
     "resources": [
       {
-        "url": "https://static1.squarespace.com/static/vta/5c5a519771c10ba3470d8101/versioned-assets/1782485764522-Q9TRHIZ72521COUM0KFD/static.css",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css"
-      },
-      {
         "url": "https://static1.squarespace.com/static/custom-css/6552b6f28f134761c42b3457/6584c4dd0ee347788d09163a/3/custom.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=UTF-8"
       },
       {
-        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1807/site.css?nocustom=true",
+        "url": "https://static1.squarespace.com/static/vta/5c5a519771c10ba3470d8101/versioned-assets/1782485764522-Q9TRHIZ72521COUM0KFD/static.css",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css"
+      },
+      {
+        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1808/site.css?nocustom=true",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=UTF-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.button/2ffcc6f8-15e6-4ad5-b54d-53b47edf7a2c_938/website.components.button.styles.css",
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/636bf0d9-54e1-4aeb-ae49-01aa5423d47d/Screenshot+2024-04-04+165838.png?format=1000w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.button/89feaeb6-fde3-4a1c-953c-a74c92e3d5fd_942/website.components.button.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/82186a80-80ad-4d1e-922d-f919deb9b6e8_768/website.components.html.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.embed/ccd5a455-9769-4baa-8e8a-6f525da683d4_517/website.components.embed.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.embed/96a006a6-cf7f-4094-ab2b-d77b40c352e8_513/website.components.embed.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/edbc303e-8c76-4d36-97b3-cc21be48c523_772/website.components.html.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
@@ -7839,13 +7845,19 @@
         "contentType": "application/font-woff2"
       },
       {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/636bf0d9-54e1-4aeb-ae49-01aa5423d47d/Screenshot+2024-04-04+165838.png?format=1000w",
-        "type": "image",
+        "url": "https://sophkatsivelos.neocities.org/style.css",
+        "type": "stylesheet",
         "status": 200,
-        "contentType": "image/webp"
+        "contentType": "text/css"
       },
       {
         "url": "https://assets.squarespace.com/universal/styles-compressed/35ebb88013744865-min.en-US.css",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css"
+      },
+      {
+        "url": "https://assets.squarespace.com/universal/styles-compressed/8308d1793f387442-min.en-US.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css"
@@ -7857,22 +7869,10 @@
         "contentType": "application/font-woff2"
       },
       {
-        "url": "https://assets.squarespace.com/universal/styles-compressed/8308d1793f387442-min.en-US.css",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css"
-      },
-      {
-        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784482432859",
+        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784579722268",
         "type": "image",
         "status": 200,
         "contentType": "image/gif"
-      },
-      {
-        "url": "https://sophkatsivelos.neocities.org/style.css",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css"
       }
     ]
   },
@@ -9622,40 +9622,40 @@
         "contentType": "text/css; charset=UTF-8"
       },
       {
-        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1807/site.css?nocustom=true",
+        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1808/site.css?nocustom=true",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=UTF-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/82186a80-80ad-4d1e-922d-f919deb9b6e8_768/website.components.html.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/13d923fc-aaba-4b2e-ab5f-25f1281d8d7f_774/website.components.html.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.video/5c765a61-aa26-4fcc-931f-2ebd4090495f_513/website.components.video.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.video/701bb582-ec41-455a-9256-c81beddb4edd_519/website.components.video.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.form/5035c8d0-5052-41a5-90e3-44556a1260a7_940/website.components.form.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.form/800dbcfa-1222-455d-99c1-6ff31c960a2c_946/website.components.form.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
-      },
-      {
-        "url": "https://use.typekit.net/af/d4ce21/000000000000000077359e4d/31/l?subset_id=2&fvd=n7&v=3",
-        "type": "font",
-        "status": 200,
-        "contentType": "application/font-woff2"
       },
       {
         "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/8d5107ce-e82b-4533-84f7-a4c18f3a606f/P4610282.jpg?format=2500w",
         "type": "image",
         "status": 200,
         "contentType": "image/webp"
+      },
+      {
+        "url": "https://use.typekit.net/af/d4ce21/000000000000000077359e4d/31/l?subset_id=2&fvd=n7&v=3",
+        "type": "font",
+        "status": 200,
+        "contentType": "application/font-woff2"
       },
       {
         "url": "https://use.typekit.net/af/033ac2/000000000000000077359e4b/31/l?subset_id=2&fvd=i7&v=3",
@@ -9676,19 +9676,19 @@
         "contentType": "text/css"
       },
       {
-        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784482436016",
+        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784579726095",
         "type": "image",
         "status": 200,
         "contentType": "image/gif"
       },
       {
-        "url": "https://www.youtube.com/s/player/882a803a/www-player.css",
+        "url": "https://www.youtube.com/s/player/dfc3d2b2/www-player.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css"
       },
       {
-        "url": "https://www.youtube.com/s/_/ytembeds/_/ss/k=ytembeds.base.KYIZNdRMTVY.L.W.O/am=AAAAgA/d=1/br=1/rs=AGKMywGLH1ML3PrBIUR6KPNIOGlrviPLxw/m=root,base",
+        "url": "https://www.youtube.com/s/_/ytembeds/_/ss/k=ytembeds.base.voLKPuLo35M.L.W.O/am=AAAAgA/d=1/br=1/rs=AGKMywFbOiAirpOGLQLAetGjYdyOjZXjoA/m=root,base",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=UTF-8"
@@ -9706,7 +9706,7 @@
         "contentType": "image/jpeg"
       },
       {
-        "url": "https://www.youtube.com/generate_204?KEoXYg",
+        "url": "https://www.youtube.com/generate_204?YhGDxw",
         "type": "image",
         "status": 204,
         "contentType": ""
@@ -11291,25 +11291,25 @@
         "contentType": "text/css"
       },
       {
-        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1807/site.css?nocustom=true",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css; charset=UTF-8"
-      },
-      {
         "url": "https://static1.squarespace.com/static/custom-css/6552b6f28f134761c42b3457/6584c4dd0ee347788d09163a/3/custom.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=UTF-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/82186a80-80ad-4d1e-922d-f919deb9b6e8_768/website.components.html.styles.css",
+        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1808/site.css?nocustom=true",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css; charset=UTF-8"
+      },
+      {
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/13d923fc-aaba-4b2e-ab5f-25f1281d8d7f_774/website.components.html.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.form/5035c8d0-5052-41a5-90e3-44556a1260a7_940/website.components.form.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.form/800dbcfa-1222-455d-99c1-6ff31c960a2c_946/website.components.form.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
@@ -11327,37 +11327,37 @@
         "contentType": "application/font-woff2"
       },
       {
-        "url": "https://assets.squarespace.com/universal/styles-compressed/35ebb88013744865-min.en-US.css",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css"
-      },
-      {
         "url": "https://assets.squarespace.com/universal/styles-compressed/8308d1793f387442-min.en-US.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css"
       },
       {
-        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784482439603",
+        "url": "https://assets.squarespace.com/universal/styles-compressed/35ebb88013744865-min.en-US.css",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1712268232962-N9DPN5RGR05UVUZZIBHE/Screenshot+2024-04-04+180244.jpg?format=500w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/c9a5dcd3-7b9a-45c9-b328-d9c38da52d31/Screenshot+2025-04-23+114526.png?format=500w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784579729971",
         "type": "image",
         "status": 200,
         "contentType": "image/gif"
       },
       {
         "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1712269119811-0W7KBSDA0JD62AYDMH2W/Screenshot+2024-04-04+181758.jpg?format=500w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1704807649617-WP2MWV3QSPE75Q3AKQ9U/HighresScreenshot00006.png?format=500w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1712083564740-RK8BZCZ7M6IQU0G9JHFE/efsez.png?format=500w",
         "type": "image",
         "status": 200,
         "contentType": "image/webp"
@@ -11375,7 +11375,7 @@
         "contentType": "image/webp"
       },
       {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1712268232962-N9DPN5RGR05UVUZZIBHE/Screenshot+2024-04-04+180244.jpg?format=500w",
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1704807649617-WP2MWV3QSPE75Q3AKQ9U/HighresScreenshot00006.png?format=500w",
         "type": "image",
         "status": 200,
         "contentType": "image/webp"
@@ -11387,19 +11387,19 @@
         "contentType": "image/webp"
       },
       {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1715119038053-IZV5HG3JDXUNP4IQALQC/witches.png?format=500w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/c9a5dcd3-7b9a-45c9-b328-d9c38da52d31/Screenshot+2025-04-23+114526.png?format=500w",
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1712083564740-RK8BZCZ7M6IQU0G9JHFE/efsez.png?format=500w",
         "type": "image",
         "status": 200,
         "contentType": "image/webp"
       },
       {
         "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1713202616792-NF6PC7QFFBCEMNMQAHIA/UG_23SP_dda500sec19_SophKatsivelos_midterm+shot+8.png?format=500w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1715119038053-IZV5HG3JDXUNP4IQALQC/witches.png?format=500w",
         "type": "image",
         "status": 200,
         "contentType": "image/webp"
@@ -12676,6 +12676,12 @@
     },
     "resources": [
       {
+        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1808/site.css?nocustom=true",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css; charset=UTF-8"
+      },
+      {
         "url": "https://static1.squarespace.com/static/vta/5c5a519771c10ba3470d8101/versioned-assets/1782485764522-Q9TRHIZ72521COUM0KFD/static.css",
         "type": "stylesheet",
         "status": 200,
@@ -12688,22 +12694,52 @@
         "contentType": "text/css; charset=UTF-8"
       },
       {
-        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1807/site.css?nocustom=true",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css; charset=UTF-8"
-      },
-      {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/82186a80-80ad-4d1e-922d-f919deb9b6e8_768/website.components.html.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/13d923fc-aaba-4b2e-ab5f-25f1281d8d7f_774/website.components.html.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.form/5035c8d0-5052-41a5-90e3-44556a1260a7_940/website.components.form.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.form/800dbcfa-1222-455d-99c1-6ff31c960a2c_946/website.components.form.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1740596550111-CZ8IJ1M1G6VLVM2G2MV9/IMG_4895.jpg?format=500w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/e20f6e29-9e55-420a-b6a3-d219e989502b/DSC_7620.jpg?format=500w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/611064fb-e380-49d0-830d-da4cd0e09756/033c0585-98c4-424a-b2b5-5801d02b38ee_rw_1920.jpg?format=500w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1740595618095-08YWUX4NHOKCNV06BIYZ/stories+on+skin+edit.jpg?format=500w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1740602036626-91OB1Q8RR6Y7YOQL0AIQ/IMG_8423-2.jpg?format=500w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1740596620724-AKZ3YDJRH9Z9MMU2YVGR/P1590194-2.jpg?format=500w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
       },
       {
         "url": "https://use.typekit.net/af/d4ce21/000000000000000077359e4d/31/l?subset_id=2&fvd=n7&v=3",
@@ -12718,58 +12754,22 @@
         "contentType": "application/font-woff2"
       },
       {
-        "url": "https://assets.squarespace.com/universal/styles-compressed/35ebb88013744865-min.en-US.css",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1740595618095-08YWUX4NHOKCNV06BIYZ/stories+on+skin+edit.jpg?format=500w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
-      },
-      {
         "url": "https://assets.squarespace.com/universal/styles-compressed/8308d1793f387442-min.en-US.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css"
       },
       {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1740602036626-91OB1Q8RR6Y7YOQL0AIQ/IMG_8423-2.jpg?format=500w",
-        "type": "image",
+        "url": "https://assets.squarespace.com/universal/styles-compressed/35ebb88013744865-min.en-US.css",
+        "type": "stylesheet",
         "status": 200,
-        "contentType": "image/webp"
+        "contentType": "text/css"
       },
       {
-        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784482443314",
+        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784579733861",
         "type": "image",
         "status": 200,
         "contentType": "image/gif"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/611064fb-e380-49d0-830d-da4cd0e09756/033c0585-98c4-424a-b2b5-5801d02b38ee_rw_1920.jpg?format=500w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1740596550111-CZ8IJ1M1G6VLVM2G2MV9/IMG_4895.jpg?format=500w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1740596620724-AKZ3YDJRH9Z9MMU2YVGR/P1590194-2.jpg?format=500w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/e20f6e29-9e55-420a-b6a3-d219e989502b/DSC_7620.jpg?format=500w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
       }
     ]
   },
@@ -13833,19 +13833,19 @@
         "contentType": "text/css; charset=UTF-8"
       },
       {
-        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1807/site.css?nocustom=true",
+        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1808/site.css?nocustom=true",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=UTF-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/82186a80-80ad-4d1e-922d-f919deb9b6e8_768/website.components.html.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/13d923fc-aaba-4b2e-ab5f-25f1281d8d7f_774/website.components.html.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.form/5035c8d0-5052-41a5-90e3-44556a1260a7_940/website.components.form.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.form/800dbcfa-1222-455d-99c1-6ff31c960a2c_946/website.components.form.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
@@ -13855,6 +13855,24 @@
         "type": "font",
         "status": 200,
         "contentType": "application/font-woff2"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1740944915251-934W2OQ1MO81JSSMTAWC/unnamed%2B29.jpg?format=500w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/54c13f67-4104-4715-a605-35f4333d7f8d/Screenshot+2025-11-20+114205.png?format=500w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/31a689ee-76df-4ba7-ba7c-c47d3133fdbf/IMG_0118.JPG?format=500w",
+        "type": "image",
+        "status": 200,
+        "contentType": "image/webp"
       },
       {
         "url": "https://use.typekit.net/af/033ac2/000000000000000077359e4b/31/l?subset_id=2&fvd=i7&v=3",
@@ -13875,28 +13893,10 @@
         "contentType": "text/css"
       },
       {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/1740944915251-934W2OQ1MO81JSSMTAWC/unnamed%2B29.jpg?format=500w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
-      },
-      {
-        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784482446656",
+        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784579739531",
         "type": "image",
         "status": 200,
         "contentType": "image/gif"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/31a689ee-76df-4ba7-ba7c-c47d3133fdbf/IMG_0118.JPG?format=500w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
-      },
-      {
-        "url": "https://images.squarespace-cdn.com/content/v1/6552b6f28f134761c42b3457/54c13f67-4104-4715-a605-35f4333d7f8d/Screenshot+2025-11-20+114205.png?format=500w",
-        "type": "image",
-        "status": 200,
-        "contentType": "image/webp"
       }
     ]
   },
@@ -14982,52 +14982,52 @@
     },
     "resources": [
       {
-        "url": "https://static1.squarespace.com/static/custom-css/6552b6f28f134761c42b3457/6584c4dd0ee347788d09163a/3/custom.css",
-        "type": "stylesheet",
-        "status": 200,
-        "contentType": "text/css; charset=UTF-8"
-      },
-      {
         "url": "https://static1.squarespace.com/static/vta/5c5a519771c10ba3470d8101/versioned-assets/1782485764522-Q9TRHIZ72521COUM0KFD/static.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css"
       },
       {
-        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1807/site.css?nocustom=true",
+        "url": "https://static1.squarespace.com/static/versioned-site-css/6552b6f28f134761c42b3457/69/5c5a519771c10ba3470d8101/6584c4dd0ee347788d09163a/1808/site.css?nocustom=true",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=UTF-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.horizontalrule/6ca4ed8b-871d-422a-8b32-a5b556b08e2d_135/website.components.horizontalrule.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.imageFluid/25dfd870-fb21-4e99-bec1-5bc78912fa34_761/website.components.imageFluid.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.imageFluid/99e39bfd-f711-44dc-a698-a08344d407fe_755/website.components.imageFluid.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/13d923fc-aaba-4b2e-ab5f-25f1281d8d7f_774/website.components.html.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.button/2ffcc6f8-15e6-4ad5-b54d-53b47edf7a2c_938/website.components.button.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.button/dada17ce-e132-4dd2-bdf9-0cee351e2fad_944/website.components.button.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.form/5035c8d0-5052-41a5-90e3-44556a1260a7_940/website.components.form.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.horizontalrule/a5f0792a-3299-4d7c-a78a-f628697731b9_141/website.components.horizontalrule.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
       },
       {
-        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/82186a80-80ad-4d1e-922d-f919deb9b6e8_768/website.components.html.styles.css",
+        "url": "https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.form/800dbcfa-1222-455d-99c1-6ff31c960a2c_946/website.components.form.styles.css",
         "type": "stylesheet",
         "status": 200,
         "contentType": "text/css; charset=utf-8"
+      },
+      {
+        "url": "https://static1.squarespace.com/static/custom-css/6552b6f28f134761c42b3457/6584c4dd0ee347788d09163a/3/custom.css",
+        "type": "stylesheet",
+        "status": 200,
+        "contentType": "text/css; charset=UTF-8"
       },
       {
         "url": "https://use.typekit.net/af/d4ce21/000000000000000077359e4d/31/l?subset_id=2&fvd=n7&v=3",
@@ -15036,10 +15036,10 @@
         "contentType": "application/font-woff2"
       },
       {
-        "url": "https://use.typekit.net/af/033ac2/000000000000000077359e4b/31/l?subset_id=2&fvd=i7&v=3",
-        "type": "font",
+        "url": "https://assets.squarespace.com/universal/styles-compressed/8308d1793f387442-min.en-US.css",
+        "type": "stylesheet",
         "status": 200,
-        "contentType": "application/font-woff2"
+        "contentType": "text/css"
       },
       {
         "url": "https://assets.squarespace.com/universal/styles-compressed/35ebb88013744865-min.en-US.css",
@@ -15048,13 +15048,13 @@
         "contentType": "text/css"
       },
       {
-        "url": "https://assets.squarespace.com/universal/styles-compressed/8308d1793f387442-min.en-US.css",
-        "type": "stylesheet",
+        "url": "https://use.typekit.net/af/033ac2/000000000000000077359e4b/31/l?subset_id=2&fvd=i7&v=3",
+        "type": "font",
         "status": 200,
-        "contentType": "text/css"
+        "contentType": "application/font-woff2"
       },
       {
-        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784482449821",
+        "url": "https://p.typekit.net/p.gif?s=2&k=646866_6552b6f28f134761c42b3457&ht=tk&h=www.sophkatsivelos.com&f=32885.32884&a=646866&js=1.21.0&app=typekit&e=js&_=1784579743353",
         "type": "image",
         "status": 200,
         "contentType": "image/gif"

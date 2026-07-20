@@ -134,7 +134,10 @@
         "/assets/067-86ce95676368.png",
         "/assets/068-3a7e1c1c79c8.png"
       ],
-      "media": []
+      "media": [],
+      "mediaPosters": [],
+      "embeds": [],
+      "links": []
     },
     "/digital/merimnao": {
       "route": "/digital/merimnao",
@@ -171,28 +174,38 @@
       ],
       "images": [
         "/assets/072-1fff4fb40ac1.png",
-        "/assets/073-3bb7ebaf1c4d.png",
-        "/assets/076-8fdfd3762a07.webp",
+        "/assets/278-f5ab6e1a73d5.png",
+        "/assets/279-9e2bc83adca9.png",
         "/assets/077-a371e3f42282.png",
         "/assets/102-9a5e436a77db.png",
         "/assets/103-0fceef2e1dea.png",
-        "/assets/104-baf7168a1947.png",
-        "/assets/105-365392484a02.webp",
-        "/assets/106-e148ece8eb98.png",
-        "/assets/107-417e8885b7ab.png",
-        "/assets/108-e9d05ea36754.png",
-        "/assets/109-960e44afe163.png",
-        "/assets/110-878a7d4f32f6.png",
-        "/assets/111-6f4f99d47634.png",
-        "/assets/112-359c02dbf708.webp",
-        "/assets/113-84f924bd08ce.png",
-        "/assets/114-d4e42d9adf50.webp",
-        "/assets/115-8485e5a1b7cc.png",
-        "/assets/116-498817e3a53c.png",
-        "/assets/117-f21df6d5f417.png",
-        "/assets/118-47ec488eb1a5.png"
+        "/assets/078-954f5ce3284a.png",
+        "/assets/079-a2958a650945.png",
+        "/assets/080-8cb93eb13de0.png",
+        "/assets/081-32ec620c9548.png",
+        "/assets/082-9c6fe7ab840a.png",
+        "/assets/083-4d3efef2546f.png",
+        "/assets/084-48a1ee70c794.png",
+        "/assets/085-634633d29040.png",
+        "/assets/086-fd04ed7b81d4.png",
+        "/assets/087-d5380d0adfe2.png",
+        "/assets/088-b0569791c188.png",
+        "/assets/089-aa1bd32b3dda.png",
+        "/assets/090-b1b25b0b31a5.png",
+        "/assets/091-5534f171179a.png",
+        "/assets/092-860ffb4e5e7c.png"
       ],
-      "media": []
+      "media": [],
+      "mediaPosters": [],
+      "embeds": [
+        {
+          "type": "iframe",
+          "src": "https://player.vimeo.com/video/897271826?app_id=122963",
+          "title": "Untitled video (1)",
+          "allow": "autoplay; fullscreen; picture-in-picture; clipboard-write"
+        }
+      ],
+      "links": []
     },
     "/digital/simulation": {
       "route": "/digital/simulation",
@@ -233,10 +246,33 @@
       ],
       "images": [
         "/assets/122-1733ef397268.png",
-        "/assets/123-b516a0f4c332.png",
-        "/assets/126-83c628543673.png"
+        "/assets/281-e22dedd1a02e.png",
+        "/assets/127-9976ba9b526d.png"
       ],
-      "media": []
+      "media": [],
+      "mediaPosters": [],
+      "embeds": [
+        {
+          "type": "iframe",
+          "src": "https://player.vimeo.com/video/897254523?app_id=122963",
+          "title": "MixedRealityFinalVideo",
+          "allow": "autoplay; fullscreen; picture-in-picture; clipboard-write"
+        }
+      ],
+      "links": [
+        {
+          "href": "https://arshiajaiswal.artstation.com/",
+          "label": "Arshia Jaiswa"
+        },
+        {
+          "href": "https://megken.dev/",
+          "label": "Margaret Kennedy"
+        },
+        {
+          "href": "https://unity.com/",
+          "label": "Unity"
+        }
+      ]
     },
     "/digital/shasta-animated-short": {
       "route": "/digital/shasta-animated-short",
@@ -268,7 +304,17 @@
         }
       ],
       "images": [],
-      "media": []
+      "media": [],
+      "mediaPosters": [],
+      "embeds": [
+        {
+          "type": "iframe",
+          "src": "https://www.youtube.com/embed/xJhyc0XVPy4?feature=oembed",
+          "title": "Shasta (Animated Short)",
+          "allow": "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        }
+      ],
+      "links": []
     },
     "/digital/collection": {
       "route": "/digital/collection",
@@ -374,7 +420,70 @@
       "images": [
         "/assets/131-0a5f7859f20c.png"
       ],
-      "media": []
+      "media": [],
+      "mediaPosters": [],
+      "embeds": [
+        {
+          "type": "iframe",
+          "src": "https://www.youtube.com/embed/-gKV99q7EjA?feature=oembed",
+          "title": "skatsivelosproject3",
+          "allow": "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        },
+        {
+          "type": "iframe",
+          "src": "https://sophkatsivelos.neocities.org/",
+          "title": "Embedded project media",
+          "allow": "autoplay; fullscreen; picture-in-picture"
+        },
+        {
+          "type": "iframe",
+          "src": "https://www.youtube.com/embed/xWzAc3yIW8c?feature=oembed",
+          "title": "Project1Skatsivelos2023",
+          "allow": "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        },
+        {
+          "type": "iframe",
+          "src": "https://www.youtube.com/embed/4-nkc0iPTXk?feature=oembed",
+          "title": "Project2Skatsivelos2023",
+          "allow": "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        },
+        {
+          "type": "iframe",
+          "src": "https://www.youtube.com/embed/7izZSTmxDho?feature=oembed",
+          "title": "20221016163221 Trim 1 1",
+          "allow": "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        }
+      ],
+      "links": [
+        {
+          "href": "https://p5js.org/reference/",
+          "label": "P5js"
+        },
+        {
+          "href": "https://www.imagine.art/dashboard/video?utm_source=google&utm_medium=cpc&utm_campaign=G_I_Web_WW_Vid_New_C&utm_term=pika%20labs&utm_campaign=&utm_source=adwords&utm_medium=ppc&hsa_acc=3029240990&hsa_cam=21946056225&hsa_grp=170862697363&hsa_ad=723071517735&hsa_src=g&hsa_tgt=kwd-2170628610887&hsa_kw=pika%20labs&hsa_mt=b&hsa_net=adwords&hsa_ver=3&gad_source=1&gad_campaignid=21946056225&gbraid=0AAAAACs5ry_jOWfarf5w0pjNT_fA5pas3&gclid=CjwKCAjw_pDBBhBMEiwAmY02NpbNM1vFi6gXjCasIwMSqkBQ-uhNkXyeJqt5JtMcgIZA3u7TPpuaIhoCv5oQAvD_BwE",
+          "label": "PIKA,"
+        },
+        {
+          "href": "https://runwayml.com/",
+          "label": "Runway ML"
+        },
+        {
+          "href": "https://processing.org/",
+          "label": "Processing"
+        },
+        {
+          "href": "https://thispersondoesnotexist.com/",
+          "label": "This person does not exist"
+        },
+        {
+          "href": "https://sophkatsivelosggcportfolio.glitch.me/",
+          "label": "Click Here!"
+        },
+        {
+          "href": "https://twinery.org/",
+          "label": "twine"
+        }
+      ]
     },
     "/digital/digital-planetarium": {
       "route": "/digital/digital-planetarium",
@@ -406,7 +515,34 @@
         }
       ],
       "images": [],
-      "media": []
+      "media": [],
+      "mediaPosters": [],
+      "embeds": [
+        {
+          "type": "iframe",
+          "src": "https://www.youtube.com/embed/_nXuoNxBJQ4?feature=oembed",
+          "title": "Planetarium Demo",
+          "allow": "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        }
+      ],
+      "links": [
+        {
+          "href": "https://webbtelescope.org/home",
+          "label": "WEBB"
+        },
+        {
+          "href": "https://p5js.org/reference/",
+          "label": "P5Js"
+        },
+        {
+          "href": "https://get.webgl.org/",
+          "label": "Web GL,"
+        },
+        {
+          "href": "https://runwayml.com/",
+          "label": "Runway AI"
+        }
+      ]
     },
     "/digital/biotic-gallery": {
       "route": "/digital/biotic-gallery",
@@ -445,15 +581,27 @@
         "/assets/142-6473479be4c0.png",
         "/assets/150-7c2ff4c48ab3.png",
         "/assets/151-69783d19f380.webp",
-        "/assets/152-a5e80bba33b8.png",
-        "/assets/153-4e19ad4e8f4e.png",
-        "/assets/154-5f22ade7b269.png",
-        "/assets/155-740a116bfe5a.png",
-        "/assets/156-5be9aeaf96a4.png",
-        "/assets/157-bc0b8e855ae0.png",
-        "/assets/158-1620f6fb7d70.png"
+        "/assets/143-7807ff723725.png",
+        "/assets/144-bee9d8294ed8.png",
+        "/assets/145-71d85a1c9f71.png",
+        "/assets/146-7f006a0cf70e.png",
+        "/assets/147-bf21835ae16c.png",
+        "/assets/148-76c3c5cd0a73.png",
+        "/assets/149-da1474f97d37.png"
       ],
-      "media": []
+      "media": [],
+      "mediaPosters": [],
+      "embeds": [],
+      "links": [
+        {
+          "href": "https://www.autodesk.com/products/maya/overview?mktvar002=3466781|SEM|15994942310|134216357962|kwd-40109681&utm_source=GGL&utm_medium=SEM&utm_campaign=GGL_M-E_All-Products_AMER_US_eComm_SEM_BR_New_EX_0000_3466781&utm_id=3466781&utm_id=3466781&utm_term=kwd-40109681&gclsrc=aw.ds&&ef_id=CjwKCAjw_pDBBhBMEiwAmY02NmEh7RS6HzBFVQB9zl9lBMFFPOXYpau2dTsdG_crn_XA3HaeuDY7PRoCPmgQAvD_BwE:G:s&s_kwcid=AL!11172!3!576638500774!e!!g!!maya!15994942310!134216357962&mkwid=s7LWg27xy|pcrid|576638500774|pkw|maya|pmt|e|pdv|c|slid||pgrid|134216357962|ptaid|kwd-40109681|pid|&utm_medium=cpc&utm_source=google&utm_campaign=&utm_term=maya&utm_content=s7LWg27xy|pcrid|576638500774|pkw|maya|pmt|e|pdv|c|slid||pgrid|134216357962|ptaid|kwd-40109681|&gad_source=1&gad_campaignid=15994942310&gbraid=0AAAAADx7pE2LXKhHdoOZ5coIg__PUrWCK&gclid=CjwKCAjw_pDBBhBMEiwAmY02NmEh7RS6HzBFVQB9zl9lBMFFPOXYpau2dTsdG_crn_XA3HaeuDY7PRoCPmgQAvD_BwE",
+          "label": "Maya"
+        },
+        {
+          "href": "https://www.unrealengine.com/en-US",
+          "label": "Unreal Engine"
+        }
+      ]
     },
     "/digital/witches-flight-3d": {
       "route": "/digital/witches-flight-3d",
@@ -489,13 +637,29 @@
         }
       ],
       "images": [
-        "/assets/162-c821cb0782a6.jpg",
-        "/assets/163-c66737770af4.jpg",
-        "/assets/164-5048ff913d0d.png",
-        "/assets/168-d452b416e324.png",
-        "/assets/169-d176f3f87d9c.png"
+        "/assets/170-4beb2abc10b7.jpg",
+        "/assets/171-0758237910ae.jpg",
+        "/assets/172-3acf2af46643.png",
+        "/assets/173-b9b5d37c42ef.png",
+        "/assets/174-99abfac93212.png"
       ],
-      "media": []
+      "media": [],
+      "mediaPosters": [],
+      "embeds": [],
+      "links": [
+        {
+          "href": "https://www.autodesk.com/products/maya/overview",
+          "label": "Maya"
+        },
+        {
+          "href": "https://www.maxon.net/en/zbrush?srsltid=AfmBOoqMAukSAY1-_5cx1furdPdSjurdDnPtvwO2AajA9iaankz-S_Jl",
+          "label": "Z-brush"
+        },
+        {
+          "href": "https://www.adobe.com/products/substance3d/apps/painter.html?sdid=DRCF12SK&mv=search&mv2=paidsearch&gad_source=5&gad_campaignid=20186236523&gclid=EAIaIQobChMIuP2gzPeijQMVokhHAR1AgjivEAAYASAAEgJjkfD_BwE",
+          "label": "Substance Painter"
+        }
+      ]
     },
     "/digital/identity-automaton": {
       "route": "/digital/identity-automaton",
@@ -527,7 +691,26 @@
         }
       ],
       "images": [],
-      "media": []
+      "media": [],
+      "mediaPosters": [],
+      "embeds": [
+        {
+          "type": "iframe",
+          "src": "https://www.youtube.com/embed/hYAEo7wYqHY?feature=oembed",
+          "title": "identityatomaton 1",
+          "allow": "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        }
+      ],
+      "links": [
+        {
+          "href": "https://cables.gl/",
+          "label": "Cables.gl"
+        },
+        {
+          "href": "https://ai.google.dev/edge/mediapipe/solutions/guide",
+          "label": "Media Pipe."
+        }
+      ]
     },
     "/digital/deficit": {
       "route": "/digital/deficit",
@@ -556,10 +739,25 @@
       ],
       "images": [
         "/assets/177-7a9205e68c88.png",
-        "/assets/178-89fa02c358c1.png",
-        "/assets/180-97d94f36d760.png"
+        "/assets/298-62833e74a71e.png",
+        "/assets/181-7f6f34152f42.png"
       ],
-      "media": []
+      "media": [],
+      "mediaPosters": [],
+      "embeds": [
+        {
+          "type": "iframe",
+          "src": "https://player.vimeo.com/video/901139589?app_id=122963",
+          "title": "Deficit",
+          "allow": "autoplay; fullscreen; picture-in-picture; clipboard-write"
+        }
+      ],
+      "links": [
+        {
+          "href": "https://www.unrealengine.com/en-US",
+          "label": "Unreal Engine 5"
+        }
+      ]
     },
     "/physical/storiesonskin": {
       "route": "/physical/storiesonskin",
@@ -583,11 +781,21 @@
         }
       ],
       "images": [
-        "/assets/183-377353169ca6.jpg",
-        "/assets/184-f791439f8d8b.jpg",
-        "/assets/194-03d73fc99a46.png"
+        "/assets/195-0e01536c3dfa.jpg",
+        "/assets/196-733644c8c42a.jpg",
+        "/assets/197-c4b39494aa02.png"
       ],
-      "media": []
+      "media": [],
+      "mediaPosters": [],
+      "embeds": [
+        {
+          "type": "iframe",
+          "src": "https://www.youtube.com/embed/z8GI-Jqqu1Y?feature=oembed",
+          "title": "Stories on Skin",
+          "allow": "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        }
+      ],
+      "links": []
     },
     "/physical/decay": {
       "route": "/physical/decay",
@@ -619,13 +827,18 @@
         }
       ],
       "images": [
-        "/assets/200-723aba48b8c8.jpg",
-        "/assets/201-357118672981.jpg",
-        "/assets/205-51d054c337bd.jpg"
+        "/assets/206-d68221bb106a.jpg",
+        "/assets/207-f28ced495ecf.jpg",
+        "/assets/208-ecb158720b97.jpg"
       ],
       "media": [
         "/assets/decay.mp4"
-      ]
+      ],
+      "mediaPosters": [
+        "/assets/209-24f875bd5ac2.jpg"
+      ],
+      "embeds": [],
+      "links": []
     },
     "/physical/the-industrial-woman": {
       "route": "/physical/the-industrial-woman",
@@ -649,13 +862,18 @@
         }
       ],
       "images": [
-        "/assets/210-3782dc3a7b90.jpg",
-        "/assets/211-28479317b74f.jpg",
-        "/assets/212-8f4ae95bad36.jpg"
+        "/assets/213-b3a953daa6cf.jpg",
+        "/assets/214-c9aff7d6da08.jpg",
+        "/assets/215-a33112b1818c.jpg"
       ],
       "media": [
         "/assets/industrial-woman.mp4"
-      ]
+      ],
+      "mediaPosters": [
+        "/assets/216-06a8dd74a554.jpg"
+      ],
+      "embeds": [],
+      "links": []
     },
     "/physical/coyness": {
       "route": "/physical/coyness",
@@ -695,11 +913,26 @@
         }
       ],
       "images": [
-        "/assets/217-e2ff9bcd8866.webp",
-        "/assets/218-caf846516674.jpg",
-        "/assets/223-33d61ac4d0c8.jpg"
+        "/assets/224-b334a0ed6ae1.jpg",
+        "/assets/304-05cbf92558d0.jpg",
+        "/assets/305-79a5fc7ca78b.jpg"
       ],
-      "media": []
+      "media": [],
+      "mediaPosters": [],
+      "embeds": [
+        {
+          "type": "iframe",
+          "src": "https://www.youtube.com/embed/4rdIoU7NR7A?feature=oembed",
+          "title": "Coyness Soph Katsivelos",
+          "allow": "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        }
+      ],
+      "links": [
+        {
+          "href": "https://www.instagram.com/missswinginglady?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+          "label": "Gemma Klinkowstein"
+        }
+      ]
     },
     "/physical/theater-production-work": {
       "route": "/physical/theater-production-work",
@@ -715,7 +948,7 @@
         },
         {
           "tag": "p",
-          "text": "Head of men’s dress and seamstress in Fiorello LaGuardia High school’s 2020 fall musical production of the musical Rodgers and Hammerstein Cinderella."
+          "text": "Head of men’s dress and seamstress in Fiorello LaGuardia High school’s 2020 fall musical production of the musical Rodgers and Hammerstein Cinderella."
         },
         {
           "tag": "h2",
@@ -755,7 +988,10 @@
         "/assets/232-47899950f002.jpg",
         "/assets/233-6b3ef71aafb1.jpg"
       ],
-      "media": []
+      "media": [],
+      "mediaPosters": [],
+      "embeds": [],
+      "links": []
     },
     "/physical/african-bullfrog": {
       "route": "/physical/african-bullfrog",
@@ -779,15 +1015,25 @@
         }
       ],
       "images": [
-        "/assets/234-364b84981ff3.png",
+        "/assets/235-76cc2c0b64ab.jpg",
         "/assets/239-6825b9b85edd.jpg",
         "/assets/240-7952c41d088b.jpg",
-        "/assets/241-d0ca50d7a93f.jpg",
-        "/assets/242-163b619a4c23.jpg",
-        "/assets/243-ecb7c0a61566.jpg",
-        "/assets/244-dbf39b81376a.jpg"
+        "/assets/234-364b84981ff3.png",
+        "/assets/236-dcb1da5f0a23.jpg",
+        "/assets/237-68aff90e88a4.jpg",
+        "/assets/238-871d147540ba.jpg"
       ],
-      "media": []
+      "media": [],
+      "mediaPosters": [],
+      "embeds": [
+        {
+          "type": "iframe",
+          "src": "https://app.vectary.com/p/53BlOS4U1rqrkMENeNPGoN",
+          "title": "Embedded project media",
+          "allow": "xr-spatial-tracking; fullscreen;"
+        }
+      ],
+      "links": []
     },
     "/for-clients/mcadxellwas": {
       "route": "/for-clients/mcadxellwas",
@@ -811,11 +1057,23 @@
         }
       ],
       "images": [
-        "/assets/249-120e4de53760.jpg",
-        "/assets/250-b76c0190611a.jpg",
-        "/assets/264-041826261d75.png"
+        "/assets/265-d5e03ebea538.jpg",
+        "/assets/309-b6a78abcfe15.jpg",
+        "/assets/310-736d4373801d.png"
       ],
-      "media": []
+      "media": [],
+      "mediaPosters": [],
+      "embeds": [],
+      "links": [
+        {
+          "href": "https://danakarwas.com/",
+          "label": "Dana Karwas"
+        },
+        {
+          "href": "https://milkeninstitute.org/milken-center-advancing-american-dream-mcaad",
+          "label": "Milken Center for Advancing the American Dream."
+        }
+      ]
     },
     "/for-clients/aippy": {
       "route": "/for-clients/aippy",
@@ -855,7 +1113,36 @@
         }
       ],
       "images": [],
-      "media": []
+      "media": [],
+      "mediaPosters": [],
+      "embeds": [
+        {
+          "type": "iframe",
+          "src": "https://www.youtube.com/embed/QBxCQThE6N8?feature=oembed",
+          "title": "Wiki Galaxy",
+          "allow": "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        },
+        {
+          "type": "iframe",
+          "src": "https://www.youtube.com/embed/Wp0MhWXfW2U?feature=oembed",
+          "title": "Fourth Eye",
+          "allow": "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        }
+      ],
+      "links": [
+        {
+          "href": "https://www.aippy.ai/@Soph/aippy-zappy-qW",
+          "label": "Aippy"
+        },
+        {
+          "href": "https://www.aippy.ai/@Soph/aippy-zappy-qW",
+          "label": "Try it on Aippy"
+        },
+        {
+          "href": "https://www.aippy.ai/@Soph/aippy-zappy-st",
+          "label": "Try it on Aippy"
+        }
+      ]
     },
     "/for-clients/black-luminaries": {
       "route": "/for-clients/black-luminaries",
@@ -883,13 +1170,18 @@
         }
       ],
       "images": [
-        "/assets/271-2abe45a078e6.jpg",
-        "/assets/272-741c05996bc8.jpg",
-        "/assets/273-d1b756c3e851.jpg"
+        "/assets/274-14632b172722.jpg",
+        "/assets/315-e35b90dfc5f2.jpg",
+        "/assets/275-e7677451538a.jpg"
       ],
       "media": [
         "/assets/black-luminaries.mp4"
-      ]
+      ],
+      "mediaPosters": [
+        "/assets/276-4007036274d2.jpg"
+      ],
+      "embeds": [],
+      "links": []
     }
   },
   "study": {

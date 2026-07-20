@@ -627,13 +627,54 @@ function ContentBlocks({ content }) {
   })}</div>;
 }
 
+function EmbeddedMedia({ embeds }) {
+  if (!embeds?.length) return null;
+  return (
+    <section className="project-embeds" aria-label="Embedded project media">
+      {embeds.map((embed, index) => (
+        <div className="project-embed" key={`${embed.src}-${index}`}>
+          <div className="project-embed-bar"><span>EMBED_{String(index + 1).padStart(2, "0")}</span><b>LIVE</b></div>
+          <iframe
+            src={embed.src}
+            title={embed.title || `${index + 1} embedded media`}
+            allow={embed.allow}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
+        </div>
+      ))}
+    </section>
+  );
+}
+
+function ProjectLinks({ links }) {
+  if (!links?.length) return null;
+  return (
+    <section className="project-links" aria-label="Project links">
+      <span>PROJECT LINKS / {String(links.length).padStart(2, "0")}</span>
+      <div>{links.map((link, index) => (
+        <a href={link.href} target="_blank" rel="noreferrer" key={`${link.href}-${link.label}`}>
+          <b>{String(index + 1).padStart(2, "0")}</b><span>{link.label}</span><i aria-hidden="true">↗</i>
+        </a>
+      ))}</div>
+    </section>
+  );
+}
+
 function Project({ project }) {
-  const media = project.media?.find(src => /\.(mp4|webm)$/i.test(src));
+  const videos = (project.media || []).filter(src => /\.(mp4|webm)(?:$|\?)/i.test(src));
+  const audio = (project.media || []).filter(src => /\.(mp3|wav|ogg)(?:$|\?)/i.test(src));
+  const leadVideo = videos[0];
   return (
     <>
       <main className="project">
-        {media ? <section className="media-intro"><ContentBlocks content={project.content} /><video className="project-video" controls preload="metadata"><source src={media} /></video></section> : <><Gallery images={project.images} title={project.title} /><ContentBlocks content={project.content} /></>}
-        {media && <Gallery images={project.images} title={project.title} />}
+        {leadVideo ? <section className="media-intro"><ContentBlocks content={project.content} /><video className="project-video" controls preload="metadata" poster={project.mediaPosters?.[0]}><source src={leadVideo} /></video></section> : <><Gallery images={project.images} title={project.title} /><ContentBlocks content={project.content} /></>}
+        {leadVideo && <Gallery images={project.images} title={project.title} />}
+        {videos.slice(1).map((src, index) => <video className="project-video project-video-secondary" controls preload="metadata" poster={project.mediaPosters?.[index + 1]} key={src}><source src={src} /></video>)}
+        {audio.map(src => <audio className="project-audio" controls preload="metadata" key={src}><source src={src} /></audio>)}
+        <EmbeddedMedia embeds={project.embeds} />
+        <ProjectLinks links={project.links} />
       </main>
       <Footer />
     </>

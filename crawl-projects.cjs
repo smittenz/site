@@ -27,7 +27,7 @@ async function settle(page) {
 
 (async () => {
   const browser = await chromium.launch({ headless: true, executablePath: 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe' });
-  const outputPath = path.join(root, 'source-projects.json');
+  const outputPath = path.join('C:', 'tmp', 'source-projects-current.json');
   const output = [];
 
   for (const spec of [{ name: 'desktop', width: 1440, height: 1000 }, { name: 'mobile', width: 390, height: 844 }]) {
@@ -48,8 +48,39 @@ async function settle(page) {
         pageHeight: document.documentElement.scrollHeight,
         bodyText: document.body.innerText,
         elements: [...document.querySelectorAll('h1,h2,h3,h4,p,a,button,figcaption')].map(el => ({ tag: el.tagName, text: (el.innerText || el.getAttribute('aria-label') || '').trim(), href: el.href || null, rect: el.getBoundingClientRect().toJSON() })).filter(x => x.text),
-        images: [...document.images].map(img => ({ src: img.currentSrc || img.src, srcset: img.srcset, alt: img.alt, width: img.naturalWidth, height: img.naturalHeight, rect: img.getBoundingClientRect().toJSON() })),
-        videos: [...document.querySelectorAll('video')].map(v => ({ src: v.currentSrc || v.src, poster: v.poster, rect: v.getBoundingClientRect().toJSON() })),
+        images: [...document.images].map(img => ({
+          src: img.currentSrc || img.src,
+          originalSrc: img.getAttribute('data-src') || img.getAttribute('data-image') || img.src,
+          srcset: img.srcset || img.getAttribute('data-srcset') || '',
+          alt: img.alt,
+          width: img.naturalWidth,
+          height: img.naturalHeight,
+          rect: img.getBoundingClientRect().toJSON(),
+        })),
+        videos: [...document.querySelectorAll('video')].map(v => ({
+          src: v.currentSrc || v.src,
+          poster: v.poster,
+          sources: [...v.querySelectorAll('source')].map(source => ({ src: source.src, type: source.type })),
+          rect: v.getBoundingClientRect().toJSON(),
+        })),
+        audio: [...document.querySelectorAll('audio')].map(a => ({
+          src: a.currentSrc || a.src,
+          sources: [...a.querySelectorAll('source')].map(source => ({ src: source.src, type: source.type })),
+          rect: a.getBoundingClientRect().toJSON(),
+        })),
+        iframes: [...document.querySelectorAll('iframe')].map(frame => ({
+          src: frame.src || frame.getAttribute('data-src') || '',
+          title: frame.title || frame.getAttribute('aria-label') || '',
+          allow: frame.allow || '',
+          allowFullscreen: frame.allowFullscreen,
+          rect: frame.getBoundingClientRect().toJSON(),
+        })),
+        embeds: [...document.querySelectorAll('embed,object')].map(embed => ({
+          tag: embed.tagName,
+          src: embed.src || embed.data || '',
+          type: embed.type || '',
+          rect: embed.getBoundingClientRect().toJSON(),
+        })),
         backgrounds: [...document.querySelectorAll('*')].map(el => getComputedStyle(el).backgroundImage).filter(v => v && v !== 'none'),
         buttons: [...document.querySelectorAll('button,[role="button"]')].map(b => ({ text: (b.innerText || b.getAttribute('aria-label') || '').trim(), expanded: b.getAttribute('aria-expanded') })),
       }));

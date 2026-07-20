@@ -443,3 +443,36 @@ final result: passed
 - [x] Verify the production build.
 
 final result: passed
+
+---
+
+# Content QA: Complete Original-Site Media Sync
+
+**Scope**
+
+- Current source audit: `C:\tmp\source-projects-current.json`.
+- Included: all 19 Digital, Physical, and Client project routes from the original portfolio.
+- Excluded by user direction: Digital Sociology Study.
+
+**Inventory evidence**
+
+- 19/19 project records retain the complete source text-block count.
+- 85/85 unique source gallery images are mapped to local assets, with canonical full-size files preferred over Squarespace preview variants.
+- 16/16 source iframes are restored across 11 routes.
+- Small Scale Work includes all five source embeds; Aippy includes both source video embeds.
+- All three locally hosted project videos include their original poster imagery.
+- 28 source project/tool links are restored across applicable pages.
+- Asset validation reports zero missing local image, poster, or video files.
+
+**Implementation checklist**
+
+- [x] Preserve the homepage and Digital Sociology content without bulk changes.
+- [x] Restore YouTube, Vimeo, Vectary, and interactive-web iframes.
+- [x] Restore project links with safe external-link behavior.
+- [x] Render every local video, its poster, and any additional audio/video records.
+- [x] Prefer full canonical images over preview-sized variants.
+- [x] Use responsive two-column embeds on desktop and one column on mobile.
+- [x] Verify inventory counts against the current original site audit.
+- [x] Verify the production build.
+
+final result: passed
