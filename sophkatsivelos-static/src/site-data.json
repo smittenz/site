@@ -1,0 +1,966 @@
+{
+  "homeImage": "/assets/002-6b783e3f6ae7.png",
+  "collections": {
+    "digital": [
+      {
+        "href": "/digital/planetarium",
+        "title": "PLANETARIUM",
+        "image": "/assets/023-890ff1b3711f.png"
+      },
+      {
+        "href": "/digital/merimnao",
+        "title": "MERIMNAO",
+        "image": "/assets/024-5d2c0a3e906f.jpg"
+      },
+      {
+        "href": "/digital/simulation",
+        "title": "SIMULATION",
+        "image": "/assets/025-3f1beff856df.png"
+      },
+      {
+        "href": "/digital/shasta-animated-short",
+        "title": "SHASTA",
+        "image": "/assets/026-42cebadd5b31.jpg"
+      },
+      {
+        "href": "/digital/collection",
+        "title": "OTHER SMALL SCALE WORK",
+        "image": null
+      },
+      {
+        "href": "/digital/digital-planetarium",
+        "title": "DIGITAL PLANETARIUM",
+        "image": "/assets/028-e8ee3a559ff6.jpg"
+      },
+      {
+        "href": "/digital/biotic-gallery",
+        "title": "BIOTIC GALLERY",
+        "image": "/assets/029-1611b531b438.png"
+      },
+      {
+        "href": "/digital/witches-flight-3d",
+        "title": "WITCHES FLIGHT 3D",
+        "image": "/assets/030-eb136499dbf7.png"
+      },
+      {
+        "href": "/digital/identity-automaton",
+        "title": "IDENTITY AUTOMATON",
+        "image": "/assets/031-4c8287b8e43c.png"
+      },
+      {
+        "href": "/digital/deficit",
+        "title": "DEFICIT",
+        "image": "/assets/032-5a188e7bcaed.png"
+      }
+    ],
+    "physical": [
+      {
+        "href": "/physical/storiesonskin",
+        "title": "STORIES ON SKIN",
+        "image": "/assets/033-e4941318f782.webp"
+      },
+      {
+        "href": "/physical/decay",
+        "title": "DECAY",
+        "image": "/assets/034-6e123d0dce3c.webp"
+      },
+      {
+        "href": "/physical/the-industrial-woman",
+        "title": "THE INDUSTRIAL WOMAN",
+        "image": "/assets/035-3613357a1cc7.webp"
+      },
+      {
+        "href": "/physical/coyness",
+        "title": "COYNESS",
+        "image": "/assets/036-8efb63598f22.webp"
+      },
+      {
+        "href": "/physical/theater-production-work",
+        "title": "THEATER PRODUCTION WORK",
+        "image": "/assets/037-cc0b87cee2d1.webp"
+      },
+      {
+        "href": "/physical/african-bullfrog",
+        "title": "AFRICAN BULLFROG",
+        "image": "/assets/038-e54c4b68d41a.webp"
+      }
+    ],
+    "clients": [
+      {
+        "href": "/for-clients/mcadxellwas",
+        "title": "MCAD X ELLWAS",
+        "image": "/assets/039-44accfe80b81.jpg"
+      },
+      {
+        "href": "/for-clients/aippy",
+        "title": "AIPPY",
+        "image": "/assets/040-f967d691eeef.png"
+      },
+      {
+        "href": "/for-clients/black-luminaries",
+        "title": "BLACK LUMINARIES",
+        "image": "/assets/041-cb4dc60d9e14.jpg"
+      }
+    ]
+  },
+  "projects": {
+    "/digital/planetarium": {
+      "route": "/digital/planetarium",
+      "title": "SMALL PLANETARIUM",
+      "content": [
+        {
+          "tag": "h2",
+          "text": "SMALL PLANETARIUM"
+        },
+        {
+          "tag": "p",
+          "text": "A small intimate planetarium inspired by the American Museum of Natural History’s 1980’s Hall of Gems and Minerals."
+        },
+        {
+          "tag": "h3",
+          "text": "2026"
+        },
+        {
+          "tag": "p",
+          "text": "Sketchup"
+        },
+        {
+          "tag": "p",
+          "text": "Blender"
+        }
+      ],
+      "images": [
+        "/assets/066-fb9b84531836.png",
+        "/assets/067-86ce95676368.png",
+        "/assets/068-3a7e1c1c79c8.png"
+      ],
+      "media": []
+    },
+    "/digital/merimnao": {
+      "route": "/digital/merimnao",
+      "title": "MERIMNAO",
+      "content": [
+        {
+          "tag": "h2",
+          "text": "MERIMNAO"
+        },
+        {
+          "tag": "h3",
+          "text": "2024"
+        },
+        {
+          "tag": "p",
+          "text": "Developed in Unity"
+        },
+        {
+          "tag": "p",
+          "text": "Game"
+        },
+        {
+          "tag": "p",
+          "text": "Platform - Windows"
+        },
+        {
+          "tag": "p",
+          "text": "Merimnao is a subliminal, surreal,  horror maze video game that functions like a reverse hide and seek.  Focusing on themes of dread and anticipatory anxiety. Reach the exit without wandering into the beast’s clutches."
+        },
+        {
+          "tag": "h2",
+          "text": "PROCESS BOOK"
+        }
+      ],
+      "images": [
+        "/assets/072-1fff4fb40ac1.png",
+        "/assets/073-3bb7ebaf1c4d.png",
+        "/assets/076-8fdfd3762a07.webp",
+        "/assets/077-a371e3f42282.png",
+        "/assets/102-9a5e436a77db.png",
+        "/assets/103-0fceef2e1dea.png",
+        "/assets/104-baf7168a1947.png",
+        "/assets/105-365392484a02.webp",
+        "/assets/106-e148ece8eb98.png",
+        "/assets/107-417e8885b7ab.png",
+        "/assets/108-e9d05ea36754.png",
+        "/assets/109-960e44afe163.png",
+        "/assets/110-878a7d4f32f6.png",
+        "/assets/111-6f4f99d47634.png",
+        "/assets/112-359c02dbf708.webp",
+        "/assets/113-84f924bd08ce.png",
+        "/assets/114-d4e42d9adf50.webp",
+        "/assets/115-8485e5a1b7cc.png",
+        "/assets/116-498817e3a53c.png",
+        "/assets/117-f21df6d5f417.png",
+        "/assets/118-47ec488eb1a5.png"
+      ],
+      "media": []
+    },
+    "/digital/simulation": {
+      "route": "/digital/simulation",
+      "title": "SIMULATION",
+      "content": [
+        {
+          "tag": "h2",
+          "text": "SIMULATION"
+        },
+        {
+          "tag": "h3",
+          "text": "2023"
+        },
+        {
+          "tag": "p",
+          "text": "Made in collaboration with"
+        },
+        {
+          "tag": "p",
+          "text": "Arshia Jaiswal and Margaret Kennedy"
+        },
+        {
+          "tag": "p",
+          "text": "Developed in Unity"
+        },
+        {
+          "tag": "p",
+          "text": "Game"
+        },
+        {
+          "tag": "p",
+          "text": "Platform - Meta Quest 2"
+        },
+        {
+          "tag": "p",
+          "text": "Simulation is a short mixed reality game. Where passthrough walls are destroyed to reveal the muppets beyond our simulation."
+        }
+      ],
+      "images": [
+        "/assets/122-1733ef397268.png",
+        "/assets/123-b516a0f4c332.png",
+        "/assets/126-83c628543673.png"
+      ],
+      "media": []
+    },
+    "/digital/shasta-animated-short": {
+      "route": "/digital/shasta-animated-short",
+      "title": "SHASTA",
+      "content": [
+        {
+          "tag": "h2",
+          "text": "SHASTA"
+        },
+        {
+          "tag": "h3",
+          "text": "2022"
+        },
+        {
+          "tag": "p",
+          "text": "An animated short film based on the story of Shasta Groene and Joseph Edward Duncan."
+        },
+        {
+          "tag": "p",
+          "text": "Developed in Adobe After Effects"
+        },
+        {
+          "tag": "p",
+          "text": "Video"
+        },
+        {
+          "tag": "p",
+          "text": "1:37"
+        }
+      ],
+      "images": [],
+      "media": []
+    },
+    "/digital/collection": {
+      "route": "/digital/collection",
+      "title": "MEDIEVAL BESTIARY ENTRIES.ORG",
+      "content": [
+        {
+          "tag": "h2",
+          "text": "MEDIEVAL BESTIARY ENTRIES.ORG"
+        },
+        {
+          "tag": "p",
+          "text": "2023"
+        },
+        {
+          "tag": "p",
+          "text": "HTML, P5js"
+        },
+        {
+          "tag": "p",
+          "text": "Medieval Bestiary Entries.org, a minimalist HTML website, channels the rudimentary aesthetic of early internet pages, showcasing '10 medieval bestiary entries' featuring depictions of animals and descriptive texts. However, a visit to the sources page reveals a revelation: the images are synthesized using stable diffusion techniques, reflecting the propagation of misinformation and the ambiguity of truths seen in medieval bestiaries. This comparison underscores the broader issue of fake news and misinformation in our modern digital landscape, urging critical examination and caution in navigating today's influx of information and imagery."
+        },
+        {
+          "tag": "h2",
+          "text": "SIPHONOPHORA"
+        },
+        {
+          "tag": "p",
+          "text": "2023"
+        },
+        {
+          "tag": "p",
+          "text": "HTML, P5js"
+        },
+        {
+          "tag": "p",
+          "text": "Siphonophora offers an immersive web experience inspired by siphonophores, colonial organisms that collaborate to form a unified whole. Through responsive movement mirroring the creatures' instinctive nature, users interact with the digital representation, witnessing cells undergoing a cloning process after 60 seconds, mirroring the growth patterns observed in siphonophores. This simulation invites users to engage with the collaborative dynamics and growth processes of these fascinating organisms, providing a glimpse into their unique collective behavior."
+        },
+        {
+          "tag": "h2",
+          "text": "VANITAS"
+        },
+        {
+          "tag": "p",
+          "text": "2023"
+        },
+        {
+          "tag": "p",
+          "text": "PIKA, Silicone, Wood"
+        },
+        {
+          "tag": "p",
+          "text": "\"Vanitas\" is an installation that explores the consequences of excessive luxury, featuring classical paintings morphing into macabre depictions through AI. This cautionary piece urges contemplation on the dangers of unchecked desires, serving as a stark reminder to tread carefully in the pursuit of material pleasures."
+        },
+        {
+          "tag": "h2",
+          "text": "DECODING DISEASE"
+        },
+        {
+          "tag": "p",
+          "text": "2023"
+        },
+        {
+          "tag": "p",
+          "text": "VR, Runway ML"
+        },
+        {
+          "tag": "p",
+          "text": "\"Decoding Disease\" is a virtual reality art installation that immerses visitors in the unique perspective of an artificial intelligence's gallery. These materials are generated by ai and prompted by diseases, gaining insight into the AI's interpretation of the most human afflictions, both from a societal and scientific standpoint."
+        },
+        {
+          "tag": "h2",
+          "text": "I_THINK_THEREFORE_ I _AM_HUMAN"
+        },
+        {
+          "tag": "p",
+          "text": "2022"
+        },
+        {
+          "tag": "p",
+          "text": "Processing, This person does not exist"
+        },
+        {
+          "tag": "p",
+          "text": "A series of image comparisons of things that appear more or less human then the other"
+        },
+        {
+          "tag": "h2",
+          "text": "GAMES GLITCHES AND CREATIVITY"
+        },
+        {
+          "tag": "p",
+          "text": "2023"
+        },
+        {
+          "tag": "p",
+          "text": "Html, Css, twine"
+        },
+        {
+          "tag": "p",
+          "text": "A collection of HTML-based work for my Games Glitches and Creativity class."
+        }
+      ],
+      "images": [
+        "/assets/131-0a5f7859f20c.png"
+      ],
+      "media": []
+    },
+    "/digital/digital-planetarium": {
+      "route": "/digital/digital-planetarium",
+      "title": "DIGITAL PLANETARIUM",
+      "content": [
+        {
+          "tag": "h2",
+          "text": "DIGITAL PLANETARIUM"
+        },
+        {
+          "tag": "h3",
+          "text": "2022"
+        },
+        {
+          "tag": "p",
+          "text": "An HTML planetarium that uses images taken from both the WEBB and Hubble telescopes. Frames between them are interpolated by AI. The audio is created from image data."
+        },
+        {
+          "tag": "p",
+          "text": "Developed in P5Js using HTML, Web GL, Runway AI"
+        },
+        {
+          "tag": "p",
+          "text": "Interactive Web experience"
+        },
+        {
+          "tag": "p",
+          "text": "Platform - Web"
+        }
+      ],
+      "images": [],
+      "media": []
+    },
+    "/digital/biotic-gallery": {
+      "route": "/digital/biotic-gallery",
+      "title": "BIOTIC GALLERY",
+      "content": [
+        {
+          "tag": "h2",
+          "text": "BIOTIC GALLERY"
+        },
+        {
+          "tag": "p",
+          "text": "A gallery of organics in Unreal Engine."
+        },
+        {
+          "tag": "p",
+          "text": "All assets were designed and poly-modeled in Maya, textured in Substance Painter, and shaded in Unreal 5."
+        },
+        {
+          "tag": "h3",
+          "text": "2024"
+        },
+        {
+          "tag": "p",
+          "text": "PRATT Institute"
+        },
+        {
+          "tag": "p",
+          "text": "Maya"
+        },
+        {
+          "tag": "p",
+          "text": "Unreal Engine"
+        }
+      ],
+      "images": [
+        "/assets/142-6473479be4c0.png",
+        "/assets/150-7c2ff4c48ab3.png",
+        "/assets/151-69783d19f380.webp",
+        "/assets/152-a5e80bba33b8.png",
+        "/assets/153-4e19ad4e8f4e.png",
+        "/assets/154-5f22ade7b269.png",
+        "/assets/155-740a116bfe5a.png",
+        "/assets/156-5be9aeaf96a4.png",
+        "/assets/157-bc0b8e855ae0.png",
+        "/assets/158-1620f6fb7d70.png"
+      ],
+      "media": []
+    },
+    "/digital/witches-flight-3d": {
+      "route": "/digital/witches-flight-3d",
+      "title": "WITCHES’ FLIGHT 3D",
+      "content": [
+        {
+          "tag": "h2",
+          "text": "WITCHES’ FLIGHT 3D"
+        },
+        {
+          "tag": "h3",
+          "text": "2024"
+        },
+        {
+          "tag": "p",
+          "text": "Image"
+        },
+        {
+          "tag": "p",
+          "text": "1000px x 1000px"
+        },
+        {
+          "tag": "p",
+          "text": "Created using Maya, Z-brush, Substance Painter"
+        },
+        {
+          "tag": "p",
+          "text": "A 3D recreation of  Francisco Goya’s 1798 oil painting “Witches’ Flight”"
+        },
+        {
+          "tag": "p",
+          "text": "All assets and textures are completely original."
+        }
+      ],
+      "images": [
+        "/assets/162-c821cb0782a6.jpg",
+        "/assets/163-c66737770af4.jpg",
+        "/assets/164-5048ff913d0d.png",
+        "/assets/168-d452b416e324.png",
+        "/assets/169-d176f3f87d9c.png"
+      ],
+      "media": []
+    },
+    "/digital/identity-automaton": {
+      "route": "/digital/identity-automaton",
+      "title": "IDENTITY",
+      "content": [
+        {
+          "tag": "h2",
+          "text": "IDENTITY"
+        },
+        {
+          "tag": "h2",
+          "text": "AUTOMATON"
+        },
+        {
+          "tag": "h3",
+          "text": "2022"
+        },
+        {
+          "tag": "p",
+          "text": "Identity Automaton is a work that explores how the physical parts of us and computers relate to identity online. The work uses motion tracking to move a rig made up of electronic components like extension cords and computer mice that is only visible when the eyes are closed. When the viewer’s eyes are open they see Instagram profiles."
+        },
+        {
+          "tag": "p",
+          "text": "Created using Cables.gl, Media Pipe."
+        },
+        {
+          "tag": "p",
+          "text": "Platform - web"
+        }
+      ],
+      "images": [],
+      "media": []
+    },
+    "/digital/deficit": {
+      "route": "/digital/deficit",
+      "title": "DEFICIT",
+      "content": [
+        {
+          "tag": "h2",
+          "text": "DEFICIT"
+        },
+        {
+          "tag": "h3",
+          "text": "2022"
+        },
+        {
+          "tag": "p",
+          "text": "Developed in Unreal Engine 5"
+        },
+        {
+          "tag": "p",
+          "text": "Platform - Meta Quest"
+        },
+        {
+          "tag": "p",
+          "text": "A VR experience that aims to simulate what it is like living with Attention deficit disorder."
+        }
+      ],
+      "images": [
+        "/assets/177-7a9205e68c88.png",
+        "/assets/178-89fa02c358c1.png",
+        "/assets/180-97d94f36d760.png"
+      ],
+      "media": []
+    },
+    "/physical/storiesonskin": {
+      "route": "/physical/storiesonskin",
+      "title": "STORIES ON SKIN\n2023",
+      "content": [
+        {
+          "tag": "h2",
+          "text": "STORIES ON SKIN\n2023"
+        },
+        {
+          "tag": "p",
+          "text": "Silicone, electronics, audio, wood, pigment."
+        },
+        {
+          "tag": "p",
+          "text": "This work presents a gallery of human skins displayed in frames. The skins are pinned like animal hides. Each frame features a button and an embedded speaker. When the button is pressed, the scar's owner tells the story of how they received the scar and their relationship with the scar itself."
+        },
+        {
+          "tag": "p",
+          "text": "Every skin is a life cast of a real person; the stories are also real. The skins are made of silicone. Audience members are allowed to touch the scars as there is no glass in the frames."
+        }
+      ],
+      "images": [
+        "/assets/183-377353169ca6.jpg",
+        "/assets/184-f791439f8d8b.jpg",
+        "/assets/194-03d73fc99a46.png"
+      ],
+      "media": []
+    },
+    "/physical/decay": {
+      "route": "/physical/decay",
+      "title": "DECAY",
+      "content": [
+        {
+          "tag": "h2",
+          "text": "DECAY"
+        },
+        {
+          "tag": "p",
+          "text": "Decay was a part of the show Nothing Island shown at Flux Factory on Governors Island in October 2023."
+        },
+        {
+          "tag": "p",
+          "text": "Decay consisted of a 3D PLA model of Castle Williams that sat on a constantly shaking platform. If the button was held, the shaking would stop. Participants could hold the button or try to re-assemble the model."
+        },
+        {
+          "tag": "p",
+          "text": "The work functioned as a commentary on the human urge to prevent decay even when it’s inevitable."
+        },
+        {
+          "tag": "h3",
+          "text": "2023"
+        },
+        {
+          "tag": "p",
+          "text": "Wood, PLA, Magnets, DC motor."
+        }
+      ],
+      "images": [
+        "/assets/200-723aba48b8c8.jpg",
+        "/assets/201-357118672981.jpg",
+        "/assets/205-51d054c337bd.jpg"
+      ],
+      "media": [
+        "/assets/decay.mp4"
+      ]
+    },
+    "/physical/the-industrial-woman": {
+      "route": "/physical/the-industrial-woman",
+      "title": "THE INDUSTRIAL WOMAN",
+      "content": [
+        {
+          "tag": "h2",
+          "text": "THE INDUSTRIAL WOMAN"
+        },
+        {
+          "tag": "h3",
+          "text": "2023"
+        },
+        {
+          "tag": "p",
+          "text": "“The Industrial Woman” is a commentary on the unappreciated and exploitative labor provided by housewives and its place in capitalism. Under capitalism, the role of the housewife is often considered a natural and necessary extension of women's innate nurturing and domestic abilities. However, this perspective overlooks the economic and social factors that shape the housewife's role and the exploitation that often accompanies it."
+        },
+        {
+          "tag": "p",
+          "text": "DC Motor, Arduino, Plastic, wood, metal"
+        }
+      ],
+      "images": [
+        "/assets/210-3782dc3a7b90.jpg",
+        "/assets/211-28479317b74f.jpg",
+        "/assets/212-8f4ae95bad36.jpg"
+      ],
+      "media": [
+        "/assets/industrial-woman.mp4"
+      ]
+    },
+    "/physical/coyness": {
+      "route": "/physical/coyness",
+      "title": "COYNESS",
+      "content": [
+        {
+          "tag": "h2",
+          "text": "COYNESS"
+        },
+        {
+          "tag": "h3",
+          "text": "2024"
+        },
+        {
+          "tag": "p",
+          "text": "Soph Katsivelos"
+        },
+        {
+          "tag": "p",
+          "text": "Created in collaboration with Gemma Klinkowstein"
+        },
+        {
+          "tag": "p",
+          "text": "Materials"
+        },
+        {
+          "tag": "p",
+          "text": "Servos, Arduino, Fabric, PLA, wire"
+        },
+        {
+          "tag": "p",
+          "text": "A dress based on flirtation in historical and natural contexts. The dress flutters slowly but flaps when it gets close to a viewer."
+        },
+        {
+          "tag": "p",
+          "text": "Robotics and hardware by Soph Katsivelos, seamstry by Gemma Klinkowstein."
+        }
+      ],
+      "images": [
+        "/assets/217-e2ff9bcd8866.webp",
+        "/assets/218-caf846516674.jpg",
+        "/assets/223-33d61ac4d0c8.jpg"
+      ],
+      "media": []
+    },
+    "/physical/theater-production-work": {
+      "route": "/physical/theater-production-work",
+      "title": "FIORELO LAGUARDIA HIGHSCOOL’S CINDERELLA",
+      "content": [
+        {
+          "tag": "h2",
+          "text": "FIORELO LAGUARDIA HIGHSCOOL’S CINDERELLA"
+        },
+        {
+          "tag": "p",
+          "text": "2020"
+        },
+        {
+          "tag": "p",
+          "text": "Head of men’s dress and seamstress in Fiorello LaGuardia High school’s 2020 fall musical production of the musical Rodgers and Hammerstein Cinderella."
+        },
+        {
+          "tag": "h2",
+          "text": "SMTW: THE WITCHES"
+        },
+        {
+          "tag": "p",
+          "text": "2019"
+        },
+        {
+          "tag": "p",
+          "text": "Group 8's production of The Witches at  the Kaufman Music Center's Summer Musical Theater Workshop in 2019. Worked within a bujet bellow $70"
+        },
+        {
+          "tag": "h2",
+          "text": "FIORELO LAGUARDIA HIGHSCOOL’S"
+        },
+        {
+          "tag": "h2",
+          "text": "AUGUST OSAGE COUNTY"
+        },
+        {
+          "tag": "p",
+          "text": "2018"
+        },
+        {
+          "tag": "p",
+          "text": "Build crew member on Fiorello LaGuardia High school’s 2018 spring drama festival production of August Osage County"
+        }
+      ],
+      "images": [
+        "/assets/227-16faea886ae4.jpg",
+        "/assets/228-d42f1f29c478.jpg",
+        "/assets/229-66a2b9741a9b.jpg",
+        "/assets/230-ac1b417f96d3.jpg",
+        "/assets/231-bc75556d62d1.jpg",
+        "/assets/232-47899950f002.jpg",
+        "/assets/233-6b3ef71aafb1.jpg"
+      ],
+      "media": []
+    },
+    "/physical/african-bullfrog": {
+      "route": "/physical/african-bullfrog",
+      "title": "AFRICAN BULLFROG",
+      "content": [
+        {
+          "tag": "h2",
+          "text": "AFRICAN BULLFROG"
+        },
+        {
+          "tag": "p",
+          "text": "2026"
+        },
+        {
+          "tag": "p",
+          "text": "Foam, fiber glass, resin, polly cam."
+        },
+        {
+          "tag": "p",
+          "text": "Inspired by the naturalistic animal models at the American Museum of Natural History, this bullfrog sculpture bridges traditional fabrication and digital processes. The piece was hand-sculpted and textured in clay, molded in silicone with a fiberglass jacket, and cast as a fiberglass, foam-filled final. It was then hand-painted using airbrush and brush techniques, finished with a semi-gloss to achieve a lifelike wet-skin effect. The completed sculpture was 3D scanned using Polycam and printed at one-tenth scale in 8K resin, demonstrating how digital tools can extend and refine traditional sculptural workflows."
+        }
+      ],
+      "images": [
+        "/assets/234-364b84981ff3.png",
+        "/assets/239-6825b9b85edd.jpg",
+        "/assets/240-7952c41d088b.jpg",
+        "/assets/241-d0ca50d7a93f.jpg",
+        "/assets/242-163b619a4c23.jpg",
+        "/assets/243-ecb7c0a61566.jpg",
+        "/assets/244-dbf39b81376a.jpg"
+      ],
+      "media": []
+    },
+    "/for-clients/mcadxellwas": {
+      "route": "/for-clients/mcadxellwas",
+      "title": "MILKEN CENTER FOR ADVANCING THE AMERICAN DREAM X ELLWAS",
+      "content": [
+        {
+          "tag": "h2",
+          "text": "MILKEN CENTER FOR ADVANCING THE AMERICAN DREAM X ELLWAS"
+        },
+        {
+          "tag": "h2",
+          "text": "2022"
+        },
+        {
+          "tag": "p",
+          "text": "Worked as a design intern for Dana Karwas on a new design for the Milken Center for Advancing the American Dream."
+        },
+        {
+          "tag": "p",
+          "text": "The designs revolved around a light that grows and changes based on your journey through the museum. Each light would be custom to each visitor based on their specific journey through the museum, it would grow different parts based on 4 pillars. This “light” would be incorporated into the UI for the visitors on their phone but also the UI of the musem exhibits as well."
+        }
+      ],
+      "images": [
+        "/assets/249-120e4de53760.jpg",
+        "/assets/250-b76c0190611a.jpg",
+        "/assets/264-041826261d75.png"
+      ],
+      "media": []
+    },
+    "/for-clients/aippy": {
+      "route": "/for-clients/aippy",
+      "title": "WIKIPEDIA GALAXY",
+      "content": [
+        {
+          "tag": "h2",
+          "text": "WIKIPEDIA GALAXY"
+        },
+        {
+          "tag": "p",
+          "text": "2025"
+        },
+        {
+          "tag": "p",
+          "text": "Aippy, wikipedia"
+        },
+        {
+          "tag": "p",
+          "text": "Wikipedia Galaxy is a work created for the AI creative coding platform Aippy. The work takes one Wikipedia article either randomly or from a text suggestion and from that article it selects 500 other Wikipedia pages that form the stars in a galaxy. Each star is placed based on how closely related or linked the Wikipedia page is to its neighbors, directly linked pages will be pars of “constellations” connecting them. The stars color and size is also determined based on the amount of traffic on the page and the time it was last updated."
+        },
+        {
+          "tag": "h2",
+          "text": "FOURTH EYE"
+        },
+        {
+          "tag": "p",
+          "text": "2025"
+        },
+        {
+          "tag": "p",
+          "text": "Aippy, Media Pipe"
+        },
+        {
+          "tag": "p",
+          "text": "Fourth Eye is a work created for the AI creative coding platform Aippy. It used the devices camera and the Media Pipe API to track the state of blinking from the user. The program responds with an animated effect that changes based on different types of blinking and eye movement creating an intimate interactive art experience."
+        }
+      ],
+      "images": [],
+      "media": []
+    },
+    "/for-clients/black-luminaries": {
+      "route": "/for-clients/black-luminaries",
+      "title": "BLACK LUMINARIES",
+      "content": [
+        {
+          "tag": "h2",
+          "text": "BLACK LUMINARIES"
+        },
+        {
+          "tag": "h3",
+          "text": "2026"
+        },
+        {
+          "tag": "p",
+          "text": "By Black Heart"
+        },
+        {
+          "tag": "p",
+          "text": "For The African American Chamber of Commerce of New Jersey’s Juneteenth Inovation Expo"
+        },
+        {
+          "tag": "p",
+          "text": "Visuals and gameplay by Carlos Johns-Davila"
+        }
+      ],
+      "images": [
+        "/assets/271-2abe45a078e6.jpg",
+        "/assets/272-741c05996bc8.jpg",
+        "/assets/273-d1b756c3e851.jpg"
+      ],
+      "media": [
+        "/assets/black-luminaries.mp4"
+      ]
+    }
+  },
+  "study": {
+    "images": [
+      "/assets/005-b80ef2c9295e.jpg"
+    ],
+    "content": [
+      {
+        "tag": "h2",
+        "text": "DIGITAL SOCIOLOGY STUDY"
+      },
+      {
+        "tag": "p",
+        "text": "Buttons, Composite board, Quest 3, buttons, Ada fruit bitsy,"
+      },
+      {
+        "tag": "p",
+        "text": "Made with: Unity, Maya, Blender, Substance Painter, cursor."
+      },
+      {
+        "tag": "h3",
+        "text": "2025"
+      },
+      {
+        "tag": "p",
+        "text": "Digital Sociology Study is a networked VR installation that examines how digital environments influence social behavior through feedback systems. Two participants enter one of four open-ended virtual worlds—designed to prompt activities like dancing, building, or painting—without explicit instruction. Their interactions unfold naturally, shaped not only by each other but also by a hidden third participant: the audience."
+      },
+      {
+        "tag": "p",
+        "text": "Viewing the experience through an arcade-style interface, the audience controls the environment in real-time—altering lighting, sound, tools, and even the players’ avatars, including gender presentation. They respond with buzzers and sound effects, indirectly guiding behavior through signals of approval or disapproval."
+      },
+      {
+        "tag": "p",
+        "text": "The piece explores how anonymity, constrained communication, and digital embodiment reshape social interaction. It asks whether stripped of identity and structure, people connect more authentically—or unravel. Ultimately, the work becomes a live experiment in how we perform, adapt, and relate under unseen influence."
+      }
+    ]
+  },
+  "about": {
+    "images": [
+      "/assets/042-e51153cae8a9.png"
+    ],
+    "content": [
+      {
+        "tag": "p",
+        "text": "Soph Katsivelos, a young designer residing in New York City, boasts a diverse portfolio spanning from roles as an assistant costume designer to a consulting design intern. Her design interests span various disciplines, with a particular penchant for interactive and immersive design."
+      },
+      {
+        "tag": "p",
+        "text": "Soph explores how new technology can spur connection and meaningful memories. She is dedicated to crafting compelling narratives and impactful experiences. As of 2025, she has graduated from  PRATT Institute’s Art and Technology BFA program."
+      },
+      {
+        "tag": "p",
+        "text": "Areas of Expertise"
+      },
+      {
+        "tag": "h2",
+        "text": "ART DIRECTION"
+      },
+      {
+        "tag": "h3",
+        "text": "ART AND TECHNOLOGY"
+      },
+      {
+        "tag": "h3",
+        "text": "EXPERIENCE DESIGN"
+      },
+      {
+        "tag": "h3",
+        "text": "EXPERIMENTAL TECHNOLOGY"
+      }
+    ],
+    "resume": "/assets/001-6d2c662f7778.pdf"
+  }
+}
