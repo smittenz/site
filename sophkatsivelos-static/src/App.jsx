@@ -702,6 +702,17 @@ function getProjectTags(content = [], summary = "") {
     .slice(0, 3);
 }
 
+function getUniqueProjectRecordContent(content = [], layout = {}, { summary, tags, year }) {
+  const source = layout.recordIndexes ? takeIndexes(content, layout.recordIndexes) : [...content];
+  if (!layout.recordIndexes) {
+    while (source[0]?.tag === "h2") source.shift();
+  }
+
+  const normalize = text => text.trim().replace(/\s+/g, " ").toLocaleLowerCase();
+  const heroText = new Set([summary, year, ...tags].filter(Boolean).map(normalize));
+  return source.filter(item => !heroText.has(normalize(item.text)));
+}
+
 function ContentBlocks({ content, className = "" }) {
   return <div className={`project-copy ${className}`.trim()}>{content.map((item, index) => {
     const isYear = /^(?:19|20)\d{2}$/.test(item.text.trim());
@@ -983,7 +994,7 @@ function ProjectHeroMedia({ project, layout }) {
 function ProjectLinks({ links }) {
   if (!links?.length) return null;
   return (
-    <section className="project-links" aria-label="Project links">
+    <section className="project-links" id="project-links" aria-label="Project links">
       <span>PROJECT LINKS / {String(links.length).padStart(2, "0")}</span>
       <div>{links.map((link, index) => (
         <a href={link.href} target="_blank" rel="noreferrer" key={`${link.href}-${link.label}`}>
@@ -1305,6 +1316,7 @@ function ProjectChapters({ project, layout }) {
 }
 
 function ProjectRecord({ content }) {
+  if (!content?.length) return null;
   return (
     <section className="project-record" id="project-record" aria-labelledby="project-record-title">
       <header>
@@ -1316,7 +1328,7 @@ function ProjectRecord({ content }) {
   );
 }
 
-function ProjectMediaArchive({ project, layout, heroMode }) {
+function getProjectMediaArchive(project, layout, heroMode) {
   const archivedImages = layout.hideImages
     ? []
     : layout.imageIndexes
@@ -1329,6 +1341,11 @@ function ProjectMediaArchive({ project, layout, heroMode }) {
   const excludedEmbeds = new Set(layout.excludedEmbedIndexes || (heroMode === "embed" ? [layout.heroEmbedIndex || 0] : []));
   const archivedEmbeds = (project.embeds || []).map((embed, index) => ({ embed, index })).filter(item => !excludedEmbeds.has(item.index));
   const mediaTotal = archivedImages.length + archivedVideos.length + archivedAudio.length + archivedEmbeds.length;
+  return { archivedImages, archivedVideos, archivedAudio, archivedEmbeds, mediaTotal };
+}
+
+function ProjectMediaArchive({ project, layout, heroMode }) {
+  const { archivedImages, archivedVideos, archivedAudio, archivedEmbeds, mediaTotal } = getProjectMediaArchive(project, layout, heroMode);
   if (!mediaTotal) return null;
   return (
     <section className="project-media-archive" id="project-media" aria-labelledby="project-media-title">
@@ -2262,9 +2279,18 @@ function Project({ project, path }) {
   const excludedEmbedIndexes = new Set(layout.excludedEmbedIndexes || (heroMode === "embed" ? [layout.heroEmbedIndex || 0] : []));
   const visibleEmbedCount = (project.embeds || []).filter((_, index) => !excludedEmbedIndexes.has(index)).length;
   const mediaCount = visibleImageCount + videos.length + audio.length + visibleEmbedCount + (layout.modelSrc ? 1 : 0);
-  const defaultRecordStart = project.content?.[0]?.tag === "h2" ? 1 : 0;
-  const recordContent = layout.recordIndexes ? takeIndexes(project.content, layout.recordIndexes) : project.content.slice(defaultRecordStart);
-  const entryTarget = chapterLayout ? "project-chapters" : "project-record";
+  const recordContent = getUniqueProjectRecordContent(project.content, layout, { summary, tags, year });
+  const hasArchivedMedia = getProjectMediaArchive(project, layout, heroMode).mediaTotal > 0;
+  const entryTarget = chapterLayout
+    ? "project-chapters"
+    : recordContent.length
+      ? "project-record"
+      : hasArchivedMedia
+        ? "project-media"
+        : project.links?.length
+          ? "project-links"
+          : null;
+  const entryLabel = entryTarget === "project-media" ? "VIEW MEDIA ARCHIVE" : entryTarget === "project-links" ? "OPEN PROJECT LINKS" : "ENTER PROJECT RECORD";
   const longestTitleWord = Math.max(...project.title.split(/\s+/).map(word => word.length));
   const titleClass = layout.titleClass || (project.title.length > 34 || longestTitleWord > 16 ? "is-very-long" : project.title.length > 15 || longestTitleWord > 10 ? "is-long" : "");
   return (
@@ -2286,7 +2312,7 @@ function Project({ project, path }) {
                 <div><dt>ENTRY</dt><dd>{String(context.index + 1).padStart(2, "0")} / {String(context.total).padStart(2, "0")}</dd></div>
                 <div><dt>STATUS</dt><dd>ONLINE</dd></div>
               </dl>
-              <a className="archive-project-enter" href={`#${entryTarget}`}>ENTER PROJECT RECORD <span aria-hidden="true">&darr;</span></a>
+              {entryTarget && <a className="archive-project-enter" href={`#${entryTarget}`}>{entryLabel} <span aria-hidden="true">&darr;</span></a>}
             </div>
           </aside>
         </section>

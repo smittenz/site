@@ -129,8 +129,8 @@ function PointCloudModel({ world, active }) {
     let frame = null;
     let inViewport = true;
     let cancelled = false;
-    const restingColor = new THREE.Color("#15213d");
-    const activeColor = new THREE.Color("#7778c9");
+    const restingColor = new THREE.Color("#000000");
+    const activeColor = new THREE.Color("#68c45b");
     const currentColor = restingColor.clone();
 
     const resize = () => {
@@ -349,40 +349,80 @@ function WorldNetworkCanvas({ activeId }) {
 
     const draw = time => {
       context.clearRect(0, 0, width, height);
-      const ink = "21,33,61";
+      const ink = "0,0,0";
       const trunkX = width * 0.16;
       const branchEnd = width * 0.46;
-      context.lineWidth = 1;
-      context.strokeStyle = `rgba(${ink},.38)`;
+      context.lineCap = "square";
+      context.lineJoin = "miter";
+      context.lineWidth = 2;
+      context.strokeStyle = `rgba(${ink},.76)`;
       context.beginPath();
       context.moveTo(width * 0.46, 0);
       context.bezierCurveTo(width * 0.46, height * 0.08, trunkX * 1.9, height * 0.12, trunkX * 1.45, height * 0.22);
       context.bezierCurveTo(trunkX * 0.82, height * 0.32, trunkX * 1.1, height * 0.64, trunkX, height * 0.92);
       context.stroke();
 
+      const drawNode = (x, y, active, radius = 6) => {
+        if (active) {
+          context.fillStyle = "rgba(245,233,58,.98)";
+          context.beginPath();
+          context.arc(x, y, radius + 5, 0, Math.PI * 2);
+          context.fill();
+        }
+
+        context.fillStyle = "rgba(255,255,255,.98)";
+        context.strokeStyle = `rgba(${ink},.96)`;
+        context.lineWidth = 2;
+        context.beginPath();
+        context.arc(x, y, radius, 0, Math.PI * 2);
+        context.fill();
+        context.stroke();
+
+        context.fillStyle = active ? "rgba(245,233,58,1)" : `rgba(${ink},1)`;
+        context.strokeStyle = `rgba(${ink},1)`;
+        context.lineWidth = active ? 1 : 0;
+        context.beginPath();
+        context.arc(x, y, active ? 3 : 2.2, 0, Math.PI * 2);
+        context.fill();
+        if (active) context.stroke();
+      };
+
+      const lobbyActive = activeRef.current === LOBBY.id;
+      drawNode(trunkX * 1.45, height * 0.22, lobbyActive, 6.5);
+
       rows.forEach((row, index) => {
         const y = height * row;
         const active = WORLDS[index].id === activeRef.current;
-        context.strokeStyle = active ? "rgba(119,120,201,.82)" : `rgba(${ink},.42)`;
+        context.lineWidth = active ? 4 : 1.5;
+        context.strokeStyle = active ? "rgba(104,196,91,.95)" : `rgba(${ink},.62)`;
         context.beginPath();
         context.moveTo(trunkX, y);
         context.bezierCurveTo(width * 0.24, y - height * 0.018, width * 0.34, y + height * 0.015, branchEnd, y);
         context.stroke();
-        context.fillStyle = active ? "rgba(119,120,201,.95)" : "rgba(255,255,252,.96)";
-        context.strokeStyle = `rgba(${ink},.76)`;
+
+        if (active) {
+          context.lineWidth = 1.25;
+          context.strokeStyle = `rgba(${ink},.95)`;
+          context.beginPath();
+          context.moveTo(trunkX, y);
+          context.bezierCurveTo(width * 0.24, y - height * 0.018, width * 0.34, y + height * 0.015, branchEnd, y);
+          context.stroke();
+        }
+
+        drawNode(trunkX, y, active);
+        context.fillStyle = active ? "rgba(104,196,91,1)" : `rgba(${ink},.82)`;
         context.beginPath();
-        context.arc(trunkX, y, active ? 5 : 3.5, 0, Math.PI * 2);
+        context.arc(branchEnd, y, active ? 3.5 : 2.5, 0, Math.PI * 2);
         context.fill();
-        context.stroke();
       });
 
-      const particleCount = 16;
+      const particleCount = 12;
       for (let index = 0; index < particleCount; index += 1) {
         const progress = reducedMotion ? index / particleCount : ((time * 0.000035 + index / particleCount) % 1);
         const y = height * (0.02 + progress * 0.9);
         const curve = Math.sin(progress * Math.PI * 1.4) * width * 0.12;
         const x = width * 0.39 - progress * width * 0.23 + curve;
-        context.fillStyle = index % 4 === 0 ? "rgba(119,120,201,.52)" : `rgba(${ink},.24)`;
+        context.fillStyle = index % 4 === 0 ? "rgba(104,196,91,.62)" : `rgba(${ink},.24)`;
         context.beginPath();
         context.arc(x, y, index % 4 === 0 ? 2.1 : 1.1, 0, Math.PI * 2);
         context.fill();
