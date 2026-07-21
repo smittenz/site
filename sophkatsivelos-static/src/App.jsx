@@ -3242,7 +3242,7 @@ function About() {
   return (
     <>
       <main className="about">
-        <div className="about-copy"><h1>SOPHIE KATSIVELOS</h1><div className="expertise"><p>Areas of Expertise</p>{expertise.map((item, index) => item.tag === "h2" ? <h2 key={index}>{item.text}</h2> : <h3 key={index}>{item.text}</h3>)}</div><div className="biography">{biography.map((item, index) => <p key={index}>{item.text}</p>)}</div><a className="resume" href={data.about.resume}>Resume</a></div>
+        <div className="about-copy"><h1>SOPHIE KATSIVELOS</h1><div className="expertise"><p>Areas of Expertise</p>{expertise.map((item, index) => item.tag === "h2" ? <h2 key={index}>{item.text}</h2> : <h3 key={index}>{item.text}</h3>)}</div><div className="biography">{biography.map((item, index) => <p key={index}>{item.text}</p>)}</div></div>
         {data.about.images[0] && <img src={data.about.images[0]} alt="Portrait of Sophie Katsivelos" />}
       </main>
       <Footer />
