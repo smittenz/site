@@ -1,0 +1,32 @@
+# Dependencies and local package-manager state
+node_modules/
+.pnpm-store/
+.npm-cache/
+*.log
+
+# Generated production output
+dist/
+
+# Temporary working directories
+tmp/
+.skill-staging/
+downloaded-assets-temp/
+
+# Full-resolution source media is kept locally, outside the deployable site.
+source-media/
+
+# Browser captures and visual QA artifacts
+/local-*.png
+/source-*.png
+/local-qa-results.json
+/sophkatsivelos-static/*-qa-*.png
+/sophkatsivelos-static/*-qa-*.jpg
+/sophkatsivelos-static/*-qa.png
+/sophkatsivelos-static/*-qa.jpg
+/sophkatsivelos-static/*-comparison*.png
+/sophkatsivelos-static/design-reference-*.png
+/sophkatsivelos-static/ellwas-interactive-*.png
+
+# Operating-system noise
+.DS_Store
+Thumbs.db

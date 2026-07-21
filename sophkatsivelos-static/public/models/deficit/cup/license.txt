@@ -1,0 +1,8 @@
+Model Information:
+* title:	1951.304 Cup and Saucer
+* source:	https://sketchfab.com/3d-models/1951304-cup-and-saucer-59a0521a04e54f0093d45ed99cececa8
+* author:	Cleveland Museum of Art (https://sketchfab.com/clevelandart)
+
+Model License:
+* license type:	CC0-1.0 (http://creativecommons.org/publicdomain/zero/1.0/)
+* requirements:	Credit is not mandatory. Commercial use is allowed.

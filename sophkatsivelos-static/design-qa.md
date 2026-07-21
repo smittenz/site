@@ -1,478 +1,587 @@
-**Source visual truth**
+# Stories on Skin Design QA
 
-- `D:\assets\website\drafting\exec-b45987a0-79fc-4500-9181-3cb4dbc7c37f.png`
-- The source is used as the organism geometry and palette reference, not as a full-page UI reference.
+- Source visual truth: `C:\Users\sophi\AppData\Local\Temp\codex-clipboard-4e7ba9ba-c43a-4f8d-a618-f595d4b2ad03.png`
+- Source-matched implementation screenshot: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\stories-skin-qa-reference-viewport.png`
+- Full-view comparison: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\stories-skin-design-comparison.png`
+- Desktop screenshot: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\stories-skin-qa-desktop-top.png`
+- Desktop open-preview screenshot: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\stories-skin-qa-hover.png`
+- Mobile screenshot: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\stories-skin-qa-mobile.png`
+- Mobile open-preview screenshot: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\stories-skin-qa-mobile-popup.png`
+- Viewports: 686 x 845 source-matched view; 1440 x 1000 desktop; 390 x 844 mobile.
+- States: default wall, selected/focused cast, cycling detail preview, Escape dismissal, mobile tap preview.
 
-**Implementation evidence**
+## Full-view comparison evidence
 
-- Screenshot: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\design-qa-implementation.png`
-- Side-by-side comparison: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\design-qa-comparison.png`
-- Viewport: 1280 × 720
-- State: Home map, no project selected
-- Primary interaction tested: Digital Work node opens the zoomed project drawer and exposes previous, next, return, and project-entry controls.
-- Console errors: none.
+The source and implementation were placed side by side at 686 x 845 in `stories-skin-design-comparison.png`. The implementation preserves the source's core composition: an off-white wall, irregular unframed silicone casts arranged at gallery scale, a compact project statement near the top, a film window below the statement, and a long exploratory vertical field. The production site header remains intentionally present.
 
-**Full-view comparison evidence**
+## Focused-region comparison evidence
 
-- The implementation preserves the reference organism's silhouette, circuit paths, terminal dots, and left-to-right proportions.
-- The opaque colored fill is removed. Color is represented by a live particle array beneath a separate black linework layer.
-- The site intentionally scales the organism within its existing map frame and retains the five interactive portfolio nodes.
+- `stories-skin-qa-hover.png` verifies the anchored desktop detail window, installation photography, visible frame count, focus outline, edge-aware right placement, and zero horizontal overflow.
+- `stories-skin-qa-mobile-popup.png` verifies the bottom-fixed touch preview remains within the 390 x 844 viewport with a 14 px gutter and no horizontal overflow.
+- `stories-skin-qa-mobile.png` verifies that mobile uses a readable vertical sequence rather than shrinking the project statement beside the first cast.
 
-**Focused region comparison evidence**
+## Required fidelity surfaces
 
-- A separate crop was not needed because the organism occupies most of both comparison frames and the line, node, and particle separation is legible at full-view resolution.
+- Fonts and typography: the reference's heavy sans-serif title and typewriter-like supporting copy are preserved with the project's Arial and Courier stacks. Mobile body copy is 10 px with 1.24 line height; no clipping or truncation was found.
+- Spacing and layout rhythm: the five casts retain the reference's loose gallery-wall spacing. At 686 px, the film sits 93 px below the text card; at 390 px, it sits 146 px below it. No horizontal overflow was found.
+- Colors and visual tokens: the warm off-white wall, black window chrome, and restrained blue/cyan/green system accents use the existing portfolio palette.
+- Image quality and asset fidelity: five high-resolution, alpha-matted silicone cast assets are used as real raster imagery. The preview cycles through the project's installation photograph, scar macro, and existing wall documentation. No placeholder boxes, CSS-drawn artwork, or visible chroma-key fringe remains.
+- Copy and content: the original project title, materials, description, date, and film are preserved. No personal scar stories were invented.
 
-**Findings**
+## Comparison history
 
-- Fonts and typography: existing site typography is unchanged and remains visually separate from the supplied organism asset.
-- Spacing and layout rhythm: organism proportions align with the source and fit the interactive map without clipping the main body.
-- Colors and visual tokens: particle colors retain the source's coral, blue, mint, and yellow accents on white.
-- Image quality and asset fidelity: the supplied raster is used directly as the sampling source; black linework is extracted at runtime rather than approximated.
-- Copy and content: existing portfolio labels and project-node content are preserved.
-- No remaining P0, P1, or P2 issues.
+1. Earlier finding: desktop preview opening was gated by a browser capability query that did not reflect the actual pointer. Fix: gate by `pointerType` so mouse and pen open on pointer enter while touch remains tap-driven. Post-fix evidence: click/focus opens the preview with `aria-expanded="true"` and the expected cast detail.
+2. Earlier finding: focus followed by click could immediately close the same cast. Fix: activation now always opens the selected cast; outside click and Escape own dismissal. Post-fix evidence: mobile and desktop activation both keep the preview open.
+3. Earlier finding: the first mobile layout reduced body copy to 7 px. Fix: stack the first cast, full-width statement, and film at <=520 px. Post-fix evidence: 10 px copy, no overflow, and the film begins below the statement.
+4. Earlier finding: the 686 px source-matched layout was too sparse. Fix: add a 521-700 px gallery breakpoint with denser cast placement and a film position directly below the text. Post-fix evidence: the source-matched screenshot shows four casts and the film within the first viewport.
 
-**Comparison history**
+## Findings
 
-1. Earlier finding: [P1] transparent source pixels were incorrectly promoted to opaque black, creating a large black rectangle and reversing the apparent organism silhouette.
-2. Fix made: linework alpha now multiplies the extracted threshold by the PNG's original alpha channel.
-3. Post-fix evidence: `design-qa-implementation.png` and `design-qa-comparison.png` show a white background, black circuit overlay, and colored particle-only fill.
+No actionable P0, P1, or P2 differences remain. The implementation intentionally uses the live YouTube player and the portfolio's existing global header rather than the reference's gray video placeholder and editor chrome.
 
-**Implementation checklist**
+## Primary interactions and console
 
-- [x] Use the supplied organism source.
-- [x] Render color only as animated particles.
-- [x] Render black circuit and terminal geometry above the particles.
-- [x] Preserve zoom, project drawer, paging, drag, and keyboard behavior.
-- [x] Verify the production build and browser console.
+- Cast activation: passed.
+- Four-frame timed cycle: passed; frame label and count advanced while open.
+- Escape dismissal: passed; preview removed and `aria-expanded` returned to `false`.
+- Mobile tap preview: passed and fully contained within the viewport.
+- Responsive overflow: passed at 1440, 686, and 390 px widths.
+- Browser console warnings/errors: none.
 
-**Follow-up polish**
+## Follow-up polish
 
-- Particle density and motion amplitude can be tuned further as a P3 visual preference.
-
-final result: passed
-
-# Design QA: Node Signal Hover Windows
-
-**Source visual truth**
-
-- Primary component reference: `C:\Users\sophi\AppData\Local\Temp\codex-clipboard-889fa5ec-7be4-46d2-b3cb-502dcbfb0b0d.png`
-- Secondary style board: `https://www.pinterest.com/skatsive/portfolio-website/`
-- The annotated screenshot defines the offset rectangular monitor and right-angle line from the node. The Pinterest board supplies the scientific-interface, biotech, glitch, bitmap, and dark terminal-chrome direction.
-
-**Implementation evidence**
-
-- Screenshot: `C:\Users\sophi\AppData\Local\Temp\soph-node-signal-hover-final.png`
-- Full comparison: `C:\Users\sophi\AppData\Local\Temp\soph-node-signal-full-comparison-final.png`
-- Focused comparison: `C:\Users\sophi\AppData\Local\Temp\soph-node-signal-focused-comparison-final.png`
-- Desktop viewport: 1280 × 720
-- Desktop state: Digital Work node hovered, monitor fully revealed
-- Mobile viewport: 390 × 844
-- Mobile state: rotated vertical map with keyboard/focus-equivalent monitor visible
-- Primary interactions tested: hover/focus monitor reveal, mirrored left/right placement, click-to-open full project preview, Return to Map, and hidden monitor while full preview is selected.
-- Runtime check: no Vite/React error overlay appeared, the generated bitmap loaded successfully, and the production build completed. Direct console-message collection was not exposed by the selected in-app browser surface.
-
-**Full-view comparison evidence**
-
-- The implementation keeps the supplied organism, node placement, white canvas, and existing site chrome unchanged.
-- The monitor follows the annotated source composition: a long black right-angle line grows out of the node and terminates at a compact offset rectangle.
-- The implementation intentionally adds denser terminal chrome, project identification, coordinates, and live-signal copy because the user requested a more graph-like, codey, cyber interface than the simple green reference block.
-
-**Focused region comparison evidence**
-
-- `soph-node-signal-focused-comparison-final.png` places the annotated target and rendered Digital Work monitor in one image at comparable scale.
-- Both use a hard black rectangular frame, upper offset placement, a visible L-shaped node connection, and green/blue bitmap texture.
-- The rendered monitor is slightly larger than the literal green block to keep project identity and data readable; this is an intentional functional expansion, not uncontrolled layout drift.
-
-**Findings**
-
-- Fonts and typography: compact Courier terminal text matches the site's existing monospaced system; node identity and status remain legible without competing with the diagram.
-- Spacing and layout rhythm: the final desktop window is 232 × 158 with a 62px vertical connector. It reads as a small satellite window and does not create document overflow.
-- Colors and visual tokens: black, white, fog, yellow, green, cyan, and blue map directly to the established Section 1 palette.
-- Image quality and asset fidelity: the monitor uses the existing project thumbnail plus the real generated raster `public/assets/node-signal-bitmap.png`; the dither and graph texture are not approximated with CSS art.
-- Copy and content: each window exposes its existing node number and project title plus accurate X/Y node coordinates and live/open-signal states.
-- Accessibility and motion: hover and focus-visible share the same state, reduced-motion removes stepped/jitter/scan animations, and the full preview remains reachable by click.
-- Responsiveness: at 390 × 844 the monitor is 168 × 127, ends at x=383.2, and has no clipping or horizontal overflow.
-- No remaining P0, P1, or P2 issues.
-
-**Comparison history**
-
-1. [P2] First desktop pass was oversized at 258 × 179 compared with the compact annotated block.
-   - Fix: reduced the final window to 232 × 158 and lengthened the vertical connector to 62px so the component feels smaller while preserving the source's strong node-to-window relationship.
-   - Post-fix evidence: `soph-node-signal-full-comparison-final.png` and `soph-node-signal-focused-comparison-final.png`.
-2. [P2] First mobile pass ended at x=395.2 in a 390px viewport, clipping the cyan hard shadow by roughly five pixels.
-   - Fix: reduced the mobile monitor to 168px and moved its offset inward.
-   - Post-fix evidence: final measured bounds x=215.2–383.2 with no clipping.
-
-**Implementation checklist**
-
-- [x] Use a real bitmap/dither texture asset.
-- [x] Preserve the project thumbnail inside the monitor.
-- [x] Build a terminal header, project row, graph field, and coordinate readout.
-- [x] Animate the right-angle connector before the stepped window reveal.
-- [x] Add scan and restrained bitmap jitter with reduced-motion support.
-- [x] Mirror left/right window placement from the node data.
-- [x] Verify desktop, mobile, click-through, full-preview, and production-build behavior.
-
-**Follow-up polish**
-
-- P3: bitmap density and project-image blend can be tuned per project if individual thumbnails need more subject visibility.
+P3: the generated silicone casts preserve the reference's forms and palette but naturally differ in small surface details from the low-resolution source screenshot.
 
 final result: passed
 
----
+## MCAD × Ellwas development story — 2026-07-21
 
-# Design QA: Clear Signal Preview + Node Decode
+- Source visual truth: user-authored pages 63–103 of `C:\Users\sophi\Downloads\MCAAD-Art-Direction.pdf` plus the supplied full-resolution page 63, 75, 80–83, and 87–90 JPGs.
+- Desktop verification: 1440 × 900 in-app browser viewport.
+- Mobile verification: 390 × 844 in-app browser viewport.
+- Preserved interaction: the existing pointer-grown dandelion bloom, reset control, bloom GIF, and resolved application views.
 
-**Source visual truth**
+### Narrative and fidelity checks
 
-- Primary direction: the user's feedback that the hover overlay obscured the project and that clicking a node should produce a clearer, vibe-matched transition into the full preview.
-- Previous hover implementation: `C:\Users\sophi\AppData\Local\Temp\soph-node-signal-hover-final.png`.
+1. The process now reads as a six-stage sequence: form search; motion prototype; dandelion selection; density, movement, and color variables; four-pillar system construction; and terminal/possible-mobile interaction. Five stages carry explicit decision notes, while `Light in Motion` is a focused behavior interlude between the first two chapters.
+2. Twenty source boards retain their original 16:9 composition and are captioned with their PDF page numbers. The five composite-refinement studies on pages 75 and 80–83 share one wide cycling frame; the four terminal/mobile studies on pages 87–90 share a second cycling frame. Three later boards separately document interface, timeline, and environmental scale.
+3. Exploration boards are clearly separated from the resolved four-pillar specimen, motion prototypes, and final applications.
+4. Desktop boards remain legible in two- and three-column arrangements. Mobile reflows every board into one column with no cropping or horizontal overflow.
+5. Runtime checks found five story chapters, thirteen visible process frames representing twenty source boards, three scale studies, zero broken images, and zero horizontal overflow at 390 px.
+6. The premise maps theme, content, engagement, and visit progress to component/color, composition, density/emphasis, and growth. The physical museum terminal is consistently identified as the core interaction; photo upload and QR retrieval are labeled as a possible mobile extension.
+7. `Light in Motion` contains one bloom GIF, zero videos, and no repeated still-image fallback. A full DOM media audit found zero duplicate image sources.
+8. Both the five-state composite-refinement carousel and four-state terminal/mobile carousel passed manual next/previous controls and advanced automatically every 3.4 seconds while visible. Each offers an explicit pause/resume control, also pauses on hover/focus, stops auto-advancing offscreen, announces its active board to assistive technology, and remains within the 390 px mobile viewport.
+9. Process and application boards share an expanded-detail preview. Desktop focus/hover, Escape dismissal, the explicit close control, viewport clamping, zero horizontal overflow, and the responsive bottom-docked treatment were verified; carousel controls remain above the image hit area.
+10. Production build passed. Vite's existing large-chunk advisory remains non-blocking.
 
-**Implementation evidence**
+### Findings
 
-- Clear hover monitor: `C:\Users\sophi\AppData\Local\Temp\soph-node-hover-clear.png`.
-- Click transition state: `C:\Users\sophi\AppData\Local\Temp\soph-node-click-transition.png`.
-- Settled full preview: `C:\Users\sophi\AppData\Local\Temp\soph-node-click-settled.png`.
-- Settled mobile preview: `C:\Users\sophi\AppData\Local\Temp\soph-node-clear-mobile.png`.
-- Desktop state verified in the local app; mobile state verified in a 390 × 844 frame.
+No actionable P0, P1, or P2 differences remain. One earlier hot-reload error referenced the removed pre-restructure array and did not recur after a clean page reload.
 
-**Focused comparison evidence**
+final result: passed
 
-- The old hover treatment blended the bitmap over the whole project photograph. The revised monitor renders the photograph at opacity `1` with no blend mode, then puts the raster signal in its own 22px data strip below it.
-- Clicking a node now triggers a stepped node burst, panel signal lock, scan line, and temporary decode readout. The sequence ends with opacity `1`, `clip-path: inset(0)`, identity transform, and no image filter.
+## Stories on Skin annotated reorganization and active color — 2026-07-21
 
-**Findings**
+- Source visual truth: `design-reference-stories-on-skin-reorg.png`.
+- Desktop implementation: `design-qa-stories-on-skin-reorg-desktop.png` at 1154 x 945.
+- Clicked-state evidence: `design-qa-stories-on-skin-green-active.png` with cast 05 expanded.
+- Mobile implementation: `design-qa-stories-on-skin-reorg-mobile.png` at 390 x 844.
+- Same-input comparison: `design-qa-comparison-stories-on-skin-reorg.png`.
 
-- Image clarity: the Digital Work subject is immediately recognizable in the hover card and fully clear after the click transition settles.
-- Visual continuity: the bitmap, terminal strip, cyan/yellow scan line, and stepped timing retain the cyber-biological signal-monitor direction without covering the project image.
-- Interaction causality: the node burst and panel lock make the selected point feel like it transmits the image into the preview sheet.
-- Responsiveness: the compact mobile preview remains upright inside the vertical map layout, with a clear 18vh image and no visible horizontal clipping.
-- Accessibility and motion: the status strip is decorative, the project image keeps its descriptive alt text, and reduced-motion mode skips the burst/decode effects and shows the clean final image immediately.
-- Production build: passed with 35 transformed modules and no compile errors.
-- No remaining P0, P1, or P2 issues.
+### Full-view and focused comparison evidence
 
-**Comparison history**
+The side-by-side comparison places the annotated desktop source beside the revised live wall. Cast 02 now occupies the open upper space beside cast 01, the film has moved right beneath the statement, cast 04 remains at 40% wall height, and cast 05 remains at 58% wall height as the large lower anchor. The clicked-state capture focuses on cast 05 and verifies that its selection rectangle is green while its close-up window remains aligned beside it.
 
-1. [P2] The bitmap overlay made the hover photograph harder to identify.
-   - Fix: separated the photograph and bitmap into a 74px clear image region plus a 22px signal strip; removed grayscale, opacity reduction, and multiply blending from the photograph.
-2. [P2] Clicking a node had no visible transmission from the selected point into the full preview.
-   - Fix: added a short node burst, stepped panel lock, scan/decode status, and an image reveal that resolves to an unfiltered frame.
+### Required fidelity surfaces
 
-**Implementation checklist**
+- Fonts and typography: the existing title, project statement, metadata, and film chrome are unchanged.
+- Spacing and layout rhythm: the rearrangement follows the user's directional marks without introducing overlaps or horizontal overflow.
+- Colors and visual tokens: active and keyboard-focus outlines now use the existing palette green (`rgb(112, 195, 94)`) instead of blue.
+- Image quality and asset fidelity: all original cast artwork and dedicated close-up sequences remain in place; no assets were substituted.
+- Copy and content: project copy, cast labels, film, counters, and interaction instructions remain unchanged.
 
-- [x] Remove the bitmap overlay from the project photograph.
-- [x] Keep a real bitmap texture in a separate signal strip.
-- [x] Add a node-to-panel click transition.
-- [x] Resolve the transition to a clean, unfiltered full image.
-- [x] Preserve the existing project routes, node placement, header/footer behavior, and preview controls.
-- [x] Verify desktop, mobile, reduced-motion behavior, and the production build.
+### Comparison history
+
+1. P2 annotated layout issue: cast 02 sat too low and the film was too far left. Fix: move cast 02 to 32% / 10% and the desktop film to 57% left, with the 940px breakpoint adjusted to 52%. Post-fix evidence: the desktop comparison shows the open top area filled and the film aligned to the right-hand zone.
+2. P2 interaction-color issue: the selected cast rectangle was blue. Fix: apply the portfolio's existing green token to both active and focus-visible cast artwork. Post-fix evidence: the clicked-state and mobile captures show a 2px green outline.
+
+### Primary interactions and verification
+
+- Desktop cast 05 click and close-up window: passed.
+- Mobile cast 01 click and close-up window: passed.
+- Active outline color: `rgb(112, 195, 94)` at desktop and mobile.
+- Responsive horizontal overflow: none at 1154 x 945 or 390 x 844.
+- Escape dismissal: passed.
+- Browser console warnings/errors: none.
+- Production build: passed; the existing bundle-size advisory remains non-blocking.
+
+### Findings
+
+No actionable P0, P1, or P2 issues remain.
 
 final result: passed
 
 ---
 
-# Design QA: Expanded Preview Signal Connection
+# Archive Drive Design QA
 
-**Source visual truth**
+- Source visual truth: `C:\Users\sophi\AppData\Local\Temp\codex-clipboard-0eae867e-8c2c-4ae2-a586-d771e45af654.png`
+- Implementation screenshot: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\archive-drive-qa-desktop-final.png`
+- Mobile screenshot: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\archive-drive-qa-ascii-black-mobile.png`
+- High-resolution ASCII and sorting screenshot: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\archive-drive-qa-ascii-sort-desktop.png`
+- Full-view comparison: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\archive-drive-design-comparison.png`
+- Viewports: 1440 x 1000 desktop; 390 x 844 mobile.
+- States: default mounted drive, selected project file, category-filtered list, searched list, pulled record preview, and mobile stacked preview.
 
-- Current selected-state implementation before this refinement: `C:\Users\sophi\AppData\Local\Temp\soph-expanded-preview-source.png`.
-- User direction: keep the active node visibly connected to the expanded project preview.
+## Full-view comparison evidence
 
-**Implementation evidence**
+The supplied Windows file-explorer reference and the resolved desktop implementation are placed together in `archive-drive-design-comparison.png`. The implementation preserves the reference's compact vertical directory rows, file icon/name column, adjacent metadata columns, and clear selected-row behavior while translating the utility UI into the portfolio's white/fog/black technical system. The preview drawer is an intentional extension of the source idea and samples the exact collection-card thumbnail into a high-resolution green ASCII bitmap on black.
 
-- Final desktop state: `C:\Users\sophi\AppData\Local\Temp\soph-expanded-preview-connected-final.png`.
-- Right-side node coverage: `C:\Users\sophi\AppData\Local\Temp\soph-expanded-preview-about-connected.png`.
-- Mobile state at 390 × 844: `C:\Users\sophi\AppData\Local\Temp\soph-expanded-preview-mobile-connected.png`.
-- Full before/after comparison: `C:\Users\sophi\AppData\Local\Temp\soph-expanded-preview-connector-comparison.png`.
+## Focused-region comparison evidence
 
-**Full-view comparison evidence**
+A separate crop was not needed because the comparison enlarges the 534 x 268 source and keeps the implementation's directory rows, icons, metadata, and selected state legible. `archive-drive-qa-mobile-thumbnail-icon.png` additionally verifies the green code-file icon and original Biotic Gallery thumbnail in the compact stacked state.
 
-- The comparison preserves the expanded panel width, typography, clear image, pager, route action, diagram scale, and palette.
-- The selected point now docks at a consistent visible position, and a black right-angle trace reaches the preview edge at the image's vertical center.
-- The trace draws in with the existing stepped decode timing; a small cyan signal packet continues moving along the settled line.
+## Required fidelity surfaces
 
-**Focused region comparison evidence**
+- Fonts and typography: the source's compact utility text is represented with Courier metadata, while the archive title and file names use the site's existing heavy Arial hierarchy. Labels remain readable, selected file names do not wrap, and long names truncate only inside the list while remaining complete in the preview.
+- Spacing and layout rhythm: desktop uses a three-part mounted drive with volumes, a scrollable vertical directory, and a pulled preview. Mobile converts volumes to a horizontal strip and stacks the preview below a bounded file list. No page-level horizontal overflow was found at either viewport.
+- Colors and visual tokens: white, fog, and black remain the principal surfaces; yellow marks the selected file, green signals mounted/digital file state, coral indexes records, and blue remains restrained metadata.
+- Image quality and asset fidelity: preview sources resolve from each original collection card's `image` field before any project-gallery fallback, then render through a responsive canvas as fine green ASCII glyphs on black. The African Bullfrog source matched `/assets/038-e54c4b68d41a.webp`, and the searched Biotic Gallery source matched `/assets/029-1611b531b438.png`.
+- Copy and content: all 20 records remain alphabetized and retain their real title, category, year when available, object count, summary, and project route. Missing year metadata is labeled `N/D` rather than presented as a date.
 
-- In the source image, the organism's local branch line stops before the panel boundary. In the final image, the dedicated connector begins at the selected node's outer edge and terminates exactly at the panel boundary.
-- Right-side nodes previously fell underneath the panel. The final About + Contact capture proves that a right-side node is moved to the shared visible signal dock before the connector is measured.
-- On mobile, the active node remains upright and centered above the bottom sheet; a short vertical trace reaches the sheet's colored top border without crossing the project image or controls.
+## Comparison history
 
-**Findings**
+1. Earlier P2 finding: the first archive pass used each project's first gallery image rather than the collection-page thumbnail. Fix: prioritize the collection entry's original `image` field. Post-fix evidence: the live DOM and screenshots match the expected African Bullfrog and Biotic Gallery thumbnail asset paths.
+2. User correction: the soft blue folder icons did not feel digital enough. Fix: replace project-row folders with Phosphor code-file icons and category folders with dashed digital folders, all using the portfolio green token. Post-fix evidence: computed icon color is `rgb(112, 195, 94)` and the code-file glyph is visible in both desktop and mobile screenshots.
+3. Earlier P2 finding: Stories on Skin displayed the fallback word `ARCHIVE` beneath the `YEAR` heading. Fix: use `N/D` when no four-digit year is indexed. Post-fix evidence: the live row reports `N/D`.
+4. Earlier mobile P2 finding: the file list kept the pulled preview too far below the initial viewport. Fix: bound the mobile list to 320 px so the record follows directly after a compact browsing surface. Post-fix evidence: the searched mobile state shows the selected row and preview together without horizontal overflow.
+5. User correction: full-color thumbnails felt less integrated with the archive interface. Fix: sample every original thumbnail into a responsive high-resolution ASCII canvas using 3 x 4 px mobile cells and 4 x 5 px desktop cells. Post-fix evidence: desktop and mobile captures retain recognizable project imagery in luminous green on a black terminal field.
+6. User request: date ordering needed both directions without losing the alphabetical baseline. Fix: add explicit A–Z, Newest, and Oldest controls. Post-fix evidence: newest begins with 2026 records, oldest begins with 2020, and the undated Stories on Skin record remains last in both date modes.
 
-- Fonts and typography: unchanged from the approved expanded preview.
-- Spacing and layout rhythm: the desktop elbow uses the open diagram area and enters the panel at the image center; the mobile line uses the short gap between the node and sheet.
-- Colors and visual tokens: black is the structural trace and cyan is the animated signal, both from the established Section 1 palette.
-- Image quality and asset fidelity: project imagery remains crisp and unobstructed; the connector never overlays the photograph.
-- Copy and content: all selected project labels, metadata, paging copy, and actions remain unchanged.
-- Responsiveness and accessibility: all seven nodes share the same visible docking behavior; the SVG trace is decorative and hidden from assistive technology; reduced-motion mode shows the completed black line immediately and removes the moving cyan packet.
-- No remaining P0, P1, or P2 issues.
+## Primary interactions and verification
 
-**Comparison history**
+- Category volume filtering: passed; Digital reduces the list to 10 records and automatically selects the first visible record.
+- Local archive search: passed; searching `deficit` and `biotic` reduces the directory and updates the pulled preview.
+- Sort controls: passed; A–Z preserves the default archive order, Newest sorts descending, and Oldest sorts ascending with undated entries last.
+- File selection and preview update: passed with `aria-pressed`, keyboard focus selection, stepped reveal, and matching metadata.
+- Open Project route: passed; selected records expose the correct internal project URL.
+- Desktop and mobile overflow: passed; document width equals the client width in both tested states.
+- Browser console: the prior full interaction pass was clean; the current motion-only pass rendered without an error overlay, while direct log retrieval was unavailable under the browser URL policy.
+- Production build: passed; the existing large-chunk advisory remains non-blocking.
 
-1. [P2] The initial connector worked for left-side nodes, but right-side nodes could remain underneath the expanded panel, leaving no visible source point.
-   - Fix: moved every selected node to a consistent desktop and mobile signal dock before measuring the connector path.
-   - Post-fix evidence: `soph-expanded-preview-about-connected.png` and `soph-expanded-preview-mobile-connected.png`.
+## Findings
 
-**Implementation checklist**
-
-- [x] Draw a persistent node-to-preview trace on desktop.
-- [x] Animate the trace with the existing stepped decode sequence.
-- [x] Keep every selected node visible before drawing the connection.
-- [x] Use a vertical connection into the mobile bottom sheet.
-- [x] Preserve image clarity, paging, dragging, keyboard navigation, routes, and reduced-motion behavior.
-- [x] Compare the source and final state together and verify the production build.
-
-final result: passed
-
----
-
-# Design QA: Single Connection + Bitmap Hover
-
-**Source visual truth**
-
-- Duplicate expanded connection state: `C:\Users\sophi\AppData\Local\Temp\soph-expanded-preview-connected-final.png`.
-- Previous layered hover state: `C:\Users\sophi\AppData\Local\Temp\soph-node-hover-clear.png`.
-- User direction: show only one connection line in expanded mode, and make hover previews a single bitmap image with a linear effect.
-
-**Implementation evidence**
-
-- Final expanded state: `C:\Users\sophi\AppData\Local\Temp\soph-expanded-preview-single-line.png`.
-- Final hover state: `C:\Users\sophi\AppData\Local\Temp\soph-node-hover-bitmap-linear.png`.
-- Combined full-view comparison: `C:\Users\sophi\AppData\Local\Temp\soph-single-line-bitmap-hover-comparison.png`.
-- Desktop viewport: 861 × 893.
-
-**Full-view comparison evidence**
-
-- Expanded mode keeps the selected node docked but removes the second SVG trace; the organism's original right-angle branch is now the only visible connection into the panel.
-- Hover mode removes the separate bitmap-strip image. The monitor now contains one project-specific image rendered at half resolution and scaled with pixelated sampling, plus one linear scan.
-
-**Focused region comparison evidence**
-
-- The top comparison row shows the second, higher elbow removed while the original lower branch still reaches the preview boundary.
-- The bottom comparison row shows the former clear-photo-plus-texture-strip anatomy replaced by one continuous bitmap project frame. The vertical black/cyan/yellow scan line is the only overlay effect.
-
-**Findings**
-
-- Fonts and typography: terminal chrome, project label, coordinate row, and status copy are unchanged.
-- Spacing and layout rhythm: monitor and expanded-panel dimensions are unchanged; no content shifts or new overflow were introduced.
-- Colors and visual tokens: the scan uses black, cyan, and yellow from the Section 1 palette; the project image keeps its own color.
-- Image quality and asset fidelity: hover uses the real project image with browser pixelated sampling, not a second generic texture asset; expanded imagery remains crisp and unfiltered.
-- Copy and content: unchanged.
-- Interaction and accessibility: hover/focus share the bitmap reveal, the scan is decorative, selected-state paging and routes still work, and reduced-motion mode removes the reveal/scan animation.
-- Runtime evidence: the hover visual contains exactly one image, expanded mode contains zero connector-overlay SVGs, and there is no horizontal overflow.
-- No remaining P0, P1, or P2 issues.
-
-**Comparison history**
-
-1. [P2] The added expanded connector sat beside the organism's original branch, creating two visible right-angle lines.
-   - Fix: removed the measured SVG connector and retained the selected-node docking so the original organism branch reaches the panel by itself.
-   - Post-fix evidence: `soph-expanded-preview-single-line.png`.
-2. [P2] The hover preview combined a normal project photograph with a separate bitmap strip, which read as an odd layered overlay.
-   - Fix: removed the second image and rendered the project itself as the bitmap surface with one stepped linear reveal and scanning line.
-   - Post-fix evidence: `soph-node-hover-bitmap-linear.png`.
-
-**Implementation checklist**
-
-- [x] Remove the duplicate expanded connector overlay.
-- [x] Preserve one original organism-to-panel connection.
-- [x] Use exactly one project image in each hover monitor.
-- [x] Pixelate the hover image without layering a texture asset.
-- [x] Keep one linear reveal/scan effect with reduced-motion support.
-- [x] Verify the production build and compare before/after states together.
+No actionable P0, P1, or P2 differences remain. The implementation intentionally uses the site's light cyber-biological palette and a live preview drawer instead of copying the reference's Windows-black surface one-to-one.
 
 final result: passed
 
----
+## MCAD x Ellwas dandelion growth hero — 2026-07-21
 
-# Design QA: Stable Aligned Connector Animation
+- Source visual truth: `C:\Users\sophi\AppData\Local\Temp\codex-clipboard-f4e66a27-0a5b-46cd-8039-2bb859d24247.png`.
+- Implemented vector sequence: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\public\assets\mcad-ellwas\growth-sequence.svg`.
+- Browser-rendered implementation: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\ellwas-growth-qa.png`.
+- Same-state comparison input: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\ellwas-growth-comparison.png`.
+- Viewport: 1172 x 912 desktop; opening hero at scroll position 0 with the complete bloom state visible.
 
-**Source visual truth**
+### Full-view comparison evidence
 
-- Prior static single-connection state: `C:\Users\sophi\AppData\Local\Temp\soph-expanded-preview-single-line.png`.
-- User direction: restore the preferred animated connector while making it connect reliably across every selected node.
+The combined comparison places the supplied seven-stage dandelion reference and the rendered MCAD x Ellwas opening in one input. The implementation preserves the reference's warm gray field, left-to-right accumulation, small-to-large radial progression, luminous white treatment, and held complete state. The project page intentionally uses the supplied `growth.svg` artwork rather than copying the reference's distinct flower illustration.
 
-**Implementation evidence**
+### Focused-region comparison evidence
 
-- Digital Work transition: `C:\Users\sophi\AppData\Local\Temp\soph-aligned-connector-transition.png`.
-- Digital Work settled state: `C:\Users\sophi\AppData\Local\Temp\soph-aligned-connector-review.png`.
-- Project Archive settled state after paging: `C:\Users\sophi\AppData\Local\Temp\soph-aligned-connector-stable.png`.
-- Mobile Physical Work state at 390 × 844: `C:\Users\sophi\AppData\Local\Temp\soph-aligned-connector-mobile.png`.
-- Static before/after comparison: `C:\Users\sophi\AppData\Local\Temp\soph-aligned-connector-comparison.png`.
+The upper reference strip and the hero's gray animation field are both fully visible in `ellwas-growth-comparison.png`. This makes the stage order, brightness, negative space, and final radial form directly comparable while retaining the surrounding project title console for context.
 
-**Full-view comparison evidence**
+### Required fidelity surfaces
 
-- The settled desktop composition is intentionally unchanged from the approved single-line state: selected-node dock, panel dimensions, diagram crop, typography, and image remain identical.
-- The restored trace sits directly on the node's existing horizontal circuit direction, so it adds motion without adding a second offset elbow.
+- Fonts and typography: the existing MCAD x Ellwas display title, Courier system labels, and project copy remain unchanged and unclipped.
+- Spacing and layout rhythm: the animation is contained inside the existing hero media slot, with the process strip centered in the gray field and the original two-column editorial balance preserved.
+- Colors and visual tokens: the warm gray reference ground is matched with `#55514f`; the growth artwork receives a restrained brightness, contrast, and glow lift while the existing black, cream, green, coral, and yellow interface tokens remain intact.
+- Image quality and asset fidelity: the implementation renders the supplied high-resolution SVG twice—one low-opacity guide and one progressively revealed foreground. No CSS-drawn dandelion, placeholder, or handmade replacement asset is used.
+- Copy and content: all project title, role, description, metadata, sections, source links, and archive media remain present. The former opening GIF still appears in the motion-test section rather than being discarded.
 
-**Focused region comparison evidence**
+### Comparison history
 
-- The transition capture shows the black trace drawing from the selected node toward the panel, followed by a cyan/yellow signal packet.
-- Project Archive proves the horizontal trace remains complete after paging to a distant node.
-- Mobile Physical Work proves the same connection becomes a short vertical trace into the bottom sheet and remains complete after paging.
+1. Earlier P2 finding: cropping the wide source into a single changing frame exposed neighboring forms and made the growth states feel misaligned. Fix: preserve the full supplied sequence and reveal it progressively from left to right in seven discrete steps. Post-fix evidence: the final comparison shows a coherent journey from the smallest form to the full bloom.
+2. Earlier P2 finding: the first reveal pass was too dim relative to the luminous source reference. Fix: increase foreground brightness and contrast, add a restrained warm drop shadow, and reduce the guide opacity. Post-fix evidence: the completed stages read clearly while inactive future stages remain subordinate.
 
-**Findings**
+### Primary interactions and verification
 
-- Fonts and typography: unchanged.
-- Spacing and layout rhythm: unchanged; the trace occupies the existing node-to-panel gap.
-- Colors and visual tokens: black structural line with cyan signal and yellow glow uses the established Section 1 palette.
-- Image quality and asset fidelity: project images remain crisp in expanded mode and the bitmap-only hover treatment is unchanged.
-- Copy and content: unchanged.
-- Interaction and accessibility: the connector is decorative and hidden from assistive technology; reduced-motion mode displays the completed black connection immediately and suppresses the moving packet.
-- Runtime evidence: the completed path reaches the panel boundary, the draw animation finishes with zero dash offset, and no horizontal overflow occurs.
-- No remaining P0, P1, or P2 issues.
+- Seven-step timed reveal and complete-state hold: passed.
+- Pause control: passed; button text changes to `PLAY` and the animation receives the `is-paused` state.
+- Resume control: passed; button text returns to `PAUSE` and the animation continues.
+- Reduced-motion fallback: implemented; the completed sequence is shown statically and decorative motion is suppressed.
+- Desktop containment: passed at 1172 x 912 with no visual clipping or horizontal overflow in the opening.
+- Mobile CSS path: reviewed; the existing <=700 px single-column hero and viewport-bounded media rules remain active. A separate narrow browser capture was unavailable in the current fixed in-app viewport.
+- Production build: passed. The existing large-chunk advisory remains non-blocking.
 
-**Comparison history**
+### Findings
 
-1. [P2] The non-animated organism branch did not read as a reliable connection for every selected node.
-   - Fix: restored a measured connector aligned to the selected node's horizontal circuit direction on desktop and vertical direction on mobile.
-2. [P2] Paging restarted the draw animation when the map's travel class cleared, briefly returning the connector to a partial state.
-   - Fix: keyed the animated connector only to the selected node, so it animates once per selection and remains fully drawn after map motion ends.
-   - Post-fix evidence: `soph-aligned-connector-stable.png` and `soph-aligned-connector-mobile.png`.
-
-**Implementation checklist**
-
-- [x] Restore the animated connection.
-- [x] Align it with the existing circuit direction instead of adding an offset elbow.
-- [x] Keep every selected node docked and measurable.
-- [x] Prevent paging from restarting the completed line.
-- [x] Preserve mobile vertical behavior and reduced-motion behavior.
-- [x] Verify multiple nodes, mobile paging, production build, and combined visual comparison.
+No actionable P0, P1, or P2 differences remain. The reference establishes the growth behavior and visual rhythm; the delivered animation retains the project's own supplied Ellwas growth forms.
 
 final result: passed
 
----
+## Merimnao halftone background - 2026-07-20
 
-# Design QA: Line-Free Zoomed Preview
+- Source visual truth: `C:\Users\sophi\Downloads\Untitled-1.png`.
+- Implemented asset: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\public\assets\merimnao-halftone-background.png`.
+- Desktop implementation screenshot: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\merimnao-bg-qa-desktop.png`.
+- Mobile implementation screenshot: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\merimnao-bg-qa-mobile.png`.
+- Desktop game-stills carousel screenshot: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\merimnao-carousel-qa-desktop.png`.
+- Mobile game-stills carousel screenshot: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\merimnao-carousel-qa-mobile.png`.
+- Same-view comparison: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\merimnao-bg-design-comparison.png`.
+- Viewports: 745 x 678 and 390 x 844; opening state at scroll position 0.
 
-**Source visual truth**
+### Full-view comparison evidence
 
-- Zoomed state with the lingering hover connector: `C:\Users\sophi\AppData\Local\Temp\soph-zoomed-no-connectors.png`.
-- User direction: remove connector lines entirely while zoomed into an expanded preview.
+The combined comparison places the supplied 692 x 350 black-and-white bitmap beside the rendered opening. The implementation preserves the bitmap's black field, fine white halftone density, horizontal composition, and obscured body silhouette. The source is used directly as a fixed cover background rather than recreated with CSS.
 
-**Implementation evidence**
+### Focused-region comparison evidence
 
-- Final zoomed state: `C:\Users\sophi\AppData\Local\Temp\soph-zoomed-no-lines-final.png`.
-- Same-viewport comparison: `C:\Users\sophi\AppData\Local\Temp\soph-zoomed-no-lines-comparison.png`.
-- Desktop viewport: 1024 × 768.
+A separate focused crop was unnecessary because this change has one supplied raster surface. The desktop comparison clearly resolves the halftone over the complete hero, while the mobile capture verifies the same texture around the video and beneath the title console without horizontal overflow.
 
-**Full-view comparison evidence**
+### Required fidelity surfaces
 
-- The right-angle hover connector visible between the selected node and panel in the source is completely absent in the final state.
-- The selected node, organism crop, panel layout, clear image, typography, pager, action, and palette remain unchanged.
+- Fonts and typography: the existing Merimnao display and terminal typography remain unchanged and readable over the translucent panels.
+- Spacing and layout rhythm: the existing hero, console, record, archive, and pager geometry is preserved. Only page-specific background and panel transparency were introduced.
+- Colors and visual tokens: the bitmap remains black and white after the brief green-tint exploration was explicitly reversed. Existing blue/coral interface signals remain unchanged.
+- Image quality and asset fidelity: the supplied PNG is copied without resampling and rendered as the actual fixed background. No CSS illustration, SVG substitute, or generated approximation is used.
+- Copy and content: all Merimnao copy, video, process-book images, navigation, and archive content remain intact.
 
-**Focused region comparison evidence**
+### Comparison history
 
-- The comparison centers the node-to-panel gap at identical scale. The source shows a thick black vertical/horizontal connector; the final shows only the organism artwork and white gap.
-- No separate SVG connector paths exist in the final DOM, and the hover/focus connector pseudo-element computes to opacity `0` with no animation while zoomed.
+1. P2 finding: the first pass exposed the dot field around the page but made the body silhouette too faint over the opening video. Fix: make the hero background transparent and adjust the embedded signal frame to 0.82 opacity. Post-fix evidence: the final desktop comparison shows the body bitmap across the dark video while preserving controls and gameplay visibility.
+2. User preference correction: a multiply-blended portfolio-green tint was tested and rejected. Fix: restore the original black-and-white source treatment. Post-fix evidence: the final captures show neutral white halftone marks on black.
 
-**Findings**
+### Primary interactions and verification
 
-- Fonts and typography: unchanged.
-- Spacing and layout rhythm: unchanged.
-- Colors and visual tokens: unchanged.
-- Image quality and asset fidelity: expanded project image remains crisp and unfiltered.
-- Copy and content: unchanged.
-- Interaction and accessibility: node/panel decode animation, paging, dragging, keyboard controls, routes, and reduced-motion behavior remain intact; only connector-line rendering is removed in the zoomed state.
-- Runtime evidence: zero zoomed connector SVGs, hidden hover connector pseudo-element, and no horizontal overflow.
-- No remaining P0, P1, or P2 issues.
+- Vimeo player remains visible and interactive.
+- Game stills use one auto-cycling window; observed image state advancing from 1 of 3 to 3 of 3, with working previous/next buttons, pause-on-interaction behavior, and a live counter.
+- Header navigation and project-record entry remain unobstructed.
+- Responsive horizontal overflow: none at 745 px or 390 px.
+- Browser console warnings/errors: none.
+- Production build: passed; the existing bundle-size advisory remains non-blocking.
 
-**Comparison history**
+### Findings
 
-1. [P2] Removing the explicit SVG trace still left the hover connector visible when the selected node remained under the pointer.
-   - Fix: added a zoomed-state override that suppresses the hover/focus connector pseudo-element regardless of hover state or source-order precedence.
-   - Post-fix evidence: `soph-zoomed-no-lines-final.png` and `soph-zoomed-no-lines-comparison.png`.
-
-**Implementation checklist**
-
-- [x] Remove the explicit animated connector implementation.
-- [x] Suppress the hover/focus connector while zoomed.
-- [x] Preserve the selected-node and expanded-panel animations.
-- [x] Preserve the bitmap-only hover preview outside zoomed mode.
-- [x] Verify the line-free state under the pointer and compare it at the same viewport.
-- [x] Verify the production build.
+No actionable P0, P1, or P2 differences remain. The background is recognizable, page-specific, and does not compromise content legibility.
 
 final result: passed
 
----
+## Decay physics point cloud - 2026-07-20
 
-# Design QA: Minimal Command Header
+- Source visual truth: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\public\assets\206-d68221bb106a.jpg` and the supplied `D:\assets\website\drafting\castlewilliamscrumble.stl`.
+- Implemented model asset: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\public\models\decay\castle-williams-crumble.stl`.
+- Desktop implementation screenshot: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\decay-point-cloud-qa-desktop.png`.
+- Mobile implementation screenshot: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\decay-point-cloud-qa-mobile.png`.
+- Held-state screenshot: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\decay-point-cloud-qa-held.png`.
+- Full-view comparison: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\decay-point-cloud-design-comparison.png`.
+- Fragment-collapse screenshot: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\decay-fragment-qa-collapse.jpg`.
+- Fragment-held screenshot: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\decay-fragment-qa-held.jpg`.
+- Viewports: 1440 x 900 desktop and 390 x 844 mobile.
+- States: active vibration/degradation, total structural failure, active press-and-hold magnetic recovery, release-to-collapse, and reduced-motion stabilization.
 
-**Source visual truth**
+### Full-view comparison evidence
 
-- Supplied header reference: `C:\Users\sophi\AppData\Local\Temp\codex-clipboard-dc144d17-876b-4467-8319-906e210453f0.png`.
-- User direction: keep the header extremely minimal and digital, make INDEX the dropdown control, and contain search inside it.
+The source sculpture photograph and the 1440 px browser capture were normalized into one side-by-side comparison. The point cloud preserves the supplied Castle Williams mesh's circular footprint, courtyard opening, low curved wall, three-quarter viewpoint, and irregular architectural silhouette. The implementation intentionally replaces the source photograph's material surface and gallery table with the requested point-cloud system and a quiet fog-white editorial field.
 
-**Implementation evidence**
+### Focused-region comparison evidence
 
-- Closed desktop state: `C:\Users\sophi\AppData\Local\Temp\soph-header-closed.png`.
-- Open desktop index: `C:\Users\sophi\AppData\Local\Temp\soph-header-open.png`.
-- Open mobile index at 390 x 844: `C:\Users\sophi\AppData\Local\Temp\soph-header-mobile-open.png`.
-- Desktop test viewport: 861 x 912.
+The held-state screenshot verifies that the central courtyard, front wall, interior vertical elements, and missing wall section resolve from the actual STL rather than a drawn approximation. The fragment-collapse screenshot verifies that disconnected architectural shells remain coherent while they tumble away. The mobile screenshot verifies the same model remains fully contained and legible at 390 px, with the instruction and integrity readout separated from the title and geometry.
 
-**Full-view comparison evidence**
+### Required fidelity surfaces
 
-- The implementation matches the reference's floating composition: a mixed-case prompt wordmark at the upper left and a single compact yellow navigation control at the upper right, with no center information block or header rule.
-- The map remains the dominant visual and the open panel stays confined to the upper-right corner.
+- Fonts and typography: the global mixed-case wordmark, oversized Arial project title, and compact Courier system labels reuse the existing portfolio hierarchy. No title, instruction, or status text clips at 1440 or 390 px.
+- Spacing and layout rhythm: the full-height interaction sits directly under the shared header, the enlarged desktop model holds the center of the field, and the mobile camera scale keeps the complete castle inside the viewport. No horizontal overflow was found.
+- Colors and visual tokens: the page uses the established fog, black, blue, coral, yellow, green, and white palette. Saturated colors are limited to sparse point signals, focus, and system status.
+- Image and asset fidelity: the visible point positions are triangle centroids from the supplied STL at 52,121 surface coordinates. Shared STL vertices are resolved into 290 disconnected architectural shells, which drive coherent fragment physics. No CSS illustration, handmade SVG, placeholder model, or procedural castle substitute is used.
+- Copy and content: the original Decay statement, date, materials, three source photographs, local video, neighboring project navigation, and footer remain present.
+- Physical-work context: the opening frame includes a persistent labeled exhibition-view inset using source image 207, visibly showing the PLA sculpture, shaking platform, wiring, and participant button. The heading also identifies the piece as a physical installation and names its physical system before the visitor scrolls.
 
-**Focused region comparison evidence**
+### Comparison history
 
-- The wordmark uses the same `>Soph Katsivelos` command-line motif and quiet sans-serif scale as the reference.
-- The yellow panel preserves the reference's small terminal character while adding the requested inline search field, compact system status, and numbered HOME / ARCHIVE / ABOUT links.
+1. Earlier P2 finding: the first desktop point cloud was visually subordinate to the title and did not carry the source sculpture's physical presence. Fix: increase the desktop scene scale to 1.18 while retaining dedicated tablet and mobile scales. Post-fix evidence: the 1440 px comparison shows the castle as the dominant central object.
+2. Earlier P2 finding: the initial floor friction stopped detached points inside the original ring footprint, making failure read as flattening rather than breakup. Fix: increase radial release impulses and convert floor drag to time-based friction. Post-fix evidence: the failed state spreads outward across the floor before settling.
+3. Earlier P2 finding: the original mobile camera crop cut off both outer walls and the instruction overlapped the title. Fix: use a 0.52 portrait scene scale, compensate point size, widen the title measure, and move the touch instruction below the heading. Post-fix evidence: the 390 x 844 screenshot contains the full castle and separated UI regions.
+4. P1 finding: the interactive opening could be mistaken for a standalone digital artwork because the physical sculpture and mechanism appeared only in the archive below. Fix: add a persistent `PHYSICAL WORK` exhibition inset and an explicit material/system label to the hero. Post-fix evidence: the first viewport now shows both the responsive point-cloud interpretation and the installed motorized sculpture.
 
-**Findings**
+### Findings
 
-- Fonts and typography: clean mixed-case Arial wordmark paired with compact monospaced terminal controls.
-- Spacing and layout rhythm: the transparent 94px desktop header and 74px mobile header float above the diagram without shifting or clipping the controls.
-- Colors and visual tokens: the INDEX terminal keeps a white fill and uses Section 1 yellow only for hover states, alongside the established black, blue, cyan, green, and fog accents.
-- Node interaction color: hover, keyboard focus, and selected nodes keep a white fill while the signal ring and core switch to Section 1 yellow.
-- Image quality and asset fidelity: the diagram artwork and node imagery are unchanged.
-- Copy and content: SEARCH and primary navigation are consolidated into the INDEX panel; no duplicate navigation surface remains.
-- Interaction and accessibility: semantic button, search form, navigation landmark, focus styles, live result count, first-result submit behavior, and reduced-motion handling are present.
-- Runtime evidence: `witches` returns the Witches' Flight 3D result on desktop and mobile; the dropdown stays fully within both viewports; document width remains 390px on mobile; no horizontal or vertical overflow appears on desktop.
-- No remaining P0, P1, or P2 issues.
+No actionable P0, P1, or P2 differences remain. The raster source and point-cloud implementation intentionally differ in material treatment because the point-cloud transformation and physics collapse are the selected design direction.
 
-**Implementation checklist**
+### Primary interactions and console
 
-- [x] Replace the heavy header bar with a floating command-style header.
-- [x] Use the supplied prompt wordmark treatment.
-- [x] Consolidate navigation and search into one INDEX dropdown.
-- [x] Keep the dropdown compact, digital, and palette-aligned.
-- [x] Verify search results and layout bounds on desktop and mobile.
-- [x] Verify the yellow node interaction state preserves a white fill and black border.
-- [x] Compare the source reference and final implementation together.
-- [x] Verify the production build.
+- Progressive unattended degradation: passed; structural integrity reaches 0% and all 290 geometry fragments tumble and settle against the invisible floor.
+- Magnetic recovery from total failure: passed; focus/click returned structural integrity to 100% and restored every fragment and sampled surface point to its source coordinate and rotation.
+- Status and accessibility state: passed; `aria-pressed`, status copy, progress value, keyboard focus, and mobile press-and-hold instructions update with the interaction.
+- Responsive containment: passed at 1440 x 900 and 390 x 844 with no horizontal overflow.
+- Reduced motion: passed by holding the cloud at its source coordinates and suppressing vibration/collapse.
+- Browser console warnings/errors: none.
+- Production build: passed. The existing large-chunk advisory remains non-blocking.
+
+### Follow-up polish
+
+P3: a later performance pass could move point transforms into a GPU shader if the source mesh is increased substantially beyond the current 52,121 samples.
 
 final result: passed
 
----
+## Authored project layout system — 2026-07-20
 
-# Content QA: Complete Original-Site Media Sync
+- Reference routes: `http://127.0.0.1:4173/`, `http://127.0.0.1:4173/digital/biotic-gallery`, `http://127.0.0.1:4173/digital/witches-flight-3d`, and `http://127.0.0.1:4173/digital-sociology-study`.
+- Primary source screenshots: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\biotic-gallery-qa-desktop.png` and `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\biotic-gallery-qa-mobile.png`.
+- Browser-rendered implementation: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\project-layout-qa-desktop.png` and `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\project-layout-qa-mobile.png`.
+- Same-viewport comparison inputs: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\project-layout-qa-desktop-comparison.png` and `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\project-layout-qa-mobile-comparison.png`.
+- Viewports: 1425 x 891 desktop and 375 x 812 mobile. Responsive boundary checks also covered 700 and 701 px.
+- Scope: all 16 routes rendered by the shared project system, including the section-aware Collection, Theater Production Work, and Aippy variants plus the Merimnao process-book override.
 
-**Scope**
+### Full-view comparison evidence
 
-- Current source audit: `C:\tmp\source-projects-current.json`.
-- Included: all 19 Digital, Physical, and Client project routes from the original portfolio.
-- Excluded by user direction: Digital Sociology Study.
+The combined desktop and mobile inputs compare Biotic Gallery's strongest system cues directly with the redesigned Small Planetarium route. The implementation preserves the reference hierarchy: shared command header, framed dominant visual, 1.42 / .58 desktop split, oversized sans display title, compact Courier metadata, hard one-pixel rules, status console, off-white ground, and deliberate mobile stacking. The project remains authored rather than cloned: its real plan artwork and project metadata replace Biotic's node map while using the same portfolio grammar.
 
-**Inventory evidence**
+### Required fidelity surfaces
 
-- 19/19 project records retain the complete source text-block count.
-- 85/85 unique source gallery images are mapped to local assets, with canonical full-size files preferred over Squarespace preview variants.
-- 16/16 source iframes are restored across 11 routes.
-- Small Scale Work includes all five source embeds; Aippy includes both source video embeds.
-- All three locally hosted project videos include their original poster imagery.
-- 28 source project/tool links are restored across applicable pages.
-- Asset validation reports zero missing local image, poster, or video files.
+- Fonts and typography: the reference's Arial/Helvetica black display treatment, Courier system labels, and compact editorial body rhythm are preserved. The first mobile comparison exposed a final-character wrap in `PLANETARIUM`; reducing the long-title breakpoint to 38 px keeps the word intact without weakening hierarchy.
+- Spacing and layout: desktop hero alignment, gutters, framed media, console baseline, and CTA match the reference's composition. At <=980 px the hero becomes one column; at <=700 px chapters, media inventories, links, and route navigation remain readable with no horizontal overflow.
+- Colors and tokens: Digital uses the existing portfolio blue/fog system, Physical uses coral/blush, and For Clients uses green/soft white. Borders remain square and flat, with no generic rounded-card or shadow treatment introduced.
+- Image quality and asset fidelity: every project uses its existing raster, video, audio, and embed inventory with `object-fit: contain` where crop loss would damage artwork. No generated substitutes, placeholder boxes, CSS illustrations, or handcrafted SVG assets were added.
+- Copy and content: original titles, descriptions, years, materials, embeds, and links are preserved. Multi-project pages now keep each work's copy, media, and CTA together rather than flattening them into detached groups.
+- Accessibility and controls: gallery controls are semantic buttons with labels; project imagery has descriptive alt text; the header menu and primary record CTA are keyboard-addressable; focus styles use the established yellow active state; reduced-motion behavior remains inherited from the existing site.
 
-**Implementation checklist**
+### Comparison history
 
-- [x] Preserve the homepage and Digital Sociology content without bulk changes.
-- [x] Restore YouTube, Vimeo, Vectary, and interactive-web iframes.
-- [x] Restore project links with safe external-link behavior.
-- [x] Render every local video, its poster, and any additional audio/video records.
-- [x] Prefer full canonical images over preview-sized variants.
-- [x] Use responsive two-column embeds on desktop and one column on mobile.
-- [x] Verify inventory counts against the current original site audit.
-- [x] Verify the production build.
+1. Earlier P1 finding: generic pages opened as a large gallery followed by flat copy and detached media, losing the authored hierarchy of the four reference pages. Fix: introduce a framed media-led hero, project console, record section, media archive, and collection pager. Post-fix evidence: both final comparison inputs preserve the reference's media/title/metadata hierarchy.
+2. Earlier P1 finding: Collection, Theater Production Work, and Aippy lost subsection-to-media association. Fix: create route-aware chapters with 6, 3, and 2 sections respectively; Merimnao retains its lead film and separate process-book archive.
+3. Earlier P2 finding: `SMALL PLANETARIUM` wrapped its final letter onto a third mobile line. Fix: tighten the mobile long-title scale from 42 px to 38 px. Post-fix evidence: the final 375 x 812 comparison keeps `PLANETARIUM` on one line.
+4. Earlier console finding: duplicate tool labels generated repeated React keys on one project. Fix: include the tag index in each key. Post-fix evidence: a clean 16-route audit reports no warnings or errors.
+
+### Primary interactions and verification
+
+- Gallery next control: passed; counter and alt text advanced from `01 / 03` to `02 / 03`.
+- Header Index menu: passed; collection links became visible and the menu closed normally.
+- Primary CTA: passed; `ENTER PROJECT RECORD` navigated to `#project-record` and scrolled to the editorial record.
+- Responsive audit: all 16 redesigned routes passed at 1440 x 1000 and 390 x 844 with header, hero, footer, and zero horizontal overflow. Four representative variants also passed at 700 and 701 px.
+- Reference regression audit: Home, Biotic Gallery, Witches' Flight, Digital Sociology Study, and Stories on Skin passed desktop/mobile overflow and structure checks. Protected Biotic node mappings and Stories on Skin behavior were not edited.
+- Redesigned-route console: no warnings or errors after the key correction. Digital Sociology retains its pre-existing FBXLoader material fallback warnings; no page errors were introduced.
+- Production build: passed using `C:\tmp\sophkatsivelos-build-check`. The normal `dist` directory remained unavailable to Vite because OneDrive held `dist/assets`; this does not affect source compilation. The existing 500 kB chunk-size advisory remains non-blocking.
+
+### Findings
+
+No actionable P0, P1, or P2 design, behavior, accessibility, or responsive findings remain. P3 follow-up is limited to the existing bundle-size advisory and pre-existing Digital Sociology FBX material warnings.
+
+final result: passed
+
+## Stories on Skin wall rebalance - 2026-07-20
+
+- Source visual truth: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\design-reference-stories-on-skin.png`.
+- Browser-rendered implementation: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\design-qa-stories-on-skin-desktop.png`.
+- Desktop overview: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\design-qa-stories-on-skin-desktop-top.png`.
+- Mobile evidence: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\design-qa-stories-on-skin-mobile.png`.
+- Same-state comparison input: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\design-qa-comparison-stories-on-skin.png`.
+- Viewports: 970 x 682 desktop and 390 x 844 mobile.
+- State: lower gallery wall with cast 05 selected and its first close-up visible; mobile default wall plus selected-popup bounds check.
+
+### Full-view comparison evidence
+
+The combined comparison places the annotated source and the revised browser capture side by side. The source shows a large inactive center and a cast 05 window stranded at the lower-right edge. The revised wall pulls casts 03 and 04 into a balanced upper pair, shifts cast 05 inward as the lower anchor, and places its preview directly in the marked open area. The shortened desktop wall removes excess empty space after the installation without changing the mobile exhibition sequence.
+
+### Focused-region comparison evidence
+
+No additional crop was needed because the desktop comparison is already focused on the complete affected region at native 970 x 682 resolution. The cast silhouettes, video edge, chest position, popup placement, connecting line, and remaining negative space are all readable in the same comparison input. The separate desktop-top and mobile captures cover the surrounding statement/video relationship and narrow-screen flow.
+
+### Required fidelity surfaces
+
+- Fonts and typography: the project statement, title hierarchy, Courier metadata, and global header remain unchanged; the desktop-top capture shows no new wrapping, clipping, or density drift.
+- Spacing and layout rhythm: cast 02 no longer intersects the statement card, the film begins below the statement, casts 03 and 04 balance the video, and cast 05 plus its preview occupy the formerly empty center. The desktop wall was reduced from 1650 px to 1300 px; no horizontal overflow was introduced.
+- Colors and visual tokens: the warm wall, black film/preview chrome, cyan connector shadow, blue focus outline, and existing borders remain unchanged.
+- Image quality and asset fidelity: all supplied silicone-cast and close-up raster assets are preserved at their existing scale and crop behavior. No placeholder, generated substitute, CSS illustration, or SVG approximation was introduced.
+- Copy and content: project text, cast labels, preview labels, counter, and film content remain unchanged.
+
+### Comparison history
+
+1. Earlier P2 finding: the lower wall had a broad inactive center, cast 05 sat too far left, and its preview was pushed toward the bottom-right edge. Fix: move cast 05 to 17% / 66% at 49% width, pull casts 03 and 04 inward, and reduce the desktop wall height. Post-fix evidence: the same-state comparison shows the chest centered beneath the upper pair and the preview occupying the user-marked area.
+2. Earlier P2 finding: shortening the wall initially caused the film to touch the statement and cast 02 to overlap the statement edge. Fix: move the film to 32.5% and cast 02 to 33% / 29%. Post-fix evidence: `design-qa-stories-on-skin-desktop-top.png` shows a clean statement-to-film gap and an unobstructed cast.
+
+### Findings
+
+No actionable P0, P1, or P2 issues remain. The intentional differences from the annotated source are the requested layout improvements rather than fidelity regressions.
+
+### Primary interactions and console
+
+- Cast 05 activation and `01 / 02` frame counter: passed.
+- Desktop popup bounds: 655-955 px horizontally and 285-553 px vertically, fully inside the 970 x 682 viewport.
+- Mobile popup bounds: 14-361 px horizontally and 582-830 px vertically, fully inside the 390 x 844 viewport.
+- Responsive horizontal overflow: none at desktop or mobile.
+- Escape dismissal: passed.
+- Browser console warnings/errors: none.
+- Production build: passed; the existing bundle-size advisory remains non-blocking.
+
+### Follow-up polish
+
+No P3 follow-up is necessary for this layout pass.
+
+final result: passed
+
+## Stories on Skin placement correction - 2026-07-20
+
+- Source annotations: `codex-clipboard-1792946d-2a06-4d51-bc31-f2433d0a5a15.png` and `codex-clipboard-4296cac3-eadd-483f-84d9-ee0a7b510146.png`.
+- Desktop cast 04 moved from 50% to 40% wall height (about 165px upward at the 1068px reference width).
+- Desktop cast 05 moved from 80% to 58% wall height (about 363px upward at the 1068px reference width).
+- Verified at 1068 x 868: both casts occupy the annotated gaps, remain separated, and do not overlap the film window.
+- Verified at 390 x 844: dedicated mobile positions remain active, content width equals viewport width, and no console errors were reported.
+- Production build passed.
+
+final result: passed
+
+## Biotic Gallery location mapping correction — 2026-07-20
+
+- Source visual truth: `C:\Users\sophi\AppData\Local\Temp\codex-clipboard-35709973-7dde-4783-a815-01531cbfc4b7.png`.
+- Compared the complete Biotic Gallery source-image set against the six preview frames in the annotated map.
+- Verified rendered order: 01→148 dark cathedral, 02→146 purple pod, 03→144 neon ribs, 04→151 flower grove, 05→142 white creature, 06→149 hanging flowers.
+- Each node now owns its image path directly, so reordering the broader project gallery cannot scramble the map.
+- Production build passed and the rendered route reported no console errors.
+
+final result: passed
+
+## MCAD x Ellwas interactive bloom — 2026-07-21
+
+- Source visual truth: `C:\Users\sophi\AppData\Local\Temp\codex-clipboard-7d9fc7fd-d305-453d-9313-171d6f859724.png`.
+- Supplied tip assets: `poof-finance.svg`, `poof-entrepreneurship.svg`, `poof-education.svg`, and `poof-health.svg` in `public\assets\mcad-ellwas`.
+- Browser-rendered states: `ellwas-interactive-initial.png`, `ellwas-interactive-mid.png`, `ellwas-interactive-mature.png`, and `ellwas-interactive-physics.png`.
+- Same-input comparison: `C:\Users\sophi\OneDrive\Documents\Website\sophkatsivelos-static\ellwas-interactive-comparison.png`.
+- Viewport: 1172 x 912 desktop; opening hero at scroll position 0.
+- States: resting seed, active mid-growth, mature four-ring bloom, direct cursor tracking, independent stem settling, held growth, keyboard growth, and reset.
+
+### Full-view comparison evidence
+
+The combined comparison places the supplied transition reference above three live implementation states. The interactive version preserves the reference's warm gray field, luminous center, radial growth, increasing density, and progression from a tiny seed to a complete mandala. It intentionally uses the four supplied MCAD poof drawings as the terminal forms instead of copying the reference's different petal artwork.
+
+### Focused-region comparison evidence
+
+The comparison crops the complete hero media field at early, middle, and mature states, making branch direction, poof orientation, glow, and density directly readable. `ellwas-interactive-physics.png` separately verifies that the luminous core occupies the pointer position while the outer stems carry the movement lag.
+
+### Required fidelity surfaces
+
+- Fonts and typography: the existing title console and compact Courier signal labels remain unchanged. New instructions and status text reuse the same terminal scale and optical weight.
+- Spacing and layout rhythm: the interaction stays inside the original hero media slot and preserves the page's established two-column composition. The center is no longer constrained away from the edges because the user's cursor is the explicit anchor.
+- Colors and visual tokens: the supplied reference's warm gray ground and creamy luminous linework are preserved, while focus and progress continue to use the portfolio's yellow system state.
+- Image quality and asset fidelity: all four supplied SVG tip drawings are rendered directly as vector images at the stem endpoints. From the center outward, Finance, Health, Education, and Entrepreneurship each occupy one concentric ring, including their smaller side sprouts. The stems are live canvas paths required for the requested generative interaction; no replacement tip illustrations or placeholder assets are used.
+- Copy and content: the page title, project statement, sections, links, and supporting media remain intact. The hero status now describes the live cursor interaction rather than the removed timeline animation.
+
+### Comparison history
+
+1. Earlier P1 finding: the first interpretation was a passive left-to-right reveal and did not respond to the pointer. Fix: replace it with a live canvas bloom whose center follows the pointer, accumulates sprouts only while active, freezes on leave, and stops at 100%. Post-fix evidence: pointer movement, progress changes, and the early/mid/mature captures verify the requested behavior.
+2. Earlier P2 finding: sequential births formed a clockwise wedge rather than a balanced mandala. Fix: distribute each ring's birth order around the circumference with a deterministic permutation. Post-fix evidence: the mid-growth capture shows new forms emerging across multiple directions.
+3. User correction: constraining the bloom for edge containment meant its center did not coincide exactly with the cursor. Fix: anchor the luminous core directly to the pointer and move the physics into a damped spring applied to the outer branches and poofs. Post-fix evidence: `ellwas-interactive-physics.png` and live movement testing show the core at the interaction point while the surrounding form bends and settles.
+4. Earlier P1 finding: all supplied poofs were oriented back toward the stems. Fix: rotate endpoint assets 180 degrees around their anchor. Post-fix evidence: the corrected mid and mature captures show finance, entrepreneurship, education, and health poofs opening outward.
+5. Earlier P2 finding: one shared sway value made the flower bend as a rigid bundle. Fix: assign every stem its own spring state, stiffness, damping, drag, and cross-axis phase, then derive its tip rotation from the live curve tangent. Post-fix evidence: `ellwas-interactive-physics.png` shows visibly different bend amounts and recovery across neighboring stems.
+6. Earlier P1 finding: the four supplied poof types were shuffled across all radii, obscuring the pillar system. Fix: organize Finance, Entrepreneurship, Education, and Health into four ordered concentric growth rings and keep side sprouts within their parent type. Post-fix evidence: the mature comparison state clearly resolves four distinct terminal bands.
+7. Earlier P2 finding: applying pointer drag as a shared screen-space offset let stems opposite the force extend beyond their grown radius, producing a rigid cone or fan silhouette. Fix: project movement into each stem's own radial and tangential axes, allow radial motion to compress only, and preserve independent sideways sweep and recovery. Post-fix evidence: fast diagonal sweeps keep every endpoint at or inside its resting radius while neighboring stems bend by different amounts.
+8. User refinement: the constrained stems still needed a slight backward flex under acceleration. Fix: replace the single quadratic bow with a cubic stem whose anchored base, flexible middle, and velocity-sensitive tip react at different rates. Post-fix evidence: fast sweeps show the upper stem and poof trailing behind the cursor while the base remains rooted and the grown radius stays constrained.
+9. User refinement: a static mature flower felt too still between interactions. Fix: after 650ms without pointer movement, ease the bloom into a central idle rotation at 0.036 radians per second; pointer movement eases the rotation back to a stop, and reduced-motion mode disables it. Post-fix evidence: two captures 4.2 seconds apart show a subtle clockwise change without moving the luminous cursor anchor.
+10. User refinement: Entrepreneurship should define the outermost ring. Fix: swap the previous Health and Entrepreneurship assignments, preserving each type as a complete ring and keeping side sprouts matched to their parent type. Post-fix evidence: the mature state renders the Entrepreneurship SVGs across all 16 outer endpoints and Health across the 10-stem inner ring.
+
+### Primary interactions and verification
+
+- Pointer enter/move: passed; movement activates growth and relocates the bloom center.
+- Cursor-core anchor: passed; the native cursor is hidden inside the field and replaced by the luminous flower center.
+- Elastic response: passed; pointer velocity excites independent radial/tangential springs and a progressive cubic flex, so neighboring stems compress, trail backward, and settle at different rates without outward stretching.
+- Four-type ring mapping: passed; the concentric order is Finance, Health, Education, then Entrepreneurship, and each ring's side branches retain that type.
+- Idle rotation: passed; the mature bloom eases into a very slow central rotation after pointer stillness and stops rotating under renewed input.
+- Pointer leave: passed; accumulated growth is held rather than reset.
+- Timed growth cap: passed; the adjusted 14-second growth cycle reaches and remains at 100%.
+- Reset Bloom: passed; progress returns to the seed state and remains held until reactivated.
+- Keyboard activation: passed with visible focus, Space/Enter toggle behavior, and Escape hold.
+- Reduced-motion mode: implemented; the mature form is rendered immediately without timed growth.
+- Desktop horizontal overflow: none at 1172 x 912.
+- Mobile CSS path: reviewed; the existing single-column, viewport-bounded hero remains active below 700 px. A separate narrow browser capture was unavailable in the fixed in-app viewport.
+- Browser console: no application errors.
+- Production build: passed; the existing large-chunk advisory remains non-blocking.
+
+### Findings
+
+No actionable P0, P1, or P2 differences remain. The primary visual difference from the transition reference is intentional: the final bloom uses the project's supplied line-art poofs rather than the reference image's furry petal forms.
+
+final result: passed
+
+## Stories on Skin collision-free responsive placement — 2026-07-21
+
+- Source visual truth: `design-reference-stories-on-skin-reorg.png`.
+- Desktop implementation: `design-qa-stories-on-skin-separated-desktop.png` at 1154 x 945.
+- Tablet implementation: `design-qa-stories-on-skin-separated-tablet.png` at 700 x 844.
+- Mobile implementation: `design-qa-stories-on-skin-separated-mobile.png` at 390 x 844.
+- Side-cast selected state: `design-qa-stories-on-skin-separated-side-active.png`.
+- Same-input comparison: `design-qa-comparison-stories-on-skin-separated.png`.
+- Responsive comparison: `design-qa-stories-on-skin-separated-responsive.png`.
+
+### Full-view and focused comparison evidence
+
+The desktop comparison shows the vertical side cast moved completely below the film with a visible 36.4 px gap. The statement, film, and five casts remain visually distinct. The responsive comparison shows the dedicated tablet and mobile arrangements, while the selected-state capture confirms the green outline and close-up interaction remain intact after repositioning.
+
+### Required fidelity surfaces
+
+- Fonts and typography: existing project typography and wrapping are preserved.
+- Spacing and layout rhythm: desktop wall height scales with wide viewports; cast 01 has a bounded width; cast 03 sits below the film; tablet cast 02 and cast 03 positions leave clearance; and narrow mobile cast 01 is capped to protect the statement.
+- Colors and visual tokens: the green selected/focus outline remains unchanged.
+- Image quality and asset fidelity: all original cast artwork and dedicated close-up sequences remain unchanged.
+- Copy and content: statement, film metadata, cast labels, and instructions remain unchanged.
+
+### Comparison history
+
+1. P1 layout issue: cast 03 overlapped the bottom-right of the film. Fix: move desktop cast 03 from 44% to 54% wall height and the 521–700 px version from 47% to 53%. Post-fix evidence: the desktop film bottom is 719.6 px and cast 03 begins at 756.0 px.
+2. P2 responsive collisions: cast 02 grazed the statement around 521–700 px, cast 01 could meet the statement at 520 px, and wide desktop casts could touch because the wall height stayed fixed while their widths grew. Fix: add breakpoint-specific cast widths/positions, cap narrow cast 01 at 270 px, and scale the desktop wall height with viewport width. Post-fix evidence: automated bounding-box checks report zero overlaps at 1280, 1154, 941, 940, 900, 701, 700, 600, 521, 520, 390, and 320 px.
+3. P2 interaction-state risk: focus/selection scaling could close narrow gaps. Fix: add extra mobile clearance and recheck all five selected casts at representative breakpoints. Post-fix evidence: selected-state checks at 1280, 940, 700, 520, and 390 px report zero overlaps.
+
+### Primary interactions and verification
+
+- Statement, film, and cast overlap scan: passed at twelve widths from 320–1280 px.
+- All five selected cast states: passed at five representative breakpoints.
+- Desktop cast 03 placement: 36.4 px clear of the film.
+- Horizontal overflow: none at every tested width.
+- Browser console warnings/errors: none.
+- Production build: passed; the existing bundle-size advisory remains non-blocking.
+
+### Findings
+
+No actionable P0, P1, or P2 issues remain.
+
+final result: passed
+
+## Style guide connected-node grammar — 2026-07-21
+
+- Source visual truth: `C:\Users\sophi\AppData\Local\Temp\codex-clipboard-ae263c40-91e0-4cb9-88ce-80d0303f3b20.png`.
+- Browser-rendered desktop evidence: `C:\Users\sophi\AppData\Local\Temp\style-guide-node-connection-desktop.png`.
+- Browser-rendered mobile evidence: `C:\Users\sophi\AppData\Local\Temp\style-guide-node-connection-mobile.png`.
+- Viewports: default in-app desktop viewport and 390 x 844 mobile.
+- State: node anatomy specimen plus the interactive `TRANSMIT` signal state.
+
+### Full-view and focused comparison evidence
+
+The supplied source and desktop implementation were opened together in one comparison input. The implementation preserves the defining anatomy: a white circular shell with black core and yellow focus ring; a signal path leaving the node on its horizontal centerline; one orthogonal bend; and a direct connection into the top edge of a double-framed terminal window. The implementation intentionally uses green for the path because the user established green as the highest-priority accent.
+
+The mobile focused capture verifies the same node-to-window attachment after the specimen stacks vertically. The line remains continuous and the terminal stays within the viewport.
+
+### Required fidelity surfaces
+
+- Fonts and typography: the source's heavy sans-serif title and small terminal labels remain represented by the guide's established display and mono stacks, with no clipping in the connected specimen.
+- Spacing and layout rhythm: the desktop relationship matches the source's left anchor, broad horizontal run, single downward turn, and lower-right window. Mobile preserves the relationship through a compact vertical reflow.
+- Colors and visual tokens: the documented priority is green, yellow, orange, teal, then blue. Green owns connection paths and primary signals; yellow owns focus and selection; orange owns hotspots and warnings; teal owns digital data; blue owns quiet reference metadata.
+- Image quality and asset fidelity: the supplied image is used only as a layout reference. The connector is a live interface relationship, not a reused bitmap asset.
+- Copy and content: `SYS://NODE.01`, `PROJECT TITLE`, the concise context line, and all anatomy annotations match the reference intent.
+
+### Comparison history
+
+1. Earlier P1 mismatch: the relationship was not visibly expressed as a node-to-window route. Fix: add an explicit responsive connector that begins at the node centerline and terminates at the terminal label's top border. Post-fix evidence: desktop and mobile captures show a continuous attached path.
+2. User color correction: teal was previously treated as the primary signal. Fix: encode five accent-priority tokens and make green the primary signal, with teal moved to priority four and blue to priority five. Post-fix evidence: the path, node metadata, hierarchy copy, swatch order, and semantic roles all follow the corrected order.
+
+### Primary interactions and verification
+
+- Interactive `TRANSMIT` tab: passed; `aria-selected` changes to `true` and the readout updates to `SIGNAL MOVING`.
+- Desktop connector attachment: passed.
+- Mobile connector attachment at 390 x 844: passed.
+- Production build: passed; the existing large-chunk advisory remains non-blocking.
+- Console: no style-guide runtime error was introduced. Two stale HMR errors reference unrelated Ellwas files and predate this style-guide pass.
+
+### Findings
+
+No actionable P0, P1, or P2 differences remain. The straight terminal-grade green path is an intentional system translation of the source's hand-drawn magenta line.
 
 final result: passed

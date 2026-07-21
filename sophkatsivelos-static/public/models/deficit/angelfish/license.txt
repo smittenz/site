@@ -1,0 +1,8 @@
+Model Information:
+* title:	Freshwater Angelfish
+* source:	https://sketchfab.com/3d-models/freshwater-angelfish-37475fc6c8904b6bbf7e27617bd851b8
+* author:	Wataru Onuki (https://sketchfab.com/monte-hotate)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
