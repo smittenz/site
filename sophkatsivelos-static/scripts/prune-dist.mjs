@@ -35,7 +35,7 @@ const sourceFiles = [
 const sourceText = (await Promise.all(sourceFiles.map(file => readFile(file, "utf8")))).join("\n");
 const publicFiles = await listFiles(publicDir);
 const publicByPath = new Map(publicFiles.map(file => [toWebPath(file, publicDir), file]));
-const keep = new Set(["_redirects"]);
+const keep = new Set(["_redirects", "staticwebapp.config.json"]);
 
 // Keep files referenced with their normal root-relative public URL.
 for (const relativePath of publicByPath.keys()) {
