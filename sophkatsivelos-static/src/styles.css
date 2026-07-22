@@ -422,3 +422,38 @@ button{font:inherit}
 @media(prefers-reduced-motion:reduce){
   .skin-piece,.skin-piece-number,.skin-preview-window,.skin-preview-visual img,.skin-preview-scan{animation:none!important;transition:none!important}.skin-preview-scan{display:none}
 }
+
+/* Readable body-copy scale. Compact metadata, labels, and window chrome stay small. */
+.node-panel p{font-size:12px;line-height:1.4}
+.archive-project-console header>p{font-size:clamp(14px,1.05vw,17px);line-height:1.42}
+.project-copy p{font-size:clamp(16px,1.3vw,19px);line-height:1.5}
+.project-chapter-content p{font-size:clamp(15px,1.15vw,18px);line-height:1.48}
+.ellwas-hero-copy p{font-size:clamp(15px,1.2vw,18px);line-height:1.42}
+.ellwas-concept-copy p{font-size:clamp(17px,1.35vw,20px);line-height:1.48}
+.ellwas-story-chapter header>p{font-size:clamp(15px,1.15vw,18px);line-height:1.48}
+.witches-project-copy>p{font-size:18px;line-height:1.4}
+.witches-project-copy>p:nth-child(2){font-size:14px}
+.biotic-gallery-heading p{font-size:clamp(14px,1.1vw,17px);line-height:1.4}
+.biotic-gallery-heading p:first-of-type{font-size:clamp(17px,1.4vw,22px)}
+.biotic-network-note p{font-size:11px;line-height:1.45}
+.decay-heading p{font-size:clamp(14px,1vw,16px);line-height:1.4}
+.deficit-heading p{font-size:clamp(13px,.95vw,15px);line-height:1.4}
+.deficit-readout p{font-size:9px;line-height:1.45}
+.skin-wall-note p{font-size:clamp(13px,1vw,16px);line-height:1.4}
+.skin-film{top:38%}
+.skin-piece-03{top:60%}
+
+@media(max-width:940px){
+  .skin-wall-note p{font-size:13px}.skin-film{top:35%}.skin-piece-03{top:56%}
+}
+@media(max-width:700px){
+  .archive-project-console header>p{font-size:14px}.project-copy p{font-size:16px}.project-chapter-content p{font-size:15px}
+  .ellwas-hero-copy p{font-size:16px}.ellwas-concept-copy p{font-size:17px}.ellwas-story-chapter header>p{font-size:15px}
+  .witches-project-copy>p{font-size:16px}.witches-project-copy>p:nth-child(2){font-size:14px}
+  .biotic-gallery-heading p{font-size:14px}.biotic-gallery-heading p:first-of-type{font-size:17px}
+  .decay-heading p{font-size:14px}.deficit-heading p{font-size:13px}.deficit-readout p{font-size:9px}
+  .skin-wall-note p{font-size:14px;line-height:1.4}.skin-film{top:50%}.skin-piece-02{top:61%}.skin-piece-03{top:66%}
+}
+@media(min-width:521px) and (max-width:700px){
+  .skin-wall-note p{font-size:12px;line-height:1.38}.skin-film{top:40%}.skin-piece-02{top:28%}.skin-piece-03{top:58%}
+}

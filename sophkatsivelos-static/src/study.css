@@ -213,7 +213,7 @@
 
 .study-statement p {
   margin: 18px 0 0;
-  font: 700 15px/1.62 "Courier New", ui-monospace, monospace;
+  font: 700 17px/1.62 "Courier New", ui-monospace, monospace;
 }
 
 .study-film {
@@ -706,7 +706,7 @@
 
 .study-project-note p {
   margin: 0 0 20px;
-  font: 700 15px/1.62 "Courier New", ui-monospace, monospace;
+  font: 700 17px/1.62 "Courier New", ui-monospace, monospace;
 }
 
 .study-project-note dl {
@@ -878,7 +878,7 @@
   .study-lede {
     max-width: 290px;
     margin-top: 22px;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .study-film {
@@ -897,7 +897,7 @@
 
   .study-statement p {
     max-width: 520px;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .study-hero-data {
@@ -1048,7 +1048,7 @@
   }
 
   .study-project-note p {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .study-project-note dl {

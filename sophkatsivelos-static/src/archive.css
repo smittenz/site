@@ -40,7 +40,7 @@
   display: block;
   border: 0;
   border-top: 1px solid var(--palette-black);
-  font: 700 clamp(10px, 1vw, 13px)/1.45 "Courier New", monospace;
+  font: 700 clamp(14px, 1.1vw, 16px)/1.5 "Courier New", monospace;
   letter-spacing: .03em;
   text-transform: uppercase;
 }
@@ -485,7 +485,7 @@
 .archive-record-copy p {
   max-width: 570px;
   margin: 0 0 19px;
-  font: 700 clamp(9px, .78vw, 12px)/1.45 "Courier New", monospace;
+  font: 700 clamp(15px, 1.05vw, 17px)/1.5 "Courier New", monospace;
 }
 
 .archive-record-copy dl {
@@ -553,7 +553,7 @@
   .archive-heading { display: block; margin-bottom: 30px; padding: 0 17px; }
   .archive-heading > div > span { margin-bottom: 14px; font-size: 6px; }
   .archive-heading h1 { font-size: clamp(52px, 18vw, 72px); }
-  .archive-heading p { margin-top: 24px; padding-top: 15px; font-size: 9px; }
+  .archive-heading p { margin-top: 24px; padding-top: 15px; font-size: 14px; }
   .archive-drive { width: 100%; border-right: 0; border-left: 0; box-shadow: none; }
   .archive-drive-bar { min-height: 33px; padding: 0 8px; font-size: 6px; }
   .archive-drive-bar span:last-child { display: none; }
@@ -584,7 +584,7 @@
   .archive-record-visual { grid-column: 1; grid-row: 2; border-right: 0; border-bottom: 1px solid var(--palette-black); }
   .archive-record-copy { grid-column: 1; grid-row: 3; padding: 22px 17px 25px; }
   .archive-record-copy h2 { font-size: clamp(36px, 12vw, 52px); }
-  .archive-record-copy p { font-size: 9px; }
+  .archive-record-copy p { font-size: 15px; }
   .archive-record-copy dl { margin-top: 12px; }
 }
 
