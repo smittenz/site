@@ -51,6 +51,11 @@
         "href": "/digital/deficit",
         "title": "DEFICIT",
         "image": "/assets/032-5a188e7bcaed.png"
+      },
+      {
+        "href": "/digital/this-is-my-stop",
+        "title": "THIS IS MY STOP",
+        "image": "/assets/this-is-my-stop/installation-flashlight.jpg"
       }
     ],
     "physical": [
@@ -759,6 +764,114 @@
         }
       ]
     },
+    "/digital/this-is-my-stop": {
+      "route": "/digital/this-is-my-stop",
+      "title": "THIS IS MY STOP",
+      "content": [
+        {
+          "tag": "h2",
+          "text": "THIS IS MY STOP"
+        },
+        {
+          "tag": "p",
+          "text": "2026"
+        },
+        {
+          "tag": "p",
+          "text": "Best of Design"
+        },
+        {
+          "tag": "p",
+          "text": "Interactive narrative game / custom hardware"
+        },
+        {
+          "tag": "p",
+          "text": "Hardware designer"
+        },
+        {
+          "tag": "p",
+          "text": "Created during the 2026 Creative Hackathon, This Is My Stop is a moody interactive game set inside an abandoned subway car. A gyroscope air mouse is reimagined as a handheld flashlight, letting players search the dark environment and uncover its story one object at a time. The project received the hackathon's Best of Design award."
+        },
+        {
+          "tag": "h2",
+          "text": "THE EXPERIENCE"
+        },
+        {
+          "tag": "p",
+          "text": "The room becomes part of the game. The player points the physical light toward a projected subway scene, and that motion moves the beam through the virtual car. Details emerge only when illuminated, turning exploration into a slow, tactile act of discovery."
+        },
+        {
+          "tag": "h2",
+          "text": "MY ROLE"
+        },
+        {
+          "tag": "p",
+          "text": "As hardware designer, I developed and prototyped the handheld controller, adapting gyroscopic input into the flashlight interaction and helping integrate the physical device with the team's game. The rapid build moved from loose electronics and foam-board studies to a working playtest controller over the course of the hackathon."
+        },
+        {
+          "tag": "h2",
+          "text": "COLLABORATION"
+        },
+        {
+          "tag": "p",
+          "text": "Designed and built with Maiia Lysytska (game design), Miranda Derossi (narrative design and sound), Jacob Carlos (3D art and sound), and Ava Rose Mendelson (2D art). Sophie Katsivelos led hardware design."
+        }
+      ],
+      "images": [
+        "/assets/this-is-my-stop/installation-flashlight.jpg",
+        "/assets/this-is-my-stop/team-development.jpg",
+        "/assets/this-is-my-stop/hardware-prototype.jpg",
+        "/assets/this-is-my-stop/playtest.jpg",
+        "/assets/this-is-my-stop/best-of-design-team.jpg"
+      ],
+      "media": [],
+      "mediaPosters": [],
+      "embeds": [
+        {
+          "type": "iframe",
+          "src": "https://www.youtube.com/embed/lujwJiJPL_Q?feature=oembed",
+          "title": "This is my stop Web Edit",
+          "allow": "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        }
+      ],
+      "credits": [
+        {
+          "href": "https://www.linkedin.com/in/maiia-lysytska-7872b7145/",
+          "name": "Maiia Lysytska",
+          "role": "Game designer"
+        },
+        {
+          "href": "https://www.linkedin.com/in/soph-katsivelos/",
+          "name": "Sophie Katsivelos",
+          "role": "Hardware designer"
+        },
+        {
+          "href": "https://www.linkedin.com/in/miranda-derossi/",
+          "name": "Miranda Derossi",
+          "role": "Narrative designer / sound team"
+        },
+        {
+          "href": "https://www.linkedin.com/in/jacob-carlos-513113252/",
+          "name": "Jacob Carlos",
+          "role": "3D artist / sound team"
+        },
+        {
+          "href": "https://www.linkedin.com/in/ava-mendelson-85051a275/",
+          "name": "Ava Rose Mendelson",
+          "role": "2D artist"
+        }
+      ],
+      "links": [
+        {
+          "href": "https://youtu.be/lujwJiJPL_Q",
+          "label": "Watch the project film"
+        },
+        {
+          "href": "https://www.linkedin.com/feed/update/urn:li:activity:7448762501636378626/",
+          "label": "Creative Hackathon project post"
+        }
+      ]
+    },
     "/physical/storiesonskin": {
       "route": "/physical/storiesonskin",
       "title": "STORIES ON SKIN\n2023",
@@ -1158,15 +1271,19 @@
         },
         {
           "tag": "p",
-          "text": "By Black Heart"
+          "text": "An I-spy-like mixed-reality game where players use a flashlight to discover Black inventors and visionaries."
         },
         {
           "tag": "p",
-          "text": "For The African American Chamber of Commerce of New Jersey’s Juneteenth Inovation Expo"
+          "text": "For the African American Chamber of Commerce of New Jersey’s Juneteenth Innovation Expo."
         },
         {
           "tag": "p",
-          "text": "Visuals and gameplay by Carlos Johns-Davila"
+          "text": "Black Luminaries is primarily the work of Carlos Johns-Davila, who created the visuals and gameplay."
+        },
+        {
+          "tag": "p",
+          "text": "Custom controller design and build by Sophie Katsivelos."
         }
       ],
       "images": [
@@ -1181,7 +1298,16 @@
         "/assets/276-4007036274d2.jpg"
       ],
       "embeds": [],
-      "links": []
+      "links": [
+        {
+          "href": "https://www.linkedin.com/in/carlos-johns-davila/",
+          "label": "Carlos Johns-Davila - visuals and gameplay"
+        },
+        {
+          "href": "https://github.com/smittenz/Wii-Controller-System",
+          "label": "Wii Controller System source and setup"
+        }
+      ]
     }
   },
   "study": {

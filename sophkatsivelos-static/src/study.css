@@ -1092,3 +1092,10 @@
     transform: none;
   }
 }
+
+.study-film .embedded-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #ffffff;
+}

@@ -2,12 +2,14 @@ import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "rea
 import data from "./site-data.json";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader.js";
 import { ArrowUpRight, FileArchive, FileCode, FolderSimpleDashed, HardDrives, MagnifyingGlass, SortAscending, SortDescending, TextAa } from "@phosphor-icons/react";
 import StudyPage from "./StudyPage.jsx";
 import StyleGuidePage from "./StyleGuidePage.jsx";
 import { buildPortfolioSearchIndex, searchPortfolio } from "./portfolio-search.js";
+import EmbeddedVideo, { isHostedVideo } from "./EmbeddedVideo.jsx";
 
 const searchItems = buildPortfolioSearchIndex(data);
 
@@ -467,14 +469,14 @@ function Home() {
   const justDragged = useRef(false);
   const motionTimer = useRef(null);
   const nodes = [
-    { href: "/physical/decay", label: "Decay", code: "01", x: 13.1, y: 25.5, side: "right", image: data.projects["/physical/decay"].images[0], meta: "Kinetic Sculpture + Physical Computing" },
-    { href: "/digital/deficit", label: "Deficit", code: "02", x: 35.1, y: 49.8, side: "right", image: data.projects["/digital/deficit"].images[0], meta: "Virtual Reality Simulation" },
-    { href: "/digital-sociology-study", label: "Digital Sociology Study", code: "03", x: 51.6, y: 49.8, side: "left", image: data.study.images[0], meta: "Networked VR Installation · 2025", primary: true },
-    { href: "/physical/storiesonskin", label: "Stories on Skin", code: "04", x: 68.1, y: 49.8, side: "left", image: data.projects["/physical/storiesonskin"].images[0], meta: "Interactive Cast Installation" },
-    { href: "/digital/merimnao", label: "Merimnao", code: "05", x: 75.9, y: 32.6, side: "left", image: data.projects["/digital/merimnao"].images[0], meta: "Surreal Maze Video Game" },
-    { href: "/digital/biotic-gallery", label: "Biotic Gallery", code: "06", x: 49.4, y: 84.6, side: "left", image: data.projects["/digital/biotic-gallery"].images[0], meta: "Virtual Gallery Environment" },
-    { href: "/digital/witches-flight-3d", label: "Witches' Flight 3D", code: "07", x: 26, y: 90.9, side: "right", image: "/assets/witches-render-frame.png", meta: "3D Painting Reconstruction" },
-    { href: "/for-clients/mcadxellwas", label: "MCAAD × Ellwas", code: "08", x: 13.4, y: 75.5, side: "right", image: data.projects["/for-clients/mcadxellwas"].images[0], meta: "Interactive Museum Experience + Light System" },
+    { href: "/physical/decay", label: "Decay", code: "01", x: 12.9, y: 25.4, side: "right", image: data.projects["/physical/decay"].images[0], meta: "Kinetic Sculpture + Physical Computing" },
+    { href: "/digital/deficit", label: "Deficit", code: "02", x: 35.4, y: 50.1, side: "right", image: data.projects["/digital/deficit"].images[0], meta: "Virtual Reality Simulation" },
+    { href: "/digital-sociology-study", label: "Digital Sociology Study", code: "03", x: 52.1, y: 50.2, side: "left", image: data.study.images[0], meta: "Networked VR Installation · 2025", primary: true },
+    { href: "/physical/storiesonskin", label: "Stories on Skin", code: "04", x: 68.2, y: 50.1, side: "left", image: data.projects["/physical/storiesonskin"].images[0], meta: "Interactive Cast Installation" },
+    { href: "/digital/merimnao", label: "Merimnao", code: "05", x: 75.7, y: 33.2, side: "left", image: data.projects["/digital/merimnao"].images[0], meta: "Surreal Maze Video Game" },
+    { href: "/digital/biotic-gallery", label: "Biotic Gallery", code: "06", x: 49.5, y: 85.4, side: "left", image: data.projects["/digital/biotic-gallery"].images[0], meta: "Virtual Gallery Environment" },
+    { href: "/digital/witches-flight-3d", label: "Witches' Flight 3D", code: "07", x: 25.8, y: 90.8, side: "right", image: "/assets/witches-render-frame.png", meta: "3D Painting Reconstruction" },
+    { href: "/for-clients/mcadxellwas", label: "MCAAD × Ellwas", code: "08", x: 12.7, y: 76.7, side: "right", image: data.projects["/for-clients/mcadxellwas"].images[0], meta: "Interactive Museum Experience + Light System" },
   ];
   const unvisitedCount = nodes.filter(node => !visitedNodes.includes(node.href)).length;
   const openNode = node => {
@@ -644,6 +646,12 @@ const projectChapterLayouts = {
 };
 
 const projectLayoutOverrides = {
+  "/digital/this-is-my-stop": {
+    heroMode: "image",
+    heroImageIndex: 0,
+    imageIndexes: [1, 2, 3, 4],
+    mediaHeading: "PROCESS + DOCUMENTATION",
+  },
   "/physical/african-bullfrog": {
     heroMode: "model",
     modelSrc: "/models/african-bullfrog/frog-scan.glb",
@@ -756,19 +764,25 @@ function Gallery({ images, title, autoCycle = false, footerLabel = "PRIMARY VISU
   );
 }
 
-function ProjectEmbedFrame({ embed, index = 0, featured = false }) {
+function ProjectEmbedFrame({ embed, index = 0, featured = false, poster = "" }) {
   if (!embed) return null;
   return (
     <div className={`project-signal-frame project-embed ${featured ? "is-featured" : ""}`}>
       <div className="project-frame-bar"><b>EMBED_{String(index + 1).padStart(2, "0")}</b><span>LIVE SIGNAL</span></div>
-      <iframe
+      {isHostedVideo(embed.src) ? <EmbeddedVideo
+        src={embed.src}
+        title={embed.title || `${index + 1} embedded media`}
+        allow={embed.allow}
+        poster={poster}
+        loading={featured ? "eager" : "lazy"}
+      /> : <iframe
         src={embed.src}
         title={embed.title || `${index + 1} embedded media`}
         allow={embed.allow}
         allowFullScreen
         loading={featured ? "eager" : "lazy"}
         referrerPolicy="strict-origin-when-cross-origin"
-      />
+      />}
       <div className="project-frame-footer"><span>{embed.title || "INTERACTIVE MEDIA"}</span><b>ONLINE</b></div>
     </div>
   );
@@ -982,7 +996,7 @@ function ProjectHeroMedia({ project, layout }) {
   if (mode === "index") return <ProjectSignalIndex project={project} layout={layout} />;
   if (mode === "embed") {
     const embedIndex = layout?.heroEmbedIndex || 0;
-    return <ProjectEmbedFrame embed={project.embeds?.[embedIndex]} index={embedIndex} featured />;
+    return <ProjectEmbedFrame embed={project.embeds?.[embedIndex]} index={embedIndex} featured poster={project.images?.[0]} />;
   }
   if (mode === "video") return <ProjectVideoFrame src={videos[0]} poster={project.mediaPosters?.[0]} featured />;
   if (mode === "audio") return <div className="project-audio-frame"><span>AUDIO SIGNAL</span><audio controls preload="metadata"><source src={audio[0]} /></audio></div>;
@@ -1002,6 +1016,22 @@ function ProjectLinks({ links, children }) {
         </a>
       ))}</div>}
       {children}
+    </section>
+  );
+}
+
+function ProjectCredits({ credits = [] }) {
+  if (!credits.length) return null;
+  return (
+    <section className="project-links project-credits" aria-label="Project credits">
+      <span>PROJECT CREDITS / {String(credits.length).padStart(2, "0")}</span>
+      <div>{credits.map((credit, index) => (
+        <a href={credit.href} target="_blank" rel="noreferrer" key={`${credit.href}-${credit.role}`}>
+          <b>{String(index + 1).padStart(2, "0")}</b>
+          <span>{credit.name} — {credit.role}</span>
+          <i aria-hidden="true">↗</i>
+        </a>
+      ))}</div>
     </section>
   );
 }
@@ -1219,7 +1249,7 @@ function StoriesOnSkin({ project }) {
 
           {embed && <section className="skin-film" aria-label="Stories on Skin film">
             <div className="skin-film-bar"><b>DOCUMENT://FILM</b><span>08:24 / EXHIBITION RECORD</span></div>
-            <iframe src={embed.src} title={embed.title || "Stories on Skin film"} allow={embed.allow} allowFullScreen loading="lazy" referrerPolicy="strict-origin-when-cross-origin" />
+            <EmbeddedVideo src={embed.src} title={embed.title || "Stories on Skin film"} allow={embed.allow} poster={project.images?.[0]} />
           </section>}
 
           <div className="skin-wall-ledger" aria-hidden="true"><span>05 CASTS</span><span>05 LIVED RECORDS</span><span>TOUCH ENABLED</span></div>
@@ -1261,7 +1291,7 @@ function ProjectChapterMedia({ project, chapter, chapterIndex }) {
     return <div className="project-chapter-signal" aria-hidden="true"><span>RECORD_{String(chapterIndex + 1).padStart(2, "0")}</span><b>{chapter.heroMediaNote || "TEXT / RESEARCH ENTRY"}</b><i>ARCHIVE SIGNAL</i></div>;
   }
   return <div className="project-chapter-media">
-    {embeds.map((embed, index) => <ProjectEmbedFrame embed={embed} index={(chapter.embedIndexes || [])[index]} key={embed.src} />)}
+    {embeds.map((embed, index) => <ProjectEmbedFrame embed={embed} index={(chapter.embedIndexes || [])[index]} poster={images[0] || project.images?.[0]} key={embed.src} />)}
     {images.map((src, index) => <figure className="project-archive-image" key={src}>
       <div className="project-frame-bar"><b>IMG_{String((chapter.imageIndexes || [])[index] + 1).padStart(2, "0")}</b><span>ARCHIVE FILE</span></div>
       <img src={src} alt={`${project.title}, project image ${(chapter.imageIndexes || [])[index] + 1}`} loading="lazy" />
@@ -1350,7 +1380,7 @@ function ProjectMediaArchive({ project, layout, heroMode }) {
         {archivedVideos.map((src, index) => <ProjectVideoFrame src={src} poster={project.mediaPosters?.[index + (heroMode === "video" ? 1 : 0)]} index={index + (heroMode === "video" ? 1 : 0)} key={src} />)}
       </div>}
       {!!archivedEmbeds.length && <div className="project-embeds">
-        {archivedEmbeds.map(({ embed, index }) => <ProjectEmbedFrame embed={embed} index={index} key={embed.src} />)}
+        {archivedEmbeds.map(({ embed, index }) => <ProjectEmbedFrame embed={embed} index={index} poster={project.images?.[0]} key={embed.src} />)}
       </div>}
       {!!archivedAudio.length && <div className="project-audio-list">{archivedAudio.map((src, index) => <div className="project-audio-frame" key={src}><span>AUDIO_{String(index + 1).padStart(2, "0")}</span><audio controls preload="metadata"><source src={src} /></audio></div>)}</div>}
     </section>
@@ -1772,7 +1802,7 @@ function DeficitExperience({ project, path }) {
         </header>
         <div className="deficit-signal" aria-label="Deficit project film">
           <div className="deficit-signal-bar"><b>LIVE://SIMULATION.FEED</b><span>VIDEO SAFE ZONE</span></div>
-          {embed && <iframe src={embed.src} title={embed.title} allow={embed.allow} allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />}
+          {embed && <EmbeddedVideo src={embed.src} title={embed.title} allow={embed.allow} poster={project.images?.[0]} />}
           <div className="deficit-signal-footer"><span>FOCUS CHANNEL / 01</span><b>PLAYBACK READY</b></div>
         </div>
         <aside className="deficit-program-window" aria-label="Project program information">
@@ -2323,8 +2353,355 @@ function Project({ project, path }) {
         {chapterLayout ? <ProjectChapters project={project} layout={chapterLayout} /> : <>
           <ProjectRecord content={recordContent} />
           <ProjectMediaArchive project={project} layout={layout} heroMode={heroMode} />
+          <ProjectCredits credits={project.credits} />
           <ProjectLinks links={project.links} />
         </>}
+        <ProjectRoutePager context={context} />
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+const BLACK_LUMINARIES_REPO = "https://github.com/smittenz/Wii-Controller-System";
+const CARLOS_JOHNS_DAVILA = "https://www.linkedin.com/in/carlos-johns-davila/";
+const BLACK_LUMINARIES_ACCENT = "#70c35e";
+
+function BlackLuminariesControllerModel() {
+  const mountRef = useRef(null);
+  const modelRootRef = useRef(null);
+  const resetViewRef = useRef(() => {});
+  const [loadState, setLoadState] = useState("loading");
+  const [loadProgress, setLoadProgress] = useState(0);
+
+  useEffect(() => {
+    const mount = mountRef.current;
+    if (!mount) return undefined;
+
+    let disposed = false;
+    let frame = 0;
+    let isVisible = true;
+    let renderer;
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xe8ecea);
+    scene.fog = new THREE.FogExp2(0xe8ecea, 0.021);
+    const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+    } catch {
+      setLoadState("error");
+      return undefined;
+    }
+
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.04;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFShadowMap;
+    mount.appendChild(renderer.domElement);
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.065;
+    controls.enablePan = false;
+    controls.autoRotate = !reducedMotion;
+    controls.autoRotateSpeed = 0.34;
+    controls.minDistance = 11;
+    controls.maxDistance = 27;
+    controls.target.set(0, 1.8, 0);
+
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x747b76, 2.1));
+    const keyLight = new THREE.DirectionalLight(0xffffff, 4.2);
+    keyLight.position.set(6, 9, 8);
+    keyLight.castShadow = true;
+    scene.add(keyLight);
+    const edgeLight = new THREE.DirectionalLight(0x70c35e, 1.15);
+    edgeLight.position.set(-7, 4, 3);
+    scene.add(edgeLight);
+    const warmLight = new THREE.DirectionalLight(0xffffff, 1.1);
+    warmLight.position.set(2, 1, -8);
+    scene.add(warmLight);
+
+    const modelRoot = new THREE.Group();
+    modelRoot.rotation.z = -0.09;
+    modelRootRef.current = modelRoot;
+    scene.add(modelRoot);
+
+    const shellMaterial = new THREE.MeshStandardMaterial({ color: 0x171a19, metalness: 0.82, roughness: 0.31 });
+    const detailMaterial = new THREE.MeshStandardMaterial({ color: 0x343a37, metalness: 0.72, roughness: 0.24 });
+    const lensMaterial = new THREE.MeshStandardMaterial({
+      color: BLACK_LUMINARIES_ACCENT,
+      emissive: BLACK_LUMINARIES_ACCENT,
+      emissiveIntensity: 2.35,
+      metalness: 0.06,
+      roughness: 0.18,
+      transparent: true,
+      opacity: 0.88,
+    });
+    const beamMaterial = new THREE.MeshBasicMaterial({
+      color: BLACK_LUMINARIES_ACCENT,
+      transparent: true,
+      opacity: 0.068,
+      side: THREE.BackSide,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+    });
+    const beamCoreMaterial = new THREE.MeshBasicMaterial({
+      color: BLACK_LUMINARIES_ACCENT,
+      transparent: true,
+      opacity: 0.045,
+      side: THREE.DoubleSide,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+    });
+    const signalLight = new THREE.PointLight(BLACK_LUMINARIES_ACCENT, 4.5, 10, 1.5);
+    signalLight.position.set(0, 3.35, 0);
+    modelRoot.add(signalLight);
+
+    const beam = new THREE.Mesh(new THREE.ConeGeometry(2.65, 5.7, 64, 1, true), beamMaterial);
+    beam.rotation.z = Math.PI;
+    beam.position.y = 5.72;
+    modelRoot.add(beam);
+    const beamCore = new THREE.Mesh(new THREE.ConeGeometry(0.95, 5.2, 48, 1, true), beamCoreMaterial);
+    beamCore.rotation.z = Math.PI;
+    beamCore.position.y = 5.47;
+    modelRoot.add(beamCore);
+
+    const lensCap = new THREE.Mesh(new THREE.CylinderGeometry(1.16, 1.16, 0.08, 64), lensMaterial);
+    lensCap.position.y = 3.02;
+    modelRoot.add(lensCap);
+    const lensRing = new THREE.Mesh(
+      new THREE.TorusGeometry(1.22, 0.035, 12, 64),
+      new THREE.MeshBasicMaterial({ color: BLACK_LUMINARIES_ACCENT, transparent: true, opacity: 0.72 }),
+    );
+    lensRing.rotation.x = Math.PI / 2;
+    lensRing.position.y = 3.08;
+    modelRoot.add(lensRing);
+
+    const grid = new THREE.GridHelper(32, 32, 0x70c35e, 0x9aa29d);
+    grid.position.y = -3.03;
+    grid.material.transparent = true;
+    grid.material.opacity = 0.28;
+    scene.add(grid);
+    const floor = new THREE.Mesh(
+      new THREE.PlaneGeometry(36, 36),
+      new THREE.MeshStandardMaterial({ color: 0xd9dedb, metalness: 0.08, roughness: 0.95 }),
+    );
+    floor.rotation.x = -Math.PI / 2;
+    floor.position.y = -3.06;
+    floor.receiveShadow = true;
+    scene.add(floor);
+
+    new OBJLoader().load("/models/black-luminaries/flashlight.obj", object => {
+      if (disposed) return;
+      const originalMaterials = new Set();
+      object.traverse(node => {
+        if (!node.isMesh) return;
+        const materials = Array.isArray(node.material) ? node.material : [node.material];
+        materials.filter(Boolean).forEach(material => originalMaterials.add(material));
+        const name = node.name.toLowerCase();
+        node.material = name.includes("lens") ? lensMaterial : /cap|body1/.test(name) ? detailMaterial : shellMaterial;
+        node.castShadow = true;
+        node.receiveShadow = false;
+      });
+      originalMaterials.forEach(material => material.dispose());
+
+      const bounds = new THREE.Box3().setFromObject(object);
+      const center = bounds.getCenter(new THREE.Vector3());
+      const size = bounds.getSize(new THREE.Vector3());
+      const scale = 5.8 / Math.max(size.y, 0.01);
+      object.scale.setScalar(scale);
+      object.position.copy(center).multiplyScalar(-scale);
+      modelRoot.add(object);
+      setLoadProgress(100);
+      setLoadState("ready");
+    }, event => {
+      if (!disposed && event.total) setLoadProgress(Math.round(event.loaded / event.total * 100));
+    }, () => {
+      if (!disposed) setLoadState("error");
+    });
+
+    const initialCamera = new THREE.Vector3(9.4, 5.4, 17.8);
+    const resetView = () => {
+      modelRoot.rotation.set(0, 0, -0.09);
+      camera.position.copy(initialCamera);
+      controls.target.set(0, 1.8, 0);
+      controls.autoRotate = !reducedMotion;
+      controls.update();
+    };
+    resetViewRef.current = resetView;
+    resetView();
+
+    const resize = () => {
+      const width = Math.max(mount.clientWidth, 1);
+      const height = Math.max(mount.clientHeight, 1);
+      renderer.setSize(width, height, false);
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+    };
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(mount);
+    const visibilityObserver = new IntersectionObserver(entries => {
+      isVisible = entries[0]?.isIntersecting ?? true;
+    });
+    visibilityObserver.observe(mount);
+
+    const animationStart = window.performance.now();
+    const animate = (timestamp = animationStart) => {
+      if (isVisible) {
+        controls.update();
+        if (!reducedMotion) {
+          const pulse = Math.sin((timestamp - animationStart) / 1000 * 2.1);
+          beamMaterial.opacity = 0.068 + pulse * 0.006;
+          beamCoreMaterial.opacity = 0.045 + pulse * 0.004;
+          lensMaterial.emissiveIntensity = 2.35 + pulse * 0.18;
+        }
+        renderer.render(scene, camera);
+      }
+      frame = window.requestAnimationFrame(animate);
+    };
+    resize();
+    frame = window.requestAnimationFrame(animate);
+
+    return () => {
+      disposed = true;
+      window.cancelAnimationFrame(frame);
+      resizeObserver.disconnect();
+      visibilityObserver.disconnect();
+      controls.dispose();
+      const geometries = new Set();
+      const materials = new Set();
+      scene.traverse(node => {
+        if (node.geometry) geometries.add(node.geometry);
+        const nodeMaterials = Array.isArray(node.material) ? node.material : [node.material];
+        nodeMaterials.filter(Boolean).forEach(material => materials.add(material));
+      });
+      geometries.forEach(geometry => geometry.dispose());
+      materials.forEach(material => material.dispose());
+      renderer.dispose();
+      renderer.domElement.remove();
+      modelRootRef.current = null;
+    };
+  }, []);
+
+  const handleKeyDown = event => {
+    const root = modelRootRef.current;
+    if (!root) return;
+    if (event.key === "r" || event.key === "R") {
+      event.preventDefault();
+      resetViewRef.current();
+      return;
+    }
+    if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) return;
+    event.preventDefault();
+    if (event.key === "ArrowLeft") root.rotation.y -= 0.15;
+    if (event.key === "ArrowRight") root.rotation.y += 0.15;
+    if (event.key === "ArrowUp") root.rotation.x -= 0.11;
+    if (event.key === "ArrowDown") root.rotation.x += 0.11;
+  };
+
+  return (
+    <div className="project-signal-frame project-model-frame bl-object-model">
+      <div className="project-frame-bar"><b>OBJECT://FLASHLIGHT_CONTROLLER</b><span>{loadState === "ready" ? "INTERACTIVE / READY" : loadState === "error" ? "MODEL SIGNAL LOST" : `LOADING / ${String(loadProgress).padStart(3, "0")}%`}</span></div>
+      <div
+        ref={mountRef}
+        className="project-model-visual bl-object-model-stage"
+        role="img"
+        tabIndex="0"
+        aria-label="Interactive 3D model of the custom Black Luminaries flashlight controller. Drag to rotate, scroll or pinch to zoom, or use the arrow keys."
+        onKeyDown={handleKeyDown}
+      >
+        <span className="bl-object-readout" aria-hidden="true">WII / IR / OSC / 60 HZ</span>
+        <span className="project-model-axis" aria-hidden="true">X/Y/Z</span>
+        {loadState !== "ready" && <span className={`project-model-status is-${loadState}`}>{loadState === "error" ? "3D ARTIFACT UNAVAILABLE" : `LOCATING CONTROLLER / ${loadProgress}%`}</span>}
+      </div>
+      <div className="project-frame-footer project-model-footer"><span>DRAG TO ROTATE / SCROLL OR PINCH TO ZOOM</span><button type="button" onClick={() => resetViewRef.current()}>RESET VIEW</button></div>
+    </div>
+  );
+}
+
+function BlackLuminaries({ project, path }) {
+  const context = getProjectRouteContext(path);
+  return (
+    <>
+      <main className="project archive-project archive-project--client black-luminaries-page bl-record-page">
+        <section className="archive-project-hero" aria-labelledby="bl-title">
+          <div className="archive-project-stage">
+            <ProjectVideoFrame src={project.media?.[0]} poster={project.mediaPosters?.[0]} featured />
+          </div>
+          <aside className="archive-project-console">
+            <header>
+              <span>COM_{String(context.index + 1).padStart(2, "0")} / CLIENT WORK / 2026</span>
+              <h1 className="is-long" id="bl-title">BLACK LUMINARIES</h1>
+              <p>An I-spy-like mixed-reality game where players use a flashlight to discover Black inventors and visionaries.</p>
+              <div className="archive-project-tags"><span>MIXED REALITY</span><span>INSTALLATION</span><span>CUSTOM CONTROLLERS</span></div>
+            </header>
+            <div className="archive-project-status">
+              <span>RECORD://LOCATED</span>
+              <dl>
+                <div><dt>MEDIA</dt><dd>05</dd></div>
+                <div><dt>ENTRY</dt><dd>{String(context.index + 1).padStart(2, "0")} / {String(context.total).padStart(2, "0")}</dd></div>
+                <div><dt>STATUS</dt><dd>ONLINE</dd></div>
+              </dl>
+              <a className="archive-project-enter" href="#bl-record-authorship">ENTER PROJECT RECORD <span aria-hidden="true">&darr;</span></a>
+            </div>
+          </aside>
+        </section>
+
+        <section className="project-record bl-record-authorship" id="bl-record-authorship" aria-labelledby="bl-authorship-title">
+          <header><span>SECTION_01 / AUTHORSHIP</span><h2 id="bl-authorship-title">ABOUT THE WORK</h2></header>
+          <div className="project-copy bl-record-credit-copy">
+            <p className="bl-record-lede">Black Luminaries is primarily the work of <a href={CARLOS_JOHNS_DAVILA} target="_blank" rel="noreferrer">Carlos Johns-Davila</a>.</p>
+            <div className="bl-record-credit-ledger">
+              <div><span>PRIMARY CREATIVE</span><p>Carlos created the visuals and gameplay for the mixed-reality experience.</p></div>
+              <div><span>MY CONTRIBUTION</span><p>I designed and built the custom flashlight controllers used to guide players through the work.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section className="project-media-archive bl-record-artifact" id="bl-controller-artifact" aria-labelledby="bl-controller-title">
+          <header className="project-section-heading">
+            <span>SECTION_02 / MY CONTRIBUTION</span>
+            <h2 id="bl-controller-title">CUSTOM CONTROLLER</h2>
+            <b>DRAG / ZOOM / INSPECT</b>
+          </header>
+          <div className="bl-record-artifact-grid">
+            <BlackLuminariesControllerModel />
+            <aside className="bl-record-object-console">
+              <span>OBJECT_NOTE / 01</span>
+              <h3>A FLASHLIGHT FOR THE PROJECTED WORLD.</h3>
+              <p>The custom flashlight controller gave each player a tangible way to aim and explore. The interactive model documents the physical interface as a project artifact.</p>
+              <dl>
+                <div><dt>OBJECT</dt><dd>CUSTOM FLASHLIGHT CONTROLLER</dd></div>
+                <div><dt>SIGNAL</dt><dd>WIIMOTE &rarr; OSC / ISADORA</dd></div>
+                <div><dt>VIEW</dt><dd>INTERACTIVE 3D MODEL</dd></div>
+              </dl>
+              <a className="archive-project-enter bl-record-source-link" href={BLACK_LUMINARIES_REPO} target="_blank" rel="noreferrer">
+                WII CONTROLLER SYSTEM <ArrowUpRight size={18} weight="bold" aria-hidden="true" />
+              </a>
+              <small>View the C# source and setup guide on GitHub.</small>
+            </aside>
+          </div>
+        </section>
+
+        <section className="project-media-archive bl-record-documentation" aria-labelledby="bl-documentation-title">
+          <header className="project-section-heading">
+            <span>SECTION_03 / DOCUMENTATION</span>
+            <h2 id="bl-documentation-title">FROM BUILD TO ROOM</h2>
+            <b>03 ARCHIVE FILES</b>
+          </header>
+          <p className="bl-record-documentation-intro">Prototype electronics, the fabricated controller, and the finished installation at the African American Chamber of Commerce of New Jersey&rsquo;s Juneteenth Innovation Expo.</p>
+          <div className="bl-record-media-grid">
+            <figure className="project-archive-image bl-record-image--prototype"><div className="project-frame-bar"><b>IMG_01</b><span>PROTOTYPE</span></div><img src={project.images?.[1]} alt="Early Black Luminaries controller prototype with exposed electronics and wiring" loading="lazy" /><figcaption><span>ELECTRONICS + FORM TEST</span><b>01 / 03</b></figcaption></figure>
+            <figure className="project-archive-image bl-record-image--object"><div className="project-frame-bar"><b>IMG_02</b><span>FINISHED OBJECT</span></div><img src={project.images?.[2]} alt="Finished black flashlight controller with an illuminated orange lens" loading="lazy" /><figcaption><span>CUSTOM CONTROLLER</span><b>02 / 03</b></figcaption></figure>
+            <figure className="project-archive-image bl-record-image--installation"><div className="project-frame-bar"><b>IMG_03</b><span>INSTALLATION</span></div><img src={project.images?.[0]} alt="Orange, green, and blue flashlight controllers glowing in the Black Luminaries installation" loading="lazy" /><figcaption><span>THREE PLAYER SIGNALS</span><b>03 / 03</b></figcaption></figure>
+          </div>
+        </section>
+
+        <ProjectLinks links={(project.links || []).filter(link => link.href === CARLOS_JOHNS_DAVILA)} />
         <ProjectRoutePager context={context} />
       </main>
       <Footer />
@@ -3480,6 +3857,7 @@ export function App() {
     if (path === "/physical/storiesonskin") return <StoriesOnSkin project={data.projects[path]} />;
     if (path === "/physical/decay") return <DecayExperience project={data.projects[path]} path={path} />;
     if (path === "/for-clients/mcadxellwas") return <McadEllwas project={data.projects[path]} path={path} />;
+    if (path === "/for-clients/black-luminaries") return <BlackLuminaries project={data.projects[path]} path={path} />;
     if (data.projects[path]) return <Project project={data.projects[path]} path={path} />;
     return <NotFound />;
   }, [path]);

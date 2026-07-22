@@ -3,6 +3,7 @@ import * as THREE from "three";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import "./study.css";
+import EmbeddedVideo from "./EmbeddedVideo.jsx";
 
 const asset = name => `/assets/${name}`;
 
@@ -617,13 +618,12 @@ function StudyPage({ Footer }) {
           </aside>
           <section className="study-film study-reveal" data-study-reveal aria-label="Installation film">
             <div className="study-film-bar"><span>Installation video</span><b>02:14</b></div>
-            <iframe
+            <EmbeddedVideo
               src="https://www.youtube.com/embed/KhGpayY6c3g?rel=0&modestbranding=1"
               title="Digital Sociology Study installation video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
+              poster={asset("005-b80ef2c9295e.jpg")}
               loading="eager"
-              referrerPolicy="strict-origin-when-cross-origin"
             />
           </section>
           <div className="study-hero-data" aria-hidden="true">
