@@ -1070,44 +1070,29 @@ function BioticGallery({ project }) {
   );
 }
 
-const storiesOnSkinPieces = [
-  { id: "01", image: "/assets/stories-on-skin/cast-01-legs.png", label: "Silicone cast of a torso and legs", x: 3, y: 3, width: 21.5, rotate: -1.8, frameOffset: 0 },
-  { id: "02", image: "/assets/stories-on-skin/cast-02-side.png", label: "Small pale silicone torso cast", x: 32, y: 10, width: 14, rotate: 2.2, frameOffset: 2 },
-  { id: "03", image: "/assets/stories-on-skin/cast-03-vertical.png", label: "Vertical silicone cast with a long scar", x: 78, y: 54, width: 12.5, rotate: -1.1, frameOffset: 1 },
-  { id: "04", image: "/assets/stories-on-skin/cast-04-back.png", label: "Dark silicone back cast with a raised scar", x: 8, y: 40, width: 22, rotate: 1.4, frameOffset: 1 },
-  { id: "05", image: "/assets/stories-on-skin/cast-05-chest.png", label: "Wide silicone chest cast with a horizontal scar", x: 17, y: 58, width: 49, rotate: -.6, frameOffset: 2 },
-];
-
-const storiesOnSkinFrames = [
-  { src: "/assets/196-733644c8c42a.jpg", position: "24% 50%", label: "Scar surface, close study" },
-  { src: "/assets/196-733644c8c42a.jpg", position: "56% 48%", label: "Silicone texture, macro study" },
-  { src: "/assets/195-0e01536c3dfa.jpg", position: "53% 43%", label: "Installation detail with touch interaction" },
-  { src: "/assets/033-e4941318f782.webp", position: "43% 48%", label: "Three casts installed on the gallery wall" },
-];
-
-const storiesOnSkinChestFrames = [
+const storiesOnSkinCast05Frames = [
   { src: "/assets/stories-on-skin/chest-closeup-01.jpg", position: "50% 50%", label: "Chest scar, close study 01" },
   { src: "/assets/stories-on-skin/chest-closeup-02.jpg", position: "50% 50%", label: "Chest scar, close study 02" },
 ];
 
-const storiesOnSkinKneeFrames = [
+const storiesOnSkinCast04Frames = [
   { src: "/assets/stories-on-skin/knee-closeup-01.jpg", position: "50% 50%", label: "Knee scar, close study 01" },
   { src: "/assets/stories-on-skin/knee-closeup-02.jpg", position: "50% 50%", label: "Knee cast in the exhibition, close study 02" },
   { src: "/assets/stories-on-skin/knee-closeup-03.jpg", position: "50% 50%", label: "Knee scar, close study 03" },
   { src: "/assets/stories-on-skin/knee-closeup-04.jpg", position: "50% 50%", label: "Knee scar, close study 04" },
 ];
 
-const storiesOnSkinThighFrames = [
+const storiesOnSkinCast02Frames = [
   { src: "/assets/stories-on-skin/thigh-closeup-01.jpg", position: "50% 50%", label: "Thigh scar, close study 01" },
   { src: "/assets/stories-on-skin/thigh-closeup-02.jpg", position: "50% 50%", label: "Thigh scar, close study 02" },
 ];
 
-const storiesOnSkinSideFrames = [
+const storiesOnSkinCast03Frames = [
   { src: "/assets/stories-on-skin/side-closeup-01.jpg", position: "50% 50%", label: "Side scar, close study 01" },
   { src: "/assets/stories-on-skin/side-closeup-02.jpg", position: "50% 50%", label: "Side scar, close study 02" },
 ];
 
-const storiesOnSkinArmFrames = [
+const storiesOnSkinCast01Frames = [
   { src: "/assets/stories-on-skin/arm-closeup-01.jpg", position: "50% 50%", label: "Arm scar, close study 01" },
   { src: "/assets/stories-on-skin/arm-closeup-02.jpg", position: "50% 50%", label: "Arm scar, close study 02" },
   { src: "/assets/stories-on-skin/arm-closeup-03.jpg", position: "50% 50%", label: "Arm scar, close study 03" },
@@ -1115,13 +1100,13 @@ const storiesOnSkinArmFrames = [
   { src: "/assets/stories-on-skin/arm-closeup-05.jpg", position: "50% 50%", label: "Arm scar, close study 05" },
 ];
 
-const storiesOnSkinFramesByPiece = {
-  "01": storiesOnSkinArmFrames,
-  "02": storiesOnSkinThighFrames,
-  "03": storiesOnSkinSideFrames,
-  "04": storiesOnSkinKneeFrames,
-  "05": storiesOnSkinChestFrames,
-};
+const storiesOnSkinPieces = [
+  { id: "01", image: "/assets/stories-on-skin/cast-01-legs.png", label: "Silicone cast of a torso and legs", x: 3, y: 3, width: 21.5, rotate: -1.8, frames: storiesOnSkinCast01Frames },
+  { id: "02", image: "/assets/stories-on-skin/cast-02-side.png", label: "Small pale silicone torso cast", x: 32, y: 10, width: 14, rotate: 2.2, frames: storiesOnSkinCast02Frames },
+  { id: "03", image: "/assets/stories-on-skin/cast-03-vertical.png", label: "Vertical silicone cast with a long scar", x: 78, y: 54, width: 12.5, rotate: -1.1, frames: storiesOnSkinCast03Frames },
+  { id: "04", image: "/assets/stories-on-skin/cast-04-back.png", label: "Dark silicone back cast with a raised scar", x: 8, y: 40, width: 22, rotate: 1.4, frames: storiesOnSkinCast04Frames },
+  { id: "05", image: "/assets/stories-on-skin/cast-05-chest.png", label: "Wide silicone chest cast with a horizontal scar", x: 17, y: 58, width: 49, rotate: -.6, frames: storiesOnSkinCast05Frames },
+];
 
 function getSkinPreviewPosition(rect) {
   const gutter = 12;
@@ -1147,9 +1132,8 @@ function StoriesOnSkin({ project }) {
   const pieceRefs = useRef(new Map());
   const closeTimer = useRef(null);
   const activePiece = storiesOnSkinPieces.find(piece => piece.id === activeId) || null;
-  const activeFrames = storiesOnSkinFramesByPiece[activePiece?.id] || storiesOnSkinFrames;
-  const frameOffset = activeFrames === storiesOnSkinFrames ? activePiece?.frameOffset || 0 : 0;
-  const visibleFrameIndex = activePiece ? (frameIndex + frameOffset) % activeFrames.length : 0;
+  const activeFrames = activePiece?.frames || [];
+  const visibleFrameIndex = activePiece ? frameIndex % activeFrames.length : 0;
   const visibleFrame = activePiece ? activeFrames[visibleFrameIndex] : null;
 
   const cancelClose = () => window.clearTimeout(closeTimer.current);
@@ -1246,8 +1230,6 @@ function StoriesOnSkin({ project }) {
           data-side={previewPosition.side}
           style={{ left: previewPosition.left, top: previewPosition.top }}
           aria-live="polite"
-          onPointerEnter={cancelClose}
-          onPointerLeave={scheduleClose}
         >
           <div className="skin-preview-bar"><b>CAST_{activePiece.id}</b><span>DETAIL LOOP</span></div>
           <div className="skin-preview-visual" key={`${activePiece.id}-${frameIndex}`}>
