@@ -1116,9 +1116,9 @@ const storiesOnSkinArmFrames = [
 ];
 
 const storiesOnSkinFramesByPiece = {
-  "01": storiesOnSkinThighFrames,
-  "02": storiesOnSkinSideFrames,
-  "03": storiesOnSkinArmFrames,
+  "01": storiesOnSkinArmFrames,
+  "02": storiesOnSkinThighFrames,
+  "03": storiesOnSkinSideFrames,
   "04": storiesOnSkinKneeFrames,
   "05": storiesOnSkinChestFrames,
 };
