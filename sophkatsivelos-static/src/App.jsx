@@ -474,7 +474,7 @@ function Home() {
     { href: "/digital/merimnao", label: "Merimnao", code: "05", x: 75.9, y: 32.6, side: "left", image: data.projects["/digital/merimnao"].images[0], meta: "Surreal Maze Video Game" },
     { href: "/digital/biotic-gallery", label: "Biotic Gallery", code: "06", x: 49.4, y: 84.6, side: "left", image: data.projects["/digital/biotic-gallery"].images[0], meta: "Virtual Gallery Environment" },
     { href: "/digital/witches-flight-3d", label: "Witches' Flight 3D", code: "07", x: 26, y: 90.9, side: "right", image: "/assets/witches-render-frame.png", meta: "3D Painting Reconstruction" },
-    { href: "/for-clients/mcadxellwas", label: "MCAD × Ellwas", code: "08", x: 13.4, y: 75.5, side: "right", image: data.projects["/for-clients/mcadxellwas"].images[0], meta: "Interactive Museum Experience + Light System" },
+    { href: "/for-clients/mcadxellwas", label: "MCAAD × Ellwas", code: "08", x: 13.4, y: 75.5, side: "right", image: data.projects["/for-clients/mcadxellwas"].images[0], meta: "Interactive Museum Experience + Light System" },
   ];
   const unvisitedCount = nodes.filter(node => !visitedNodes.includes(node.href)).length;
   const openNode = node => {
@@ -991,16 +991,17 @@ function ProjectHeroMedia({ project, layout }) {
   return <Gallery images={heroImages} title={project.title} />;
 }
 
-function ProjectLinks({ links }) {
-  if (!links?.length) return null;
+function ProjectLinks({ links, children }) {
+  if (!links?.length && !children) return null;
   return (
     <section className="project-links" id="project-links" aria-label="Project links">
-      <span>PROJECT LINKS / {String(links.length).padStart(2, "0")}</span>
-      <div>{links.map((link, index) => (
+      <span>PROJECT LINKS / {String(links?.length || 0).padStart(2, "0")}</span>
+      {!!links?.length && <div>{links.map((link, index) => (
         <a href={link.href} target="_blank" rel="noreferrer" key={`${link.href}-${link.label}`}>
           <b>{String(index + 1).padStart(2, "0")}</b><span>{link.label}</span><i aria-hidden="true">↗</i>
         </a>
-      ))}</div>
+      ))}</div>}
+      {children}
     </section>
   );
 }
@@ -1375,6 +1376,34 @@ const deficitObjectFiles = [
   { id: "HUMAN_HEART", title: "Lowpoly Human Heart", creator: "l0r3l3i", source: "https://sketchfab.com/3d-models/lowpoly-human-heart-69d53ff1e0714f11b416eacc9263959b", src: "/models/deficit/heart/scene.gltf", color: 0xffffff, lane: "top", x: -0.08, y: 0.34, z: 0.2, scale: 2.3, drift: 0.11 },
   { id: "EXTINGUISHER", title: "Realistic Fire Extinguisher", creator: "Renend Studio", source: "https://sketchfab.com/3d-models/realistic-fire-extinguisher-low-poly-7bc661f26edc487d9b6182a9efa97b7a", src: "/models/deficit/extinguisher/scene.gltf", color: 0x70c35e, lane: "right", x: 0.3, y: 0.08, z: -0.3, scale: 2.45, drift: 0.09 },
 ];
+
+const deficitSimulationModelCredits = [
+  { id: "SIM_MIKU", title: "Hatsune Miku — Animal Crossing Style", creator: "Miaru3d", source: "https://sketchfab.com/3d-models/hatsune-miku-animal-crossing-style-dce7a73af11f44d08537072103d13956" },
+  { id: "SIM_KERMIT", title: "Kermit the Frog Silly Dancing", creator: "Renato Solar Gomez", source: "https://sketchfab.com/3d-models/kermit-the-frog-silly-dancing-a68d12aa66b14928ba86919f4218ec9c" },
+];
+
+function DeficitModelCredits() {
+  return <details className="deficit-readout">
+    <summary><span>3D MODEL CREDITS / 09</span><b><span>OPEN +</span><span>CLOSE −</span></b></summary>
+    <div className="deficit-readout-content">
+      <section aria-labelledby="deficit-simulation-credit-title">
+        <h2 id="deficit-simulation-credit-title">MODELS IN THE ACTUAL SIMULATION / 02</h2>
+        <div className="deficit-credit-list">{deficitSimulationModelCredits.map((item, index) => <a href={item.source} target="_blank" rel="noreferrer" key={item.id}>
+          <b>{String(index + 1).padStart(2, "0")} {item.title}</b>
+          <span>BY {item.creator} <i aria-hidden="true">↗</i></span>
+        </a>)}</div>
+      </section>
+      <section aria-labelledby="deficit-object-field-credit-title">
+        <h2 id="deficit-object-field-credit-title">WEBSITE OBJECT FIELD / 07</h2>
+        <p>PERIPHERAL MODELS DISPLAYED AROUND THE FILM.</p>
+        <div className="deficit-credit-list">{deficitObjectFiles.map((item, index) => <a href={item.source} target="_blank" rel="noreferrer" key={item.id}>
+          <b>{String(index + 1).padStart(2, "0")} {item.title}</b>
+          <span>BY {item.creator} <i aria-hidden="true">↗</i></span>
+        </a>)}</div>
+      </section>
+    </div>
+  </details>;
+}
 
 function DeficitBitmapBackground({ src }) {
   const canvasRef = useRef(null);
@@ -1754,14 +1783,6 @@ function DeficitExperience({ project, path }) {
             <div><dt>FORMAT</dt><dd>VR EXPERIENCE</dd></div>
           </dl>
         </aside>
-        <aside className="deficit-readout">
-          <span>SKETCHFAB OBJECT CREDITS / 07</span>
-          <p>PERIPHERAL 3D MODELS BY THEIR ORIGINAL CREATORS. OPEN A RECORD TO VIEW ITS SOURCE ON SKETCHFAB.</p>
-          <div>{deficitObjectFiles.map((item, index) => <a href={item.source} target="_blank" rel="noreferrer" key={item.id}>
-            <b>{String(index + 1).padStart(2, "0")} {item.title}</b>
-            <span>BY {item.creator} <i aria-hidden="true">↗</i></span>
-          </a>)}</div>
-        </aside>
         <a className="deficit-scroll-cue" href="#deficit-documentation">DOCUMENTATION <span aria-hidden="true">&darr;</span></a>
       </section>
 
@@ -1780,7 +1801,7 @@ function DeficitExperience({ project, path }) {
         </div>
       </section>
 
-      <ProjectLinks links={project.links} />
+      <ProjectLinks links={project.links}><DeficitModelCredits /></ProjectLinks>
       <ProjectRoutePager context={context} />
     </main>
     <Footer />
@@ -2398,8 +2419,6 @@ const ellwasProcessChapters = [
 
 const ellwasScaleStudies = [
   { src: "/assets/mcad-ellwas/process/14-interface-application.jpg", page: "101", title: "In-museum interface", note: "The radial language organizes people, milestones, and historical moments across the museum’s interactive screens.", alt: "Three touch interface studies using radial light forms around historical content" },
-  { src: "/assets/mcad-ellwas/process/15-wall-timeline.jpg", page: "102", title: "Museum timeline", note: "The same modules scale into a multi-screen wall spanning generations of content.", alt: "Museum wall timeline composed from connected circular content modules" },
-  { src: "/assets/mcad-ellwas/process/16-final-environment.jpg", page: "103", title: "Environmental light", note: "Color and shadow extend the personal light beyond the screen and into the architecture.", alt: "Environmental application studies projecting the colored botanical light into a dark interior" },
 ];
 
 function EllwasFrame({ children, code, status, className = "" }) {
@@ -2407,113 +2426,21 @@ function EllwasFrame({ children, code, status, className = "" }) {
     <div className={`ellwas-frame ${className}`.trim()}>
       <div className="ellwas-frame-bar"><b>{code}</b><span>{status}</span></div>
       {children}
-      <div className="ellwas-frame-footer"><span>MCAD × ELLWAS / 2022</span><b>LIGHT SYSTEM</b></div>
+      <div className="ellwas-frame-footer"><span>MCAAD × ELLWAS / 2022</span><b>LIGHT SYSTEM</b></div>
     </div>
   );
 }
 
-function EllwasPreviewTrigger({ item, activePreviewId, onOpen, onCloseSoon }) {
-  const previewId = `ellwas-expanded-${item.id.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`;
-  const expanded = activePreviewId === item.id;
-
+function EllwasProcessImage({ item }) {
   return (
-    <div className="ellwas-preview-trigger">
+    <div className="ellwas-process-image">
       <img src={item.src} alt={item.alt} loading="lazy" />
-      <button
-        type="button"
-        className="ellwas-preview-hitarea"
-        aria-label={`Expand ${item.title}`}
-        aria-expanded={expanded}
-        aria-controls={previewId}
-        onPointerEnter={event => {
-          if (event.pointerType !== "touch") onOpen(item, event.currentTarget);
-        }}
-        onPointerLeave={event => {
-          if (event.pointerType !== "touch") onCloseSoon();
-        }}
-        onFocus={event => onOpen(item, event.currentTarget)}
-        onBlur={onCloseSoon}
-        onClick={event => {
-          if (window.matchMedia("(pointer: coarse)").matches) onOpen(item, event.currentTarget);
-        }}
-      >
-        <span>EXPAND <b aria-hidden="true">↗</b></span>
-      </button>
     </div>
-  );
-}
-
-function EllwasExpandedPreview({ preview, onClose, onKeepOpen, onCloseSoon }) {
-  const windowRef = useRef(null);
-  const [position, setPosition] = useState({ left: 16, top: 16 });
-
-  useEffect(() => {
-    if (!preview) return undefined;
-
-    const placeWindow = () => {
-      const anchor = preview.trigger?.getBoundingClientRect();
-      const popup = windowRef.current?.getBoundingClientRect();
-      if (!anchor || !popup) return;
-      const gap = 12;
-      const edge = 12;
-      const fitsRight = anchor.right + gap + popup.width <= window.innerWidth - edge;
-      const left = fitsRight
-        ? anchor.right + gap
-        : Math.max(edge, anchor.left - gap - popup.width);
-      const top = Math.max(edge, Math.min(anchor.top, window.innerHeight - popup.height - edge));
-      setPosition({ left, top });
-    };
-
-    const frame = window.requestAnimationFrame(placeWindow);
-    const handleKeyDown = event => {
-      if (event.key === "Escape") onClose();
-    };
-    const handlePointerDown = event => {
-      if (windowRef.current?.contains(event.target) || preview.trigger?.contains(event.target)) return;
-      onClose();
-    };
-    window.addEventListener("resize", placeWindow);
-    window.addEventListener("scroll", placeWindow, true);
-    document.addEventListener("keydown", handleKeyDown);
-    document.addEventListener("pointerdown", handlePointerDown, true);
-    return () => {
-      window.cancelAnimationFrame(frame);
-      window.removeEventListener("resize", placeWindow);
-      window.removeEventListener("scroll", placeWindow, true);
-      document.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("pointerdown", handlePointerDown, true);
-    };
-  }, [preview, onClose]);
-
-  if (!preview) return null;
-
-  return (
-    <aside
-      ref={windowRef}
-      id={`ellwas-expanded-${preview.item.id.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`}
-      className="ellwas-expanded-preview"
-      style={{ left: position.left, top: position.top }}
-      aria-label={`Expanded view: ${preview.item.title}`}
-      onPointerEnter={onKeepOpen}
-      onPointerLeave={onCloseSoon}
-    >
-      <div className="ellwas-expanded-preview-bar">
-        <b>DETAIL://PROCESS.IMAGE</b>
-        <button type="button" onClick={onClose} aria-label="Close expanded image">CLOSE ×</button>
-      </div>
-      <div className="ellwas-expanded-preview-image">
-        <img src={preview.item.src} alt={preview.item.alt} />
-      </div>
-      <footer><b>{preview.item.title}</b><span>PROCESS BOARD / P.{preview.item.page}</span></footer>
-    </aside>
   );
 }
 
 function EllwasProcessCarousel({
   slides,
-  activePreviewId,
-  onPreviewOpen,
-  onPreviewCloseSoon,
   controlsLabel = "Terminal interaction study controls",
   previousLabel = "Previous terminal interaction study",
   nextLabel = "Next terminal interaction study",
@@ -2563,13 +2490,7 @@ function EllwasProcessCarousel({
       }}
     >
       <div className="ellwas-process-carousel-visual">
-        <EllwasPreviewTrigger
-          key={activeSlide.src}
-          item={{ ...activeSlide, id: activeSlide.src }}
-          activePreviewId={activePreviewId}
-          onOpen={onPreviewOpen}
-          onCloseSoon={onPreviewCloseSoon}
-        />
+        <EllwasProcessImage key={activeSlide.src} item={activeSlide} />
         <div className="ellwas-process-carousel-controls" role="group" aria-label={controlsLabel}>
           <button type="button" onClick={showPrevious} aria-label={previousLabel}>←</button>
           <span>{String(activeIndex + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span>
@@ -2593,6 +2514,40 @@ function EllwasProcessCarousel({
   );
 }
 
+function EllwasMotionLoop() {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return undefined;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return undefined;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) video.play().catch(() => {});
+      else video.pause();
+    }, { rootMargin: "120px", threshold: 0.05 });
+    observer.observe(video);
+    return () => {
+      observer.disconnect();
+      video.pause();
+    };
+  }, []);
+
+  return (
+    <video
+      ref={videoRef}
+      src="/assets/mcad-ellwas/light-bloom-loop.mp4"
+      poster="/assets/mcad-ellwas/light-bloom-poster.jpg"
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      aria-label="Light bloom animation test"
+    />
+  );
+}
+
 function EllwasMotionStudy() {
   return (
     <section className="ellwas-motion ellwas-motion-step" aria-labelledby="ellwas-motion-title">
@@ -2602,8 +2557,8 @@ function EllwasMotionStudy() {
         <b>02 MOTION STUDIES</b>
       </div>
       <div className="ellwas-motion-grid">
-        <EllwasFrame code="MOTION://BLOOM" status="GIF / LOOP" className="ellwas-gif-test">
-          <img src="/assets/mcad-ellwas/light-bloom-loop.gif" alt="Light bloom animation test" loading="lazy" />
+        <EllwasFrame code="MOTION://BLOOM" status="VIDEO / LOOP" className="ellwas-gif-test">
+          <EllwasMotionLoop />
         </EllwasFrame>
       </div>
     </section>
@@ -2660,14 +2615,28 @@ function EllwasInteractiveBloom() {
     if (!canvas || !field) return undefined;
 
     const context = canvas.getContext("2d");
-    const tipImages = ellwasPoofTips.map(source => {
+    const tipRasters = new Array(ellwasPoofTips.length).fill(null);
+    const tipImages = ellwasPoofTips.map((source, index) => {
       const image = new Image();
+      image.addEventListener("load", () => {
+        const scale = 3;
+        const padding = 18;
+        const raster = document.createElement("canvas");
+        raster.width = Math.ceil(image.naturalWidth * scale) + (padding * 2);
+        raster.height = Math.ceil(image.naturalHeight * scale) + (padding * 2);
+        const rasterContext = raster.getContext("2d");
+        rasterContext.filter = "invert(1) sepia(.38) saturate(.45) brightness(2.3) drop-shadow(0 0 5px rgba(255,248,210,.78))";
+        rasterContext.drawImage(image, padding, padding, image.naturalWidth * scale, image.naturalHeight * scale);
+        tipRasters[index] = raster;
+      }, { once: true });
       image.src = source;
       return image;
     });
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let frameId = 0;
     let previousTime = performance.now();
+    let previousDrawTime = 0;
+    let fieldInView = false;
     let width = 1;
     let height = 1;
     let pixelRatio = 1;
@@ -2676,25 +2645,30 @@ function EllwasInteractiveBloom() {
       const bounds = field.getBoundingClientRect();
       width = Math.max(1, bounds.width);
       height = Math.max(1, bounds.height);
-      pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+      pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
       canvas.width = Math.round(width * pixelRatio);
       canvas.height = Math.round(height * pixelRatio);
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
     };
 
-    const drawTip = (image, x, y, angle, scale, opacity) => {
-      if (!image.complete || !image.naturalWidth) return;
+    const drawTip = (image, raster, x, y, angle, scale, opacity) => {
+      if (!raster || !image.naturalWidth) return;
       const base = 27 * scale;
       const ratio = image.naturalWidth / image.naturalHeight;
       const tipWidth = ratio >= 1 ? base * ratio : base;
       const tipHeight = ratio >= 1 ? base : base / ratio;
+      const rasterScale = Math.min(
+        tipWidth / (image.naturalWidth * 3),
+        tipHeight / (image.naturalHeight * 3),
+      );
+      const rasterWidth = raster.width * rasterScale;
+      const rasterHeight = raster.height * rasterScale;
       context.save();
       context.translate(x, y);
       context.rotate(angle + (Math.PI / 2));
       context.globalAlpha = opacity;
-      context.filter = "invert(1) sepia(.38) saturate(.45) brightness(2.3) drop-shadow(0 0 5px rgba(255,248,210,.78))";
-      context.drawImage(image, -tipWidth / 2, -tipHeight / 2, tipWidth, tipHeight);
+      context.drawImage(raster, -rasterWidth / 2, -rasterHeight / 2, rasterWidth, rasterHeight);
       context.restore();
     };
 
@@ -2767,14 +2741,14 @@ function EllwasInteractiveBloom() {
           context.strokeStyle = `rgba(255, 249, 218, ${0.3 + branchGrowth * 0.5})`;
           context.stroke();
           if (branchGrowth > 0.72) {
-            drawTip(tipImages[sprout.type], sideX, sideY, sideAngle, 0.35 + (sprout.size * 0.25 * branchGrowth), branchGrowth * 0.72);
+            drawTip(tipImages[sprout.type], tipRasters[sprout.type], sideX, sideY, sideAngle, 0.35 + (sprout.size * 0.25 * branchGrowth), branchGrowth * 0.72);
           }
         }
 
         if (local > 0.68) {
           const tipGrowth = Math.min(1, (local - 0.68) / 0.32);
           const tipAngle = Math.atan2(endY - controlTwoY, endX - controlTwoX);
-          drawTip(tipImages[sprout.type], endX, endY, tipAngle, (0.38 + sprout.size * 0.42) * tipGrowth, tipGrowth);
+          drawTip(tipImages[sprout.type], tipRasters[sprout.type], endX, endY, tipAngle, (0.38 + sprout.size * 0.42) * tipGrowth, tipGrowth);
         }
       });
 
@@ -2794,6 +2768,14 @@ function EllwasInteractiveBloom() {
     };
 
     const tick = now => {
+      frameId = 0;
+      if (!fieldInView || document.hidden) return;
+      const frameInterval = pointerRef.current.inside ? (1000 / 45) : (1000 / 30);
+      if (now - previousDrawTime < frameInterval) {
+        frameId = window.requestAnimationFrame(tick);
+        return;
+      }
+      previousDrawTime = now;
       const delta = Math.min(0.05, Math.max(0, (now - previousTime) / 1000));
       previousTime = now;
       const pointer = pointerRef.current;
@@ -2839,14 +2821,40 @@ function EllwasInteractiveBloom() {
       frameId = window.requestAnimationFrame(tick);
     };
 
+    const startAnimation = () => {
+      if (frameId || !fieldInView || document.hidden) return;
+      previousTime = performance.now();
+      previousDrawTime = 0;
+      frameId = window.requestAnimationFrame(tick);
+    };
+
+    const stopAnimation = () => {
+      if (!frameId) return;
+      window.cancelAnimationFrame(frameId);
+      frameId = 0;
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) stopAnimation();
+      else startAnimation();
+    };
+
     resize();
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(field);
-    frameId = window.requestAnimationFrame(tick);
+    const intersectionObserver = new IntersectionObserver(([entry]) => {
+      fieldInView = entry.isIntersecting;
+      if (fieldInView) startAnimation();
+      else stopAnimation();
+    }, { rootMargin: "80px", threshold: 0.01 });
+    intersectionObserver.observe(field);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       resizeObserver.disconnect();
-      window.cancelAnimationFrame(frameId);
+      intersectionObserver.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      stopAnimation();
     };
   }, []);
 
@@ -2956,27 +2964,8 @@ function EllwasInteractiveBloom() {
 
 function McadEllwas({ project, path }) {
   const context = getProjectRouteContext(path);
-  const [expandedPreview, setExpandedPreview] = useState(null);
-  const previewCloseTimer = useRef(null);
   const summary = "Worked as a design intern for Dana Karwas on an experience design concept for the Milken Center for Advancing the American Dream.";
-  const concept = "The concept centered on a personal light that grew as visitors engaged with the museum. The exhibits, people, stories, and milestones they explored across four themes influenced its botanical components, color, density, and growth. The core interaction lived on physical museum terminals, with a possible mobile extension explored for photo upload and QR retrieval.";
-
-  const keepPreviewOpen = useCallback(() => {
-    window.clearTimeout(previewCloseTimer.current);
-  }, []);
-  const closePreview = useCallback(() => {
-    window.clearTimeout(previewCloseTimer.current);
-    setExpandedPreview(null);
-  }, []);
-  const closePreviewSoon = useCallback(() => {
-    window.clearTimeout(previewCloseTimer.current);
-    previewCloseTimer.current = window.setTimeout(() => setExpandedPreview(null), 140);
-  }, []);
-  const openPreview = useCallback((item, trigger) => {
-    keepPreviewOpen();
-    setExpandedPreview({ item, trigger });
-  }, [keepPreviewOpen]);
-  useEffect(() => () => window.clearTimeout(previewCloseTimer.current), []);
+  const conceptSummary = "The concept centered on a personal light that grew as visitors engaged with the museum. The exhibits, people, stories, and milestones they explored across four themes influenced its botanical components, color, density, and growth. The core interaction lived on physical museum terminals, with a possible mobile extension explored for photo upload and QR retrieval.";
 
   return (
     <>
@@ -2990,36 +2979,15 @@ function McadEllwas({ project, path }) {
 
           <header className="ellwas-hero-copy">
             <span>COM_01 / EXPERIENCE SYSTEM / 2022</span>
-            <h1 id="ellwas-title">MCAD<br /><i>×</i> ELLWAS</h1>
+            <h1 id="ellwas-title">MCAAD<br /><i>×</i> ELLWAS</h1>
             <p>{summary}</p>
             <div className="ellwas-tags"><span>EXPERIENCE DESIGN</span><span>VISUAL SYSTEM</span><span>MUSEUM UI</span></div>
             <a href="#ellwas-process">TRACE THE EXPLORATION <b aria-hidden="true">↓</b></a>
           </header>
         </section>
 
-        <section className="ellwas-concept" aria-labelledby="ellwas-concept-title">
-          <header>
-            <span>01 / DESIGN PREMISE</span>
-            <h2 id="ellwas-concept-title">ONE LIGHT.<br />MANY JOURNEYS.</h2>
-          </header>
-          <div className="ellwas-concept-copy">
-            <p>{concept}</p>
-            <dl>
-              <div><dt>INPUT</dt><dd>Exhibits, people, stories, and milestones explored</dd></div>
-              <div><dt>LOGIC</dt><dd>Theme and engagement adjust form, color, density, and growth</dd></div>
-              <div><dt>OUTPUT</dt><dd>A personal light across museum terminals, with a possible mobile continuation</dd></div>
-            </dl>
-            <div className="ellwas-influence-map" aria-label="How museum interactions influenced each visitor's light">
-              <span>WHAT SHAPED THE LIGHT</span>
-              <div><b>THEME</b><p>Finance / Entrepreneurship / Education / Health</p><i>COMPONENT + COLOR</i></div>
-              <div><b>CONTENT</b><p>Exhibits / People / Stories / Milestones</p><i>COMPOSITION</i></div>
-              <div><b>ENGAGEMENT</b><p>What each visitor chose to explore</p><i>DENSITY + EMPHASIS</i></div>
-              <div><b>PROGRESS</b><p>Accumulation throughout the museum visit</p><i>GROWTH</i></div>
-            </div>
-          </div>
-        </section>
-
         <section className="ellwas-process ellwas-story" id="ellwas-process" aria-label="Development story">
+          <p className="ellwas-process-summary">{conceptSummary}</p>
           <div className="ellwas-story-chapters">
             {ellwasProcessChapters.map(chapter => (
               <Fragment key={chapter.number}>
@@ -3031,7 +2999,7 @@ function McadEllwas({ project, path }) {
                     <aside><b>DECISION</b><span>{chapter.decision}</span></aside>
                   </header>
                   <div className={`ellwas-board-grid is-${chapter.layout}`}>
-                    {chapter.carousel ? <EllwasProcessCarousel slides={chapter.boards} activePreviewId={expandedPreview?.item.id} onPreviewOpen={openPreview} onPreviewCloseSoon={closePreviewSoon} /> : chapter.boards.map(board => (
+                    {chapter.carousel ? <EllwasProcessCarousel slides={chapter.boards} /> : chapter.boards.map(board => (
                       board.carousel ? (
                         <EllwasProcessCarousel
                           key={board.key}
@@ -3039,18 +3007,10 @@ function McadEllwas({ project, path }) {
                           controlsLabel={board.controlsLabel}
                           previousLabel={board.previousLabel}
                           nextLabel={board.nextLabel}
-                          activePreviewId={expandedPreview?.item.id}
-                          onPreviewOpen={openPreview}
-                          onPreviewCloseSoon={closePreviewSoon}
                         />
                       ) : (
                         <figure className="ellwas-process-board" key={board.src}>
-                          <EllwasPreviewTrigger
-                            item={{ ...board, id: board.src }}
-                            activePreviewId={expandedPreview?.item.id}
-                            onOpen={openPreview}
-                            onCloseSoon={closePreviewSoon}
-                          />
+                          <EllwasProcessImage item={board} />
                           <figcaption><b>{board.title}</b><span>PROCESS BOARD / P.{board.page}</span></figcaption>
                         </figure>
                       )
@@ -3079,18 +3039,13 @@ function McadEllwas({ project, path }) {
           <div className="ellwas-section-heading">
             <span>05 / SYSTEM APPLICATION</span>
             <h2 id="ellwas-application-title">ONE SYSTEM.<br />MANY SCALES.</h2>
-            <b>03 APPLICATION VIEWS</b>
+            <b>01 APPLICATION VIEW</b>
           </div>
-          <p className="ellwas-section-intro">The final language moves from a personal emblem to physical museum terminals, exhibit touchscreens, and a room-scale timeline. Mobile was explored as a possible supporting interaction for supplying a photo or retrieving a result by QR code—not as the project’s primary interface.</p>
+          <p className="ellwas-section-intro">The final language moves from a personal emblem to the museum’s interactive screens. Mobile was explored as a possible supporting interaction for supplying a photo or retrieving a result by QR code—not as the project’s primary interface.</p>
           <div className="ellwas-scale-grid">
             {ellwasScaleStudies.map(study => (
               <figure className="ellwas-scale-study" key={study.src}>
-                <EllwasPreviewTrigger
-                  item={{ ...study, id: study.src }}
-                  activePreviewId={expandedPreview?.item.id}
-                  onOpen={openPreview}
-                  onCloseSoon={closePreviewSoon}
-                />
+                <EllwasProcessImage item={study} />
                 <figcaption><b>{study.title}</b><p>{study.note}</p><span>PROCESS BOARD / P.{study.page}</span></figcaption>
               </figure>
             ))}
@@ -3099,12 +3054,6 @@ function McadEllwas({ project, path }) {
 
         <ProjectLinks links={project.links} />
         <ProjectRoutePager context={context} />
-        <EllwasExpandedPreview
-          preview={expandedPreview}
-          onClose={closePreview}
-          onKeepOpen={keepPreviewOpen}
-          onCloseSoon={closePreviewSoon}
-        />
       </main>
       <Footer />
     </>

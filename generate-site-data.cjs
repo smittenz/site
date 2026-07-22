@@ -125,7 +125,7 @@ const collections = {
     ['/physical/coyness', 'COYNESS'], ['/physical/theater-production-work', 'THEATER PRODUCTION WORK'], ['/physical/african-bullfrog', 'AFRICAN BULLFROG'],
   ],
   clients: [
-    ['/for-clients/mcadxellwas', 'MCAD X ELLWAS'], ['/for-clients/aippy', 'AIPPY'], ['/for-clients/black-luminaries', 'BLACK LUMINARIES'],
+    ['/for-clients/mcadxellwas', 'MCAAD X ELLWAS'], ['/for-clients/aippy', 'AIPPY'], ['/for-clients/black-luminaries', 'BLACK LUMINARIES'],
   ],
 };
 
