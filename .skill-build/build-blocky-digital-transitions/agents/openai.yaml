@@ -1,4 +1,0 @@
-interface:
-  display_name: "Blocky Digital Transitions"
-  short_description: "Build art-directed blocky image transitions"
-  default_prompt: "Use $build-blocky-digital-transitions to add a bold stepped digital decode between cycling images."
