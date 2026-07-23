@@ -1,11 +1,11 @@
-import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { createContext, Fragment, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import data from "./site-data.json";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader.js";
-import { ArrowUpRight, FileArchive, FileCode, FolderSimpleDashed, HardDrives, MagnifyingGlass, SortAscending, SortDescending, TextAa } from "@phosphor-icons/react";
+import { ArrowUpRight, ArrowsOut, CaretDown, CaretLeft, CaretRight, FileArchive, FileCode, FolderSimpleDashed, HardDrives, MagnifyingGlass, SortAscending, SortDescending, TextAa, X } from "@phosphor-icons/react";
 import StudyPage from "./StudyPage.jsx";
 import StyleGuidePage from "./StyleGuidePage.jsx";
 import { buildPortfolioSearchIndex, searchPortfolio } from "./portfolio-search.js";
@@ -24,6 +24,225 @@ function go(event, href) {
 function Link({ href, children, className = "" }) {
   const external = /^https?:|^mailto:/.test(href);
   return <a className={className} href={href} onClick={external ? undefined : event => go(event, href)}>{children}</a>;
+}
+
+const ImageViewerContext = createContext(null);
+
+function normalizeViewerImages(images = [], title = "Project image") {
+  return images.map((item, index) => {
+    if (typeof item === "string") {
+      return { src: item, alt: `${title}, image ${index + 1} of ${images.length}` };
+    }
+    return {
+      src: item?.src,
+      alt: item?.alt || item?.label || `${title}, image ${index + 1} of ${images.length}`,
+      position: item?.position,
+    };
+  }).filter(item => item.src);
+}
+
+function ImageViewer({ viewer, onClose, onIndexChange }) {
+  const closeRef = useRef(null);
+  const swipeStart = useRef(null);
+  const items = viewer.items;
+  const activeItem = items[viewer.index];
+  const multiple = items.length > 1;
+  const previous = useCallback(() => {
+    if (multiple) onIndexChange((viewer.index - 1 + items.length) % items.length);
+  }, [items.length, multiple, onIndexChange, viewer.index]);
+  const next = useCallback(() => {
+    if (multiple) onIndexChange((viewer.index + 1) % items.length);
+  }, [items.length, multiple, onIndexChange, viewer.index]);
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const focusFrame = window.requestAnimationFrame(() => closeRef.current?.focus());
+    return () => {
+      window.cancelAnimationFrame(focusFrame);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = event => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose();
+      }
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        previous();
+      }
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        next();
+      }
+      if (event.key === "Tab") {
+        const dialog = closeRef.current?.closest(".image-viewer-dialog");
+        const focusable = dialog ? [...dialog.querySelectorAll("button:not([disabled])")] : [];
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable.at(-1);
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [next, onClose, previous]);
+
+  const finishSwipe = event => {
+    if (!swipeStart.current || !multiple) return;
+    const deltaX = event.clientX - swipeStart.current.x;
+    const deltaY = event.clientY - swipeStart.current.y;
+    swipeStart.current = null;
+    if (Math.abs(deltaX) < 45 || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+    if (deltaX < 0) next();
+    else previous();
+  };
+
+  return (
+    <div className="image-viewer-backdrop" onPointerDown={event => {
+      if (event.target === event.currentTarget) onClose();
+    }}>
+      <section className="image-viewer-dialog" role="dialog" aria-modal="true" aria-labelledby="image-viewer-title">
+        <header className="image-viewer-header">
+          <span id="image-viewer-title"><b>IMG://FULL.VIEW</b> {viewer.title}</span>
+          <button ref={closeRef} type="button" onClick={onClose}><span>CLOSE</span><X size={17} weight="bold" aria-hidden="true" /></button>
+        </header>
+        <div
+          className="image-viewer-stage"
+          onPointerDown={event => {
+            if (event.pointerType === "touch") swipeStart.current = { x: event.clientX, y: event.clientY };
+          }}
+          onPointerUp={finishSwipe}
+          onPointerCancel={() => { swipeStart.current = null; }}
+        >
+          <img
+            key={activeItem.src}
+            src={activeItem.src}
+            alt={activeItem.alt}
+            style={{ objectPosition: activeItem.position || "center" }}
+          />
+          {multiple && <>
+            <button className="image-viewer-arrow is-previous" type="button" onClick={previous} aria-label="Previous full-size image"><CaretLeft size={24} weight="bold" aria-hidden="true" /></button>
+            <button className="image-viewer-arrow is-next" type="button" onClick={next} aria-label="Next full-size image"><CaretRight size={24} weight="bold" aria-hidden="true" /></button>
+          </>}
+        </div>
+        <footer className="image-viewer-footer">
+          <div>
+            <span>{activeItem.alt}</span>
+            <b>{String(viewer.index + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}</b>
+            <small>{multiple ? "ARROWS / SWIPE TO MOVE" : "FULL RESOLUTION VIEW"}</small>
+          </div>
+          {multiple && <nav className="image-viewer-thumbnails" aria-label="Choose an image">
+            {items.map((item, index) => (
+              <button
+                className={index === viewer.index ? "is-active" : ""}
+                type="button"
+                onClick={() => onIndexChange(index)}
+                aria-label={`View image ${index + 1}: ${item.alt}`}
+                aria-current={index === viewer.index ? "true" : undefined}
+                key={`${item.src}-${index}`}
+              >
+                <img src={item.src} alt="" />
+                <span>{String(index + 1).padStart(2, "0")}</span>
+              </button>
+            ))}
+          </nav>}
+        </footer>
+      </section>
+    </div>
+  );
+}
+
+function ImageViewerProvider({ children, scopeKey }) {
+  const [viewer, setViewer] = useState(null);
+
+  useEffect(() => setViewer(null), [scopeKey]);
+
+  const openImageViewer = useCallback(({ images, index = 0, title = "Project image" }) => {
+    const items = normalizeViewerImages(images, title);
+    if (!items.length) return;
+    setViewer({
+      items,
+      index: Math.max(0, Math.min(items.length - 1, index)),
+      title,
+      returnFocus: document.activeElement,
+    });
+  }, []);
+
+  const closeImageViewer = useCallback(() => {
+    setViewer(current => {
+      const returnFocus = current?.returnFocus;
+      window.setTimeout(() => returnFocus?.isConnected && returnFocus.focus?.(), 0);
+      return null;
+    });
+  }, []);
+
+  const contextValue = useMemo(() => ({ openImageViewer }), [openImageViewer]);
+  return (
+    <ImageViewerContext.Provider value={contextValue}>
+      {children}
+      {viewer && <ImageViewer
+        viewer={viewer}
+        onClose={closeImageViewer}
+        onIndexChange={index => setViewer(current => current ? { ...current, index } : current)}
+      />}
+    </ImageViewerContext.Provider>
+  );
+}
+
+function useImageViewer() {
+  const context = useContext(ImageViewerContext);
+  if (!context) throw new Error("useImageViewer must be used inside ImageViewerProvider");
+  return context;
+}
+
+function ImageExpandButton({ images, index = 0, title, label = "FULL IMAGE", className = "" }) {
+  const { openImageViewer } = useImageViewer();
+  return (
+    <button
+      className={`image-expand-control ${className}`.trim()}
+      type="button"
+      onPointerDown={event => event.stopPropagation()}
+      onClick={event => {
+        event.stopPropagation();
+        openImageViewer({ images, index, title });
+      }}
+      aria-label={`Open ${title} full-screen image viewer`}
+    >
+      <ArrowsOut size={15} weight="bold" aria-hidden="true" />
+      <span>{label}</span>
+    </button>
+  );
+}
+
+function ExpandableImage({ images, imageIndex = 0, title, alt, ...imageProps }) {
+  const { openImageViewer } = useImageViewer();
+  const imageList = images?.length ? images : [imageProps.src];
+  return (
+    <>
+      <img
+        {...imageProps}
+        alt={alt}
+        className={`${imageProps.className || ""} is-expandable-image`.trim()}
+        onDoubleClick={event => {
+          imageProps.onDoubleClick?.(event);
+          openImageViewer({ images: imageList, index: imageIndex, title });
+        }}
+      />
+      <ImageExpandButton images={imageList} index={imageIndex} title={title} />
+    </>
+  );
 }
 
 function CommandHeader({ path }) {
@@ -50,7 +269,7 @@ function CommandHeader({ path }) {
   }, []);
   return (
     <header className="home-header global-command-header">
-      <Link href="/" className="home-wordmark"><span aria-hidden="true">&gt;</span>Sophie Katsivelos</Link>
+      <Link href="/" className="home-wordmark">Sophie Katsivelos</Link>
       <div className="index-menu">
         <button className="index-toggle" type="button" aria-expanded={menuOpen} aria-controls="global-index-panel" onClick={() => {
           setMenuOpen(value => !value);
@@ -555,8 +774,7 @@ function Home() {
                   <span className="node-label" aria-hidden="true">
                     <span className="node-window-bar"><b>SYS://NODE.{node.code}</b><i>SIGNAL:LIVE</i></span>
                     <span className="node-window-visual">
-                      <img className="node-window-project" src={node.image} alt="" />
-                      <span className="node-window-scan" />
+                      <BitmapArchivePreview src={node.image} alt="" variant="node" />
                     </span>
                     <span className="node-window-copy"><b>{node.code}</b><span>{node.label}</span></span>
                     <span className="node-window-data"><i>X:{node.x.toFixed(1)}</i><i>Y:{node.y.toFixed(1)}</i><i>OPEN SIGNAL</i></span>
@@ -753,7 +971,13 @@ function Gallery({ images, title, autoCycle = false, footerLabel = "PRIMARY VISU
     >
       <div className="project-frame-bar"><b>IMG://{String(index + 1).padStart(2, "0")}</b><span>{autoCycle ? `${paused ? "PAUSED" : "AUTO CYCLE"} / ${String(images.length).padStart(2, "0")}` : `${String(images.length).padStart(2, "0")} FILES / READY`}</span></div>
       <div className="project-gallery-visual">
-        <img src={images[index]} alt={`${title}, image ${index + 1} of ${images.length}`} />
+        <ExpandableImage
+          src={images[index]}
+          alt={`${title}, image ${index + 1} of ${images.length}`}
+          images={images}
+          imageIndex={index}
+          title={title}
+        />
         {images.length > 1 && <>
           <button className="gallery-arrow previous" type="button" onClick={previous} aria-label="Previous image">&larr;</button>
           <button className="gallery-arrow next" type="button" onClick={next} aria-label="Next image">&rarr;</button>
@@ -1005,16 +1229,30 @@ function ProjectHeroMedia({ project, layout }) {
   return <Gallery images={heroImages} title={project.title} />;
 }
 
-function ProjectLinks({ links, children }) {
+const softwareLinkPattern = /\b(?:unity|p5js?|pika|runway|processing|twine|web\s*gl|maya|unreal engine|z-?brush|substance painter|cables\.?gl|media\s*pipe)\b/i;
+
+function ProjectLinks({ links = [], children }) {
   if (!links?.length && !children) return null;
+  const softwareLinks = links.filter(link => softwareLinkPattern.test(link.label || ""));
+  const otherLinks = links.filter(link => !softwareLinks.includes(link));
+  const renderLink = (link, index) => (
+    <a href={link.href} target="_blank" rel="noreferrer" key={`${link.href}-${link.label}`}>
+      <b>{String(index + 1).padStart(2, "0")}</b><span>{link.label}</span><i aria-hidden="true">↗</i>
+    </a>
+  );
   return (
     <section className="project-links" id="project-links" aria-label="Project links">
-      <span>PROJECT LINKS / {String(links?.length || 0).padStart(2, "0")}</span>
-      {!!links?.length && <div>{links.map((link, index) => (
-        <a href={link.href} target="_blank" rel="noreferrer" key={`${link.href}-${link.label}`}>
-          <b>{String(index + 1).padStart(2, "0")}</b><span>{link.label}</span><i aria-hidden="true">↗</i>
-        </a>
-      ))}</div>}
+      {!!otherLinks.length && <>
+        <span>PROJECT LINKS / {String(otherLinks.length).padStart(2, "0")}</span>
+        <div className="project-link-list project-link-list--visible">{otherLinks.map(renderLink)}</div>
+      </>}
+      {!!softwareLinks.length && <details className="project-link-disclosure">
+        <summary>
+          <span>LINKS TO SOFTWARE USED</span>
+          <CaretDown className="project-links-caret" size={13} weight="bold" aria-hidden="true" />
+        </summary>
+        <div className="project-link-list">{softwareLinks.map(renderLink)}</div>
+      </details>}
       {children}
     </section>
   );
@@ -1047,6 +1285,7 @@ const bioticMapNodes = [
 
 function BioticGallery({ project }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const { openImageViewer } = useImageViewer();
   const activeNode = hoveredIndex === null ? null : bioticMapNodes[hoveredIndex];
   return (
     <>
@@ -1057,13 +1296,17 @@ function BioticGallery({ project }) {
             <div className="biotic-map-stage">
               <img className="biotic-map-image" src="/assets/biotic-gallery-map.png" alt="Green halftone Biotic Gallery organism" />
               {bioticMapNodes.map((node, index) => (
-                <div
+                <button
+                  type="button"
                   className={`biotic-node biotic-node--${node.side}`}
                   key={node.code}
                   style={{ left: `${node.x}%`, top: `${node.y}%` }}
-                  aria-label={`Hover to preview image for ${node.label}`}
+                  aria-label={`Open full image for ${node.label}`}
                   onPointerEnter={() => setHoveredIndex(index)}
                   onPointerLeave={() => setHoveredIndex(null)}
+                  onFocus={() => setHoveredIndex(index)}
+                  onBlur={() => setHoveredIndex(null)}
+                  onClick={() => openImageViewer({ images: bioticMapNodes, index, title: "Biotic Gallery" })}
                 >
                   <span className="biotic-node-core" />
                   <span className="biotic-node-label" aria-hidden="true">NODE_{node.code}</span>
@@ -1071,7 +1314,7 @@ function BioticGallery({ project }) {
                     <img src={node.image} alt="" />
                     <span>IMAGE_{node.code}</span>
                   </span>
-                </div>
+                </button>
               ))}
             </div>
             <div className="biotic-map-footer"><span>BLACK DOTS / SIGNAL PATHS</span><span>HOVER TO TRACE</span></div>
@@ -1104,6 +1347,8 @@ function BioticGallery({ project }) {
 const storiesOnSkinCast05Frames = [
   { src: "/assets/stories-on-skin/chest-closeup-01.jpg", position: "50% 50%", label: "Chest scar, close study 01" },
   { src: "/assets/stories-on-skin/chest-closeup-02.jpg", position: "50% 50%", label: "Chest scar, close study 02" },
+  { src: "/assets/stories-on-skin/cast-05-closeup-03.jpg", position: "50% 50%", label: "Cast 05 scar surface detail" },
+  { src: "/assets/stories-on-skin/cast-05-installation-01.jpg", position: "50% 50%", label: "Cast 05 being explored in the exhibition" },
 ];
 
 const storiesOnSkinCast04Frames = [
@@ -1111,16 +1356,22 @@ const storiesOnSkinCast04Frames = [
   { src: "/assets/stories-on-skin/knee-closeup-02.jpg", position: "50% 50%", label: "Knee cast in the exhibition, close study 02" },
   { src: "/assets/stories-on-skin/knee-closeup-03.jpg", position: "50% 50%", label: "Knee scar, close study 03" },
   { src: "/assets/stories-on-skin/knee-closeup-04.jpg", position: "50% 50%", label: "Knee scar, close study 04" },
+  { src: "/assets/stories-on-skin/cast-04-installation-01.jpg", position: "50% 50%", label: "Cast 04 being explored in the exhibition" },
+  { src: "/assets/stories-on-skin/cast-04-closeup-05.jpg", position: "50% 50%", label: "Cast 04 raised scar surface detail" },
 ];
 
 const storiesOnSkinCast02Frames = [
   { src: "/assets/stories-on-skin/thigh-closeup-01.jpg", position: "50% 50%", label: "Thigh scar, close study 01" },
   { src: "/assets/stories-on-skin/thigh-closeup-02.jpg", position: "50% 50%", label: "Thigh scar, close study 02" },
+  { src: "/assets/stories-on-skin/cast-02-installation-01.jpg", position: "50% 50%", label: "Cast 02 being explored in the exhibition" },
 ];
 
 const storiesOnSkinCast03Frames = [
   { src: "/assets/stories-on-skin/side-closeup-01.jpg", position: "50% 50%", label: "Side scar, close study 01" },
   { src: "/assets/stories-on-skin/side-closeup-02.jpg", position: "50% 50%", label: "Side scar, close study 02" },
+  { src: "/assets/stories-on-skin/cast-03-installation-01.jpg", position: "50% 50%", label: "Cast 03 being explored in the exhibition" },
+  { src: "/assets/stories-on-skin/cast-03-installation-02.jpg", position: "50% 50%", label: "Cast 03 framed installation detail" },
+  { src: "/assets/stories-on-skin/cast-03-closeup-03.jpg", position: "50% 50%", label: "Cast 03 scar surface detail" },
 ];
 
 const storiesOnSkinCast01Frames = [
@@ -1129,6 +1380,7 @@ const storiesOnSkinCast01Frames = [
   { src: "/assets/stories-on-skin/arm-closeup-03.jpg", position: "50% 50%", label: "Arm scar, close study 03" },
   { src: "/assets/stories-on-skin/arm-closeup-04.jpg", position: "50% 50%", label: "Arm scar, close study 04" },
   { src: "/assets/stories-on-skin/arm-closeup-05.jpg", position: "50% 50%", label: "Arm scar, close study 05" },
+  { src: "/assets/stories-on-skin/cast-01-installation-01.jpg", position: "50% 50%", label: "Cast 01 framed installation view" },
 ];
 
 const storiesOnSkinPieces = [
@@ -1143,7 +1395,7 @@ function getSkinPreviewPosition(rect) {
   const gutter = 12;
   const compact = window.innerWidth <= 700;
   const width = compact ? Math.min(330, window.innerWidth - gutter * 2) : 300;
-  const height = compact ? 250 : 268;
+  const height = compact ? 286 : 304;
   if (compact) return { left: Math.max(gutter, (window.innerWidth - width) / 2), top: window.innerHeight - height - gutter, side: "bottom" };
   const spaceRight = window.innerWidth - rect.right;
   const side = spaceRight >= width + 34 ? "right" : "left";
@@ -1160,6 +1412,7 @@ function StoriesOnSkin({ project }) {
   const [activeId, setActiveId] = useState(null);
   const [frameIndex, setFrameIndex] = useState(0);
   const [previewPosition, setPreviewPosition] = useState({ left: 0, top: 0, side: "right" });
+  const { openImageViewer } = useImageViewer();
   const pieceRefs = useRef(new Map());
   const closeTimer = useRef(null);
   const activePiece = storiesOnSkinPieces.find(piece => piece.id === activeId) || null;
@@ -1177,6 +1430,14 @@ function StoriesOnSkin({ project }) {
   const scheduleClose = () => {
     cancelClose();
     closeTimer.current = window.setTimeout(() => setActiveId(null), 180);
+  };
+  const openCastGallery = (piece, index = 0) => {
+    openImageViewer({
+      images: piece.frames,
+      index,
+      title: `Stories on Skin / Cast ${piece.id}`,
+    });
+    setActiveId(null);
   };
 
   useEffect(() => {
@@ -1223,7 +1484,7 @@ function StoriesOnSkin({ project }) {
             <p className="skin-materials">{paragraphs[0]?.text}</p>
             <p>{paragraphs[1]?.text}</p>
             <p>{paragraphs[2]?.text}</p>
-            <p className="skin-wall-instruction"><b>HOVER / FOCUS / TAP</b> A CAST TO MOVE CLOSER.</p>
+            <p className="skin-wall-instruction"><b>HOVER / FOCUS / TAP</b> A CAST TO MOVE CLOSER. <b>DOUBLE-CLICK / OPEN FULL GALLERY</b> TO SEE EVERY DETAIL.</p>
           </article>
 
           {storiesOnSkinPieces.map(piece => (
@@ -1241,6 +1502,10 @@ function StoriesOnSkin({ project }) {
               onFocus={event => openPiece(piece, event.currentTarget)}
               onBlur={scheduleClose}
               onClick={event => openPiece(piece, event.currentTarget)}
+              onDoubleClick={event => {
+                event.preventDefault();
+                openCastGallery(piece);
+              }}
             >
               <img className="skin-piece-art" src={piece.image} alt="" draggable="false" />
               <span className="skin-piece-number" aria-hidden="true">{piece.id}</span>
@@ -1261,6 +1526,8 @@ function StoriesOnSkin({ project }) {
           data-side={previewPosition.side}
           style={{ left: previewPosition.left, top: previewPosition.top }}
           aria-live="polite"
+          onPointerEnter={cancelClose}
+          onPointerLeave={scheduleClose}
         >
           <div className="skin-preview-bar"><b>CAST_{activePiece.id}</b><span>DETAIL LOOP</span></div>
           <div className="skin-preview-visual" key={`${activePiece.id}-${frameIndex}`}>
@@ -1268,6 +1535,10 @@ function StoriesOnSkin({ project }) {
             <span className="skin-preview-scan" aria-hidden="true" />
           </div>
           <div className="skin-preview-copy"><span>{visibleFrame.label}</span><b>{String(visibleFrameIndex + 1).padStart(2, "0")} / {String(activeFrames.length).padStart(2, "0")}</b></div>
+          <button className="skin-preview-expand" type="button" onClick={() => openCastGallery(activePiece, visibleFrameIndex)}>
+            <ArrowsOut size={15} weight="bold" aria-hidden="true" />
+            OPEN FULL GALLERY
+          </button>
         </aside>}
       </main>
       <Footer />
@@ -1277,11 +1548,23 @@ function StoriesOnSkin({ project }) {
 
 function ProjectChapterLinks({ links }) {
   if (!links?.length) return null;
-  return <div className="project-chapter-links">{links.map((link, index) => (
+  const softwareLinks = links.filter(link => softwareLinkPattern.test(link.label || ""));
+  const otherLinks = links.filter(link => !softwareLinks.includes(link));
+  const renderLink = (link, index) => (
     <a href={link.href} target="_blank" rel="noreferrer" key={`${link.href}-${index}`}>
       <b>{String(index + 1).padStart(2, "0")}</b><span>{link.label}</span><i aria-hidden="true">&nearr;</i>
     </a>
-  ))}</div>;
+  );
+  return <div className="project-chapter-links">
+    {otherLinks.map(renderLink)}
+    {!!softwareLinks.length && <details className="project-link-disclosure project-link-disclosure--chapter">
+      <summary>
+        <span>LINKS TO SOFTWARE USED</span>
+        <CaretDown className="project-links-caret" size={13} weight="bold" aria-hidden="true" />
+      </summary>
+      <div className="project-link-list">{softwareLinks.map(renderLink)}</div>
+    </details>}
+  </div>;
 }
 
 function ProjectChapterMedia({ project, chapter, chapterIndex }) {
@@ -1294,7 +1577,14 @@ function ProjectChapterMedia({ project, chapter, chapterIndex }) {
     {embeds.map((embed, index) => <ProjectEmbedFrame embed={embed} index={(chapter.embedIndexes || [])[index]} poster={images[0] || project.images?.[0]} key={embed.src} />)}
     {images.map((src, index) => <figure className="project-archive-image" key={src}>
       <div className="project-frame-bar"><b>IMG_{String((chapter.imageIndexes || [])[index] + 1).padStart(2, "0")}</b><span>ARCHIVE FILE</span></div>
-      <img src={src} alt={`${project.title}, project image ${(chapter.imageIndexes || [])[index] + 1}`} loading="lazy" />
+      <ExpandableImage
+        src={src}
+        alt={`${project.title}, project image ${(chapter.imageIndexes || [])[index] + 1}`}
+        images={images}
+        imageIndex={index}
+        title={project.title}
+        loading="lazy"
+      />
       <figcaption><span>PROJECT RECORD</span><b>{String(index + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}</b></figcaption>
     </figure>)}
   </div>;
@@ -1372,7 +1662,14 @@ function ProjectMediaArchive({ project, layout, heroMode }) {
         : <div className="project-media-grid">
           {archivedImages.map((src, index) => <figure className="project-archive-image" key={src}>
             <div className="project-frame-bar"><b>IMG_{String(index + 1).padStart(2, "0")}</b><span>ARCHIVE FILE</span></div>
-            <img src={src} alt={`${project.title}, project image ${index + 1}`} loading="lazy" />
+            <ExpandableImage
+              src={src}
+              alt={`${project.title}, project image ${index + 1}`}
+              images={archivedImages}
+              imageIndex={index}
+              title={project.title}
+              loading="lazy"
+            />
             <figcaption><span>FULL RECORD</span><b>{String(index + 1).padStart(2, "0")} / {String(archivedImages.length).padStart(2, "0")}</b></figcaption>
           </figure>)}
         </div>)}
@@ -1825,7 +2122,14 @@ function DeficitExperience({ project, path }) {
         <div className="deficit-document-field">
           {(project.images || []).map((src, index) => <figure className={`deficit-document deficit-document--${index + 1}`} key={src}>
             <div><b>IMG_{String(index + 1).padStart(2, "0")}</b><span>{index === 1 ? "ACTIVE VIEWPORT" : "MEMORY CAPTURE"}</span></div>
-            <img src={src} alt={`${project.title} documentation image ${index + 1}`} loading="lazy" />
+            <ExpandableImage
+              src={src}
+              alt={`${project.title} documentation image ${index + 1}`}
+              images={project.images}
+              imageIndex={index}
+              title={`${project.title} / Documentation`}
+              loading="lazy"
+            />
             <figcaption><span>COORD / {String(18 + index * 27).padStart(3, "0")}.{String(84 - index * 19).padStart(3, "0")}</span><b>{index + 1} / 3</b></figcaption>
           </figure>)}
         </div>
@@ -2625,6 +2929,7 @@ function BlackLuminariesControllerModel() {
 
 function BlackLuminaries({ project, path }) {
   const context = getProjectRouteContext(path);
+  const documentationImages = [project.images?.[1], project.images?.[2], project.images?.[0]].filter(Boolean);
   return (
     <>
       <main className="project archive-project archive-project--client black-luminaries-page bl-record-page">
@@ -2695,9 +3000,9 @@ function BlackLuminaries({ project, path }) {
           </header>
           <p className="bl-record-documentation-intro">Prototype electronics, the fabricated controller, and the finished installation at the African American Chamber of Commerce of New Jersey&rsquo;s Juneteenth Innovation Expo.</p>
           <div className="bl-record-media-grid">
-            <figure className="project-archive-image bl-record-image--prototype"><div className="project-frame-bar"><b>IMG_01</b><span>PROTOTYPE</span></div><img src={project.images?.[1]} alt="Early Black Luminaries controller prototype with exposed electronics and wiring" loading="lazy" /><figcaption><span>ELECTRONICS + FORM TEST</span><b>01 / 03</b></figcaption></figure>
-            <figure className="project-archive-image bl-record-image--object"><div className="project-frame-bar"><b>IMG_02</b><span>FINISHED OBJECT</span></div><img src={project.images?.[2]} alt="Finished black flashlight controller with an illuminated orange lens" loading="lazy" /><figcaption><span>CUSTOM CONTROLLER</span><b>02 / 03</b></figcaption></figure>
-            <figure className="project-archive-image bl-record-image--installation"><div className="project-frame-bar"><b>IMG_03</b><span>INSTALLATION</span></div><img src={project.images?.[0]} alt="Orange, green, and blue flashlight controllers glowing in the Black Luminaries installation" loading="lazy" /><figcaption><span>THREE PLAYER SIGNALS</span><b>03 / 03</b></figcaption></figure>
+            <figure className="project-archive-image bl-record-image--prototype"><div className="project-frame-bar"><b>IMG_01</b><span>PROTOTYPE</span></div><ExpandableImage src={documentationImages[0]} alt="Early Black Luminaries controller prototype with exposed electronics and wiring" images={documentationImages} imageIndex={0} title="Black Luminaries / Documentation" loading="lazy" /><figcaption><span>ELECTRONICS + FORM TEST</span><b>01 / 03</b></figcaption></figure>
+            <figure className="project-archive-image bl-record-image--object"><div className="project-frame-bar"><b>IMG_02</b><span>FINISHED OBJECT</span></div><ExpandableImage src={documentationImages[1]} alt="Finished black flashlight controller with an illuminated orange lens" images={documentationImages} imageIndex={1} title="Black Luminaries / Documentation" loading="lazy" /><figcaption><span>CUSTOM CONTROLLER</span><b>02 / 03</b></figcaption></figure>
+            <figure className="project-archive-image bl-record-image--installation"><div className="project-frame-bar"><b>IMG_03</b><span>INSTALLATION</span></div><ExpandableImage src={documentationImages[2]} alt="Orange, green, and blue flashlight controllers glowing in the Black Luminaries installation" images={documentationImages} imageIndex={2} title="Black Luminaries / Documentation" loading="lazy" /><figcaption><span>THREE PLAYER SIGNALS</span><b>03 / 03</b></figcaption></figure>
           </div>
         </section>
 
@@ -3464,6 +3769,7 @@ const WITCHES_CROSSFADE_MS = 900;
 function WitchesFlight({ project }) {
   const [activeFrame, setActiveFrame] = useState(0);
   const [paused, setPaused] = useState(false);
+  const { openImageViewer } = useImageViewer();
 
   useEffect(() => {
     if (paused) return undefined;
@@ -3502,7 +3808,11 @@ function WitchesFlight({ project }) {
             </button>
           </header>
 
-          <div className="witches-image-stack" aria-live="off">
+          <div
+            className="witches-image-stack"
+            aria-live="off"
+            onDoubleClick={() => openImageViewer({ images: witchesFlightFrames, index: activeFrame, title: "Witches' Flight 3D" })}
+          >
             {witchesFlightFrames.map((frame, index) => (
               <img
                 className={`witches-frame ${frame.className} ${activeFrame === index ? "is-active" : ""}`}
@@ -3525,6 +3835,7 @@ function WitchesFlight({ project }) {
               <i className="witches-frame-corner witches-frame-corner--bl" />
               <i className="witches-frame-corner witches-frame-corner--br" />
             </div>
+            <ImageExpandButton images={witchesFlightFrames} index={activeFrame} title="Witches' Flight 3D" />
           </div>
 
           <div className={`witches-sequence-controls ${paused ? "is-paused" : ""}`} role="tablist" aria-label="Witches' Flight image sequence">
@@ -3567,7 +3878,7 @@ function WitchesFlight({ project }) {
 }
 
 function Study() {
-  return <StudyPage Footer={Footer} />;
+  return <StudyPage Footer={Footer} ImageExpandButton={ImageExpandButton} />;
 }
 
 function About() {
@@ -3584,40 +3895,32 @@ function About() {
   );
 }
 
-function AsciiArchivePreview({ src, alt }) {
+const archiveDuotoneShadow = [0, 0, 0];
+const archiveDuotoneHighlight = [255, 255, 255];
+
+function BitmapArchivePreview({ src, alt, variant = "archive" }) {
   const canvasRef = useRef(null);
+  const classPrefix = variant === "node" ? "node-bitmap" : "archive-bitmap";
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas || !src) return undefined;
 
     const image = new Image();
-    const glyphs = " .`^,:;Il!i~+_-?][}{1)(|/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
     let disposed = false;
 
     const draw = () => {
       if (disposed || !image.complete || !image.naturalWidth) return;
       const width = Math.max(1, Math.round(canvas.clientWidth));
       const height = Math.max(1, Math.round(canvas.clientHeight));
-      const cellWidth = width < 520 ? 3 : 4;
-      const cellHeight = width < 520 ? 4 : 5;
-      const columns = Math.max(1, Math.ceil(width / cellWidth));
-      const rows = Math.max(1, Math.ceil(height / cellHeight));
-      const density = Math.min(window.devicePixelRatio || 1, 2);
+      const blockSize = width < 520 ? 12 : 15;
+      const columns = Math.max(1, Math.ceil(width / blockSize));
+      const rows = Math.max(1, Math.ceil(height / blockSize));
       const context = canvas.getContext("2d");
-      const sample = document.createElement("canvas");
-      const sampleContext = sample.getContext("2d", { willReadFrequently: true });
 
-      canvas.width = Math.round(width * density);
-      canvas.height = Math.round(height * density);
-      context.setTransform(density, 0, 0, density, 0, 0);
-      context.fillStyle = "#020805";
-      context.fillRect(0, 0, width, height);
-      context.font = `700 ${cellHeight}px Consolas, \"Courier New\", monospace`;
-      context.textBaseline = "top";
-
-      sample.width = columns;
-      sample.height = rows;
+      canvas.width = columns;
+      canvas.height = rows;
+      context.imageSmoothingEnabled = true;
       const sourceAspect = image.naturalWidth / image.naturalHeight;
       const targetAspect = width / height;
       let sourceX = 0;
@@ -3633,24 +3936,18 @@ function AsciiArchivePreview({ src, alt }) {
         sourceY = (image.naturalHeight - sourceHeight) / 2;
       }
 
-      sampleContext.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, columns, rows);
-      const pixels = sampleContext.getImageData(0, 0, columns, rows).data;
-
-      for (let row = 0; row < rows; row += 1) {
-        for (let column = 0; column < columns; column += 1) {
-          const pixel = (row * columns + column) * 4;
-          const red = pixels[pixel];
-          const green = pixels[pixel + 1];
-          const blue = pixels[pixel + 2];
-          const alpha = pixels[pixel + 3] / 255;
-          const luminance = (red * .2126 + green * .7152 + blue * .0722) / 255;
-          const glyphIndex = Math.min(glyphs.length - 1, Math.floor(luminance * glyphs.length));
-          const glyph = glyphs[glyphIndex];
-          if (glyph === " " || alpha < .04) continue;
-          context.fillStyle = `rgba(112,195,94,${(.22 + luminance * .78) * alpha})`;
-          context.fillText(glyph, column * cellWidth, row * cellHeight);
-        }
+      context.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, columns, rows);
+      const bitmap = context.getImageData(0, 0, columns, rows);
+      const pixels = bitmap.data;
+      for (let index = 0; index < pixels.length; index += 4) {
+        const luminance = (pixels[index] * .2126 + pixels[index + 1] * .7152 + pixels[index + 2] * .0722) / 255;
+        const normalized = Math.max(0, Math.min(1, (luminance - .08) / .84));
+        const level = Math.round(normalized * 5) / 5;
+        pixels[index] = Math.round(archiveDuotoneShadow[0] + (archiveDuotoneHighlight[0] - archiveDuotoneShadow[0]) * level);
+        pixels[index + 1] = Math.round(archiveDuotoneShadow[1] + (archiveDuotoneHighlight[1] - archiveDuotoneShadow[1]) * level);
+        pixels[index + 2] = Math.round(archiveDuotoneShadow[2] + (archiveDuotoneHighlight[2] - archiveDuotoneShadow[2]) * level);
       }
+      context.putImageData(bitmap, 0, 0);
     };
 
     const observer = new ResizeObserver(draw);
@@ -3665,7 +3962,27 @@ function AsciiArchivePreview({ src, alt }) {
     };
   }, [src]);
 
-  return <canvas ref={canvasRef} className="archive-ascii-preview" role="img" aria-label={alt} />;
+  return (
+    <span className={`${classPrefix}-preview`}>
+      <svg className="archive-duotone-filter" aria-hidden="true" focusable="false">
+        <defs>
+          <filter id="archive-duotone-black-white" colorInterpolationFilters="sRGB">
+            <feColorMatrix
+              type="matrix"
+              values="
+                .2126 .7152 .0722 0 0
+                .2126 .7152 .0722 0 0
+                .2126 .7152 .0722 0 0
+                0     0     0     1 0
+              "
+            />
+          </filter>
+        </defs>
+      </svg>
+      <img className={`${classPrefix}-clean`} src={src} alt={alt} />
+      <canvas ref={canvasRef} className={`${classPrefix}-canvas`} aria-hidden="true" />
+    </span>
+  );
 }
 
 function Archive() {
@@ -3809,9 +4126,9 @@ function Archive() {
                   <div className="archive-record-bar"><span>RECORD PREVIEW</span><b>{String(entries.indexOf(selected) + 1).padStart(2, "0")} / {String(entries.length).padStart(2, "0")}</b></div>
                   <div className="archive-record-visual">
                     {selected.preview
-                      ? <AsciiArchivePreview src={selected.preview} alt={`High-resolution green ASCII bitmap preview of ${selected.title}`} />
+                      ? <BitmapArchivePreview src={selected.preview} alt={`Black and white preview of ${selected.title}`} />
                       : <div className="archive-record-no-visual"><FileArchive size={42} weight="thin" aria-hidden="true" />VISUAL NOT INDEXED</div>}
-                    <span>DECODED / {selected.category.toUpperCase()}</span>
+                    <span>BLACK + WHITE / BITMAP TO HI-RES / {selected.category.toUpperCase()}</span>
                   </div>
                   <div className="archive-record-copy">
                     <span>/{selected.category.toLowerCase()}/{selected.href.split("/").filter(Boolean).at(-1)}</span>
@@ -3861,5 +4178,9 @@ export function App() {
     if (data.projects[path]) return <Project project={data.projects[path]} path={path} />;
     return <NotFound />;
   }, [path]);
-  return <div className={path === "/" ? "app home-app" : "app"}>{path !== "/" && <CommandHeader path={path} />}{content}</div>;
+  return (
+    <ImageViewerProvider scopeKey={path}>
+      <div className={path === "/" ? "app home-app" : "app"}>{path !== "/" && <CommandHeader path={path} />}{content}</div>
+    </ImageViewerProvider>
+  );
 }

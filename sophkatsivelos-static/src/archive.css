@@ -417,19 +417,70 @@
   background: #111;
 }
 
-.archive-record-visual img,
-.archive-ascii-preview {
+.archive-bitmap-preview,
+.archive-bitmap-preview::before,
+.archive-bitmap-preview::after,
+.archive-bitmap-clean,
+.archive-bitmap-canvas {
+  position: absolute;
+}
+
+.archive-bitmap-preview {
+  inset: 0;
+  overflow: hidden;
+  background: #050505;
+}
+
+.archive-bitmap-clean,
+.archive-bitmap-canvas {
+  inset: 0;
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
-  filter: saturate(.82) contrast(1.05);
-  animation: archive-record-decode .58s steps(6, end) both;
 }
 
-.archive-ascii-preview {
-  background: #020805;
+.archive-bitmap-clean {
+  filter: url("#archive-duotone-black-white");
+  animation: archive-bitmap-resolve .5s steps(6, end) both;
+}
+
+.archive-duotone-filter {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.archive-bitmap-canvas {
+  z-index: 1;
+  background: #050505;
   image-rendering: pixelated;
+  animation: archive-bitmap-release .5s steps(6, end) both;
+}
+
+.archive-bitmap-preview::before,
+.archive-bitmap-preview::after {
+  content: "";
+  z-index: 2;
+  pointer-events: none;
+}
+
+.archive-bitmap-preview::before {
+  top: 0;
+  bottom: 0;
+  left: -12%;
+  width: 12%;
+  background: var(--record-accent);
+  mix-blend-mode: screen;
+  animation: archive-bitmap-scan .5s steps(6, end) both;
+}
+
+.archive-bitmap-preview::after {
+  inset: 0;
+  opacity: .2;
+  background: repeating-linear-gradient(0deg, transparent 0 11px, rgba(255,255,255,.5) 11px 12px);
+  animation: archive-bitmap-grid .5s steps(2, end) both;
 }
 
 .archive-record-visual > span {
@@ -532,10 +583,25 @@
   to { opacity: 1; transform: none; clip-path: inset(0); }
 }
 
-@keyframes archive-record-decode {
-  0% { filter: grayscale(1) contrast(1.7); clip-path: inset(0 100% 0 0); }
-  62% { filter: grayscale(.45) contrast(1.25); clip-path: inset(0 18% 0 0); }
-  100% { filter: saturate(.82) contrast(1.05); clip-path: inset(0); }
+@keyframes archive-bitmap-resolve {
+  0%, 28% { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0); }
+}
+
+@keyframes archive-bitmap-release {
+  0%, 28% { clip-path: inset(0); }
+  to { clip-path: inset(0 0 0 100%); }
+}
+
+@keyframes archive-bitmap-scan {
+  0%, 20% { transform: translateX(0); }
+  83% { transform: translateX(933%); }
+  100% { transform: translateX(933%); opacity: 0; }
+}
+
+@keyframes archive-bitmap-grid {
+  0%, 28% { opacity: .2; }
+  to { opacity: 0; }
 }
 
 @media (max-width: 1100px) {
@@ -619,7 +685,13 @@
 @media (prefers-reduced-motion: reduce) {
   .archive-row,
   .archive-record,
-  .archive-record-visual img,
-  .archive-ascii-preview { animation: none; transition: none; }
+  .archive-bitmap-clean,
+  .archive-bitmap-canvas,
+  .archive-bitmap-preview::before,
+  .archive-bitmap-preview::after { animation: none; transition: none; }
+
+  .archive-bitmap-canvas,
+  .archive-bitmap-preview::before,
+  .archive-bitmap-preview::after { display: none; }
   .archive-row.is-selected { transform: none; }
 }

@@ -464,7 +464,7 @@ function WorldNetworkCanvas({ activeId }) {
   return <canvas ref={canvasRef} className="study-world-network" aria-hidden="true" />;
 }
 
-function InstallationArchive() {
+function InstallationArchive({ ImageExpandButton }) {
   const [index, setIndex] = useState(0);
   const pointerStart = useRef(null);
   const count = INSTALLATION_IMAGES.length;
@@ -507,6 +507,7 @@ function InstallationArchive() {
         <figure className="study-carousel-current" key={INSTALLATION_IMAGES[index].src}>
           <img src={INSTALLATION_IMAGES[index].src} alt={INSTALLATION_IMAGES[index].alt} draggable="false" />
           <figcaption>{INSTALLATION_IMAGES[index].label}</figcaption>
+          <ImageExpandButton images={INSTALLATION_IMAGES} index={index} title="Digital Sociology Study / Installation archive" />
         </figure>
         <button type="button" className="study-carousel-side is-next" onClick={() => move(1)} aria-label="Next installation image">
           <img src={INSTALLATION_IMAGES[nextIndex].src} alt="" draggable="false" />
@@ -517,13 +518,15 @@ function InstallationArchive() {
   );
 }
 
-function WorldNavigation() {
+function WorldNavigation({ ImageExpandButton }) {
   const [hoveredWorld, setHoveredWorld] = useState(null);
   const [selectedWorld, setSelectedWorld] = useState(null);
   const activeWorld = useMemo(
     () => WORLDS.find(world => world.id === (hoveredWorld || selectedWorld)) || LOBBY,
     [hoveredWorld, selectedWorld],
   );
+  const worldScenes = [LOBBY, ...WORLDS].map(world => ({ src: world.scene, alt: world.sceneAlt }));
+  const activeSceneIndex = Math.max(0, [LOBBY, ...WORLDS].findIndex(world => world.id === activeWorld.id));
 
   return (
     <section className="study-worlds study-reveal" data-study-reveal aria-labelledby="study-worlds-title">
@@ -565,6 +568,7 @@ function WorldNavigation() {
           <div className="study-scene-image-wrap">
             <img src={activeWorld.scene} alt={activeWorld.sceneAlt} />
             <span className="study-scene-scan" aria-hidden="true" />
+            <ImageExpandButton images={worldScenes} index={activeSceneIndex} title="Digital Sociology Study / In-game worlds" />
           </div>
           <figcaption>{activeWorld.id === "lobby" ? "Default lobby level" : "World signal decoded"}</figcaption>
         </figure>
@@ -573,7 +577,7 @@ function WorldNavigation() {
   );
 }
 
-function StudyPage({ Footer }) {
+function StudyPage({ Footer, ImageExpandButton }) {
   useEffect(() => {
     document.body.classList.add("study-page-active");
     const root = document.querySelector(".study-page");
@@ -631,8 +635,8 @@ function StudyPage({ Footer }) {
           </div>
         </section>
 
-        <InstallationArchive />
-        <WorldNavigation />
+        <InstallationArchive ImageExpandButton={ImageExpandButton} />
+        <WorldNavigation ImageExpandButton={ImageExpandButton} />
 
         <section className="study-project-note study-reveal" data-study-reveal aria-label="Project overview">
           <h2>A study of behavior<br />across four<br />simulated worlds.</h2>

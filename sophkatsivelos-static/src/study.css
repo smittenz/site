@@ -379,6 +379,12 @@
   text-transform: uppercase;
 }
 
+.study-carousel-current > .image-expand-control {
+  top: 10px;
+  right: 10px;
+  bottom: auto;
+}
+
 .study-carousel-side {
   min-width: 0;
   height: 100%;
@@ -649,6 +655,11 @@
   height: 100%;
   object-fit: cover;
   animation: study-scene-in .62s cubic-bezier(.2, .75, .2, 1) both;
+}
+
+.study-scene-image-wrap > .image-expand-control {
+  right: 12px;
+  bottom: 12px;
 }
 
 .study-scene-scan {
