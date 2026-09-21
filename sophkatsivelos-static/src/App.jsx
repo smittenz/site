@@ -4156,6 +4156,33 @@ function NotFound() {
   return <main className="not-found"><h1>PAGE NOT FOUND</h1><Link href="/">Return home</Link></main>;
 }
 
+function ProcessIdeationPage() {
+  return (
+    <>
+      <main className="process-ideation-page">
+        <header className="process-ideation-heading">
+          <h1>Process and Ideation IDM</h1>
+        </header>
+        <article className="process-entry">
+          <header className="process-entry-meta">
+            <span>ENTRY_001</span>
+            <time dateTime="2026-09-14">9/14/2026</time>
+          </header>
+          <div className="process-entry-copy">
+            <p>I find that creativity, for me, is generally a response—often a response to an empty prompt, a blank room, or the kind of open-ended space described in <i>The Creative Habit</i>. I remember an artist, though I can’t remember her name, who would let her cats walk across and dirty her blank canvases to relieve the pressure of creating something from nothing. I often relate to this need for a prompt, a spark, or something to respond to. Whether that spark comes from the “creative cloud” I already have in my mind, from creating my own prompt, or from allowing myself to be prompted by something external, I find that creativity becomes much easier once there is something to push against.</p>
+            <p>I felt this same impulse when working with garbage and discarded materials. I became fascinated by the shapes and forms that begin to resemble something else. There is a YouTuber I love who makes miniature objects out of garbage; he sees cars in the curves of plastic spray heads, or metal piping in the back of a molded plastic container. I find this endlessly fascinating—the act of recognizing something familiar within something ordinary or discarded, and allowing that recognition to become the beginning of a creative idea.</p>
+            <p>I think this is why I am so drawn to a call-and-response approach to creativity. It makes creativity feel less like a platform for expressing something that already exists inside of me and more like a process of problem-solving, discovery, and interaction. I don&apos;t necessarily feel that I have something I need to say on behalf of anyone else. I have had a fortunate upbringing, and I don&apos;t feel a need to draw from some deeper personal experience in order to make meaningful or interesting work. Instead, I find my creativity in collaboration and in calling attention to natural phenomena, to the ways we see one another, and to the small things that we might otherwise overlook.</p>
+            <p>I would much rather bring a sense of wonder back to those basic things—to prompt people to see the world in the same way that I am prompted by it. In that sense, creativity becomes a conversation. I am brought to creativity and joy through this process of responding, interacting, and making connections, which is why I am particularly drawn to actions, experiences, and the problems of interaction itself.</p>
+            <p>I think communication is often best solved through interaction. Connecting through interaction can create unique experiences because the audience is not simply receiving something; they are participating in its creation. Their responses introduce possibilities that I could not have predicted, which in turn give me something new to respond to. It becomes an exponential call and response: I prompt the audience, the audience prompts me, and the work changes through that exchange. The outcome is unpredictable, collaborative, and continually capable of generating new creativity.</p>
+          </div>
+          <p className="process-entry-disclosure">Generative AI was used to improve grammar, spelling, and clarity.</p>
+        </article>
+      </main>
+      <Footer />
+    </>
+  );
+}
+
 export function App() {
   const [path, setPath] = useState(window.location.pathname.replace(/\/$/, "") || "/");
   useEffect(() => { const update = () => setPath(window.location.pathname.replace(/\/$/, "") || "/"); window.addEventListener("popstate", update); return () => window.removeEventListener("popstate", update); }, []);
@@ -4166,6 +4193,7 @@ export function App() {
     if (path === "/for-clients") return <Collection type="clients" />;
     if (path === "/archive") return <Archive />;
     if (path === "/contact") return <About />;
+    if (path === "/process-and-ideation-idm") return <ProcessIdeationPage />;
     if (path === "/style-guide") return <StyleGuidePage Link={Link} Footer={Footer} />;
     if (path === "/digital-sociology-study") return <Study />;
     if (path === "/digital/biotic-gallery") return <BioticGallery project={data.projects[path]} />;
