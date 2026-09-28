@@ -36,6 +36,13 @@ test("the unlisted Process and Ideation IDM link resolves without being indexed"
     assert.match(markup, /ENTRY_002/);
     assert.match(markup, /<time dateTime="2026-09-21">9\/21\/2026<\/time>/);
     assert.match(markup, /The Miseducation of the Doodle/);
+    assert.match(markup, /SOURCE OBJECT/);
+    assert.match(markup, /50 ITERATIONS/);
+    assert.match(markup, /src="\/assets\/process-ideation\/week-02\/source-object\.jpg"/);
+    assert.match(markup, /src="\/assets\/process-ideation\/week-02\/source-object-blender\.png"/);
+    assert.match(markup, /src="\/assets\/process-ideation\/week-02\/iterations-paint\.jpg"/);
+    assert.match(markup, /src="\/assets\/process-ideation\/week-02\/iterations-mixed\.jpg"/);
+    assert.equal((markup.match(/loading="lazy"/g) || []).length, 6);
     assert.match(markup, /Generative AI was used to improve grammar, spelling, and clarity\./);
     assert.doesNotMatch(markup, /PAGE NOT FOUND/);
     assert.doesNotMatch(markup, /href="\/process-and-ideation-idm"/);

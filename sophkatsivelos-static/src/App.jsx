@@ -4192,6 +4192,44 @@ function ProcessIdeationPage() {
               <p>Sunni Brown’s <i>The Miseducation of the Doodle</i> helped me understand the exercise differently. Brown describes doodling as a form of visual thinking rather than a mindless or meaningless activity. The individual images did not need to function as polished outcomes; they could be traces of a thought process. The sixty-second limit turned drawing into a series of quick decisions, allowing the object to become an association, a word, a shape, or something unexpected.</p>
               <p>Looking across all fifty images, I could see the evolution of that thinking. The experiment showed me that a constraint can support creativity when my energy is low. It did not make the process easy, but it made starting—and continuing—possible.</p>
             </div>
+            <section className="process-entry-gallery" aria-label="Week 2 visual process">
+              <header className="process-gallery-heading">
+                <span>SOURCE OBJECT</span>
+                <h2>From physical form to digital study</h2>
+              </header>
+              <div className="process-source-grid">
+                <figure className="process-source-physical">
+                  <img src="/assets/process-ideation/week-02/source-object.jpg" alt="Hand-painted fish form and separate tail on a wooden worktable" loading="lazy" decoding="async" />
+                  <figcaption>01 / PHYSICAL FORM</figcaption>
+                </figure>
+                <figure className="process-source-digital">
+                  <img src="/assets/process-ideation/week-02/source-object-blender.png" alt="Smooth and low-poly Blender studies of the fish form and tail" loading="lazy" decoding="async" />
+                  <figcaption>02 / DIGITAL STUDY</figcaption>
+                </figure>
+              </div>
+              <header className="process-gallery-heading process-gallery-heading--iterations">
+                <span>50 ITERATIONS</span>
+                <h2>One minute each</h2>
+              </header>
+              <div className="process-iterations-grid">
+                <figure className="process-iteration-sheet">
+                  <img src="/assets/process-ideation/week-02/iterations-paint.jpg" alt="Painted one-minute fish iterations arranged across a sheet of paper" loading="lazy" decoding="async" />
+                  <figcaption>SHEET 01 / PAINT AND MARKER</figcaption>
+                </figure>
+                <figure className="process-iteration-crop process-iteration-crop--one">
+                  <div><img src="/assets/process-ideation/week-02/iterations-mixed.jpg" alt="Close view of early mixed-media fish iterations" loading="lazy" decoding="async" /></div>
+                  <figcaption>SHEET 02 / CROP 01</figcaption>
+                </figure>
+                <figure className="process-iteration-crop process-iteration-crop--two">
+                  <div><img src="/assets/process-ideation/week-02/iterations-mixed.jpg" alt="Close view of middle mixed-media fish iterations" loading="lazy" decoding="async" /></div>
+                  <figcaption>SHEET 02 / CROP 02</figcaption>
+                </figure>
+                <figure className="process-iteration-crop process-iteration-crop--three">
+                  <div><img src="/assets/process-ideation/week-02/iterations-mixed.jpg" alt="Close view of later mixed-media fish iterations" loading="lazy" decoding="async" /></div>
+                  <figcaption>SHEET 02 / CROP 03</figcaption>
+                </figure>
+              </div>
+            </section>
             <p className="process-entry-disclosure">Generative AI was used to improve grammar, spelling, and clarity.</p>
           </div>
         </details>
