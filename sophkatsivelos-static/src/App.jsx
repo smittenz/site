@@ -4163,20 +4163,38 @@ function ProcessIdeationPage() {
         <header className="process-ideation-heading">
           <h1>Process and Ideation IDM</h1>
         </header>
-        <article className="process-entry">
-          <header className="process-entry-meta">
+        <details className="process-entry">
+          <summary className="process-entry-meta">
             <span>ENTRY_001</span>
             <time dateTime="2026-09-14">9/14/2026</time>
-          </header>
-          <div className="process-entry-copy">
-            <p>I find that creativity, for me, is generally a response—often a response to an empty prompt, a blank room, or the kind of open-ended space described in <i>The Creative Habit</i>. I remember an artist, though I can’t remember her name, who would let her cats walk across and dirty her blank canvases to relieve the pressure of creating something from nothing. I often relate to this need for a prompt, a spark, or something to respond to. Whether that spark comes from the “creative cloud” I already have in my mind, from creating my own prompt, or from allowing myself to be prompted by something external, I find that creativity becomes much easier once there is something to push against.</p>
-            <p>I felt this same impulse when working with garbage and discarded materials. I became fascinated by the shapes and forms that begin to resemble something else. There is a YouTuber I love who makes miniature objects out of garbage; he sees cars in the curves of plastic spray heads, or metal piping in the back of a molded plastic container. I find this endlessly fascinating—the act of recognizing something familiar within something ordinary or discarded, and allowing that recognition to become the beginning of a creative idea.</p>
-            <p>I think this is why I am so drawn to a call-and-response approach to creativity. It makes creativity feel less like a platform for expressing something that already exists inside of me and more like a process of problem-solving, discovery, and interaction. I don&apos;t necessarily feel that I have something I need to say on behalf of anyone else. I have had a fortunate upbringing, and I don&apos;t feel a need to draw from some deeper personal experience in order to make meaningful or interesting work. Instead, I find my creativity in collaboration and in calling attention to natural phenomena, to the ways we see one another, and to the small things that we might otherwise overlook.</p>
-            <p>I would much rather bring a sense of wonder back to those basic things—to prompt people to see the world in the same way that I am prompted by it. In that sense, creativity becomes a conversation. I am brought to creativity and joy through this process of responding, interacting, and making connections, which is why I am particularly drawn to actions, experiences, and the problems of interaction itself.</p>
-            <p>I think communication is often best solved through interaction. Connecting through interaction can create unique experiences because the audience is not simply receiving something; they are participating in its creation. Their responses introduce possibilities that I could not have predicted, which in turn give me something new to respond to. It becomes an exponential call and response: I prompt the audience, the audience prompts me, and the work changes through that exchange. The outcome is unpredictable, collaborative, and continually capable of generating new creativity.</p>
+          </summary>
+          <div className="process-entry-body">
+            <div className="process-entry-copy">
+              <p>I find that creativity, for me, is generally a response—often a response to an empty prompt, a blank room, or the kind of open-ended space described in <i>The Creative Habit</i>. I remember an artist, though I can’t remember her name, who would let her cats walk across and dirty her blank canvases to relieve the pressure of creating something from nothing. I often relate to this need for a prompt, a spark, or something to respond to. Whether that spark comes from the “creative cloud” I already have in my mind, from creating my own prompt, or from allowing myself to be prompted by something external, I find that creativity becomes much easier once there is something to push against.</p>
+              <p>I felt this same impulse when working with garbage and discarded materials. I became fascinated by the shapes and forms that begin to resemble something else. There is a YouTuber I love who makes miniature objects out of garbage; he sees cars in the curves of plastic spray heads, or metal piping in the back of a molded plastic container. I find this endlessly fascinating—the act of recognizing something familiar within something ordinary or discarded, and allowing that recognition to become the beginning of a creative idea.</p>
+              <p>I think this is why I am so drawn to a call-and-response approach to creativity. It makes creativity feel less like a platform for expressing something that already exists inside of me and more like a process of problem-solving, discovery, and interaction. I don&apos;t necessarily feel that I have something I need to say on behalf of anyone else. I have had a fortunate upbringing, and I don&apos;t feel a need to draw from some deeper personal experience in order to make meaningful or interesting work. Instead, I find my creativity in collaboration and in calling attention to natural phenomena, to the ways we see one another, and to the small things that we might otherwise overlook.</p>
+              <p>I would much rather bring a sense of wonder back to those basic things—to prompt people to see the world in the same way that I am prompted by it. In that sense, creativity becomes a conversation. I am brought to creativity and joy through this process of responding, interacting, and making connections, which is why I am particularly drawn to actions, experiences, and the problems of interaction itself.</p>
+              <p>I think communication is often best solved through interaction. Connecting through interaction can create unique experiences because the audience is not simply receiving something; they are participating in its creation. Their responses introduce possibilities that I could not have predicted, which in turn give me something new to respond to. It becomes an exponential call and response: I prompt the audience, the audience prompts me, and the work changes through that exchange. The outcome is unpredictable, collaborative, and continually capable of generating new creativity.</p>
+            </div>
+            <p className="process-entry-disclosure">Generative AI was used to improve grammar, spelling, and clarity.</p>
           </div>
-          <p className="process-entry-disclosure">Generative AI was used to improve grammar, spelling, and clarity.</p>
-        </article>
+        </details>
+        <details className="process-entry">
+          <summary className="process-entry-meta">
+            <span>ENTRY_002</span>
+            <time dateTime="2026-09-21">9/21/2026</time>
+          </summary>
+          <div className="process-entry-body">
+            <div className="process-entry-copy">
+              <p>This week I was extremely swamped at work between events, after-hours obligations, and the new opening, so completing fifty images felt daunting. I only had Sunday to work and was already sick and recovering from a stress migraine. I decided to limit myself to sixty seconds per iteration. I thought the constraint would be a useful test: how far could a simple object evolve if I did not have time to overthink each version?</p>
+              <p>I struggled. I was creatively exhausted, and the stress did not help. At the same time, the one-minute limit relieved some of the pressure. I was no longer focused on whether each image was good, accurate, or even interesting. That made it possible to continue when I felt like quitting.</p>
+              <p>As the iterations accumulated, they became increasingly strange. Some turned into written descriptors or moved away from rational representation altogether. I wanted to lean into that messy, non-rational exploration—especially while I was in a state where even the white paper hurt my eyes.</p>
+              <p>Sunni Brown’s <i>The Miseducation of the Doodle</i> helped me understand the exercise differently. Brown describes doodling as a form of visual thinking rather than a mindless or meaningless activity. The individual images did not need to function as polished outcomes; they could be traces of a thought process. The sixty-second limit turned drawing into a series of quick decisions, allowing the object to become an association, a word, a shape, or something unexpected.</p>
+              <p>Looking across all fifty images, I could see the evolution of that thinking. The experiment showed me that a constraint can support creativity when my energy is low. It did not make the process easy, but it made starting—and continuing—possible.</p>
+            </div>
+            <p className="process-entry-disclosure">Generative AI was used to improve grammar, spelling, and clarity.</p>
+          </div>
+        </details>
       </main>
       <Footer />
     </>

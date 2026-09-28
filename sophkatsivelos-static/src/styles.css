@@ -155,9 +155,16 @@ button{font:inherit}
 .process-ideation-heading{padding-bottom:clamp(56px,8vw,112px);border-bottom:1px solid var(--palette-black)}
 .process-ideation-heading h1{max-width:1200px;margin:0;font:500 clamp(48px,9vw,138px)/.88 "Roboto Mono",ui-monospace,monospace;letter-spacing:-.075em;text-wrap:balance}
 .process-entry{width:min(820px,100%);margin:clamp(48px,7vw,94px) auto 0}
-.process-entry-meta{min-height:38px;padding:0 2px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--palette-black);border-bottom:1px solid var(--palette-black);font:700 8px/1 "Courier New",monospace;letter-spacing:.12em}
+.process-entry+.process-entry{margin-top:clamp(22px,3vw,36px)}
+.process-entry-meta{min-height:38px;padding:0 2px;display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:clamp(12px,3vw,28px);border-top:1px solid var(--palette-black);border-bottom:1px solid var(--palette-black);font:700 8px/1 "Courier New",monospace;letter-spacing:.12em;cursor:pointer;list-style:none}
+.process-entry-meta::-webkit-details-marker{display:none}
+.process-entry-meta::after{content:"OPEN +";min-width:48px;color:var(--palette-black);text-align:right}
+.process-entry[open]>.process-entry-meta::after{content:"CLOSE −"}
+.process-entry-meta:hover::after{color:var(--palette-blue)}
+.process-entry-meta:focus-visible{outline:3px solid var(--palette-yellow);outline-offset:3px}
 .process-entry-meta span{color:var(--palette-blue)}
 .process-entry-meta time{font:inherit}
+.process-entry-body{padding-bottom:clamp(18px,3vw,32px)}
 .process-entry-copy{padding-top:clamp(30px,4vw,50px)}
 .process-entry-copy p{margin:0 0 1.5em;font:500 clamp(16px,1.35vw,20px)/1.62 "Roboto Mono",ui-monospace,monospace;letter-spacing:-.025em}
 .process-entry-copy i{font-style:italic}

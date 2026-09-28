@@ -29,11 +29,17 @@ test("the unlisted Process and Ideation IDM link resolves without being indexed"
     const searchItems = buildPortfolioSearchIndex(data);
 
     assert.match(markup, /<h1>Process and Ideation IDM<\/h1>/);
-    assert.match(markup, /<article class="process-entry">/);
+    assert.equal((markup.match(/<details class="process-entry">/g) || []).length, 2);
+    assert.equal((markup.match(/<summary class="process-entry-meta">/g) || []).length, 2);
+    assert.match(markup, /ENTRY_001/);
     assert.match(markup, /<time dateTime="2026-09-14">9\/14\/2026<\/time>/);
+    assert.match(markup, /ENTRY_002/);
+    assert.match(markup, /<time dateTime="2026-09-21">9\/21\/2026<\/time>/);
+    assert.match(markup, /The Miseducation of the Doodle/);
     assert.match(markup, /Generative AI was used to improve grammar, spelling, and clarity\./);
     assert.doesNotMatch(markup, /PAGE NOT FOUND/);
     assert.doesNotMatch(markup, /href="\/process-and-ideation-idm"/);
+    assert.doesNotMatch(markup, /href="https:\/\/alistapart\.com\/article\/the-miseducation-of-the-doodle\/"/);
     assert.equal(searchItems.some(item => item.href === "/process-and-ideation-idm"), false);
   } finally {
     await vite.close();
