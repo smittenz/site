@@ -187,6 +187,7 @@ button{font:inherit}
 .process-tuna-final figcaption{margin-top:9px;font:700 7px/1.4 "Courier New",monospace;letter-spacing:.13em}
 .process-tuna-process-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
 .process-tuna-process-grid figure{min-width:0;margin:0}
+.process-tuna-process--wide{grid-column:1/-1}
 .process-tuna-process-grid img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
 .process-tuna-process-grid figure:nth-child(1) img{object-position:52% 55%}
 .process-tuna-process-grid figure:nth-child(2) img{object-position:50% 48%}

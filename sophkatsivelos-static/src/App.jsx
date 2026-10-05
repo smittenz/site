@@ -4240,7 +4240,7 @@ function ProcessIdeationPage() {
           </summary>
           <div className="process-entry-body">
             <div className="process-entry-copy">
-              <p>For this week, I made a Southern bluefin tuna from materials I found in my everyday environment: cardboard and foam packaging from a cabinet shipped from China, used seltzer cans and chip bags collected at my workplace, and adhesive. I cut and shaped the cans to build the body, formed the face from foam, and covered it with the reflective inside of chip bags.</p>
+              <p>For this week, I made a Southern bluefin tuna from materials I found in my everyday environment: cardboard and foam packaging from a cabinet shipped from China, used seltzer cans and chip bags collected at my workplace, and adhesive. I cut open the cans and separated the aluminum into panels and ends to shape for the body, formed the face from foam, and covered it with the reflective inside of chip bags.</p>
               <p>Southern bluefin tuna (<i>Thunnus maccoyii</i>) live in temperate and subtropical waters of the Southern Hemisphere, migrating across the Indian, Pacific, and Atlantic Oceans. The species is critically endangered. Overfishing, especially for the high-value sushi and sashimi market, has been its primary threat. Its long life and late maturity make recovery slow, even as international management and quotas have supported a rebound from historic lows.</p>
               <p>What stayed with me was the relationship between an endangered animal and human consumption: the tuna is a highly desired food, while the sculpture is built from the packaging and containers left behind by the things we consume. I do not mean that these particular cans or bags directly threaten tuna. Instead, placing these forms of consumption together made me think about their different scales and timescales.</p>
               <p>Collecting the materials at my New York City workplace made the issue immediate. Cans and packaging accumulated around me after brief use, while the animal I was representing belongs to much slower life cycles. Working with reclaimed materials also shaped the construction: their original forms and surfaces had to be accommodated, and attaching the pieces was more difficult than working with conventional art materials. That difficulty became part of what I learned about reuse.</p>
@@ -4256,7 +4256,7 @@ function ProcessIdeationPage() {
                 <figcaption>AFTER CONSUMPTION / SOUTHERN BLUEFIN TUNA / 2026</figcaption>
               </figure>
               <header className="process-gallery-heading process-gallery-heading--iterations">
-                <span>PROCESS / 01—04</span>
+                <span>PROCESS / 01—05</span>
                 <h2>From packaging to sculpture</h2>
               </header>
               <div className="process-tuna-process-grid">
@@ -4272,9 +4272,13 @@ function ProcessIdeationPage() {
                   <img src="/assets/process-ideation/week-03/cardboard-assembly.jpg" alt="Cut cardboard sections arranged and joined to build the tuna body" loading="lazy" decoding="async" />
                   <figcaption>03 / ASSEMBLING THE CARDBOARD STRUCTURE</figcaption>
                 </figure>
+                <figure>
+                  <img src="/assets/process-ideation/week-03/cans-prepared.jpg" alt="Used seltzer cans cut open and separated into aluminum panels and rounded ends" loading="lazy" decoding="async" />
+                  <figcaption>04 / OPENING THE CANS INTO ALUMINUM PANELS AND ENDS</figcaption>
+                </figure>
                 <figure className="process-tuna-process--wide">
                   <img src="/assets/process-ideation/week-03/aluminum-body.jpg" alt="Tuna body covered with shaped aluminum from used seltzer cans during construction" loading="lazy" decoding="async" />
-                  <figcaption>04 / SHAPING THE BODY WITH USED SELTZER CANS</figcaption>
+                  <figcaption>05 / SHAPING THE BODY WITH USED SELTZER CANS</figcaption>
                 </figure>
               </div>
             </section>
