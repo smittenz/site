@@ -4233,6 +4233,59 @@ function ProcessIdeationPage() {
             <p className="process-entry-disclosure">Generative AI was used to improve grammar, spelling, and clarity.</p>
           </div>
         </details>
+        <details className="process-entry" open>
+          <summary className="process-entry-meta">
+            <span>ENTRY_003</span>
+            <time dateTime="2026-10-05">10/5/2026</time>
+          </summary>
+          <div className="process-entry-body">
+            <div className="process-entry-copy">
+              <p>For this week, I made a Southern bluefin tuna from materials I found in my everyday environment: cardboard and foam packaging from a cabinet shipped from China, used seltzer cans and chip bags collected at my workplace, and adhesive. I cut and shaped the cans to build the body, formed the face from foam, and covered it with the reflective inside of chip bags.</p>
+              <p>Southern bluefin tuna (<i>Thunnus maccoyii</i>) live in temperate and subtropical waters of the Southern Hemisphere, migrating across the Indian, Pacific, and Atlantic Oceans. The species is critically endangered. Overfishing, especially for the high-value sushi and sashimi market, has been its primary threat. Its long life and late maturity make recovery slow, even as international management and quotas have supported a rebound from historic lows.</p>
+              <p>What stayed with me was the relationship between an endangered animal and human consumption: the tuna is a highly desired food, while the sculpture is built from the packaging and containers left behind by the things we consume. I do not mean that these particular cans or bags directly threaten tuna. Instead, placing these forms of consumption together made me think about their different scales and timescales.</p>
+              <p>Collecting the materials at my New York City workplace made the issue immediate. Cans and packaging accumulated around me after brief use, while the animal I was representing belongs to much slower life cycles. Working with reclaimed materials also shaped the construction: their original forms and surfaces had to be accommodated, and attaching the pieces was more difficult than working with conventional art materials. That difficulty became part of what I learned about reuse.</p>
+              <p>New York’s relationship with its waterways offers a local point of connection to wider marine ecosystems. The <a href="https://www.billionoysterproject.org/" target="_blank" rel="noreferrer">Billion Oyster Project</a>, which works on oyster reef restoration, water quality, education, and community science in New York Harbor, is one way to think about that connection without suggesting that Southern bluefin tuna live in the harbor.</p>
+            </div>
+            <section className="process-entry-gallery process-tuna-gallery" aria-label="Week 3 reclaimed tuna sculpture process">
+              <header className="process-gallery-heading">
+                <span>WEEK 03 / MATERIAL STUDY</span>
+                <h2>After Consumption</h2>
+              </header>
+              <figure className="process-tuna-final">
+                <img src="/assets/process-ideation/week-03/final-tuna.jpg" alt="Finished Southern bluefin tuna sculpture built from cut aluminum cans, foam, cardboard, and chip-bag foil" loading="lazy" decoding="async" />
+                <figcaption>AFTER CONSUMPTION / SOUTHERN BLUEFIN TUNA / 2026</figcaption>
+              </figure>
+              <header className="process-gallery-heading process-gallery-heading--iterations">
+                <span>PROCESS / 01—04</span>
+                <h2>From packaging to sculpture</h2>
+              </header>
+              <div className="process-tuna-process-grid">
+                <figure className="process-tuna-process--wide">
+                  <img src="/assets/process-ideation/week-03/cardboard-forms.jpg" alt="Cardboard packaging with fish-shaped cutouts used to develop the sculpture" loading="lazy" decoding="async" />
+                  <figcaption>01 / CARDBOARD PACKAGING CUT INTO FISH FORMS</figcaption>
+                </figure>
+                <figure>
+                  <img src="/assets/process-ideation/week-03/body-template.jpg" alt="Cardboard body piece cut from packaging before assembly" loading="lazy" decoding="async" />
+                  <figcaption>02 / BODY FORM STUDY</figcaption>
+                </figure>
+                <figure>
+                  <img src="/assets/process-ideation/week-03/cardboard-assembly.jpg" alt="Cut cardboard sections arranged and joined to build the tuna body" loading="lazy" decoding="async" />
+                  <figcaption>03 / ASSEMBLING THE CARDBOARD STRUCTURE</figcaption>
+                </figure>
+                <figure className="process-tuna-process--wide">
+                  <img src="/assets/process-ideation/week-03/aluminum-body.jpg" alt="Tuna body covered with shaped aluminum from used seltzer cans during construction" loading="lazy" decoding="async" />
+                  <figcaption>04 / SHAPING THE BODY WITH USED SELTZER CANS</figcaption>
+                </figure>
+              </div>
+            </section>
+            <section className="process-tuna-label" aria-label="Artwork information">
+              <p className="process-tuna-kicker">WALL LABEL / 2026</p>
+              <p><strong>Sophie Katsivelos</strong><br /><i>After Consumption</i><br />2026<br />Cardboard, foam packaging, aluminum seltzer cans, chip bags, and adhesive</p>
+              <p>This Southern bluefin tuna is constructed from discarded materials collected at my workplace, including cardboard and foam packaging, used seltzer cans, and chip bags. Overfishing driven by human consumption is a major threat to the critically endangered species. Making the animal from the waste of my everyday environment made me think about the amount we consume and what we leave behind. The cans and packaging became a material reminder of how quickly we use things compared with the slower cycles of the ecosystems affected by us.</p>
+            </section>
+            <p className="process-entry-disclosure">Generative AI was used to edit the writing and format this entry. Research and project details are based on the artist’s supplied notes.</p>
+          </div>
+        </details>
       </main>
       <Footer />
     </>
