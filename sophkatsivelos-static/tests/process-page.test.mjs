@@ -1,9 +1,21 @@
 import assert from "node:assert/strict";
+import { stat } from "node:fs/promises";
 import test from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import react from "@vitejs/plugin-react";
 import { createServer } from "vite";
+
+test("Week 4 media stays within its deployment budget", async () => {
+  const assetUrls = [
+    new URL("../public/assets/process-ideation/week-04/context-web.jpg", import.meta.url),
+    new URL("../public/assets/process-ideation/week-04/context-web-demo.mp4", import.meta.url),
+  ];
+  const sizes = await Promise.all(assetUrls.map(assetUrl => stat(assetUrl)));
+  const totalBytes = sizes.reduce((total, asset) => total + asset.size, 0);
+
+  assert.ok(totalBytes < 15 * 1024 * 1024, `Week 4 media is ${(totalBytes / 1024 / 1024).toFixed(1)} MiB`);
+});
 
 test("the unlisted Process and Ideation IDM link resolves without being indexed", async () => {
   globalThis.window = {
