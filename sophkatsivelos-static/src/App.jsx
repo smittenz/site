@@ -4233,7 +4233,7 @@ function ProcessIdeationPage() {
             <p className="process-entry-disclosure">Generative AI was used to improve grammar, spelling, and clarity.</p>
           </div>
         </details>
-        <details className="process-entry" open>
+        <details className="process-entry">
           <summary className="process-entry-meta">
             <span>ENTRY_003</span>
             <time dateTime="2026-10-05">10/5/2026</time>
@@ -4288,6 +4288,41 @@ function ProcessIdeationPage() {
               <p>This Southern bluefin tuna is constructed from discarded materials collected at my workplace, including cardboard and foam packaging, used seltzer cans, and chip bags. Overfishing driven by human consumption is a major threat to the critically endangered species. Making the animal from the waste of my everyday environment made me think about the amount we consume and what we leave behind. The cans and packaging became a material reminder of how quickly we use things compared with the slower cycles of the ecosystems affected by us.</p>
             </section>
             <p className="process-entry-disclosure">Generative AI was used to edit the writing and format this entry. Research and project details are based on the artist’s supplied notes.</p>
+          </div>
+        </details>
+        <details className="process-entry" open>
+          <summary className="process-entry-meta">
+            <span>ENTRY_004</span>
+            <time dateTime="2026-10-12">10/12/2026</time>
+          </summary>
+          <div className="process-entry-body">
+            <div className="process-entry-copy">
+              <p>I hate Twitter. What frustrates me most is how strongly its interface rewards fragments: a post can be quoted out of context in seconds, while tracing it back to the original conversation takes far more effort. The result is noise, misinformation, and outrage. Although the platform is often described as a town square, its design rarely helps us understand the full shape of a conversation.</p>
+              <p>When I mapped this problem by hand, an alternative became clearer. Instead of a linear feed, I imagined each subject as a physical community pinboard. Every contribution remains visibly connected to the thought it responds to. Each participant uses a different color of string, allowing individual voices and lines of context to be followed through a larger web of discussion.</p>
+              <p>The physical difficulty of making those connections became an important part of the prototype. I initially considered using pre-tied pins, but struggling to tie the string made me pause and think more carefully about how each thought related to the one before it. That friction is intentional. Most social platforms are designed to make posting immediate, encouraging a first reaction before there is time to investigate the context around it.</p>
+              <p>This prototype asks what might happen if participation were slower, spatial, and finite. Because the entire conversation remains visible, an isolated statement cannot travel as easily without its surrounding context. The result is not a linear dialogue, but a web of connected voices that can still be followed individually.</p>
+            </div>
+            <section className="process-entry-gallery process-thread-gallery" aria-label="Week 4 connected conversation prototype">
+              <header className="process-gallery-heading">
+                <span>WEEK 04 / INTERACTION PROTOTYPE</span>
+                <h2>Threading Context</h2>
+              </header>
+              <div className="process-thread-media-grid">
+                <figure className="process-thread-photo">
+                  <div className="process-thread-rotated-frame">
+                    <img src="/assets/process-ideation/week-04/context-web.jpg" alt="Corkboard prototype with handwritten responses connected by colored string" loading="lazy" decoding="async" />
+                  </div>
+                  <figcaption>01 / PHYSICAL CONVERSATION MAP</figcaption>
+                </figure>
+                <figure className="process-thread-video">
+                  <video controls playsInline preload="metadata" aria-label="Demonstration of adding a connected response to the corkboard prototype">
+                    <source src="/assets/process-ideation/week-04/context-web-demo.mp4" type="video/mp4" />
+                  </video>
+                  <figcaption>02 / CONNECTING A RESPONSE / 00:45</figcaption>
+                </figure>
+              </div>
+            </section>
+            <p className="process-entry-disclosure">Generative AI was used to improve grammar, spelling, and clarity.</p>
           </div>
         </details>
       </main>
