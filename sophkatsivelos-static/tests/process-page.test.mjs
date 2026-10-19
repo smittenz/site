@@ -52,6 +52,8 @@ test("the unlisted Process and Ideation IDM link resolves without being indexed"
     assert.match(markup, /ENTRY_005/);
     assert.match(markup, /<time dateTime="2026-10-19">10\/19\/2026<\/time>/);
     assert.match(markup, /Threading Context/);
+    assert.match(markup, /The Uncanny Valley of Generative AI/);
+    assert.match(markup, /src="\/assets\/process-ideation\/week-05\/goya-saturn-reference\.jpg"/);
     assert.match(markup, /The Miseducation of the Doodle/);
     assert.match(markup, /SOURCE OBJECT/);
     assert.match(markup, /50 ITERATIONS/);

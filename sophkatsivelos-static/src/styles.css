@@ -168,6 +168,10 @@ button{font:inherit}
 .process-entry-copy{padding-top:clamp(30px,4vw,50px)}
 .process-entry-copy p{margin:0 0 1.5em;font:500 clamp(16px,1.35vw,20px)/1.62 "Roboto Mono",ui-monospace,monospace;letter-spacing:-.025em}
 .process-entry-copy i{font-style:italic}
+.process-entry-copy h3{margin:2.2em 0 1em;font:700 clamp(13px,1.1vw,16px)/1.4 "Courier New",monospace;letter-spacing:.1em;text-transform:uppercase}
+.process-entry-copy h3:first-child{margin-top:0}
+.process-week5-gallery .process-tuna-process-grid img{aspect-ratio:auto;object-fit:contain;max-height:80vh;background:var(--palette-black)}
+.process-image-placeholder>div{display:grid;place-items:center;aspect-ratio:4/3;border:1px dashed var(--palette-black);font:700 8px/1 "Courier New",monospace;letter-spacing:.12em;color:var(--palette-blue)}
 .process-entry-gallery{width:min(1080px,calc(100vw - clamp(38px,10vw,144px)));margin:clamp(58px,8vw,96px) 50% 0;transform:translateX(-50%)}
 .process-gallery-heading{display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:end;margin:0 0 18px;padding:10px 0;border-top:1px solid var(--palette-black);border-bottom:1px solid var(--palette-black)}
 .process-gallery-heading span{color:var(--palette-blue);font:700 8px/1 "Courier New",monospace;letter-spacing:.14em}
