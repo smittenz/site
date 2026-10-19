@@ -4332,9 +4332,9 @@ function ProcessIdeationPage() {
           </summary>
           <div className="process-entry-body">
             <div className="process-entry-copy">
-              <p>This entry documents this week&apos;s progress on Process and Ideation IDM and serves as the newest posted update in the sequence.</p>
-              <p>I focused on keeping the page current and making sure the journal chronology remains legible, with each weekly entry clearly labeled and date stamped for review.</p>
-              <p>This update is intentionally concise and functions as a publication checkpoint so the latest work is visible on the live page.</p>
+              <p>I am a designer, fabricator, and creative technologist focused on building positive experiences that connect people, tools, and environments. Across my projects, I work with a can-do approach and a strong interest in applying new technology to improve both workflows and audience experience.</p>
+              <p>My background combines art and technology training at Pratt Institute with earlier technical theater study at Fiorello H. LaGuardia High School. Professionally, I have worked across exhibit design, set design, and VR development, including internships with Ellwas Consulting, Kaufman Music Center, and Flavor 5 Studio.</p>
+              <p>Current work includes <i>Digital Sociology Study</i>, a networked installation linking a physical console to a shared VR space where audience inputs alter environments and participant avatars in real time. This direction reflects the core of my practice: interactive design, prototyping, fabrication, and creative problem solving across physical and digital systems.</p>
             </div>
             <p className="process-entry-disclosure">Generative AI was used to improve grammar, spelling, and clarity.</p>
           </div>
