@@ -4325,6 +4325,20 @@ function ProcessIdeationPage() {
             <p className="process-entry-disclosure">Generative AI was used to improve grammar, spelling, and clarity.</p>
           </div>
         </details>
+        <details className="process-entry" open>
+          <summary className="process-entry-meta">
+            <span>ENTRY_005</span>
+            <time dateTime="2026-10-19">10/19/2026</time>
+          </summary>
+          <div className="process-entry-body">
+            <div className="process-entry-copy">
+              <p>I am a designer, fabricator, and creative technologist focused on building positive experiences that connect people, tools, and environments. Across my projects, I work with a can-do approach and a strong interest in applying new technology to improve both workflows and audience experience.</p>
+              <p>My background combines art and technology training at Pratt Institute with earlier technical theater study at Fiorello H. LaGuardia High School. Professionally, I have worked across exhibit design, set design, and VR development, including internships with Ellwas Consulting, Kaufman Music Center, and Flavor 5 Studio.</p>
+              <p>Current work includes <i>Digital Sociology Study</i>, a networked installation linking a physical console to a shared VR space where audience inputs alter environments and participant avatars in real time. This direction reflects the core of my practice: interactive design, prototyping, fabrication, and creative problem solving across physical and digital systems.</p>
+            </div>
+            <p className="process-entry-disclosure">Generative AI was used to improve grammar, spelling, and clarity.</p>
+          </div>
+        </details>
       </main>
       <Footer />
     </>

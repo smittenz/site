@@ -41,14 +41,16 @@ test("the unlisted Process and Ideation IDM link resolves without being indexed"
     const searchItems = buildPortfolioSearchIndex(data);
 
     assert.match(markup, /<h1>Process and Ideation IDM<\/h1>/);
-    assert.equal((markup.match(/<details class="process-entry"/g) || []).length, 4);
-    assert.equal((markup.match(/<summary class="process-entry-meta">/g) || []).length, 4);
+    assert.equal((markup.match(/<details class="process-entry"/g) || []).length, 5);
+    assert.equal((markup.match(/<summary class="process-entry-meta">/g) || []).length, 5);
     assert.match(markup, /ENTRY_001/);
     assert.match(markup, /<time dateTime="2026-09-14">9\/14\/2026<\/time>/);
     assert.match(markup, /ENTRY_002/);
     assert.match(markup, /<time dateTime="2026-09-21">9\/21\/2026<\/time>/);
     assert.match(markup, /ENTRY_004/);
     assert.match(markup, /<time dateTime="2026-10-12">10\/12\/2026<\/time>/);
+    assert.match(markup, /ENTRY_005/);
+    assert.match(markup, /<time dateTime="2026-10-19">10\/19\/2026<\/time>/);
     assert.match(markup, /Threading Context/);
     assert.match(markup, /The Miseducation of the Doodle/);
     assert.match(markup, /SOURCE OBJECT/);
