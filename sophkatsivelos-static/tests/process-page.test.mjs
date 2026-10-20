@@ -17,6 +17,17 @@ test("Week 4 media stays within its deployment budget", async () => {
   assert.ok(totalBytes < 15 * 1024 * 1024, `Week 4 media is ${(totalBytes / 1024 / 1024).toFixed(1)} MiB`);
 });
 
+test("Entry 5 images stay within their deployment budget", async () => {
+  const extensions = ["jpg", "jpg", "jpg", "webp", "jpg", "jpg", "webp", "jpg", "webp", "webp"];
+  const assetUrls = extensions.map((extension, index) => (
+    new URL(`../public/assets/process-ideation/entry-05/result-${String(index + 1).padStart(2, "0")}.${extension}`, import.meta.url)
+  ));
+  const sizes = await Promise.all(assetUrls.map(assetUrl => stat(assetUrl)));
+  const totalBytes = sizes.reduce((total, asset) => total + asset.size, 0);
+
+  assert.ok(totalBytes < 3 * 1024 * 1024, `Entry 5 images are ${(totalBytes / 1024 / 1024).toFixed(1)} MiB`);
+});
+
 test("the unlisted Process and Ideation IDM link resolves without being indexed", async () => {
   globalThis.window = {
     location: { pathname: "/process-and-ideation-idm", search: "" },

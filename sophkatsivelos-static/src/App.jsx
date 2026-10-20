@@ -4163,16 +4163,16 @@ const entryFiveGoyaResults = [
 ];
 
 const entryFiveAdvertisementResults = [
-  { src: "/assets/process-ideation/entry-05/result-04.png", model: "CHATGPT", alt: "Vintage beauty advertisement with three women gathered around a baby-themed product display" },
+  { src: "/assets/process-ideation/entry-05/result-04.webp", model: "CHATGPT", alt: "Vintage beauty advertisement with three women gathered around a baby-themed product display" },
   { src: "/assets/process-ideation/entry-05/result-05.jpg", model: "NANO BANANA", alt: "Black-and-white fictional advertisement with three unsettling women and an eternal-youth product" },
   { src: "/assets/process-ideation/entry-05/result-06.jpg", model: "DEEPAI", alt: "Black-and-white image of three vintage-styled women discussing products around a baby doll" },
-  { src: "/assets/process-ideation/entry-05/result-07.png", alt: "Black-and-white collage of three vintage women gathered around a baby doll and beauty products" },
+  { src: "/assets/process-ideation/entry-05/result-07.webp", alt: "Black-and-white collage of three vintage women gathered around a baby doll and beauty products" },
 ];
 
 const entryFiveNativityResults = [
   { src: "/assets/process-ideation/entry-05/result-08.jpg", model: "DEEPSEEK", alt: "Black-and-white Nativity-like scene with three vintage-styled figures around a baby" },
-  { src: "/assets/process-ideation/entry-05/result-09.png", model: "NANO BANANA", alt: "Black-and-white scene of three elaborately dressed women presenting gifts to a baby doll in hay" },
-  { src: "/assets/process-ideation/entry-05/result-10.png", model: "CHATGPT", alt: "Dreamlike black-and-white scene of three crowned women doting over a baby doll" },
+  { src: "/assets/process-ideation/entry-05/result-09.webp", model: "NANO BANANA", alt: "Black-and-white scene of three elaborately dressed women presenting gifts to a baby doll in hay" },
+  { src: "/assets/process-ideation/entry-05/result-10.webp", model: "CHATGPT", alt: "Dreamlike black-and-white scene of three crowned women doting over a baby doll" },
 ];
 
 function ProcessAiResults({ results }) {
