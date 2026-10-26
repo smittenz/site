@@ -49,7 +49,7 @@ test("Entry 6 source photographs stay within their deployment budget", async () 
   const sizes = await Promise.all(assetUrls.map(assetUrl => stat(assetUrl)));
   const totalBytes = sizes.reduce((total, asset) => total + asset.size, 0);
 
-  assert.ok(totalBytes < 25 * 1024 * 1024, `Entry 6 images are ${(totalBytes / 1024 / 1024).toFixed(1)} MiB`);
+  assert.ok(totalBytes < 3 * 1024 * 1024, `Entry 6 images are ${(totalBytes / 1024 / 1024).toFixed(1)} MiB`);
 });
 
 test("the unlisted Process and Ideation IDM link resolves without being indexed", async () => {
