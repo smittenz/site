@@ -4175,6 +4175,64 @@ const entryFiveNativityResults = [
   { src: "/assets/process-ideation/entry-05/result-10.webp", model: "CHATGPT", alt: "Dreamlike black-and-white scene of three crowned women doting over a baby doll" },
 ];
 
+const entrySixObjects = [
+  {
+    id: "01",
+    title: "Emerald earrings",
+    record: "The Inheritance",
+    relation: "Great-grandmother → grandmother → me",
+    src: "/assets/process-ideation/entry-06/emerald-earrings.jpg",
+    alt: "Pair of small green emerald earrings in gold settings",
+    story: "My grandmother gave me these emerald earrings after they had already passed through our family from my great-grandmother. They are by far the most materially valuable pieces in this group, but their real weight comes from that line of ownership: three generations held in two tiny objects.",
+  },
+  {
+    id: "02",
+    title: "Amber earrings",
+    record: "The Hand-Off",
+    relation: "Grandmother → me",
+    src: "/assets/process-ideation/entry-06/amber-earrings.jpg",
+    alt: "Pair of silver drop earrings with warm amber stones",
+    story: "These amber earrings belonged to my grandmother before she gave them to me. Wearing them turns inheritance into an everyday action. They are not sealed away as heirlooms; they continue to move, gather wear, and belong to another life without losing the one that came before.",
+  },
+  {
+    id: "03",
+    title: "Cub Scouts ring",
+    record: "The Found Lineage",
+    relation: "Unknown owner → silver sale → me",
+    src: "/assets/process-ideation/entry-06/cub-scouts-ring.jpg",
+    alt: "Silver Cub Scouts ring with a wolf emblem",
+    story: "I found this ring at a silver sale and could not leave it behind. I wear it almost every day, even though its first history is not mine. It carries someone else’s lineage—an unknown person, group, and moment—and I have appended my own life to it. It makes the collection larger than autobiography.",
+  },
+  {
+    id: "04",
+    title: "Graduation ring",
+    record: "The Shared School",
+    relation: "Grandmother ↔ community ↔ me",
+    src: "/assets/process-ideation/entry-06/graduation-ring.jpg",
+    alt: "Silver middle-school graduation ring with a deep blue stone",
+    story: "This is my middle-school graduation ring. My grandmother attended the same school, so it connects a personal milestone to a place we share across generations. The ring is evidence of belonging—not only to my family, but also to the community that shaped both of us at different times.",
+  },
+  {
+    id: "05",
+    title: "Friendship bracelets",
+    record: "The Colors We Share",
+    relation: "Ceri + Percy → friendship → me",
+    src: "/assets/process-ideation/entry-06/bracelets.jpg",
+    alt: "Two handmade friendship bracelets with yellow, pink, green, and stone beads, including one spelling SPH",
+    imageClass: "process-object-image--friendship",
+    story: "These two bracelets hold two friendships together. Ceri wanted one to say SOPH, but she had no O beads, so she settled for SPH and shipped it to me from California. Its beads were once pink, green, and yellow: pink for her, yellow for me, and green for both of us. Percy gave me the other bracelet in yellow because it is my favorite color. Their histories are short and completely known, but each carries the care of being made or chosen by someone who knows me.",
+  },
+  {
+    id: "06",
+    title: "Handmade ring",
+    record: "The Lineage I Began",
+    relation: "Jewelry class → my hands → the future",
+    src: "/assets/process-ideation/entry-06/handmade-ring.jpg",
+    alt: "Handmade silver ring with an oval black stone",
+    story: "I made this ring in a jewelry class in college. It is the only object here whose lineage begins with my own hands. Beside inherited, gifted, and found jewelry, it marks a different kind of history: something I made now that may one day carry a story I cannot predict.",
+  },
+];
+
 function ProcessAiResults({ results }) {
   return (
     <div className="process-ai-grid">
@@ -4375,6 +4433,128 @@ function ProcessIdeationPage() {
             <div className="process-entry-copy"><h3>7. The Sanitization of Horror: What Is a Robot's Default Uncanny?</h3><p>The most significant conclusion I drew from the experiment was that the AI-generated images frequently sanitized the concepts I was trying to explore.</p><p>To get the images to generate, I had to revise the original Goya prompt and remove or soften some of its more explicit descriptions. In the beauty-advertisement experiment, I also shifted toward implication rather than direct representation. I described the disturbing premise indirectly, allowing the composition and surrounding imagery to suggest what was happening.</p><p>These adjustments affected more than the technical success of the prompts. They changed the conceptual space in which the images were produced.</p><p>The resulting images often retained the surface appearance of horror while losing some of its discomfort. The figures became more emotionally understandable, the compositions more orderly, and the women more conventionally beautiful. Even when the subject matter remained strange, the visual presentation often made it easier to consume.</p><p>The final ChatGPT nativity image became a particularly interesting endpoint for the experiment. Three beautiful, elaborately dressed women lean toward a baby in a bed of hay, creating an image that resembles a dark, dreamlike reinterpretation of a traditional nativity scene.</p><p>The contrast with Goya is striking. In Saturn Devouring His Son, a figure consumes the body of another in a scene that feels immediate, desperate, and almost impossible to look at. In the generated nativity image, beautiful women gather around the idea of a child, transforming the original's violence into an image of admiration and reverence.</p><p>The child is no longer the object of an explicitly violent act. Instead, the image centers on an idealized representation of innocence and youth. The doll-like quality of the baby makes this transformation even more pronounced.</p><p>The generated image feels almost like the antithesis of Goya's painting. Where Goya gives us an encounter with something monstrous and difficult to rationalize, the AI offers an elegant, carefully arranged scene that turns the unsettling premise into something beautiful.</p><p>Yet the image remains uncanny. Its discomfort comes not from overt distortion or violence but from the collision of familiar visual conventions. The religious composition feels recognizable, the women appear beautiful, and the baby seems innocent, but the relationships between these elements suggest something strange beneath the surface.</p><p>This raises a question I find more interesting than whether AI can produce disturbing imagery: What kinds of uncanniness emerge when a system is designed to make images coherent, recognizable, and acceptable?</p><p>Perhaps the system's default uncanny is not necessarily the grotesque. It may be the overly familiar, the excessively polished, or the subtly artificial. It may emerge when an image looks almost right but has been stripped of the qualities that made its original subject matter difficult to confront.</p><p>I would not claim that these experiments establish a universal behavior across all generative AI systems. The results were shaped by the particular tools, prompts, and image-generation processes I used. However, the recurring tendency toward beauty, coherence, and emotional legibility was clear enough to become a useful subject of investigation.</p><p>The experiment also made me think differently about censorship and creative agency. When a system requires a prompt to be reformulated, the user is not only changing the wording. They may also be changing the work's emphasis, emotional register, and conceptual meaning.</p><p>That does not make the tool inherently good or bad. It does mean that its limitations and defaults become part of the creative process, whether or not the artist intends them to be.</p></div>
             <div className="process-entry-copy"><h3>Conclusion: Working With AI Without Surrendering Artistic Agency</h3><p>This experiment began as an attempt to recreate the uncanny qualities of Goya's Saturn Devouring His Son, but it ultimately became an investigation into how generative AI transforms disturbing ideas into images.</p><p>The tools were capable of producing compelling compositions, recognizable styles, and unexpected visual elements. They were also capable of flattening ambiguity, repeating familiar conventions, and redirecting the meaning of a prompt. Changing the wording influenced the outputs, but it did not always overcome these tendencies.</p><p>The most useful results were not necessarily the most technically successful images. Some of the differences between my intentions and the generated outputs revealed more about the systems than the images that closely followed my descriptions.</p><p>The tendency to make distorted women conventionally beautiful, the transformation of a threatening figure into a frightened parent, and the introduction of a baby doll all revealed different ways that the tools could reshape an idea. These were not simply errors to correct. They were evidence of the interpretive processes and visual assumptions involved in generating an image.</p><p>At the same time, I do not want to treat every unexpected output as inherently meaningful. The fact that an image is strange does not automatically make it interesting, and the fact that an AI generates an unexpected element does not mean that element improves the work. The artist still has to decide what matters, what to preserve, and what to discard.</p><p>Ultimately, this experiment reinforced my belief that using generative AI creatively requires an active understanding of its limitations. The goal is not to make the system reproduce an intention perfectly, nor is it to accept whatever it produces as a finished work. It is to recognize what the system is doing, understand how its decisions affect the result, and use that knowledge to make more deliberate choices.</p><p>I began by asking whether AI could reproduce the uncanny valley of Goya's painting. I ended up more interested in the uncanny valley of AI itself: the strange space between what we ask a system to create, what it produces, and what we discover in the difference.</p><p><i>Tools explored: Artlist, ChatGPT, Nano Banana, DeepAI, DeepSeek, and Adobe Firefly.</i></p><p><i>Documentation note: The images discussed in this post were generated using AI image-generation tools. Each generated output is labeled with the model recorded in the source document. The historical reference was Francisco Goya’s Saturn Devouring His Son (c. 1820–1823).</i></p></div>
             <p className="process-entry-disclosure">Generative AI was used to create the labeled images and to improve grammar, spelling, and clarity.</p>
+          </div>
+        </details>
+        <details className="process-entry" open>
+          <summary className="process-entry-meta">
+            <span>ENTRY_006</span>
+            <time dateTime="2026-10-26">10/26/2026</time>
+          </summary>
+          <div className="process-entry-body process-capsule-entry">
+            <header className="process-capsule-title">
+              <div>
+                <span>WEEK 06 / TIME CAPSULE / PART I</span>
+                <a href="https://wp.nyu.edu/ideationandprototyping/time-capsule/" target="_blank" rel="noreferrer">ASSIGNMENT BRIEF ↗</a>
+              </div>
+              <h2>What We Carry</h2>
+              <p>Seven pieces of jewelry, six records, and many overlapping histories.</p>
+            </header>
+
+            <div className="process-entry-copy process-capsule-opening">
+              <p>When I began looking for objects with personal significance, I searched around my room for things I see every day. Then I looked at my hands. I realized that I wear many of the same pieces of jewelry so often that they almost disappear into my routine.</p>
+              <p>Jewelry is sentimental because it stays close to the body, but it can also hold histories much larger than one person. A piece can mark an event, preserve a friendship, move through a family, or carry the unknown life of a stranger. Together, these objects form more than an autobiography. They tell a generational story about what is inherited, gifted, found, made, and carried forward.</p>
+            </div>
+
+            <section className="process-entry-gallery process-capsule-gallery" aria-label="Interactive topographic catalog of six meaningful jewelry records">
+              <header className="process-gallery-heading">
+                <span>OBJECT RECORDS / 01—06</span>
+                <h2>A wearable topography</h2>
+              </header>
+              <p className="process-capsule-instruction"><span aria-hidden="true">●</span> Hover, focus, or tap a piece to unearth its story.</p>
+              <div className="process-object-map-labels" aria-hidden="true"><span>INHERITED / OLDER</span><span>FOUND + SHARED</span><span>MADE / NOW</span></div>
+              <div className="process-object-grid">
+                {entrySixObjects.map(item => (
+                  <details className="process-object-card" key={item.id}>
+                    <summary aria-label={`Open the story of ${item.title}`}>
+                      <span className="process-object-number">{item.id}</span>
+                      <div className="process-object-visual">
+                        <img className={item.imageClass || ""} src={item.src} alt={item.alt} loading="lazy" decoding="async" />
+                        <span className="process-object-scan" aria-hidden="true" />
+                      </div>
+                      <span className="process-object-name"><b>{item.title}</b><i>{item.record}</i></span>
+                      <span className="process-object-prompt" aria-hidden="true">STORY +</span>
+                    </summary>
+                    <div className="process-object-story">
+                      <span>{item.relation}</span>
+                      <p>{item.story}</p>
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </section>
+
+            <div className="process-entry-copy process-capsule-reflection">
+              <h3>Choosing a form</h3>
+              <p>My first sketches treated the collection as information. I considered a timeline, a graph, a grid, and the familiar shape of my childhood jewelry box. A timeline could show age, and a graph could compare value, but both felt too literal. A generic jewelry box also made the container feel more important than its contents. I wanted the result to feel less identified and more archaeological, as if these objects had been uncovered rather than neatly stored.</p>
+              <p>The digital presentation follows the same idea. The records rise and fall across a topographic field, echoing the uneven terrain inside the box. The inherited objects sit highest and earliest in the field, while found, shared, and newly made pieces travel outward and downward. Each piece first appears as an isolated specimen; its history only surfaces when someone moves closer through hover, keyboard focus, or touch. The photograph shows the object, but interaction reveals the relationships attached to it.</p>
+            </div>
+
+            <section className="process-entry-gallery process-capsule-process" aria-label="Time capsule ideation sketches">
+              <header className="process-gallery-heading">
+                <span>PROCESS / FORM STUDIES</span>
+                <h2>From container to terrain</h2>
+              </header>
+              <div className="process-capsule-sketch-grid">
+                <figure>
+                  <div className="process-capsule-sketch-frame"><img src="/assets/process-ideation/entry-06/sketch-containers.jpg" alt="Sketchbook studies of rotating, roller, locket, and terrain-like time capsule forms" loading="lazy" decoding="async" /></div>
+                  <figcaption>01 / ROTATION, ROLLERS, AND LOCKET STUDIES</figcaption>
+                </figure>
+                <figure>
+                  <div className="process-capsule-sketch-frame"><img src="/assets/process-ideation/entry-06/sketch-terrain.jpg" alt="Sketchbook studies comparing a dig-site box with a topographic jewelry arrangement" loading="lazy" decoding="async" /></div>
+                  <figcaption>02 / GRID, DIG SITE, AND TOPOGRAPHY</figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <div className="process-entry-copy process-capsule-reflection">
+              <h3>The Impression Remains</h3>
+              <p>I eventually realized I already had the right box. My grandmother had given me a small, unassuming box filled with beads because she hoped I would make more jewelry. It opens like a jewelry box and already feels as though it has lived another life. Using it brought another family object into the system without asking the outside of the capsule to explain what was inside.</p>
+              <p>I filled the interior with hot wax clay and molded a place for each piece. The arrangement works like a landscape: proximity represents closeness to family, while height communicates value and age. The higher a piece sits, the greater its value within the collection. The surface looks like a small world or planetary terrain rather than a conventional organizer.</p>
+              <p>The most important part is what happens when a piece is removed. Its impression remains. Even if the jewelry is lost, worn elsewhere, or passed to someone new, the capsule continues to remember the shape that was there. Eventually time may soften the wax and blur those cavities, allowing the box to absorb them. Until then, absence is still a form of evidence.</p>
+            </div>
+
+            <section className="process-entry-gallery process-capsule-final" aria-label="Final time capsule documentation">
+              <header className="process-gallery-heading">
+                <span>FINAL CAPSULE / OPEN + CLOSED</span>
+                <h2>The box completes the story</h2>
+              </header>
+              <div className="process-capsule-final-grid">
+                <figure className="process-capsule-final-arrangement">
+                  <div><img src="/assets/process-ideation/entry-06/final-arrangement.jpg" alt="Open wooden time capsule with all seven jewelry pieces arranged across the wax-clay terrain" loading="lazy" decoding="async" /></div>
+                  <figcaption>01 / OBJECTS IN PLACE / THE LIVING ARCHIVE</figcaption>
+                </figure>
+                <figure className="process-capsule-final-impressions">
+                  <div><img src="/assets/process-ideation/entry-06/final-impressions.jpg" alt="Open wooden time capsule after the jewelry has been removed, leaving impressions in the wax clay" loading="lazy" decoding="async" /></div>
+                  <figcaption>02 / OBJECTS REMOVED / THE IMPRESSIONS REMAIN</figcaption>
+                </figure>
+                <figure className="process-capsule-final-map">
+                  <div><img src="/assets/process-ideation/entry-06/neighborhood-map.jpg" alt="Neighborhood map mounted to the inside lid of the open wooden time capsule" loading="lazy" decoding="async" /></div>
+                  <figcaption>03 / INNER LID / THE NEIGHBORHOOD</figcaption>
+                </figure>
+                <figure className="process-capsule-final-name">
+                  <div><img src="/assets/process-ideation/entry-06/family-name-etching.jpg" alt="Family name hand-etched into the plain wooden exterior of the time capsule" loading="lazy" decoding="async" /></div>
+                  <figcaption>04 / OUTSIDE / THE FAMILY NAME</figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <div className="process-entry-copy process-capsule-reflection process-capsule-legacy">
+              <h3>A Treasure Box for a Living Lineage</h3>
+              <p>The final box has another layer. A map of my neighborhood covers the inside of the lid, rooting the jewelry in the place and community that shaped these family histories. The objects are not floating in an abstract past; they belong to a landscape that my grandmother and I have both moved through.</p>
+              <p>The outside remains intentionally unassuming. I etched my last name into the wood the way a child might mark a treasure box, because jewelry really is our treasure: not only for what it is worth, but for the lives it can carry. My sister and I are the only two women left in the United States with our last name, so the engraving also makes the capsule about carrying a family legacy forward.</p>
+              <p>Closed, the box offers almost no explanation. Opened, it reveals a neighborhood, a terrain, and a network of relationships. The last name on the surface identifies what is being protected; the impressions inside show that inheritance is never static. It is worn, altered, remembered, and eventually passed on.</p>
+            </div>
+
+            <aside className="process-capsule-key" aria-label="Meaning encoded by the time capsule arrangement">
+              <span>READING THE TERRAIN</span>
+              <dl>
+                <div><dt>HEIGHT</dt><dd>VALUE + AGE</dd></div>
+                <div><dt>PROXIMITY</dt><dd>FAMILY CLOSENESS</dd></div>
+                <div><dt>IMPRESSION</dt><dd>MEMORY AFTER ABSENCE</dd></div>
+              </dl>
+            </aside>
+
+            <p className="process-entry-disclosure">AI was used to edit this writing for grammar, spelling, clarity, and web presentation. The objects, photographs, sketches, concept, and reflections are my own.</p>
           </div>
         </details>
       </main>
