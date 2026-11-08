@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { stat } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import test from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -52,6 +52,44 @@ test("Entry 6 source photographs stay within their deployment budget", async () 
   assert.ok(totalBytes < 3 * 1024 * 1024, `Entry 6 images are ${(totalBytes / 1024 / 1024).toFixed(1)} MiB`);
 });
 
+test("Entry 7 images stay within their deployment budget", async () => {
+  const filenames = [
+    "frame-00.jpg",
+    "frame-01.jpg",
+    "frame-03.jpg",
+    "frame-04.jpg",
+    "frame-05.jpg",
+    "frame-06.jpg",
+    "frame-07.jpg",
+    "frame-09.jpg",
+    "frame-10.jpg",
+    "frame-11.jpg",
+    "frame-12.jpg",
+    "frame-13.jpg",
+    "frame-14.jpg",
+    "frame-15.jpg",
+    "flotsam-context.jpg",
+  ];
+  const assetUrls = filenames.map(filename => (
+    new URL(`../public/assets/process-ideation/entry-07/${filename}`, import.meta.url)
+  ));
+  const sizes = await Promise.all(assetUrls.map(assetUrl => stat(assetUrl)));
+  const totalBytes = sizes.reduce((total, asset) => total + asset.size, 0);
+
+  assert.ok(totalBytes < 1.25 * 1024 * 1024, `Entry 7 images are ${(totalBytes / 1024 / 1024).toFixed(1)} MiB`);
+});
+
+test("Entry 7 carousel has responsive and reduced-motion styling", async () => {
+  const css = await readFile(new URL("../src/styles.css", import.meta.url), "utf8");
+
+  assert.match(css, /\.process-discovery-carousel\{/);
+  assert.match(css, /\.process-discovery-viewport\{[^}]*aspect-ratio:16\/9/);
+  assert.match(css, /\.process-discovery-track\{/);
+  assert.match(css, /\.process-discovery-reference\{/);
+  assert.match(css, /@media\(max-width:700px\)\{[^}]*\.process-discovery-controls button/s);
+  assert.match(css, /@media\(prefers-reduced-motion:reduce\)\{[^}]*\.process-discovery-viewport img/s);
+});
+
 test("the unlisted Process and Ideation IDM link resolves without being indexed", async () => {
   globalThis.window = {
     location: { pathname: "/process-and-ideation-idm", search: "" },
@@ -69,15 +107,15 @@ test("the unlisted Process and Ideation IDM link resolves without being indexed"
   });
 
   try {
-    const { App } = await vite.ssrLoadModule("/src/App.jsx");
+    const { App, entrySevenFrames } = await vite.ssrLoadModule("/src/App.jsx");
     const data = (await vite.ssrLoadModule("/src/site-data.json")).default;
     const { buildPortfolioSearchIndex } = await vite.ssrLoadModule("/src/portfolio-search.js");
     const markup = renderToStaticMarkup(createElement(App));
     const searchItems = buildPortfolioSearchIndex(data);
 
     assert.match(markup, /<h1>Process and Ideation IDM<\/h1>/);
-    assert.equal((markup.match(/<details class="process-entry"/g) || []).length, 6);
-    assert.equal((markup.match(/<summary class="process-entry-meta">/g) || []).length, 6);
+    assert.equal((markup.match(/<details class="process-entry"/g) || []).length, 7);
+    assert.equal((markup.match(/<summary class="process-entry-meta">/g) || []).length, 7);
     assert.match(markup, /ENTRY_001/);
     assert.match(markup, /<time dateTime="2026-09-14">9\/14\/2026<\/time>/);
     assert.match(markup, /ENTRY_002/);
@@ -87,7 +125,9 @@ test("the unlisted Process and Ideation IDM link resolves without being indexed"
     assert.match(markup, /ENTRY_005/);
     assert.match(markup, /ENTRY_006/);
     assert.match(markup, /<time dateTime="2026-10-26">10\/26\/2026<\/time>/);
-    assert.equal((markup.match(/<time dateTime=/g) || []).length, 5);
+    assert.match(markup, /ENTRY_007/);
+    assert.match(markup, /<time dateTime="2026-11-08">11\/8\/2026<\/time>/);
+    assert.equal((markup.match(/<time dateTime=/g) || []).length, 6);
     assert.match(markup, /Threading Context/);
     assert.match(markup, /The Uncanny Valley of Generative AI/);
     assert.equal((markup.match(/src="\/assets\/process-ideation\/entry-05\/result-/g) || []).length, 10);
@@ -108,6 +148,22 @@ test("the unlisted Process and Ideation IDM link resolves without being indexed"
     assert.match(markup, /only two women/i);
     assert.match(markup, /neighborhood/i);
     assert.match(markup, /treasure box/i);
+    assert.match(markup, /The Long Way Home/);
+    assert.match(markup, /TIME CAPSULE \/ PART II/);
+    assert.match(markup, /aria-roledescription="carousel"/);
+    assert.match(markup, /FRAME 00 · 01\/14/);
+    assert.match(markup, /Flotsam/);
+    assert.match(markup, /David Wiesner/);
+    assert.match(markup, /published book reference/i);
+    assert.match(markup, /Washington Heights/);
+    assert.match(markup, /assimilat/i);
+    assert.match(markup, /ossuar/i);
+    assert.match(markup, /closet/i);
+    assert.match(markup, /Unreal Engine/);
+    assert.match(markup, /Sketchfab/);
+    assert.match(markup, /src="\/assets\/process-ideation\/entry-07\/flotsam-context\.jpg"/);
+    assert.deepEqual(entrySevenFrames.map(frame => frame.number), ["00", "01", "03", "04", "05", "06", "07", "09", "10", "11", "12", "13", "14", "15"]);
+    assert.deepEqual(entrySevenFrames.map(frame => frame.src), ["00", "01", "03", "04", "05", "06", "07", "09", "10", "11", "12", "13", "14", "15"].map(number => `/assets/process-ideation/entry-07/frame-${number}.jpg`));
     assert.match(markup, /href="https:\/\/wp\.nyu\.edu\/ideationandprototyping\/time-capsule\/"/);
     assert.match(markup, /hover, focus, or tap/i);
     assert.equal((markup.match(/src="\/assets\/process-ideation\/entry-06\//g) || []).length, 12);

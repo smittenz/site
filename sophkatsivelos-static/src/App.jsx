@@ -4233,6 +4233,23 @@ const entrySixObjects = [
   },
 ];
 
+export const entrySevenFrames = [
+  { number: "00", src: "/assets/process-ideation/entry-07/frame-00.jpg", title: "A signal in the archive", alt: "Pixelated first-person view of a future archive workstation displaying maps and stored records" },
+  { number: "01", src: "/assets/process-ideation/entry-07/frame-01.jpg", title: "Washington Heights", alt: "Pixelated nighttime view of a dense Washington Heights streetscape from a traveler’s point of view" },
+  { number: "03", src: "/assets/process-ideation/entry-07/frame-03.jpg", title: "The route begins", alt: "Pixelated city bus waiting along the descendant’s route through the neighborhood" },
+  { number: "04", src: "/assets/process-ideation/entry-07/frame-04.jpg", title: "Across the distance", alt: "Pixelated first-person view through transit windows as the journey continues" },
+  { number: "05", src: "/assets/process-ideation/entry-07/frame-05.jpg", title: "Crossing toward home", alt: "Pixelated view of a suspension bridge glowing at night through a vehicle window" },
+  { number: "06", src: "/assets/process-ideation/entry-07/frame-06.jpg", title: "The last landmark", alt: "Pixelated view of a large angular neighborhood building passed near the end of the journey" },
+  { number: "07", src: "/assets/process-ideation/entry-07/frame-07.jpg", title: "Inside the old apartment", alt: "Pixelated first-person view into a dim, nearly empty apartment interior" },
+  { number: "09", src: "/assets/process-ideation/entry-07/frame-09.jpg", title: "The closet", alt: "Pixelated fisheye view of a closed white closet door beside old shelves" },
+  { number: "10", src: "/assets/process-ideation/entry-07/frame-10.jpg", title: "Opening what remained", alt: "Pixelated first-person hand reaching for the closet door handle" },
+  { number: "11", src: "/assets/process-ideation/entry-07/frame-11.jpg", title: "A box in the dark", alt: "Dark pixelated closet interior where a small wooden box emerges from the shadows" },
+  { number: "12", src: "/assets/process-ideation/entry-07/frame-12.jpg", title: "The family name", alt: "Pixelated close view of the hand-marked family name on the wooden time capsule" },
+  { number: "13", src: "/assets/process-ideation/entry-07/frame-13.jpg", title: "First contact", alt: "Pixelated hands lifting the lid of the discovered time capsule" },
+  { number: "14", src: "/assets/process-ideation/entry-07/frame-14.jpg", title: "The archive opens", alt: "Pixelated open time capsule revealing its neighborhood map, jewelry, and wax terrain" },
+  { number: "15", src: "/assets/process-ideation/entry-07/frame-15.jpg", title: "Carried forward", alt: "Pixelated close view of the descendant wearing the handmade black-stone ring" },
+];
+
 function ProcessAiResults({ results }) {
   return (
     <div className="process-ai-grid">
@@ -4243,6 +4260,96 @@ function ProcessAiResults({ results }) {
         </figure>
       ))}
     </div>
+  );
+}
+
+function TimeCapsuleDiscoveryCarousel({ slides }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [pointerPaused, setPointerPaused] = useState(false);
+  const [focusPaused, setFocusPaused] = useState(false);
+  const [rotationPaused, setRotationPaused] = useState(false);
+  const [inView, setInView] = useState(false);
+  const carouselRef = useRef(null);
+  const touchStartX = useRef(null);
+  const activeSlide = slides[activeIndex];
+  const paused = pointerPaused || focusPaused || rotationPaused;
+
+  useEffect(() => {
+    const node = carouselRef.current;
+    if (!node || typeof IntersectionObserver === "undefined") return undefined;
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), {
+      rootMargin: "80px",
+      threshold: 0.2,
+    });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion || paused || !inView || slides.length < 2) return undefined;
+    const timer = window.setInterval(() => {
+      if (!document.hidden) setActiveIndex(index => (index + 1) % slides.length);
+    }, 3400);
+    return () => window.clearInterval(timer);
+  }, [inView, paused, slides.length]);
+
+  const showPrevious = () => setActiveIndex(index => (index - 1 + slides.length) % slides.length);
+  const showNext = () => setActiveIndex(index => (index + 1) % slides.length);
+  const finishSwipe = event => {
+    const startX = touchStartX.current;
+    touchStartX.current = null;
+    if (startX === null) return;
+    const delta = event.changedTouches[0].clientX - startX;
+    if (Math.abs(delta) < 45) return;
+    if (delta > 0) showPrevious();
+    else showNext();
+  };
+
+  return (
+    <figure
+      ref={carouselRef}
+      className="process-discovery-carousel"
+      aria-label="A future descendant discovers the time capsule"
+      aria-roledescription="carousel"
+      onPointerEnter={() => setPointerPaused(true)}
+      onPointerLeave={() => setPointerPaused(false)}
+      onFocusCapture={() => setFocusPaused(true)}
+      onBlurCapture={event => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setFocusPaused(false);
+      }}
+      onTouchStart={event => { touchStartX.current = event.touches[0].clientX; }}
+      onTouchEnd={finishSwipe}
+    >
+      <div className="process-discovery-framebar">
+        <b>FRAME {activeSlide.number} · {String(activeIndex + 1).padStart(2, "0")}/{String(slides.length).padStart(2, "0")}</b>
+        <span>{paused ? "SEQUENCE PAUSED" : "AUTO JOURNEY"}</span>
+      </div>
+      <div className="process-discovery-viewport">
+        <img key={activeSlide.src} src={activeSlide.src} alt={activeSlide.alt} loading="lazy" decoding="async" />
+        <div className="process-discovery-controls" role="group" aria-label="Time capsule journey controls">
+          <button type="button" onClick={showPrevious} aria-label="Previous frame">←</button>
+          <button
+            type="button"
+            onClick={() => setRotationPaused(value => !value)}
+            aria-label={rotationPaused ? "Resume automatic journey" : "Pause automatic journey"}
+            aria-pressed={rotationPaused}
+          >
+            {rotationPaused ? "▶" : "Ⅱ"}
+          </button>
+          <button type="button" onClick={showNext} aria-label="Next frame">→</button>
+        </div>
+      </div>
+      <ol className="process-discovery-track" aria-label="Journey frame numbers">
+        {slides.map((slide, index) => (
+          <li key={slide.number} className={index === activeIndex ? "is-active" : ""}>
+            <button type="button" onClick={() => setActiveIndex(index)} aria-label={`Show frame ${slide.number}`} aria-current={index === activeIndex ? "true" : undefined}>{slide.number}</button>
+          </li>
+        ))}
+      </ol>
+      <figcaption><b>{activeSlide.title}</b><span>RECOVERED RECORD / {activeSlide.number}</span></figcaption>
+      <span className="process-discovery-announcement" aria-live="polite">{`${activeSlide.title}. Recovered frame ${activeSlide.number}, image ${activeIndex + 1} of ${slides.length}.`}</span>
+    </figure>
   );
 }
 
@@ -4555,6 +4662,69 @@ function ProcessIdeationPage() {
             </aside>
 
             <p className="process-entry-disclosure">AI was used to edit this writing for grammar, spelling, clarity, and web presentation. The objects, photographs, sketches, concept, and reflections are my own.</p>
+          </div>
+        </details>
+        <details className="process-entry" open>
+          <summary className="process-entry-meta">
+            <span>ENTRY_007</span>
+            <time dateTime="2026-11-08">11/8/2026</time>
+          </summary>
+          <div className="process-entry-body process-discovery-entry">
+            <header className="process-capsule-title process-discovery-title">
+              <div>
+                <span>WEEK 07 / TIME CAPSULE / PART II</span>
+                <b>14 RECOVERED FRAMES</b>
+              </div>
+              <h2>The Long Way Home</h2>
+              <p>A future descendant follows a damaged trail to Washington Heights and finds a family archive waiting in a closet.</p>
+            </header>
+
+            <div className="process-entry-copy process-capsule-opening">
+              <p>For this continuation, I imagined the time capsule not as an object I seal, but as a discovery I will never witness. The numbered images follow a future descendant who knows almost nothing about me or the people who came before them. They travel to Washington Heights searching for where they came from and eventually find the capsule in an old apartment closet.</p>
+              <p>The story has no dialogue. I wanted the descendant’s uncertainty to remain visible: they can recognize that the box belonged to their family, but the objects inside cannot explain themselves. Like me, they have to build possible lives around the fragments they inherit.</p>
+            </div>
+
+            <section className="process-entry-gallery process-discovery-gallery" aria-labelledby="process-discovery-heading">
+              <header className="process-gallery-heading">
+                <span>RECOVERED SEQUENCE / 00—15</span>
+                <h2 id="process-discovery-heading">A wordless journey home</h2>
+              </header>
+              <p className="process-capsule-instruction"><span aria-hidden="true">●</span> The sequence rolls automatically. Hover, focus, swipe, or use the controls to move through the recovered frames.</p>
+              <TimeCapsuleDiscoveryCarousel slides={entrySevenFrames} />
+            </section>
+
+            <div className="process-entry-copy process-capsule-reflection">
+              <h3>Building the Journey</h3>
+              <p>I chose an older video-game aesthetic because it was the first visual language that came to mind when I imagined traveling a great distance for treasure. The low resolution turns Washington Heights into a quest environment: buses, bridges, streets, hallways, and doors become stages on a route toward something that may or may not answer the traveler’s questions.</p>
+              <p>I created the sequence by photobashing my own photographs with screenshots of scenes built or staged in Unreal Engine and with Sketchfab assets. Keeping the images visibly assembled was important. The descendant is reconstructing a history from incomplete evidence, and the world around them is constructed in the same way.</p>
+            </div>
+
+            <section className="process-discovery-reference" aria-labelledby="process-flotsam-heading">
+              <figure>
+                <div><img src="/assets/process-ideation/entry-07/flotsam-context.jpg" alt="David Wiesner’s picture book Flotsam shown open behind its red illustrated cover" loading="lazy" decoding="async" /></div>
+                <figcaption>CONTEXT / <i>FLOTSAM</i> BY DAVID WIESNER / PUBLISHED BOOK REFERENCE</figcaption>
+              </figure>
+              <div className="process-entry-copy">
+                <h3 id="process-flotsam-heading">An Image Without a Voice</h3>
+                <p>I kept thinking about David Wiesner’s <i>Flotsam</i>, a wordless picture book I read while growing up. In it, a camera washes ashore and passes from one person to another. Each finder sees photographs left by people they will never meet, adds their own image, and returns the camera to the ocean.</p>
+                <p>That circulation mirrors what interests me about jewelry. I own objects that once belonged to people I never knew, and because they cannot tell me about themselves, I have to imagine the lives around them. In this sequence, the descendant encounters my jewelry in the same way: not as a complete biography, but as evidence that someone was here and wanted something to continue.</p>
+              </div>
+            </section>
+
+            <div className="process-entry-copy process-capsule-reflection">
+              <h3>Washington Heights as Greece</h3>
+              <p>The journey also became a way to think about cultural loss. I do not speak Greek. My father speaks some Greek, and my grandmother is fluent. I am half Greek, while my father’s side of the family is fully Greek. My Greek family placed a great deal of value on cultural assimilation, and I have mixed feelings about what that made possible and what it erased. I often feel separated from my ancestors and from a past I cannot fully access.</p>
+              <p>I have never made the long journey to Greece that I associate with searching for those origins. The person whose point of view we follow has traveled farther, but Greece is no longer their destination. Their ancestral landscape is Washington Heights. The neighborhood map inside the lid becomes their version of a map back to the old country: a place made significant by family memory even after its meaning has become difficult to read.</p>
+            </div>
+
+            <div className="process-entry-copy process-capsule-reflection process-discovery-closet">
+              <h3>The Box in the Closet</h3>
+              <p>The closet is also a reference to ossuaries. My grandmother told me that in parts of Greece where cemetery space was limited, family members’ bones could be exhumed after a number of years and returned to their relatives in boxes. According to the stories she passed to me, those boxes were sometimes kept in closets.</p>
+              <p>I think often about how I do not have those boxes. I am separated enough from my ancestors that I do not know where their remains are. Placing the time capsule in a closet lets the jewelry box echo that missing family archive without pretending it can replace it. The descendant finds no bones and no complete record—only the impressions, map, name, and jewelry I was able to leave.</p>
+              <p>The final frame completes the cycle. The descendant puts on the ring, attaching another life to an object whose first story they can only guess. The time capsule does not restore everything that was lost, but it gives them something material to carry forward.</p>
+            </div>
+
+            <p className="process-entry-disclosure">AI was used to edit this writing for grammar, spelling, clarity, and web presentation. The narrative images are my photobashes, made from my own photographs, Unreal Engine screenshots, and Sketchfab assets. The <i>Flotsam</i> image is included only as a published book reference.</p>
           </div>
         </details>
       </main>
